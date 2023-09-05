@@ -33,6 +33,13 @@
 			"name": "Text",
 			"author": "Scirra",
 			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Tween",
+			"name": "Tween",
+			"author": "Scirra",
+			"bundled": false
 		}
 	],
 	"uniqueId": "20y9z90w252",

@@ -4,6 +4,20 @@
 	"sid": 822770670897346,
 	"instanceVariables": [
 		{
+			"name": "active",
+			"type": "boolean",
+			"desc": "if this button is active (choosable)",
+			"show": true,
+			"sid": 199199960581072
+		},
+		{
+			"name": "chosen",
+			"type": "boolean",
+			"desc": "secret bool for recording when this button has been chosen",
+			"show": false,
+			"sid": 219814938662544
+		},
+		{
 			"name": "group",
 			"type": "string",
 			"desc": "every button in a group shares this var",
@@ -46,7 +60,13 @@
 			"sid": 629137152964272
 		}
 	],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 540306298376631
+		}
+	],
 	"effectTypes": [],
 	"members": [
 		"uiBlackButton"

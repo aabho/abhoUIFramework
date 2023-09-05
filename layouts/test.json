@@ -54,6 +54,8 @@
 					},
 					"uid": 4,
 					"instanceVariables": {
+						"active": false,
+						"chosen": false,
 						"group": "main",
 						"id": "mainPlayGame",
 						"oWidth": 0,
@@ -61,7 +63,13 @@
 						"mAddWidth": 4,
 						"mAddHeight": 4
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
 					"sceneGraphData": {
 						"parent-uid": null,
 						"uid": 4,
@@ -211,6 +219,8 @@
 					},
 					"uid": 6,
 					"instanceVariables": {
+						"active": false,
+						"chosen": false,
 						"group": "main",
 						"id": "mainSettings",
 						"oWidth": 0,
@@ -218,7 +228,13 @@
 						"mAddWidth": 4,
 						"mAddHeight": 4
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
 					"sceneGraphData": {
 						"parent-uid": null,
 						"uid": 6,
@@ -368,6 +384,8 @@
 					},
 					"uid": 8,
 					"instanceVariables": {
+						"active": false,
+						"chosen": false,
 						"group": "main",
 						"id": "mainQuit",
 						"oWidth": 0,
@@ -375,7 +393,13 @@
 						"mAddWidth": 4,
 						"mAddHeight": 4
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
 					"sceneGraphData": {
 						"parent-uid": null,
 						"uid": 8,

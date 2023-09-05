@@ -19,16 +19,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "uiChosenGroup",
-			"type": "string",
-			"initialValue": "",
-			"comment": "the currently active group of UI components",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 407921074227694
-		},
-		{
-			"eventType": "variable",
 			"name": "uiChosenID",
 			"type": "string",
 			"initialValue": "",
@@ -198,7 +188,36 @@
 					"eventType": "function-block",
 					"conditions": [],
 					"actions": [],
-					"sid": 489565823677731
+					"sid": 489565823677731,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "uiButton",
+									"sid": 859275977305491,
+									"parameters": {
+										"instance-variable": "group",
+										"comparison": 0,
+										"value": "group"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "uiButton",
+									"sid": 621455883579123,
+									"parameters": {
+										"instance-variable": "active",
+										"value": "true"
+									}
+								}
+							],
+							"sid": 167485700474800
+						}
+					]
 				},
 				{
 					"functionName": "uiDisableGroup",
@@ -219,7 +238,36 @@
 					"eventType": "function-block",
 					"conditions": [],
 					"actions": [],
-					"sid": 255636666609634
+					"sid": 255636666609634,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "uiButton",
+									"sid": 398152048002881,
+									"parameters": {
+										"instance-variable": "group",
+										"comparison": 0,
+										"value": "group"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "uiButton",
+									"sid": 675945389733719,
+									"parameters": {
+										"instance-variable": "active",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 140992257960374
+						}
+					]
 				},
 				{
 					"functionName": "uiDisableAllGroups",
@@ -228,19 +276,38 @@
 					"functionReturnType": "none",
 					"functionCopyPicked": false,
 					"functionIsAsync": false,
-					"functionParameters": [
-						{
-							"name": "group",
-							"type": "string",
-							"initialValue": "",
-							"comment": "",
-							"sid": 485340181323708
-						}
-					],
+					"functionParameters": [],
 					"eventType": "function-block",
 					"conditions": [],
 					"actions": [],
-					"sid": 934088685541463
+					"sid": 934088685541463,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-all",
+									"objectClass": "System",
+									"sid": 116676936925791,
+									"parameters": {
+										"object": "uiButton"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "uiButton",
+									"sid": 757151394425491,
+									"parameters": {
+										"instance-variable": "active",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 274940320240862
+						}
+					]
 				}
 			],
 			"sid": 701083594783377,
@@ -265,8 +332,18 @@
 			"isActiveOnStart": true,
 			"children": [
 				{
+					"eventType": "variable",
+					"name": "UI_ANIMATION_DURATION",
+					"type": "number",
+					"initialValue": "0.1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 513194690449862
+				},
+				{
 					"eventType": "comment",
-					"text": "",
+					"text": "run a UI update",
 					"text-color": [
 						0,
 						0,
@@ -281,10 +358,231 @@
 					]
 				},
 				{
-					"eventType": "block",
-					"conditions": [],
+					"functionName": "uiUpdate",
+					"functionDescription": "update UI elements",
+					"functionCategory": "ui",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "uiButton",
+							"sid": 877005464934521,
+							"parameters": {
+								"instance-variable": "active"
+							}
+						},
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 387917868723849,
+							"parameters": {
+								"object": "uiButton"
+							}
+						}
+					],
 					"actions": [],
-					"sid": 764709467652051
+					"sid": 369960601649571,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "if this button is chosen, and wasn't before...",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "uiButton",
+									"sid": 471686690486982,
+									"parameters": {
+										"instance-variable": "id",
+										"comparison": 0,
+										"value": "uiChosenID"
+									}
+								},
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "uiButton",
+									"sid": 298303225087764,
+									"parameters": {
+										"instance-variable": "chosen"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "uiButton",
+									"sid": 135790674390520,
+									"parameters": {
+										"instance-variable": "chosen",
+										"value": "true"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "make the button grow",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "uiButton",
+									"sid": 787873365898717,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize\""
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "uiButton",
+									"sid": 510697786403247,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize grow\"",
+										"property": "size",
+										"end-x": "Self.mAddWidth",
+										"end-y": "Self.mAddHeight",
+										"time": "UI_ANIMATION_DURATION",
+										"ease": "easeoutsine",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 448256026090131
+						},
+						{
+							"eventType": "comment",
+							"text": "if this button is no longer chosen...",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 765278985825067
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "uiButton",
+									"sid": 462789439548605,
+									"parameters": {
+										"instance-variable": "id",
+										"comparison": 0,
+										"value": "uiChosenID"
+									},
+									"isInverted": true
+								},
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "uiButton",
+									"sid": 916781714998671,
+									"parameters": {
+										"instance-variable": "chosen"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "uiButton",
+									"sid": 899273157506609,
+									"parameters": {
+										"instance-variable": "chosen",
+										"value": "false"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "make the button shrink",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "uiButton",
+									"sid": 604365808423157,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize\""
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "uiButton",
+									"sid": 312292237491361,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize shrink\"",
+										"property": "size",
+										"end-x": "Self.oWidth",
+										"end-y": "Self.oHeight",
+										"time": "UI_ANIMATION_DURATION",
+										"ease": "easeoutsine",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 470199059154916
+						}
+					]
 				}
 			],
 			"sid": 539266263456895,
@@ -310,7 +608,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "",
+					"text": "mouseover choosing",
 					"text-color": [
 						0,
 						0,
@@ -326,9 +624,100 @@
 				},
 				{
 					"eventType": "block",
-					"conditions": [],
+					"conditions": [
+						{
+							"id": "on-movement",
+							"objectClass": "Mouse",
+							"sid": 987215173631756
+						}
+					],
 					"actions": [],
-					"sid": 475759883744958
+					"sid": 365133383614887,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "cursor-is-over-object",
+									"objectClass": "Mouse",
+									"sid": 234886902674325,
+									"parameters": {
+										"object": "uiButton"
+									}
+								},
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "uiButton",
+									"sid": 327058384785122,
+									"parameters": {
+										"instance-variable": "active"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "uiButton",
+									"sid": 423149109724252,
+									"parameters": {
+										"instance-variable": "id",
+										"comparison": 0,
+										"value": "uiChosenID"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 437811677032890,
+									"parameters": {
+										"variable": "uiChosenID",
+										"value": "uiButton.id"
+									}
+								},
+								{
+									"callFunction": "uiUpdate",
+									"sid": 120090567668454
+								}
+							],
+							"sid": 454549956095394
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 317445478006076
+								},
+								{
+									"id": "cursor-is-over-object",
+									"objectClass": "Mouse",
+									"sid": 797370777341249,
+									"parameters": {
+										"object": "uiButton"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 188253320558727,
+									"parameters": {
+										"variable": "uiChosenID",
+										"value": "\"\""
+									}
+								},
+								{
+									"callFunction": "uiUpdate",
+									"sid": 402468512941544
+								}
+							],
+							"sid": 939127554771933
+						}
+					]
 				}
 			],
 			"sid": 371357414851424,
