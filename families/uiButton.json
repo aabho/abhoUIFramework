@@ -1,0 +1,54 @@
+{
+	"name": "uiButton",
+	"plugin-id": "NinePatch",
+	"sid": 822770670897346,
+	"instanceVariables": [
+		{
+			"name": "group",
+			"type": "string",
+			"desc": "every button in a group shares this var",
+			"show": true,
+			"sid": 123641396199175
+		},
+		{
+			"name": "id",
+			"type": "string",
+			"desc": "apply a unique ID to every group",
+			"show": true,
+			"sid": 148285385236211
+		},
+		{
+			"name": "oWidth",
+			"type": "number",
+			"desc": "original (don't need to modify)",
+			"show": false,
+			"sid": 335556124087137
+		},
+		{
+			"name": "oHeight",
+			"type": "number",
+			"desc": "original (don't need to modify)",
+			"show": false,
+			"sid": 304615723960730
+		},
+		{
+			"name": "mAddWidth",
+			"type": "number",
+			"desc": "mouseover (relative to original - for example, 8 would mean that the object would expand by 8 pixels)",
+			"show": true,
+			"sid": 196487588006921
+		},
+		{
+			"name": "mAddHeight",
+			"type": "number",
+			"desc": "mouseover (relative to original)",
+			"show": true,
+			"sid": 629137152964272
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"uiBlackButton"
+	]
+}

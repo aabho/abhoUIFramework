@@ -1,0 +1,195 @@
+{
+	"name": "uiEV",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "UI variables (don't adjust these directly, use the relevant functions)",
+			"text-color": [
+				0,
+				0,
+				0,
+				1
+			],
+			"background-color": [
+				0.6705882352941176,
+				0.8745098039215686,
+				0.6431372549019608,
+				1
+			]
+		},
+		{
+			"eventType": "variable",
+			"name": "uiActiveGroup",
+			"type": "string",
+			"initialValue": "",
+			"comment": "the currently active group of UI components",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 407921074227694
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "ui init",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "when a UI button is created, set constant properties",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "uiButton",
+							"sid": 352848972853944
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "the original size is recorded, for when this button is not chosen and is idle",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "uiButton",
+							"sid": 328488006010810,
+							"parameters": {
+								"instance-variable": "oWidth",
+								"value": "Self.Width"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "uiButton",
+							"sid": 967159514137328,
+							"parameters": {
+								"instance-variable": "oHeight",
+								"value": "Self.Height"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "add the original size to the mouseover size (if you set it to 4 in properties, then it will be 4 more than the original size)",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "uiButton",
+							"sid": 746791561515206,
+							"parameters": {
+								"instance-variable": "mAddWidth",
+								"value": "Self.Width + Self.mAddWidth"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "uiButton",
+							"sid": 606034727725995,
+							"parameters": {
+								"instance-variable": "mAddHeight",
+								"value": "Self.Height + Self.mAddHeight"
+							}
+						}
+					],
+					"sid": 492153634776170
+				}
+			],
+			"sid": 385487035699418,
+			"text-color": [
+				0,
+				0,
+				0,
+				0
+			],
+			"background-color": [
+				0.8392156862745098,
+				0.8392156862745098,
+				0.8392156862745098,
+				1
+			]
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "ui behavior",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [],
+					"sid": 908397223484159
+				}
+			],
+			"sid": 701083594783377,
+			"text-color": [
+				0,
+				0,
+				0,
+				0
+			],
+			"background-color": [
+				0.8392156862745098,
+				0.8392156862745098,
+				0.8392156862745098,
+				1
+			]
+		}
+	],
+	"sid": 147472720626709
+}
