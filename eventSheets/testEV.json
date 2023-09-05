@@ -4,6 +4,42 @@
 		{
 			"eventType": "include",
 			"includeSheet": "uiEV"
+		},
+		{
+			"eventType": "comment",
+			"text": "on start of layout, activate the main group",
+			"text-color": [
+				0,
+				0,
+				0,
+				1
+			],
+			"background-color": [
+				0.6431372549019608,
+				0.8470588235294118,
+				0.8745098039215686,
+				1
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 945432562778651
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "uiEnableGroup",
+					"sid": 410162650732131,
+					"parameters": [
+						"\"main\""
+					]
+				}
+			],
+			"sid": 800095717628148
 		}
 	],
 	"sid": 297068062009297

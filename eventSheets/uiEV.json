@@ -19,13 +19,23 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "uiActiveGroup",
+			"name": "uiChosenGroup",
 			"type": "string",
 			"initialValue": "",
 			"comment": "the currently active group of UI components",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 407921074227694
+		},
+		{
+			"eventType": "variable",
+			"name": "uiChosenID",
+			"type": "string",
+			"initialValue": "",
+			"comment": "the actual UI component that is focused right now",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 279184929937571
 		},
 		{
 			"eventType": "group",
@@ -149,6 +159,107 @@
 		{
 			"eventType": "group",
 			"disabled": false,
+			"title": "ui functions",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "enable/disable a UI group - this will run a ui update\n\nexample usage: \nOn start of layout -> uiEnableGroup(\"menu\");\nOn play pressed -> uiDisableGroup(\"menu\"); uiEnableGroup(\"menuPlay\");\nOn end of layout -> uiDisableAllGroups();",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"functionName": "uiEnableGroup",
+					"functionDescription": "enables a group of UI components - this will run a ui update",
+					"functionCategory": "ui",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "group",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 354694740917113
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 489565823677731
+				},
+				{
+					"functionName": "uiDisableGroup",
+					"functionDescription": "disables a group of UI components - this will run a ui update",
+					"functionCategory": "ui",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "group",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 893219672307634
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 255636666609634
+				},
+				{
+					"functionName": "uiDisableAllGroups",
+					"functionDescription": "disables every UI component on the layout - runs a UI update",
+					"functionCategory": "ui",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "group",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 485340181323708
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 934088685541463
+				}
+			],
+			"sid": 701083594783377,
+			"text-color": [
+				0,
+				0,
+				0,
+				0
+			],
+			"background-color": [
+				0.8392156862745098,
+				0.8392156862745098,
+				0.8392156862745098,
+				1
+			]
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
 			"title": "ui behavior",
 			"description": "",
 			"isActiveOnStart": true,
@@ -173,10 +284,54 @@
 					"eventType": "block",
 					"conditions": [],
 					"actions": [],
-					"sid": 908397223484159
+					"sid": 764709467652051
 				}
 			],
-			"sid": 701083594783377,
+			"sid": 539266263456895,
+			"text-color": [
+				0,
+				0,
+				0,
+				0
+			],
+			"background-color": [
+				0.8392156862745098,
+				0.8392156862745098,
+				0.8392156862745098,
+				1
+			]
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "ui interaction",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [],
+					"sid": 475759883744958
+				}
+			],
+			"sid": 371357414851424,
 			"text-color": [
 				0,
 				0,
