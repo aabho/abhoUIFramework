@@ -583,6 +583,94 @@
 							"sid": 470199059154916
 						}
 					]
+				},
+				{
+					"eventType": "comment",
+					"text": "selects the currently chosen UI component\n\nwill call a function with the syntax (\"select \" & uiButton.id)\nex: Function \"select mainPlay\"\nadd this function to any event sheet to register when a button is selected\n\nkeep in mind that if you change a button's ID, you'll have to change the name of its function, too",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"functionName": "uiSelect",
+					"functionDescription": "selects the currently chosen UI component",
+					"functionCategory": "ui",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 675651690985502,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "id",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 223733410331304
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "uiButton",
+									"sid": 284114670865324,
+									"parameters": {
+										"instance-variable": "id",
+										"comparison": 0,
+										"value": "uiChosenID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 580565488647557,
+									"parameters": {
+										"variable": "id",
+										"value": "uiButton.id"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "call function with js, so that any function name can be called at runtime",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"type": "script",
+									"script": "runtime.callFunction(\"select \" + localVars.id);"
+								}
+							],
+							"sid": 335088809364655
+						}
+					]
 				}
 			],
 			"sid": 539266263456895,
@@ -716,6 +804,70 @@
 								}
 							],
 							"sid": 939127554771933
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "left click to select option",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-click",
+							"objectClass": "Mouse",
+							"sid": 304559382940175,
+							"parameters": {
+								"mouse-button": "left",
+								"click-type": "clicked"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 993101875503267,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "cursor-is-over-object",
+									"objectClass": "Mouse",
+									"sid": 158562987911049,
+									"parameters": {
+										"object": "uiButton"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "uiButton",
+									"sid": 734464966202973,
+									"parameters": {
+										"instance-variable": "id",
+										"comparison": 0,
+										"value": "uiChosenID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "uiSelect",
+									"sid": 333423541969878
+								}
+							],
+							"sid": 541133324364209
 						}
 					]
 				}

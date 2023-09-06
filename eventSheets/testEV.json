@@ -40,6 +40,41 @@
 				}
 			],
 			"sid": 800095717628148
+		},
+		{
+			"eventType": "comment",
+			"text": "quit selected",
+			"text-color": [
+				0,
+				0,
+				0,
+				1
+			],
+			"background-color": [
+				0.6431372549019608,
+				0.8470588235294118,
+				0.8745098039215686,
+				1
+			]
+		},
+		{
+			"functionName": "select mainQuit",
+			"functionDescription": "",
+			"functionCategory": "select",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "close",
+					"objectClass": "Browser",
+					"sid": 373011902852724
+				}
+			],
+			"sid": 320947714702467
 		}
 	],
 	"sid": 297068062009297

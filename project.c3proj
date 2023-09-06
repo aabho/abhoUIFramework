@@ -1,11 +1,18 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 35700,
+	"savedWithRelease": 35000,
 	"name": "abho's ui framework",
 	"runtime": "c3",
 	"useWorker": "auto",
 	"bundleAddons": false,
 	"usedAddons": [
+		{
+			"type": "plugin",
+			"id": "Browser",
+			"name": "Browser",
+			"author": "Scirra",
+			"bundled": false
+		},
 		{
 			"type": "plugin",
 			"id": "Keyboard",
@@ -57,7 +64,8 @@
 			{
 				"items": [
 					"Mouse",
-					"Keyboard"
+					"Keyboard",
+					"Browser"
 				],
 				"subfolders": [],
 				"name": "sys"
