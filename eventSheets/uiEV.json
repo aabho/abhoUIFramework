@@ -36,6 +36,58 @@
 			"children": [
 				{
 					"eventType": "comment",
+					"text": "create the uiManager if there is none already",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 606583500902100
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 504882205766909,
+							"parameters": {
+								"first-value": "uiManager.Count",
+								"comparison": 0,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 902145690053972,
+							"parameters": {
+								"object-to-create": "uiManager",
+								"layer": "0",
+								"x": "0",
+								"y": "0",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						}
+					],
+					"sid": 825150949284262
+				},
+				{
+					"eventType": "comment",
 					"text": "when a UI button is created, set constant properties",
 					"text-color": [
 						0,
@@ -366,24 +418,7 @@
 					"functionIsAsync": false,
 					"functionParameters": [],
 					"eventType": "function-block",
-					"conditions": [
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "uiButton",
-							"sid": 877005464934521,
-							"parameters": {
-								"instance-variable": "active"
-							}
-						},
-						{
-							"id": "for-each",
-							"objectClass": "System",
-							"sid": 387917868723849,
-							"parameters": {
-								"object": "uiButton"
-							}
-						}
-					],
+					"conditions": [],
 					"actions": [],
 					"sid": 369960601649571,
 					"children": [
@@ -501,11 +536,6 @@
 						{
 							"eventType": "block",
 							"conditions": [
-								{
-									"id": "else",
-									"objectClass": "System",
-									"sid": 765278985825067
-								},
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "uiButton",
@@ -770,6 +800,14 @@
 									"id": "else",
 									"objectClass": "System",
 									"sid": 376504054247077
+								},
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "uiButton",
+									"sid": 353791428994911,
+									"parameters": {
+										"instance-variable": "active"
+									}
 								}
 							],
 							"actions": [],
@@ -911,41 +949,18 @@
 													}
 												}
 											],
-											"actions": [],
-											"sid": 571798522401171,
-											"children": [
+											"actions": [
 												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "pick-nearestfurthest",
-															"objectClass": "uiButton",
-															"sid": 431397798133645,
-															"parameters": {
-																"which": "nearest",
-																"x": "curX",
-																"y": "curY"
-															}
-														}
-													],
-													"actions": [
-														{
-															"id": "set-eventvar-value",
-															"objectClass": "System",
-															"sid": 484514994323120,
-															"parameters": {
-																"variable": "uiChosenID",
-																"value": "uiButton.id"
-															}
-														},
-														{
-															"callFunction": "uiUpdate",
-															"sid": 805410234240557
-														}
-													],
-													"sid": 278306307628496
+													"customAction": "pickNearest",
+													"objectClass": "uiButton",
+													"sid": 630458566997757,
+													"parameters": [
+														"curX",
+														"curY"
+													]
 												}
-											]
+											],
+											"sid": 571798522401171
 										},
 										{
 											"eventType": "block",
@@ -1022,41 +1037,18 @@
 													}
 												}
 											],
-											"actions": [],
-											"sid": 152381828344531,
-											"children": [
+											"actions": [
 												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "pick-nearestfurthest",
-															"objectClass": "uiButton",
-															"sid": 274567381902127,
-															"parameters": {
-																"which": "nearest",
-																"x": "curX",
-																"y": "curY"
-															}
-														}
-													],
-													"actions": [
-														{
-															"id": "set-eventvar-value",
-															"objectClass": "System",
-															"sid": 255789490182549,
-															"parameters": {
-																"variable": "uiChosenID",
-																"value": "uiButton.id"
-															}
-														},
-														{
-															"callFunction": "uiUpdate",
-															"sid": 470665059373642
-														}
-													],
-													"sid": 344644140624563
+													"customAction": "pickNearest",
+													"objectClass": "uiButton",
+													"sid": 796959998524168,
+													"parameters": [
+														"curX",
+														"curY"
+													]
 												}
-											]
+											],
+											"sid": 152381828344531
 										},
 										{
 											"eventType": "block",
@@ -1133,41 +1125,18 @@
 													}
 												}
 											],
-											"actions": [],
-											"sid": 168080457717124,
-											"children": [
+											"actions": [
 												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "pick-nearestfurthest",
-															"objectClass": "uiButton",
-															"sid": 420266834162048,
-															"parameters": {
-																"which": "nearest",
-																"x": "curX",
-																"y": "curY"
-															}
-														}
-													],
-													"actions": [
-														{
-															"id": "set-eventvar-value",
-															"objectClass": "System",
-															"sid": 895278341493540,
-															"parameters": {
-																"variable": "uiChosenID",
-																"value": "uiButton.id"
-															}
-														},
-														{
-															"callFunction": "uiUpdate",
-															"sid": 893206962571081
-														}
-													],
-													"sid": 530556626423285
+													"customAction": "pickNearest",
+													"objectClass": "uiButton",
+													"sid": 632384735501715,
+													"parameters": [
+														"curX",
+														"curY"
+													]
 												}
-											]
+											],
+											"sid": 168080457717124
 										},
 										{
 											"eventType": "block",
@@ -1244,41 +1213,18 @@
 													}
 												}
 											],
-											"actions": [],
-											"sid": 214215791002584,
-											"children": [
+											"actions": [
 												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "pick-nearestfurthest",
-															"objectClass": "uiButton",
-															"sid": 581639821522819,
-															"parameters": {
-																"which": "nearest",
-																"x": "curX",
-																"y": "curY"
-															}
-														}
-													],
-													"actions": [
-														{
-															"id": "set-eventvar-value",
-															"objectClass": "System",
-															"sid": 595282731028980,
-															"parameters": {
-																"variable": "uiChosenID",
-																"value": "uiButton.id"
-															}
-														},
-														{
-															"callFunction": "uiUpdate",
-															"sid": 460407367353736
-														}
-													],
-													"sid": 820909751794176
+													"customAction": "pickNearest",
+													"objectClass": "uiButton",
+													"sid": 492422541324695,
+													"parameters": [
+														"curX",
+														"curY"
+													]
 												}
-											]
+											],
+											"sid": 214215791002584
 										},
 										{
 											"eventType": "block",
@@ -1326,6 +1272,77 @@
 							]
 						}
 					]
+				},
+				{
+					"eventType": "comment",
+					"text": "pick nearest button to position",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"aceType": "action",
+					"aceName": "pickNearest",
+					"objectClass": "uiButton",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "x",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 204621922336500
+						},
+						{
+							"name": "y",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 946249041917677
+						}
+					],
+					"eventType": "custom-ace-block",
+					"conditions": [
+						{
+							"id": "pick-nearestfurthest",
+							"objectClass": "uiButton",
+							"sid": 935762361354406,
+							"parameters": {
+								"which": "nearest",
+								"x": "x",
+								"y": "y"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 171159713428394,
+							"parameters": {
+								"variable": "uiChosenID",
+								"value": "uiButton.id"
+							}
+						},
+						{
+							"callFunction": "uiUpdate",
+							"sid": 174663249212857
+						}
+					],
+					"sid": 107884634388161
 				},
 				{
 					"eventType": "comment",
@@ -1482,7 +1499,7 @@
 								{
 									"id": "compare-x",
 									"objectClass": "uiButton",
-									"sid": 584265836727112,
+									"sid": 539464265039766,
 									"parameters": {
 										"comparison": 3,
 										"x-co-ordinate": "lastX"
@@ -1528,22 +1545,6 @@
 								}
 							],
 							"sid": 520135827255146
-						},
-						{
-							"eventType": "comment",
-							"text": "loop through every UI component and find which has the lowest coordinates",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
 						},
 						{
 							"eventType": "block",
@@ -1729,49 +1730,41 @@
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "on-click",
+									"id": "on-object-clicked",
 									"objectClass": "Mouse",
-									"sid": 821746732177613,
+									"sid": 703717475898357,
 									"parameters": {
 										"mouse-button": "left",
-										"click-type": "clicked"
+										"click-type": "clicked",
+										"object-clicked": "uiButton"
+									}
+								},
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "uiButton",
+									"sid": 423534823851419,
+									"parameters": {
+										"instance-variable": "active"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "uiButton",
+									"sid": 497715779499100,
+									"parameters": {
+										"instance-variable": "id",
+										"comparison": 0,
+										"value": "uiChosenID"
 									}
 								}
 							],
-							"actions": [],
-							"sid": 927751200410496,
-							"children": [
+							"actions": [
 								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "cursor-is-over-object",
-											"objectClass": "Mouse",
-											"sid": 411553978313183,
-											"parameters": {
-												"object": "uiButton"
-											}
-										},
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "uiButton",
-											"sid": 383136004257619,
-											"parameters": {
-												"instance-variable": "id",
-												"comparison": 0,
-												"value": "uiChosenID"
-											}
-										}
-									],
-									"actions": [
-										{
-											"callFunction": "uiSelect",
-											"sid": 376583088874975
-										}
-									],
-									"sid": 444843616846838
+									"callFunction": "uiSelect",
+									"sid": 469178439549154
 								}
-							]
+							],
+							"sid": 927751200410496
 						}
 					],
 					"sid": 682861504706609,
@@ -1796,6 +1789,16 @@
 					"isActiveOnStart": true,
 					"children": [
 						{
+							"eventType": "variable",
+							"name": "cdLength",
+							"type": "number",
+							"initialValue": "0.15",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": true,
+							"sid": 728688605522455
+						},
+						{
 							"eventType": "comment",
 							"text": "arrow key navigation",
 							"text-color": [
@@ -1812,6 +1815,22 @@
 							]
 						},
 						{
+							"eventType": "comment",
+							"text": "instead of trigger once I start a CD timer so you can hold the button to go through the menu, this is important if you start to have menus with a ton of options imo. Some games even speed up the cd the longer the button is held",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.803921568627451,
+								0.49411764705882355,
+								0.792156862745098,
+								1
+							]
+						},
+						{
 							"eventType": "block",
 							"conditions": [
 								{
@@ -1823,9 +1842,14 @@
 									}
 								},
 								{
-									"id": "trigger-once-while-true",
-									"objectClass": "System",
-									"sid": 834612915002773
+									"id": "is-timer-running",
+									"objectClass": "uiManager",
+									"sid": 566469805721660,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "\"upCD\""
+									},
+									"isInverted": true
 								}
 							],
 							"actions": [
@@ -1835,6 +1859,17 @@
 									"parameters": [
 										"\"up\""
 									]
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "uiManager",
+									"sid": 864710140349140,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "cdLength",
+										"type": "once",
+										"tag": "\"upCD\""
+									}
 								}
 							],
 							"sid": 871712553629234
@@ -1851,9 +1886,14 @@
 									}
 								},
 								{
-									"id": "trigger-once-while-true",
-									"objectClass": "System",
-									"sid": 742340308408671
+									"id": "is-timer-running",
+									"objectClass": "uiManager",
+									"sid": 542624976711825,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "\"downCD\""
+									},
+									"isInverted": true
 								}
 							],
 							"actions": [
@@ -1863,6 +1903,17 @@
 									"parameters": [
 										"\"down\""
 									]
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "uiManager",
+									"sid": 543840532093246,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "cdLength",
+										"type": "once",
+										"tag": "\"downCD\""
+									}
 								}
 							],
 							"sid": 269272590239727
@@ -1879,9 +1930,14 @@
 									}
 								},
 								{
-									"id": "trigger-once-while-true",
-									"objectClass": "System",
-									"sid": 276433896828468
+									"id": "is-timer-running",
+									"objectClass": "uiManager",
+									"sid": 380646097479565,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "\"leftCD\""
+									},
+									"isInverted": true
 								}
 							],
 							"actions": [
@@ -1891,6 +1947,17 @@
 									"parameters": [
 										"\"left\""
 									]
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "uiManager",
+									"sid": 517445734347530,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "cdLength",
+										"type": "once",
+										"tag": "\"leftCD\""
+									}
 								}
 							],
 							"sid": 605181210764142
@@ -1907,9 +1974,14 @@
 									}
 								},
 								{
-									"id": "trigger-once-while-true",
-									"objectClass": "System",
-									"sid": 408655296110312
+									"id": "is-timer-running",
+									"objectClass": "uiManager",
+									"sid": 412297872067285,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "\"rightCD\""
+									},
+									"isInverted": true
 								}
 							],
 							"actions": [
@@ -1919,6 +1991,17 @@
 									"parameters": [
 										"\"right\""
 									]
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "uiManager",
+									"sid": 820495357688340,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "cdLength",
+										"type": "once",
+										"tag": "\"rightCD\""
+									}
 								}
 							],
 							"sid": 318408432681929

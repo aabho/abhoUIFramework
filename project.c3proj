@@ -36,8 +36,22 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Sprite",
+			"name": "Sprite",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Text",
 			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Timer",
+			"name": "Timer",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -65,7 +79,8 @@
 				"items": [
 					"Mouse",
 					"Keyboard",
-					"Browser"
+					"Browser",
+					"uiManager"
 				],
 				"subfolders": [],
 				"name": "sys"
