@@ -36,8 +36,8 @@
 		},
 		{
 			"type": "plugin",
-			"id": "Sprite",
-			"name": "Sprite",
+			"id": "Particles",
+			"name": "Particles",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -49,9 +49,9 @@
 			"bundled": false
 		},
 		{
-			"type": "behavior",
-			"id": "Timer",
-			"name": "Timer",
+			"type": "plugin",
+			"id": "gamepad",
+			"name": "Gamepad",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -65,7 +65,9 @@
 	],
 	"uniqueId": "20y9z90w252",
 	"objectTypes": {
-		"items": [],
+		"items": [
+			"Particles"
+		],
 		"subfolders": [
 			{
 				"items": [
@@ -80,7 +82,7 @@
 					"Mouse",
 					"Keyboard",
 					"Browser",
-					"uiManager"
+					"Gamepad"
 				],
 				"subfolders": [],
 				"name": "sys"

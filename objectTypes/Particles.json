@@ -1,7 +1,7 @@
 {
-	"name": "uiBlackButton",
-	"plugin-id": "NinePatch",
-	"sid": 311349412969850,
+	"name": "Particles",
+	"plugin-id": "Particles",
+	"sid": 955779121873621,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
@@ -14,7 +14,7 @@
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
-		"imageSpriteId": 855581,
+		"imageSpriteId": 1740270,
 		"useCollisionPoly": true
 	}
 }

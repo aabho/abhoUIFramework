@@ -36,58 +36,6 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "create the uiManager if there is none already",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-start-of-layout",
-							"objectClass": "System",
-							"sid": 606583500902100
-						},
-						{
-							"id": "compare-two-values",
-							"objectClass": "System",
-							"sid": 504882205766909,
-							"parameters": {
-								"first-value": "uiManager.Count",
-								"comparison": 0,
-								"second-value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 902145690053972,
-							"parameters": {
-								"object-to-create": "uiManager",
-								"layer": "0",
-								"x": "0",
-								"y": "0",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						}
-					],
-					"sid": 825150949284262
-				},
-				{
-					"eventType": "comment",
 					"text": "when a UI button is created, set constant properties",
 					"text-color": [
 						0,
@@ -2242,84 +2190,84 @@
 					]
 				},
 				{
+					"eventType": "comment",
+					"text": "how long you need to hold down an input in order to start the auto-scroll behavior",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6705882352941176,
+						0.8745098039215686,
+						0.6431372549019608,
+						1
+					]
+				},
+				{
+					"eventType": "variable",
+					"name": "uiInputHeldDownDuration",
+					"type": "number",
+					"initialValue": "0.5",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 528445480356256
+				},
+				{
+					"eventType": "variable",
+					"name": "uiInputHeldDownTimer",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": true,
+					"isConstant": false,
+					"sid": 977941600689288
+				},
+				{
+					"eventType": "comment",
+					"text": "how often the input repeats when auto-scrolling",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6705882352941176,
+						0.8745098039215686,
+						0.6431372549019608,
+						1
+					]
+				},
+				{
+					"eventType": "variable",
+					"name": "uiInputAutoDuration",
+					"type": "number",
+					"initialValue": "0.1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 145829861972039
+				},
+				{
+					"eventType": "variable",
+					"name": "uiInputAutoTimer",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": true,
+					"isConstant": false,
+					"sid": 521347240148959
+				},
+				{
 					"eventType": "group",
 					"disabled": false,
 					"title": "ui interaction kbm",
 					"description": "",
 					"isActiveOnStart": true,
 					"children": [
-						{
-							"eventType": "comment",
-							"text": "how long you need to hold down an input in order to start the auto-scroll behavior",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.6705882352941176,
-								0.8745098039215686,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "variable",
-							"name": "uiInputHeldDownDuration",
-							"type": "number",
-							"initialValue": "0.5",
-							"comment": "",
-							"isStatic": false,
-							"isConstant": true,
-							"sid": 334919641167741
-						},
-						{
-							"eventType": "variable",
-							"name": "uiInputHeldDownTimer",
-							"type": "number",
-							"initialValue": "0",
-							"comment": "",
-							"isStatic": true,
-							"isConstant": false,
-							"sid": 443350751757508
-						},
-						{
-							"eventType": "comment",
-							"text": "how often the input repeats when auto-scrolling",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.6705882352941176,
-								0.8745098039215686,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "variable",
-							"name": "uiInputAutoDuration",
-							"type": "number",
-							"initialValue": "0.1",
-							"comment": "",
-							"isStatic": false,
-							"isConstant": true,
-							"sid": 179437537919135
-						},
-						{
-							"eventType": "variable",
-							"name": "uiInputAutoTimer",
-							"type": "number",
-							"initialValue": "0",
-							"comment": "",
-							"isStatic": true,
-							"isConstant": false,
-							"sid": 853694556269443
-						},
 						{
 							"eventType": "comment",
 							"text": "arrow key auto scroll timer",
@@ -2498,7 +2446,8 @@
 									}
 								}
 							],
-							"sid": 619020524415143
+							"sid": 619020524415143,
+							"disabled": true
 						},
 						{
 							"eventType": "comment",
@@ -2966,6 +2915,771 @@
 						}
 					],
 					"sid": 615975906791182,
+					"text-color": [
+						0,
+						0,
+						0,
+						0
+					],
+					"background-color": [
+						0.8392156862745098,
+						0.8392156862745098,
+						0.8392156862745098,
+						1
+					]
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "ui interaction gamepad",
+					"description": "keep in mind that only gamepad 0 can navigate the UI",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "gamepad deadzone for UI navigation",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6705882352941176,
+								0.8745098039215686,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "variable",
+							"name": "uiGamepadDeadzone",
+							"type": "number",
+							"initialValue": "90",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": true,
+							"sid": 200575700074216
+						},
+						{
+							"eventType": "comment",
+							"text": "arrow key auto scroll timer",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 828126581577291,
+									"parameters": {
+										"gamepad": "0",
+										"button": "d-pad-up"
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 955737493422120,
+									"parameters": {
+										"gamepad": "0",
+										"button": "d-pad-down"
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 374436589893551,
+									"parameters": {
+										"gamepad": "0",
+										"button": "d-pad-left"
+									}
+								},
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 289641822439115,
+									"parameters": {
+										"gamepad": "0",
+										"button": "d-pad-right"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 928417695870039,
+									"parameters": {
+										"first-value": "abs(Gamepad.Axis(0, 0))",
+										"comparison": 4,
+										"second-value": "uiGamepadDeadzone"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 643801691019092,
+									"parameters": {
+										"first-value": "abs(Gamepad.Axis(0, 1))",
+										"comparison": 4,
+										"second-value": "uiGamepadDeadzone"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 806888183673980,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "held down timer",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 708749145823531,
+											"parameters": {
+												"variable": "uiInputHeldDownTimer",
+												"comparison": 2,
+												"value": "uiInputHeldDownDuration"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 312911068215444,
+											"parameters": {
+												"variable": "uiInputHeldDownTimer",
+												"value": "clamp(uiInputHeldDownTimer + dt, 0, uiInputHeldDownDuration)"
+											}
+										}
+									],
+									"sid": 458972624433860
+								},
+								{
+									"eventType": "comment",
+									"text": "auto scroll timer",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 798496915001163
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 238398099676646,
+											"parameters": {
+												"variable": "uiInputAutoTimer",
+												"comparison": 2,
+												"value": "uiInputAutoDuration"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 553382174868567,
+											"parameters": {
+												"variable": "uiInputAutoTimer",
+												"value": "clamp(uiInputAutoTimer + dt, 0, uiInputAutoDuration)"
+											}
+										}
+									],
+									"sid": 612211705435763
+								}
+							],
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 558141053618597
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 217739194047281,
+									"parameters": {
+										"variable": "uiInputHeldDownTimer",
+										"value": "0"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 682884855838858,
+									"parameters": {
+										"variable": "uiInputAutoTimer",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 825583116354151
+						},
+						{
+							"eventType": "comment",
+							"text": "arrow key navigation",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 909520717182993,
+									"parameters": {
+										"gamepad": "0",
+										"button": "d-pad-up"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 720524426989889,
+									"parameters": {
+										"first-value": "Gamepad.Axis(0, 1)",
+										"comparison": 2,
+										"second-value": "-uiGamepadDeadzone"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 400569300413033,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "happen once on input pressed",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "trigger-once-while-true",
+											"objectClass": "System",
+											"sid": 278437314667640
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "uiNavigate",
+											"sid": 267901902253066,
+											"parameters": [
+												"\"up\""
+											]
+										}
+									],
+									"sid": 485918263936075
+								},
+								{
+									"eventType": "comment",
+									"text": "auto scroll",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 861900495575855,
+											"parameters": {
+												"variable": "uiInputAutoTimer",
+												"comparison": 5,
+												"value": "uiInputAutoDuration"
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "uiNavigate",
+											"sid": 673270824956742,
+											"parameters": [
+												"\"up\""
+											]
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 139030278098729,
+											"parameters": {
+												"variable": "uiInputAutoTimer",
+												"value": "0"
+											}
+										}
+									],
+									"sid": 823678606788747
+								}
+							],
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 607530186442816,
+									"parameters": {
+										"gamepad": "0",
+										"button": "d-pad-down"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 339668674743843,
+									"parameters": {
+										"first-value": "Gamepad.Axis(0, 1)",
+										"comparison": 4,
+										"second-value": "uiGamepadDeadzone"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 954422381371534,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "happen once on input pressed",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "trigger-once-while-true",
+											"objectClass": "System",
+											"sid": 945175470687317
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "uiNavigate",
+											"sid": 515911351178107,
+											"parameters": [
+												"\"down\""
+											]
+										}
+									],
+									"sid": 256025823982623
+								},
+								{
+									"eventType": "comment",
+									"text": "auto scroll",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 136143212888928,
+											"parameters": {
+												"variable": "uiInputAutoTimer",
+												"comparison": 5,
+												"value": "uiInputAutoDuration"
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "uiNavigate",
+											"sid": 817448479737278,
+											"parameters": [
+												"\"down\""
+											]
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 900874138951304,
+											"parameters": {
+												"variable": "uiInputAutoTimer",
+												"value": "0"
+											}
+										}
+									],
+									"sid": 573029962784820
+								}
+							],
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 170982386014945,
+									"parameters": {
+										"gamepad": "0",
+										"button": "d-pad-left"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 812012216424382,
+									"parameters": {
+										"first-value": "Gamepad.Axis(0, 0)",
+										"comparison": 2,
+										"second-value": "-uiGamepadDeadzone"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 440133161404015,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "happen once on input pressed",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "trigger-once-while-true",
+											"objectClass": "System",
+											"sid": 852049866902041
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "uiNavigate",
+											"sid": 442700698703008,
+											"parameters": [
+												"\"left\""
+											]
+										}
+									],
+									"sid": 152271937674756
+								},
+								{
+									"eventType": "comment",
+									"text": "auto scroll",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 452614020844293,
+											"parameters": {
+												"variable": "uiInputAutoTimer",
+												"comparison": 5,
+												"value": "uiInputAutoDuration"
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "uiNavigate",
+											"sid": 393521431796897,
+											"parameters": [
+												"\"left\""
+											]
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 832864300611229,
+											"parameters": {
+												"variable": "uiInputAutoTimer",
+												"value": "0"
+											}
+										}
+									],
+									"sid": 512518902776808
+								}
+							],
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-button-down",
+									"objectClass": "Gamepad",
+									"sid": 935408964139397,
+									"parameters": {
+										"gamepad": "0",
+										"button": "d-pad-right"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 805082131792889,
+									"parameters": {
+										"first-value": "Gamepad.Axis(0, 0)",
+										"comparison": 4,
+										"second-value": "uiGamepadDeadzone"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 946596407759773,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "happen once on input pressed",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "trigger-once-while-true",
+											"objectClass": "System",
+											"sid": 480386683786191
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "uiNavigate",
+											"sid": 483391020582232,
+											"parameters": [
+												"\"right\""
+											]
+										}
+									],
+									"sid": 452194064554626
+								},
+								{
+									"eventType": "comment",
+									"text": "auto scroll",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 618840103297133,
+											"parameters": {
+												"variable": "uiInputAutoTimer",
+												"comparison": 5,
+												"value": "uiInputAutoDuration"
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "uiNavigate",
+											"sid": 267967261018624,
+											"parameters": [
+												"\"right\""
+											]
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 460728308693811,
+											"parameters": {
+												"variable": "uiInputAutoTimer",
+												"value": "0"
+											}
+										}
+									],
+									"sid": 480542032305504
+								}
+							],
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "select with enter",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-button-pressed",
+									"objectClass": "Gamepad",
+									"sid": 543631671217904,
+									"parameters": {
+										"gamepad": "0",
+										"button": "button-a"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "uiSelect",
+									"sid": 519648809474586
+								}
+							],
+							"sid": 966230008102559
+						}
+					],
+					"sid": 345950636553376,
 					"text-color": [
 						0,
 						0,

@@ -62,19 +62,74 @@
 			"functionDescription": "",
 			"functionCategory": "select",
 			"functionReturnType": "none",
-			"functionCopyPicked": false,
+			"functionCopyPicked": true,
 			"functionIsAsync": false,
 			"functionParameters": [],
 			"eventType": "function-block",
 			"conditions": [],
-			"actions": [
+			"actions": [],
+			"sid": 320947714702467,
+			"children": [
 				{
-					"id": "close",
-					"objectClass": "Browser",
-					"sid": 373011902852724
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"callFunction": "uiDisableAllGroups",
+							"sid": 908327352687442
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 492197115129775,
+							"parameters": {
+								"object-to-create": "Particles",
+								"layer": "\"content\"",
+								"x": "uiButton.X",
+								"y": "uiButton.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "uiButton",
+							"sid": 214037530682454,
+							"parameters": {
+								"color": "rgbEx255(255, 0, 0)"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "uiButton",
+							"sid": 214662341963284,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"flash\"",
+								"property": "offsetColor",
+								"end-value": "rgbEx255(255, 255, 255)",
+								"time": "0.5",
+								"ease": "easeoutsine",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 328902579364930
+						},
+						{
+							"id": "close",
+							"objectClass": "Browser",
+							"sid": 305579641959179
+						}
+					],
+					"sid": 733840062343721
 				}
-			],
-			"sid": 320947714702467
+			]
 		},
 		{
 			"eventType": "comment",

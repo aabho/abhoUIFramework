@@ -17,9 +17,9 @@
 				1
 			],
 			"backgroundColor": [
-				1,
-				1,
-				1,
+				0.2235294117647059,
+				0.2196078431372549,
+				0.2784313725490196,
 				1
 			],
 			"isTransparent": false,
@@ -147,9 +147,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							1,
-							1,
-							1,
+							0,
+							0,
+							0,
 							1
 						],
 						"horizontal-alignment": "center",
@@ -315,9 +315,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							1,
-							1,
-							1,
+							0,
+							0,
+							0,
 							1
 						],
 						"horizontal-alignment": "center",
@@ -483,9 +483,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							1,
-							1,
-							1,
+							0,
+							0,
+							0,
 							1
 						],
 						"horizontal-alignment": "center",
@@ -651,9 +651,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							1,
-							1,
-							1,
+							0,
+							0,
+							0,
 							1
 						],
 						"horizontal-alignment": "center",
@@ -699,39 +699,6 @@
 						"y": 123,
 						"width": 116,
 						"height": 15,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "uiManager",
-					"properties": {
-						"initially-visible": false,
-						"initial-animation": "Animation 1",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 15,
-					"instanceVariables": {},
-					"behaviors": {
-						"Timer": {
-							"properties": {}
-						}
-					},
-					"world": {
-						"x": 0,
-						"y": 0,
-						"width": 20,
-						"height": 20,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -852,9 +819,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							1,
-							1,
-							1,
+							0,
+							0,
+							0,
 							1
 						],
 						"horizontal-alignment": "center",
@@ -1020,9 +987,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							1,
-							1,
-							1,
+							0,
+							0,
+							0,
 							1
 						],
 						"horizontal-alignment": "center",
@@ -1188,9 +1155,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							1,
-							1,
-							1,
+							0,
+							0,
+							0,
 							1
 						],
 						"horizontal-alignment": "center",
@@ -1237,6 +1204,293 @@
 						"width": 116,
 						"height": 15,
 						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "^\npressing 'down' here would normally result in going to the QUIT button, but an override is telling this object to go to dummy instead",
+						"enable-bbcode": true,
+						"font": "Arial Rounded MT",
+						"size": 5,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							1,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 20,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 20,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 216,
+						"y": 162,
+						"width": 100,
+						"height": 47,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "^\nselecting this option will perform an animation and quit the game - see testEV",
+						"enable-bbcode": true,
+						"font": "Arial Rounded MT",
+						"size": 5,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							1,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 21,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 21,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 78,
+						"y": 185,
+						"width": 100,
+						"height": 38,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "all of the options you see here are part of the 'main' group.\nit can be navigated with mouse, kbm, and a gamepad.",
+						"enable-bbcode": true,
+						"font": "Arial Rounded MT",
+						"size": 5,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0.5411764705882353,
+							0.6313725490196078,
+							1,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 22,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 22,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 217,
+						"y": 32,
+						"width": 275,
+						"height": 38,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Particles",
+					"properties": {
+						"rate": 50,
+						"spray-cone": 360,
+						"type": "one-shot",
+						"object": -1,
+						"initially-visible": true,
+						"live-preview": false,
+						"speed": 200,
+						"size": 4,
+						"opacity": 100,
+						"grow-rate": 0,
+						"x-randomiser": 0,
+						"y-randomiser": 0,
+						"initial-speed-randomiser": 0,
+						"size-randomiser": 0,
+						"grow-rate-randomiser": 0,
+						"acceleration": -150,
+						"gravity": 0,
+						"angle-randomiser": 0,
+						"life-speed-randomiser": 800,
+						"opacity-randomiser": 0,
+						"destroy-mode": "fade-to-invisible",
+						"timeout": 0.5
+					},
+					"uid": 23,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 23,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": -183,
+						"y": 148,
+						"width": 11,
+						"height": 11,
+						"originX": 0,
 						"originY": 0.5,
 						"color": [
 							1,
