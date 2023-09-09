@@ -27,7 +27,7 @@
 		{
 			"name": "id",
 			"type": "string",
-			"desc": "apply a unique ID to every group",
+			"desc": "apply a unique ID to every instance in your game",
 			"show": true,
 			"sid": 148285385236211
 		},
@@ -58,6 +58,34 @@
 			"desc": "mouseover (relative to original)",
 			"show": true,
 			"sid": 629137152964272
+		},
+		{
+			"name": "overrideUp",
+			"type": "string",
+			"desc": "override this input - leave blank for normal navigation",
+			"show": true,
+			"sid": 181859328320804
+		},
+		{
+			"name": "overrideDown",
+			"type": "string",
+			"desc": "override this input - leave blank for normal navigation",
+			"show": true,
+			"sid": 140188374901537
+		},
+		{
+			"name": "overrideLeft",
+			"type": "string",
+			"desc": "override this input - leave blank for normal navigation",
+			"show": true,
+			"sid": 181295405510101
+		},
+		{
+			"name": "overrideRight",
+			"type": "string",
+			"desc": "override this input - leave blank for normal navigation",
+			"show": true,
+			"sid": 737904635594192
 		}
 	],
 	"behaviorTypes": [
