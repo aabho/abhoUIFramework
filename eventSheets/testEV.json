@@ -75,6 +75,61 @@
 				}
 			],
 			"sid": 320947714702467
+		},
+		{
+			"eventType": "comment",
+			"text": "when ANY button that has the group \"main\" is selected...",
+			"text-color": [
+				0,
+				0,
+				0,
+				1
+			],
+			"background-color": [
+				0.6431372549019608,
+				0.8470588235294118,
+				0.8745098039215686,
+				1
+			]
+		},
+		{
+			"functionName": "selectGroup main",
+			"functionDescription": "",
+			"functionCategory": "select",
+			"functionReturnType": "none",
+			"functionCopyPicked": true,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-angle",
+					"objectClass": "uiButton",
+					"sid": 307968838675180,
+					"parameters": {
+						"angle": "choose(-5, 5)"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "uiButton",
+					"sid": 640903313560766,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"tilt\"",
+						"property": "offsetAngle",
+						"end-value": "0",
+						"time": "0.1",
+						"ease": "easeoutsine",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 357500400281353
 		}
 	],
 	"sid": 297068062009297

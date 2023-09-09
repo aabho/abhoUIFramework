@@ -654,6 +654,16 @@
 							"sid": 223733410331304
 						},
 						{
+							"eventType": "variable",
+							"name": "group",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 324854367048130
+						},
+						{
 							"eventType": "block",
 							"conditions": [
 								{
@@ -678,6 +688,15 @@
 									}
 								},
 								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 543187329634831,
+									"parameters": {
+										"variable": "group",
+										"value": "uiButton.group"
+									}
+								},
+								{
 									"type": "comment",
 									"text": "call function with js, so that any function name can be called at runtime",
 									"text-color": [
@@ -696,6 +715,10 @@
 								{
 									"type": "script",
 									"script": "runtime.callFunction(\"select \" + localVars.id);"
+								},
+								{
+									"type": "script",
+									"script": "runtime.callFunction(\"selectGroup \" + localVars.group);"
 								}
 							],
 							"sid": 335088809364655
