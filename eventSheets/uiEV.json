@@ -903,6 +903,32 @@
 								},
 								{
 									"eventType": "comment",
+									"text": "find the lowest or highest x/y value to wrap around to, and use this var to find all instances on the same pos",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6705882352941176,
+										0.8745098039215686,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "variable",
+									"name": "wrapPos",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 769749128289729
+								},
+								{
+									"eventType": "comment",
 									"text": "next, find the new option to choose depending on the direction",
 									"text-color": [
 										0,
@@ -990,18 +1016,52 @@
 												{
 													"id": "set-eventvar-value",
 													"objectClass": "System",
-													"sid": 521353185873934,
+													"sid": 440148062261457,
 													"parameters": {
-														"variable": "uiChosenID",
-														"value": "uiButton.id"
+														"variable": "wrapPos",
+														"value": "uiButton.X"
 													}
-												},
-												{
-													"callFunction": "uiUpdate",
-													"sid": 218386285733923
 												}
 											],
-											"sid": 955097371552607
+											"sid": 955097371552607,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "pick-all",
+															"objectClass": "System",
+															"sid": 718037533712072,
+															"parameters": {
+																"object": "uiButton"
+															}
+														},
+														{
+															"id": "pick-by-comparison",
+															"objectClass": "System",
+															"sid": 987591129253526,
+															"parameters": {
+																"object": "uiButton",
+																"expression": "uiButton.X",
+																"comparison": 0,
+																"value": "wrapPos"
+															}
+														}
+													],
+													"actions": [
+														{
+															"customAction": "pickNearest",
+															"objectClass": "uiButton",
+															"sid": 824832538142365,
+															"parameters": [
+																"curX",
+																"curY"
+															]
+														}
+													],
+													"sid": 426739852970046
+												}
+											]
 										}
 									]
 								},
@@ -1078,18 +1138,52 @@
 												{
 													"id": "set-eventvar-value",
 													"objectClass": "System",
-													"sid": 131927878850705,
+													"sid": 692434029986102,
 													"parameters": {
-														"variable": "uiChosenID",
-														"value": "uiButton.id"
+														"variable": "wrapPos",
+														"value": "uiButton.X"
 													}
-												},
-												{
-													"callFunction": "uiUpdate",
-													"sid": 314558606642272
 												}
 											],
-											"sid": 908544483293311
+											"sid": 908544483293311,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "pick-all",
+															"objectClass": "System",
+															"sid": 726688276554652,
+															"parameters": {
+																"object": "uiButton"
+															}
+														},
+														{
+															"id": "pick-by-comparison",
+															"objectClass": "System",
+															"sid": 442001123762153,
+															"parameters": {
+																"object": "uiButton",
+																"expression": "uiButton.X",
+																"comparison": 0,
+																"value": "wrapPos"
+															}
+														}
+													],
+													"actions": [
+														{
+															"customAction": "pickNearest",
+															"objectClass": "uiButton",
+															"sid": 686711963379933,
+															"parameters": [
+																"curX",
+																"curY"
+															]
+														}
+													],
+													"sid": 933274652656902
+												}
+											]
 										}
 									]
 								},
@@ -1166,18 +1260,52 @@
 												{
 													"id": "set-eventvar-value",
 													"objectClass": "System",
-													"sid": 151871589325441,
+													"sid": 600994744844620,
 													"parameters": {
-														"variable": "uiChosenID",
-														"value": "uiButton.id"
+														"variable": "wrapPos",
+														"value": "uiButton.Y"
 													}
-												},
-												{
-													"callFunction": "uiUpdate",
-													"sid": 373185998941453
 												}
 											],
-											"sid": 407291488058524
+											"sid": 407291488058524,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "pick-all",
+															"objectClass": "System",
+															"sid": 542411451473475,
+															"parameters": {
+																"object": "uiButton"
+															}
+														},
+														{
+															"id": "pick-by-comparison",
+															"objectClass": "System",
+															"sid": 517399058004483,
+															"parameters": {
+																"object": "uiButton",
+																"expression": "uiButton.Y",
+																"comparison": 0,
+																"value": "wrapPos"
+															}
+														}
+													],
+													"actions": [
+														{
+															"customAction": "pickNearest",
+															"objectClass": "uiButton",
+															"sid": 755893242021241,
+															"parameters": [
+																"curX",
+																"curY"
+															]
+														}
+													],
+													"sid": 617202947180635
+												}
+											]
 										}
 									]
 								},
@@ -1254,18 +1382,52 @@
 												{
 													"id": "set-eventvar-value",
 													"objectClass": "System",
-													"sid": 221748596769254,
+													"sid": 132757278858579,
 													"parameters": {
-														"variable": "uiChosenID",
-														"value": "uiButton.id"
+														"variable": "wrapPos",
+														"value": "uiButton.Y"
 													}
-												},
-												{
-													"callFunction": "uiUpdate",
-													"sid": 786044014541854
 												}
 											],
-											"sid": 111011071277216
+											"sid": 111011071277216,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "pick-all",
+															"objectClass": "System",
+															"sid": 477833758199117,
+															"parameters": {
+																"object": "uiButton"
+															}
+														},
+														{
+															"id": "pick-by-comparison",
+															"objectClass": "System",
+															"sid": 177871662449206,
+															"parameters": {
+																"object": "uiButton",
+																"expression": "uiButton.Y",
+																"comparison": 0,
+																"value": "wrapPos"
+															}
+														}
+													],
+													"actions": [
+														{
+															"customAction": "pickNearest",
+															"objectClass": "uiButton",
+															"sid": 507256051945905,
+															"parameters": [
+																"curX",
+																"curY"
+															]
+														}
+													],
+													"sid": 922402638848583
+												}
+											]
 										}
 									]
 								}
@@ -1293,7 +1455,7 @@
 					"aceType": "action",
 					"aceName": "pickNearest",
 					"objectClass": "uiButton",
-					"functionDescription": "",
+					"functionDescription": "pick the nearest UI component out of all instances that are passed to this",
 					"functionCategory": "",
 					"functionReturnType": "none",
 					"functionCopyPicked": false,
@@ -1800,7 +1962,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "arrow key navigation",
+							"text": "arrow key navigation with added countdown",
 							"text-color": [
 								0,
 								0,
@@ -1811,22 +1973,6 @@
 								0.6431372549019608,
 								0.8470588235294118,
 								0.8745098039215686,
-								1
-							]
-						},
-						{
-							"eventType": "comment",
-							"text": "instead of trigger once I start a CD timer so you can hold the button to go through the menu, this is important if you start to have menus with a ton of options imo. Some games even speed up the cd the longer the button is held",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.803921568627451,
-								0.49411764705882355,
-								0.792156862745098,
 								1
 							]
 						},
