@@ -37,6 +37,15 @@
 					"parameters": [
 						"\"main\""
 					]
+				},
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 545677174326158,
+					"parameters": {
+						"layer": "\"quit confirm\"",
+						"visibility": "invisible"
+					}
 				}
 			],
 			"sid": 800095717628148
@@ -68,6 +77,67 @@
 			"eventType": "function-block",
 			"conditions": [],
 			"actions": [],
+			"sid": 733951177656862,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"callFunction": "uiEnableGroup",
+							"sid": 704365434966284,
+							"parameters": [
+								"\"mainQuit\""
+							]
+						},
+						{
+							"callFunction": "uiDisableGroup",
+							"sid": 541658742984700,
+							"parameters": [
+								"\"main\""
+							]
+						},
+						{
+							"id": "set-layer-visible",
+							"objectClass": "System",
+							"sid": 343755010886300,
+							"parameters": {
+								"layer": "\"quit confirm\"",
+								"visibility": "visible"
+							}
+						}
+					],
+					"sid": 177615208593601
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "quit confirmed",
+			"text-color": [
+				0,
+				0,
+				0,
+				1
+			],
+			"background-color": [
+				0.6431372549019608,
+				0.8470588235294118,
+				0.8745098039215686,
+				1
+			]
+		},
+		{
+			"functionName": "select mainQuitConfirm",
+			"functionDescription": "",
+			"functionCategory": "select",
+			"functionReturnType": "none",
+			"functionCopyPicked": true,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
 			"sid": 320947714702467,
 			"children": [
 				{
@@ -81,10 +151,10 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 492197115129775,
+							"sid": 368482435078917,
 							"parameters": {
 								"object-to-create": "Particles",
-								"layer": "\"content\"",
+								"layer": "\"quit confirm\"",
 								"x": "uiButton.X",
 								"y": "uiButton.Y",
 								"create-hierarchy": false,
@@ -128,6 +198,67 @@
 						}
 					],
 					"sid": 733840062343721
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "quit cancelled",
+			"text-color": [
+				0,
+				0,
+				0,
+				1
+			],
+			"background-color": [
+				0.6431372549019608,
+				0.8470588235294118,
+				0.8745098039215686,
+				1
+			]
+		},
+		{
+			"functionName": "select mainQuitCancel",
+			"functionDescription": "",
+			"functionCategory": "select",
+			"functionReturnType": "none",
+			"functionCopyPicked": true,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 377175230170690,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"callFunction": "uiEnableGroup",
+							"sid": 436477626404000,
+							"parameters": [
+								"\"main\""
+							]
+						},
+						{
+							"callFunction": "uiDisableGroup",
+							"sid": 558649385193051,
+							"parameters": [
+								"\"mainQuit\""
+							]
+						},
+						{
+							"id": "set-layer-visible",
+							"objectClass": "System",
+							"sid": 365482273535703,
+							"parameters": {
+								"layer": "\"quit confirm\"",
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 727566898415911
 				}
 			]
 		},

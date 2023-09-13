@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 35000,
+	"savedWithRelease": 35800,
 	"name": "abho's ui framework",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -43,6 +43,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Sprite",
+			"name": "Sprite",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Text",
 			"name": "Text",
 			"author": "Scirra",
@@ -71,10 +78,19 @@
 		"subfolders": [
 			{
 				"items": [
-					"uiBlackButton",
 					"txt"
 				],
-				"subfolders": [],
+				"subfolders": [
+					{
+						"items": [
+							"uiMainQuitBg",
+							"uiMainButton",
+							"uiMainQuitButton"
+						],
+						"subfolders": [],
+						"name": "main"
+					}
+				],
 				"name": "ui"
 			},
 			{

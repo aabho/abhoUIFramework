@@ -194,6 +194,14 @@
 							"eventType": "block",
 							"conditions": [
 								{
+									"id": "pick-all",
+									"objectClass": "System",
+									"sid": 545062944430058,
+									"parameters": {
+										"object": "uiButton"
+									}
+								},
+								{
 									"id": "compare-instance-variable",
 									"objectClass": "uiButton",
 									"sid": 859275977305491,
@@ -216,6 +224,33 @@
 								}
 							],
 							"sid": 167485700474800
+						},
+						{
+							"eventType": "comment",
+							"text": "update the UI afterwards",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"callFunction": "uiUpdate",
+									"sid": 703242075932911
+								}
+							],
+							"sid": 537896926272488
 						}
 					]
 				},
@@ -244,6 +279,14 @@
 							"eventType": "block",
 							"conditions": [
 								{
+									"id": "pick-all",
+									"objectClass": "System",
+									"sid": 968829843440088,
+									"parameters": {
+										"object": "uiButton"
+									}
+								},
+								{
 									"id": "compare-instance-variable",
 									"objectClass": "uiButton",
 									"sid": 398152048002881,
@@ -266,6 +309,33 @@
 								}
 							],
 							"sid": 140992257960374
+						},
+						{
+							"eventType": "comment",
+							"text": "update the UI afterwards",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"callFunction": "uiUpdate",
+									"sid": 364552124326099
+								}
+							],
+							"sid": 348492834346709
 						}
 					]
 				},
@@ -366,13 +436,30 @@
 					"functionIsAsync": false,
 					"functionParameters": [],
 					"eventType": "function-block",
-					"conditions": [],
+					"conditions": [
+						{
+							"id": "pick-all",
+							"objectClass": "System",
+							"sid": 273994541974220,
+							"parameters": {
+								"object": "uiButton"
+							}
+						},
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 486524582396524,
+							"parameters": {
+								"object": "uiButton"
+							}
+						}
+					],
 					"actions": [],
 					"sid": 369960601649571,
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "if this button is chosen, and wasn't before...",
+							"text": "if button is active",
 							"text-color": [
 								0,
 								0,
@@ -390,38 +477,29 @@
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "compare-instance-variable",
-									"objectClass": "uiButton",
-									"sid": 471686690486982,
-									"parameters": {
-										"instance-variable": "id",
-										"comparison": 0,
-										"value": "uiChosenID"
-									}
-								},
-								{
 									"id": "is-boolean-instance-variable-set",
 									"objectClass": "uiButton",
-									"sid": 298303225087764,
+									"sid": 199151601779016,
 									"parameters": {
-										"instance-variable": "chosen"
-									},
-									"isInverted": true
+										"instance-variable": "active"
+									}
 								}
 							],
 							"actions": [
 								{
-									"id": "set-boolean-instvar",
+									"id": "set-opacity",
 									"objectClass": "uiButton",
-									"sid": 135790674390520,
+									"sid": 872030246381345,
 									"parameters": {
-										"instance-variable": "chosen",
-										"value": "true"
+										"opacity": "100"
 									}
-								},
+								}
+							],
+							"sid": 674298251976869,
+							"children": [
 								{
-									"type": "comment",
-									"text": "make the button grow",
+									"eventType": "comment",
+									"text": "if this button is chosen, and wasn't before...",
 									"text-color": [
 										0,
 										0,
@@ -436,38 +514,184 @@
 									]
 								},
 								{
-									"id": "stop-tweens",
-									"objectClass": "uiButton",
-									"sid": 787873365898717,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"uiSize\""
-									}
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "uiButton",
+											"sid": 758692319048753,
+											"parameters": {
+												"instance-variable": "id",
+												"comparison": 0,
+												"value": "uiChosenID"
+											}
+										},
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "uiButton",
+											"sid": 309790024286504,
+											"parameters": {
+												"instance-variable": "chosen"
+											},
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-boolean-instvar",
+											"objectClass": "uiButton",
+											"sid": 702838148519226,
+											"parameters": {
+												"instance-variable": "chosen",
+												"value": "true"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "make the button grow",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiButton",
+											"sid": 858684011466703,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiSize\""
+											}
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "uiButton",
+											"sid": 554538935802434,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiSize grow\"",
+												"property": "size",
+												"end-x": "Self.mAddWidth",
+												"end-y": "Self.mAddHeight",
+												"time": "UI_ANIMATION_DURATION",
+												"ease": "easeoutsine",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 180946679395287
 								},
 								{
-									"id": "tween-two-properties",
-									"objectClass": "uiButton",
-									"sid": 510697786403247,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"uiSize grow\"",
-										"property": "size",
-										"end-x": "Self.mAddWidth",
-										"end-y": "Self.mAddHeight",
-										"time": "UI_ANIMATION_DURATION",
-										"ease": "easeoutsine",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
-									}
+									"eventType": "comment",
+									"text": "if this button is no longer chosen...",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "uiButton",
+											"sid": 266712353194106,
+											"parameters": {
+												"instance-variable": "id",
+												"comparison": 0,
+												"value": "uiChosenID"
+											},
+											"isInverted": true
+										},
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "uiButton",
+											"sid": 178251276064505,
+											"parameters": {
+												"instance-variable": "chosen"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-boolean-instvar",
+											"objectClass": "uiButton",
+											"sid": 594036974079803,
+											"parameters": {
+												"instance-variable": "chosen",
+												"value": "false"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "make the button shrink",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiButton",
+											"sid": 297917485080867,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiSize\""
+											}
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "uiButton",
+											"sid": 726972773042283,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiSize shrink\"",
+												"property": "size",
+												"end-x": "Self.oWidth",
+												"end-y": "Self.oHeight",
+												"time": "UI_ANIMATION_DURATION",
+												"ease": "easeoutsine",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 129545969051408
 								}
-							],
-							"sid": 448256026090131
+							]
 						},
 						{
 							"eventType": "comment",
-							"text": "if this button is no longer chosen...",
+							"text": "if not, set button to lower opacity",
 							"text-color": [
 								0,
 								0,
@@ -485,80 +709,92 @@
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "compare-instance-variable",
-									"objectClass": "uiButton",
-									"sid": 462789439548605,
-									"parameters": {
-										"instance-variable": "id",
-										"comparison": 0,
-										"value": "uiChosenID"
-									},
-									"isInverted": true
-								},
-								{
-									"id": "is-boolean-instance-variable-set",
-									"objectClass": "uiButton",
-									"sid": 916781714998671,
-									"parameters": {
-										"instance-variable": "chosen"
-									}
+									"id": "else",
+									"objectClass": "System",
+									"sid": 196200968090019
 								}
 							],
 							"actions": [
 								{
-									"id": "set-boolean-instvar",
+									"id": "set-opacity",
 									"objectClass": "uiButton",
-									"sid": 899273157506609,
+									"sid": 910306804741343,
 									"parameters": {
-										"instance-variable": "chosen",
-										"value": "false"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "make the button shrink",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"id": "stop-tweens",
-									"objectClass": "uiButton",
-									"sid": 604365808423157,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"uiSize\""
-									}
-								},
-								{
-									"id": "tween-two-properties",
-									"objectClass": "uiButton",
-									"sid": 312292237491361,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"uiSize shrink\"",
-										"property": "size",
-										"end-x": "Self.oWidth",
-										"end-y": "Self.oHeight",
-										"time": "UI_ANIMATION_DURATION",
-										"ease": "easeoutsine",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
+										"opacity": "50"
 									}
 								}
 							],
-							"sid": 470199059154916
+							"sid": 496394224194044,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "uiButton",
+											"sid": 832106874129213,
+											"parameters": {
+												"instance-variable": "chosen"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-boolean-instvar",
+											"objectClass": "uiButton",
+											"sid": 767481998816798,
+											"parameters": {
+												"instance-variable": "chosen",
+												"value": "false"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "make the button shrink",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiButton",
+											"sid": 765918354481648,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiSize\""
+											}
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "uiButton",
+											"sid": 394730654044491,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiSize shrink\"",
+												"property": "size",
+												"end-x": "Self.oWidth",
+												"end-y": "Self.oHeight",
+												"time": "UI_ANIMATION_DURATION",
+												"ease": "easeoutsine",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 968673133802648
+								}
+							]
 						}
 					]
 				},
@@ -626,6 +862,14 @@
 								}
 							],
 							"actions": [
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 141306202301534,
+									"parameters": {
+										"seconds": "0"
+									}
+								},
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",

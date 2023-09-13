@@ -1,7 +1,7 @@
 {
-	"name": "uiBlackButton",
+	"name": "uiMainQuitButton",
 	"plugin-id": "NinePatch",
-	"sid": 311349412969850,
+	"sid": 862624908803433,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
@@ -14,7 +14,8 @@
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
-		"imageSpriteId": 855581,
-		"useCollisionPoly": true
+		"imageSpriteId": 9317311,
+		"useCollisionPoly": true,
+		"tag": ""
 	}
 }

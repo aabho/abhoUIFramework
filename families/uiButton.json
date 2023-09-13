@@ -6,8 +6,8 @@
 		{
 			"name": "active",
 			"type": "boolean",
-			"desc": "if this button is active (choosable)",
-			"show": true,
+			"desc": "if this button is active or not (change via enable group functions)",
+			"show": false,
 			"sid": 199199960581072
 		},
 		{
@@ -97,6 +97,7 @@
 	],
 	"effectTypes": [],
 	"members": [
-		"uiBlackButton"
+		"uiMainButton",
+		"uiMainQuitButton"
 	]
 }
