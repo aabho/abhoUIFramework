@@ -85,7 +85,9 @@
 						"items": [
 							"uiMainQuitBg",
 							"uiMainButton",
-							"uiMainQuitButton"
+							"uiMainQuitButton",
+							"uiMainSettingsBg",
+							"uiMainSettingsButton"
 						],
 						"subfolders": [],
 						"name": "main"

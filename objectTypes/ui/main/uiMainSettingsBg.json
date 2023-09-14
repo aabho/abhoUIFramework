@@ -1,29 +1,14 @@
 {
-	"name": "uiMainQuitBg",
+	"name": "uiMainSettingsBg",
 	"plugin-id": "Sprite",
-	"sid": 685520718907283,
+	"sid": 887625617438080,
 	"isGlobal": false,
-	"instanceVariables": [
-		{
-			"name": "oY",
-			"type": "number",
-			"desc": "original",
-			"show": true,
-			"sid": 344052524054898
-		},
-		{
-			"name": "tY",
-			"type": "number",
-			"desc": "target",
-			"show": true,
-			"sid": 969297203487633
-		}
-	],
+	"instanceVariables": [],
 	"behaviorTypes": [
 		{
 			"behaviorId": "Tween",
 			"name": "Tween",
-			"sid": 876037640759750
+			"sid": 644452702897414
 		}
 	],
 	"effectTypes": [],
@@ -39,13 +24,13 @@
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
-						"imageSpriteId": 5286426,
+						"imageSpriteId": 8059712,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 271938567441554,
+				"sid": 103260043819254,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

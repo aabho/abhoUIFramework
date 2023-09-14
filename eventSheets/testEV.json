@@ -46,276 +46,473 @@
 						"layer": "\"quit confirm\"",
 						"visibility": "invisible"
 					}
+				},
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 873553509964271,
+					"parameters": {
+						"layer": "\"settings\"",
+						"visibility": "invisible"
+					}
 				}
 			],
 			"sid": 800095717628148
 		},
 		{
-			"eventType": "comment",
-			"text": "quit selected",
-			"text-color": [
-				0,
-				0,
-				0,
-				1
-			],
-			"background-color": [
-				0.6431372549019608,
-				0.8470588235294118,
-				0.8745098039215686,
-				1
-			]
-		},
-		{
-			"functionName": "select mainQuit",
-			"functionDescription": "",
-			"functionCategory": "select",
-			"functionReturnType": "none",
-			"functionCopyPicked": true,
-			"functionIsAsync": false,
-			"functionParameters": [],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [],
-			"sid": 733951177656862,
+			"eventType": "group",
+			"disabled": false,
+			"title": "main",
+			"description": "",
+			"isActiveOnStart": true,
 			"children": [
 				{
-					"eventType": "block",
-					"conditions": [],
-					"actions": [
-						{
-							"callFunction": "uiEnableGroup",
-							"sid": 704365434966284,
-							"parameters": [
-								"\"mainQuit\""
-							]
-						},
-						{
-							"callFunction": "uiDisableGroup",
-							"sid": 541658742984700,
-							"parameters": [
-								"\"main\""
-							]
-						},
-						{
-							"id": "set-layer-visible",
-							"objectClass": "System",
-							"sid": 343755010886300,
-							"parameters": {
-								"layer": "\"quit confirm\"",
-								"visibility": "visible"
-							}
-						}
+					"eventType": "comment",
+					"text": "when ANY button that has the group \"main\" is selected...",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
 					],
-					"sid": 177615208593601
-				}
-			]
-		},
-		{
-			"eventType": "comment",
-			"text": "quit confirmed",
-			"text-color": [
-				0,
-				0,
-				0,
-				1
-			],
-			"background-color": [
-				0.6431372549019608,
-				0.8470588235294118,
-				0.8745098039215686,
-				1
-			]
-		},
-		{
-			"functionName": "select mainQuitConfirm",
-			"functionDescription": "",
-			"functionCategory": "select",
-			"functionReturnType": "none",
-			"functionCopyPicked": true,
-			"functionIsAsync": false,
-			"functionParameters": [],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [],
-			"sid": 320947714702467,
-			"children": [
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
 				{
-					"eventType": "block",
+					"functionName": "selectGroup main",
+					"functionDescription": "",
+					"functionCategory": "select",
+					"functionReturnType": "none",
+					"functionCopyPicked": true,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
 					"conditions": [],
 					"actions": [
 						{
-							"callFunction": "uiDisableAllGroups",
-							"sid": 908327352687442
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 368482435078917,
-							"parameters": {
-								"object-to-create": "Particles",
-								"layer": "\"quit confirm\"",
-								"x": "uiButton.X",
-								"y": "uiButton.Y",
-								"create-hierarchy": false,
-								"template-name": "\"\""
-							}
-						},
-						{
-							"id": "set-default-color",
+							"id": "set-angle",
 							"objectClass": "uiButton",
-							"sid": 214037530682454,
+							"sid": 253750522503251,
 							"parameters": {
-								"color": "rgbEx255(255, 0, 0)"
+								"angle": "choose(-5, 5)"
 							}
 						},
 						{
 							"id": "tween-one-property",
 							"objectClass": "uiButton",
-							"sid": 214662341963284,
+							"sid": 549551412707285,
 							"behaviorType": "Tween",
 							"parameters": {
-								"tags": "\"flash\"",
-								"property": "offsetColor",
-								"end-value": "rgbEx255(255, 255, 255)",
-								"time": "0.5",
+								"tags": "\"tilt\"",
+								"property": "offsetAngle",
+								"end-value": "0",
+								"time": "0.1",
 								"ease": "easeoutsine",
 								"destroy-on-complete": "no",
 								"loop": "no",
 								"ping-pong": "no",
 								"repeat-count": "1"
 							}
-						},
-						{
-							"id": "wait-for-previous-actions",
-							"objectClass": "System",
-							"sid": 328902579364930
-						},
-						{
-							"id": "close",
-							"objectClass": "Browser",
-							"sid": 305579641959179
 						}
 					],
-					"sid": 733840062343721
-				}
-			]
-		},
-		{
-			"eventType": "comment",
-			"text": "quit cancelled",
-			"text-color": [
-				0,
-				0,
-				0,
-				1
-			],
-			"background-color": [
-				0.6431372549019608,
-				0.8470588235294118,
-				0.8745098039215686,
-				1
-			]
-		},
-		{
-			"functionName": "select mainQuitCancel",
-			"functionDescription": "",
-			"functionCategory": "select",
-			"functionReturnType": "none",
-			"functionCopyPicked": true,
-			"functionIsAsync": false,
-			"functionParameters": [],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [],
-			"sid": 377175230170690,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [],
-					"actions": [
-						{
-							"callFunction": "uiEnableGroup",
-							"sid": 436477626404000,
-							"parameters": [
-								"\"main\""
-							]
-						},
-						{
-							"callFunction": "uiDisableGroup",
-							"sid": 558649385193051,
-							"parameters": [
-								"\"mainQuit\""
-							]
-						},
-						{
-							"id": "set-layer-visible",
-							"objectClass": "System",
-							"sid": 365482273535703,
-							"parameters": {
-								"layer": "\"quit confirm\"",
-								"visibility": "invisible"
-							}
-						}
-					],
-					"sid": 727566898415911
-				}
-			]
-		},
-		{
-			"eventType": "comment",
-			"text": "when ANY button that has the group \"main\" is selected...",
-			"text-color": [
-				0,
-				0,
-				0,
-				1
-			],
-			"background-color": [
-				0.6431372549019608,
-				0.8470588235294118,
-				0.8745098039215686,
-				1
-			]
-		},
-		{
-			"functionName": "selectGroup main",
-			"functionDescription": "",
-			"functionCategory": "select",
-			"functionReturnType": "none",
-			"functionCopyPicked": true,
-			"functionIsAsync": false,
-			"functionParameters": [],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [
-				{
-					"id": "set-angle",
-					"objectClass": "uiButton",
-					"sid": 307968838675180,
-					"parameters": {
-						"angle": "choose(-5, 5)"
-					}
+					"sid": 118868636823844
 				},
 				{
-					"id": "tween-one-property",
-					"objectClass": "uiButton",
-					"sid": 640903313560766,
-					"behaviorType": "Tween",
-					"parameters": {
-						"tags": "\"tilt\"",
-						"property": "offsetAngle",
-						"end-value": "0",
-						"time": "0.1",
-						"ease": "easeoutsine",
-						"destroy-on-complete": "no",
-						"loop": "no",
-						"ping-pong": "no",
-						"repeat-count": "1"
-					}
+					"eventType": "group",
+					"disabled": false,
+					"title": "main quit",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "when ANY button that has the group \"mainQuit\" is selected...",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "selectGroup mainQuit",
+							"functionDescription": "",
+							"functionCategory": "select",
+							"functionReturnType": "none",
+							"functionCopyPicked": true,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-angle",
+									"objectClass": "uiButton",
+									"sid": 763792408932793,
+									"parameters": {
+										"angle": "choose(-5, 5)"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "uiButton",
+									"sid": 935183459528860,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"tilt\"",
+										"property": "offsetAngle",
+										"end-value": "0",
+										"time": "0.1",
+										"ease": "easeoutsine",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 243144328768193
+						},
+						{
+							"eventType": "comment",
+							"text": "quit selected",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "select mainQuit",
+							"functionDescription": "",
+							"functionCategory": "select",
+							"functionReturnType": "none",
+							"functionCopyPicked": true,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [],
+							"sid": 327210183731058,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"callFunction": "uiEnableGroup",
+											"sid": 291193414071373,
+											"parameters": [
+												"\"mainQuit\""
+											]
+										},
+										{
+											"callFunction": "uiDisableGroup",
+											"sid": 497100365854345,
+											"parameters": [
+												"\"main\""
+											]
+										},
+										{
+											"type": "comment",
+											"text": "make the quit menu move onto the screen",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-layer-visible",
+											"objectClass": "System",
+											"sid": 290931864131813,
+											"parameters": {
+												"layer": "\"quit confirm\"",
+												"visibility": "visible"
+											}
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiMainQuitBg",
+											"sid": 234176140206198,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"move\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainQuitBg",
+											"sid": 208648648725087,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"move\"",
+												"property": "offsetY",
+												"end-value": "Self.tY",
+												"time": "0.2",
+												"ease": "easeoutsine",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 738234826593428
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "quit confirmed",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "select mainQuitConfirm",
+							"functionDescription": "",
+							"functionCategory": "select",
+							"functionReturnType": "none",
+							"functionCopyPicked": true,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [],
+							"sid": 282659452091309,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"callFunction": "uiDisableAllGroups",
+											"sid": 610313680969286
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 230914326958543,
+											"parameters": {
+												"object-to-create": "Particles",
+												"layer": "\"quit confirm\"",
+												"x": "uiButton.X",
+												"y": "uiButton.Y",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-default-color",
+											"objectClass": "uiButton",
+											"sid": 574160268007345,
+											"parameters": {
+												"color": "rgbEx255(255, 0, 0)"
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiButton",
+											"sid": 800079479170424,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"flash\"",
+												"property": "offsetColor",
+												"end-value": "rgbEx255(255, 255, 255)",
+												"time": "0.5",
+												"ease": "easeoutsine",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 413297668791805
+										},
+										{
+											"id": "close",
+											"objectClass": "Browser",
+											"sid": 278119950006880
+										}
+									],
+									"sid": 946273662221958
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "quit cancelled",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "select mainQuitCancel",
+							"functionDescription": "",
+							"functionCategory": "select",
+							"functionReturnType": "none",
+							"functionCopyPicked": true,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [],
+							"sid": 835502629788125,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"callFunction": "uiEnableGroup",
+											"sid": 895400612353177,
+											"parameters": [
+												"\"main\""
+											]
+										},
+										{
+											"callFunction": "uiDisableGroup",
+											"sid": 879424459886586,
+											"parameters": [
+												"\"mainQuit\""
+											]
+										},
+										{
+											"type": "comment",
+											"text": "let the move menu fall away, but only make the layer invisible once it's gone",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiMainQuitBg",
+											"sid": 727764064773105,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"move\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainQuitBg",
+											"sid": 715262160336873,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"move\"",
+												"property": "offsetY",
+												"end-value": "Self.oY",
+												"time": "0.2",
+												"ease": "easeoutsine",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 944228524164923
+										},
+										{
+											"id": "set-layer-visible",
+											"objectClass": "System",
+											"sid": 957754894104642,
+											"parameters": {
+												"layer": "\"quit confirm\"",
+												"visibility": "invisible"
+											}
+										}
+									],
+									"sid": 743386857153419
+								}
+							]
+						}
+					],
+					"sid": 898303683980424,
+					"text-color": [
+						0,
+						0,
+						0,
+						0
+					],
+					"background-color": [
+						0.8392156862745098,
+						0.8392156862745098,
+						0.8392156862745098,
+						1
+					]
 				}
 			],
-			"sid": 357500400281353
+			"sid": 308581722289132,
+			"text-color": [
+				0,
+				0,
+				0,
+				0
+			],
+			"background-color": [
+				0.8392156862745098,
+				0.8392156862745098,
+				0.8392156862745098,
+				1
+			]
 		}
 	],
 	"sid": 297068062009297
