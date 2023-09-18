@@ -3,7 +3,22 @@
 	"plugin-id": "Sprite",
 	"sid": 887625617438080,
 	"isGlobal": false,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "oY",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 301775804600993
+		},
+		{
+			"name": "tY",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 621134682057027
+		}
+	],
 	"behaviorTypes": [
 		{
 			"behaviorId": "Tween",

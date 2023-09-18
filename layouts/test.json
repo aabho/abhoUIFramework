@@ -2113,7 +2113,10 @@
 						"live-preview": false
 					},
 					"uid": 30,
-					"instanceVariables": {},
+					"instanceVariables": {
+						"oY": -118,
+						"tY": 120
+					},
 					"behaviors": {
 						"Tween": {
 							"properties": {
@@ -2121,9 +2124,84 @@
 							}
 						}
 					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 30,
+						"children": [
+							{
+								"uid": 31,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							},
+							{
+								"uid": 32,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							},
+							{
+								"uid": 33,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
 					"world": {
-						"x": 213.5,
-						"y": 120,
+						"x": 214,
+						"y": -118,
 						"width": 169,
 						"height": 218,
 						"originX": 0.5,
@@ -2166,7 +2244,7 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"sceneGraphData": {
-						"parent-uid": null,
+						"parent-uid": 30,
 						"uid": 31,
 						"flags": {
 							"x": true,
@@ -2194,8 +2272,8 @@
 						}
 					},
 					"world": {
-						"x": 213.5,
-						"y": 31,
+						"x": 214,
+						"y": -207,
 						"width": 159,
 						"height": 27,
 						"originX": 0.5,
@@ -2246,8 +2324,25 @@
 						}
 					},
 					"sceneGraphData": {
-						"parent-uid": null,
+						"parent-uid": 30,
 						"uid": 32,
+						"children": [
+							{
+								"uid": 34,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": true,
+									"v": true,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
 						"flags": {
 							"x": true,
 							"y": true,
@@ -2275,7 +2370,7 @@
 					},
 					"world": {
 						"x": 174,
-						"y": 210,
+						"y": -28,
 						"width": 66,
 						"height": 18,
 						"originX": 0.5,
@@ -2326,8 +2421,25 @@
 						}
 					},
 					"sceneGraphData": {
-						"parent-uid": null,
+						"parent-uid": 30,
 						"uid": 33,
+						"children": [
+							{
+								"uid": 35,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": true,
+									"v": true,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
 						"flags": {
 							"x": true,
 							"y": true,
@@ -2355,7 +2467,7 @@
 					},
 					"world": {
 						"x": 254,
-						"y": 210,
+						"y": -28,
 						"width": 66,
 						"height": 18,
 						"originX": 0.5,
@@ -2398,7 +2510,7 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"sceneGraphData": {
-						"parent-uid": null,
+						"parent-uid": 32,
 						"uid": 34,
 						"flags": {
 							"x": true,
@@ -2427,7 +2539,7 @@
 					},
 					"world": {
 						"x": 174,
-						"y": 210,
+						"y": -28,
 						"width": 59,
 						"height": 13,
 						"originX": 0.5,
@@ -2470,7 +2582,7 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"sceneGraphData": {
-						"parent-uid": null,
+						"parent-uid": 33,
 						"uid": 35,
 						"flags": {
 							"x": true,
@@ -2499,7 +2611,7 @@
 					},
 					"world": {
 						"x": 254,
-						"y": 210,
+						"y": -28,
 						"width": 59,
 						"height": 13,
 						"originX": 0.5,

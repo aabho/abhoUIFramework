@@ -210,7 +210,7 @@
 							"eventType": "function-block",
 							"conditions": [],
 							"actions": [],
-							"sid": 327210183731058,
+							"sid": 831421936987560,
 							"children": [
 								{
 									"eventType": "block",
@@ -218,14 +218,14 @@
 									"actions": [
 										{
 											"callFunction": "uiEnableGroup",
-											"sid": 291193414071373,
+											"sid": 427985250608842,
 											"parameters": [
 												"\"mainQuit\""
 											]
 										},
 										{
 											"callFunction": "uiDisableGroup",
-											"sid": 497100365854345,
+											"sid": 452143501409554,
 											"parameters": [
 												"\"main\""
 											]
@@ -249,7 +249,7 @@
 										{
 											"id": "set-layer-visible",
 											"objectClass": "System",
-											"sid": 290931864131813,
+											"sid": 965736635710008,
 											"parameters": {
 												"layer": "\"quit confirm\"",
 												"visibility": "visible"
@@ -258,7 +258,7 @@
 										{
 											"id": "stop-tweens",
 											"objectClass": "uiMainQuitBg",
-											"sid": 234176140206198,
+											"sid": 521388592727680,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"move\""
@@ -267,7 +267,7 @@
 										{
 											"id": "tween-one-property",
 											"objectClass": "uiMainQuitBg",
-											"sid": 208648648725087,
+											"sid": 935116165597596,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"move\"",
@@ -282,7 +282,7 @@
 											}
 										}
 									],
-									"sid": 738234826593428
+									"sid": 745912111683541
 								}
 							]
 						},
@@ -486,6 +486,301 @@
 						}
 					],
 					"sid": 898303683980424,
+					"text-color": [
+						0,
+						0,
+						0,
+						0
+					],
+					"background-color": [
+						0.8392156862745098,
+						0.8392156862745098,
+						0.8392156862745098,
+						1
+					]
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "main settings",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "when ANY button that has the group \"mainSettings\" is selected...",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "selectGroup mainSettings",
+							"functionDescription": "",
+							"functionCategory": "select",
+							"functionReturnType": "none",
+							"functionCopyPicked": true,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-angle",
+									"objectClass": "uiButton",
+									"sid": 977248993242966,
+									"parameters": {
+										"angle": "choose(-5, 5)"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "uiButton",
+									"sid": 153882970783677,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"tilt\"",
+										"property": "offsetAngle",
+										"end-value": "0",
+										"time": "0.1",
+										"ease": "easeoutsine",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 470030684626779
+						},
+						{
+							"eventType": "comment",
+							"text": "settings",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "select mainSettings",
+							"functionDescription": "",
+							"functionCategory": "select",
+							"functionReturnType": "none",
+							"functionCopyPicked": true,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [],
+							"sid": 647566308362509,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"callFunction": "uiEnableGroup",
+											"sid": 840265995990385,
+											"parameters": [
+												"\"mainSettings\""
+											]
+										},
+										{
+											"callFunction": "uiDisableGroup",
+											"sid": 975687321568913,
+											"parameters": [
+												"\"main\""
+											]
+										},
+										{
+											"type": "comment",
+											"text": "make settings drop down",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-layer-visible",
+											"objectClass": "System",
+											"sid": 862602718137667,
+											"parameters": {
+												"layer": "\"settings\"",
+												"visibility": "visible"
+											}
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiMainSettingsBg",
+											"sid": 105642278762657,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"move\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainSettingsBg",
+											"sid": 326635524039018,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"move\"",
+												"property": "offsetY",
+												"end-value": "Self.tY",
+												"time": "0.2",
+												"ease": "easeoutsine",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 866123890125955
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "back",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "select mainSettingsBack",
+							"functionDescription": "",
+							"functionCategory": "select",
+							"functionReturnType": "none",
+							"functionCopyPicked": true,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [],
+							"sid": 932982672231228,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"callFunction": "uiEnableGroup",
+											"sid": 900948281765681,
+											"parameters": [
+												"\"main\""
+											]
+										},
+										{
+											"callFunction": "uiDisableGroup",
+											"sid": 665620099772880,
+											"parameters": [
+												"\"mainSettings\""
+											]
+										},
+										{
+											"callFunction": "uiDisableGroup",
+											"sid": 758621448850453,
+											"parameters": [
+												"\"mainSettingsApply\""
+											]
+										},
+										{
+											"type": "comment",
+											"text": "make the settings go back up",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiMainSettingsBg",
+											"sid": 186862562353368,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"move\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainSettingsBg",
+											"sid": 660470082493781,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"move\"",
+												"property": "offsetY",
+												"end-value": "Self.oY",
+												"time": "0.2",
+												"ease": "easeoutsine",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 611185432540486
+										},
+										{
+											"id": "set-layer-visible",
+											"objectClass": "System",
+											"sid": 356464805436664,
+											"parameters": {
+												"layer": "\"settings\"",
+												"visibility": "invisible"
+											}
+										}
+									],
+									"sid": 276787597068250
+								}
+							]
+						}
+					],
+					"sid": 446797142748565,
 					"text-color": [
 						0,
 						0,
