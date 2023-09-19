@@ -54,6 +54,40 @@
 					"eventType": "block",
 					"conditions": [
 						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 724944473861933
+						}
+					],
+					"actions": [],
+					"sid": 651543393564118,
+					"children": [
+						{
+							"eventType": "script",
+							"script": "const oldDraw = C3.Plugins.Sprite.Instance.prototype.Draw; // hijack draw function\n\nC3.Plugins.Sprite.Instance.prototype.Draw = function(renderer) {\n\n    const inst = runtime.getInstanceByUid(this._inst._uid);\n\t\n    if (inst.objectType.name === \"uiScissor\") \n\t{\n        const pos = inst.layer.layerToCssPx(inst.x, inst.y),\n              zero = inst.layer.layerToCssPx(0, 0),\n              size = inst.layer.layerToCssPx(inst.width, inst.height);\n\t\t\n\t\tif (pos[0] > zero[0] || pos[1] > zero[1])\n\t\t{\n\t\t\trenderer.SetScissorRect((pos[0] - zero[0]) * devicePixelRatio,\n\t\t\t\t(pos[1] - zero[1]) * devicePixelRatio,\n\t\t\t\t(size[0] - zero[0]) * devicePixelRatio,\n\t\t\t\t(size[1] - zero[1]) * devicePixelRatio);\n\t\t}\n    } \n\t\n\telse if (inst.objectType.name === \"uiScissorEnd\") \n\t{\n        renderer.RemoveScissorRect();\n    } \n\t\n\telse\n\t{\n        oldDraw.call(this, renderer);\n    }\n};"
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "when a UI button is created, set constant properties",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
 							"id": "on-created",
 							"objectClass": "uiButton",
 							"sid": 352848972853944
