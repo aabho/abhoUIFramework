@@ -772,10 +772,10 @@
 										{
 											"id": "tween-one-property",
 											"objectClass": "uiMainSettingsBg",
-											"sid": 489635710718470,
+											"sid": 970743645588816,
 											"behaviorType": "Tween",
 											"parameters": {
-												"tags": "\"move\"",
+												"tags": "\"move up\"",
 												"property": "offsetY",
 												"end-value": "Self.oY",
 												"time": "2",
@@ -785,25 +785,37 @@
 												"ping-pong": "no",
 												"repeat-count": "1"
 											}
-										},
-										{
-											"id": "wait-for-previous-actions",
-											"objectClass": "System",
-											"sid": 611185432540486
-										},
-										{
-											"id": "set-layer-visible",
-											"objectClass": "System",
-											"sid": 356464805436664,
-											"parameters": {
-												"layer": "\"settings\"",
-												"visibility": "invisible"
-											}
 										}
 									],
 									"sid": 276787597068250
 								}
 							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-tweens-finished",
+									"objectClass": "uiMainSettingsBg",
+									"sid": 170886244789749,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"move up\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-layer-visible",
+									"objectClass": "System",
+									"sid": 384303643417356,
+									"parameters": {
+										"layer": "\"settings\"",
+										"visibility": "invisible"
+									}
+								}
+							],
+							"sid": 778626382992727
 						}
 					],
 					"sid": 446797142748565,

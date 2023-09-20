@@ -2101,8 +2101,8 @@
 									"w": true,
 									"h": true,
 									"a": true,
-									"o": false,
-									"v": false,
+									"o": true,
+									"v": true,
 									"d": true,
 									"sm": "normal"
 								}
@@ -2212,8 +2212,8 @@
 							"w": true,
 							"h": true,
 							"a": true,
-							"o": false,
-							"v": false,
+							"o": true,
+							"v": true,
 							"d": true,
 							"sm": "normal"
 						},
@@ -2363,9 +2363,9 @@
 					},
 					"world": {
 						"x": 182,
-						"y": -184,
-						"width": 32,
-						"height": 32,
+						"y": -183,
+						"width": 22,
+						"height": 22,
 						"originX": 0,
 						"originY": 0,
 						"color": [
