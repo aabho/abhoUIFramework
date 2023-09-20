@@ -64,8 +64,22 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Sin",
+			"name": "Sine",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "Tween",
 			"name": "Tween",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "scrollto",
+			"name": "Scroll To",
 			"author": "Scirra",
 			"bundled": false
 		}
@@ -73,7 +87,8 @@
 	"uniqueId": "20y9z90w252",
 	"objectTypes": {
 		"items": [
-			"Particles"
+			"Particles",
+			"Camera"
 		],
 		"subfolders": [
 			{

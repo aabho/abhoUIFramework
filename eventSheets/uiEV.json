@@ -36,7 +36,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "when a UI button is created, set constant properties",
+					"text": "scissor masking, courtesy of reddog",
 					"text-color": [
 						0,
 						0,
@@ -64,7 +64,7 @@
 					"children": [
 						{
 							"eventType": "script",
-							"script": "const oldDraw = C3.Plugins.Sprite.Instance.prototype.Draw; // hijack draw function\n\nC3.Plugins.Sprite.Instance.prototype.Draw = function(renderer) {\n\n    const inst = runtime.getInstanceByUid(this._inst._uid);\n\t\n    if (inst.objectType.name === \"uiScissor\") \n\t{\n        const pos = inst.layer.layerToCssPx(inst.x, inst.y),\n              zero = inst.layer.layerToCssPx(0, 0),\n              size = inst.layer.layerToCssPx(inst.width, inst.height);\n\t\t\n\t\tif (pos[0] > zero[0] || pos[1] > zero[1])\n\t\t{\n\t\t\trenderer.SetScissorRect((pos[0] - zero[0]) * devicePixelRatio,\n\t\t\t\t(pos[1] - zero[1]) * devicePixelRatio,\n\t\t\t\t(size[0] - zero[0]) * devicePixelRatio,\n\t\t\t\t(size[1] - zero[1]) * devicePixelRatio);\n\t\t}\n    } \n\t\n\telse if (inst.objectType.name === \"uiScissorEnd\") \n\t{\n        renderer.RemoveScissorRect();\n    } \n\t\n\telse\n\t{\n        oldDraw.call(this, renderer);\n    }\n};"
+							"script": "// hijack draw function\nconst oldDraw = C3.Plugins.Sprite.Instance.prototype.Draw;\n\nC3.Plugins.Sprite.Instance.prototype.Draw = function(renderer) {\n\t\n\t// inst is the instance iterated in this function, sorted by z layer\n    const inst = runtime.getInstanceByUid(this._inst._uid);\n\t\n\t// if a scissor is reached in the z order\n    if (inst.objectType.name === \"uiScissor\") \n\t{\t\n\t\t// get the scroll position\n\t\tconst vW = runtime.viewportWidth / runtime.layout.scale / inst.layer.scale,\n\t\t\t  vH = runtime.viewportHeight / runtime.layout.scale / inst.layer.scale,\n\t\t\t  sX = runtime.layout.scrollX - vW / 2,\n\t\t\t  sY = runtime.layout.scrollY - vH / 2;\n\t\t\n\t\t// get various vars relating to screen position (css pixels)\n        let pos = inst.layer.layerToCssPx(inst.x - sX, inst.y - sY),\n\t\t\t  size = inst.layer.layerToCssPx(inst.x - sX + inst.width, inst.y - sY + inst.height),\n              min = inst.layer.layerToCssPx(0, 0),\n\t\t\t  max = inst.layer.layerToCssPx(vW, vH);\n\t\t\n\t\tconsole.log(min);\n\t\t// if position is within screen bounds, create a scissor\n\t\tif (true) \n\t\t{\n\t\t\tsize[0] = Math.max(size[0] - pos[0], 0);\n\t\t\tsize[1] = Math.max(size[1] - pos[1], 0);\n\t\t\tpos[0] = Math.max(pos[0], 0);\n\t\t\tpos[1] = Math.max(pos[1], 0);\n\t\t\t\n\t\t\trenderer.SetScissorRect((pos[0] - min[0]) * devicePixelRatio,\n\t\t\t\t\t\t\t\t\t(pos[1] - min[1]) * devicePixelRatio,\n\t\t\t\t\t\t\t\t\t(size[0] - min[0]) * devicePixelRatio,\n\t\t\t\t\t\t\t\t\t(size[1] - min[1]) * devicePixelRatio);\n\t\t}\n    } \n\t\n\t// if a scissor end is reached in the z order, remove the scissor from the renderer so objects render as normal\n\telse if (inst.objectType.name === \"uiScissorEnd\") \n\t{\n        renderer.RemoveScissorRect();\n    } \n\t\n\t// render an object, regardless of whether the renderer has a scissor or not\n\telse\n\t{\n        oldDraw.call(this, renderer);\n    }\n};"
 						}
 					]
 				},

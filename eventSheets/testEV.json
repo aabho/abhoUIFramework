@@ -60,6 +60,32 @@
 			"sid": 800095717628148
 		},
 		{
+			"eventType": "block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-layout-scale",
+					"objectClass": "System",
+					"sid": 721764802757036,
+					"disabled": true,
+					"parameters": {
+						"scale": "1.0 + sin(time * 100) * 0.2"
+					}
+				},
+				{
+					"id": "set-layer-scale",
+					"objectClass": "System",
+					"sid": 588876947614086,
+					"disabled": true,
+					"parameters": {
+						"layer": "\"settings\"",
+						"scale": "1.0 + sin(time * 100) * 0.5"
+					}
+				}
+			],
+			"sid": 841039240534754
+		},
+		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "main",
@@ -746,13 +772,13 @@
 										{
 											"id": "tween-one-property",
 											"objectClass": "uiMainSettingsBg",
-											"sid": 660470082493781,
+											"sid": 489635710718470,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"move\"",
 												"property": "offsetY",
 												"end-value": "Self.oY",
-												"time": "0.2",
+												"time": "2",
 												"ease": "easeoutsine",
 												"destroy-on-complete": "no",
 												"loop": "no",
