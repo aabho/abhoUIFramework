@@ -64,7 +64,7 @@
 					"children": [
 						{
 							"eventType": "script",
-							"script": "// hijack draw function\nconst oldDraw = C3.Plugins.Sprite.Instance.prototype.Draw;\n\nC3.Plugins.Sprite.Instance.prototype.Draw = function(renderer) {\n\t\n\t// inst is the instance iterated in this function, sorted by z layer, and only includes instances seeable within the viewport\n    const inst = runtime.getInstanceByUid(this._inst._uid);\n\t\n\t// if a scissor is reached in the z order\n    if (inst.objectType.name === \"uiScissor\") \n\t{\t\n\t\t// get the scroll position\n\t\tconst vW = runtime.viewportWidth / runtime.layout.scale / inst.layer.scale,\n\t\t\t  vH = runtime.viewportHeight / runtime.layout.scale / inst.layer.scale,\n\t\t\t  sX = runtime.layout.scrollX - vW / 2,\n\t\t\t  sY = runtime.layout.scrollY - vH / 2;\n\t\t\t  \n\t\t// get various vars relating to screen position (css pixels)\n\t\tconst pos = inst.layer.layerToCssPx(inst.x - sX, inst.y - sY),\n\t\t\t  size = inst.layer.layerToCssPx(inst.width, inst.height),\n\t\t\t  min = inst.layer.layerToCssPx(0, 0);\n\n\t\t// create scissor\n\t\tif (true)\n\t\t\trenderer.SetScissorRect((pos[0] - min[0]) * devicePixelRatio,\n\t\t\t\t\t\t\t\t\t(pos[1] - min[1]) * devicePixelRatio,\n\t\t\t\t\t\t\t\t\t(size[0] - min[0]) * devicePixelRatio,\n\t\t\t\t\t\t\t\t\t(size[1] - min[1]) * devicePixelRatio);\n    } \n\t\n\t// if a scissor end is reached in the z order, remove the scissor from the renderer so objects render as normal\n\telse if (inst.objectType.name === \"uiScissorEnd\") \n\t{\n        renderer.RemoveScissorRect();\n    } \n\t\n\t// normal objects\n\telse\n\t{\n\t\toldDraw.call(this, renderer);\n    }\n};"
+							"script": "// hijack draw function\nconst oldDraw = C3.Plugins.Sprite.Instance.prototype.Draw;\n\nC3.Plugins.Sprite.Instance.prototype.Draw = function(renderer) {\n\t\n\t// inst is the instance iterated in this function, sorted by z layer, and only includes instances seeable within the viewport\n    const inst = runtime.getInstanceByUid(this._inst._uid);\n\t\n\t// if a scissor is reached in the z order\n    if (inst.objectType.name === \"uiScissor\") \n\t{\t\n\t\t// get the scroll position\n\t\tconst vW = runtime.viewportWidth / runtime.layout.scale / inst.layer.scale,\n\t\t\t  vH = runtime.viewportHeight / runtime.layout.scale / inst.layer.scale,\n\t\t\t  sX = runtime.layout.scrollX - vW / 2,\n\t\t\t  sY = runtime.layout.scrollY - vH / 2;\n\t\t\t  \n\t\t// get various vars relating to screen position (css pixels)\n\t\tconst pos = inst.layer.layerToCssPx(inst.x - sX, inst.y - sY),\n\t\t\t  size = inst.layer.layerToCssPx(inst.width, inst.height),\n\t\t\t  min = inst.layer.layerToCssPx(0, 0);\n\n\t\t// create scissor\n\t\trenderer.SetScissorRect((pos[0] - min[0]) * devicePixelRatio,\n\t\t\t\t\t\t\t\t(pos[1] - min[1]) * devicePixelRatio,\n\t\t\t\t\t\t\t\t(size[0] - min[0]) * devicePixelRatio,\n\t\t\t\t\t\t\t\t(size[1] - min[1]) * devicePixelRatio);\n    } \n\t\n\t// if a scissor end is reached in the z order, remove the scissor from the renderer so objects render as normal\n\telse if (inst.objectType.name === \"uiScissorEnd\") \n\t{\n        renderer.RemoveScissorRect();\n    } \n\t\n\t// normal objects\n\telse\n\t{\n\t\toldDraw.call(this, renderer);\n    }\n};"
 						},
 						{
 							"eventType": "comment",
@@ -2310,81 +2310,6 @@
 								}
 							],
 							"sid": 903442302295226
-						}
-					]
-				},
-				{
-					"eventType": "comment",
-					"text": "hide scissor elements if they are not on screen",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "for-each",
-							"objectClass": "System",
-							"sid": 775378411620399,
-							"parameters": {
-								"object": "uiScissor"
-							}
-						}
-					],
-					"actions": [],
-					"sid": 799187592156212,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "is-on-screen",
-									"objectClass": "uiScissor",
-									"sid": 160892610364915
-								}
-							],
-							"actions": [
-								{
-									"id": "set-visible",
-									"objectClass": "uiScissor",
-									"sid": 265975598246313,
-									"parameters": {
-										"visibility": "visible"
-									}
-								}
-							],
-							"sid": 120549026576294
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "else",
-									"objectClass": "System",
-									"sid": 792105934362405
-								}
-							],
-							"actions": [
-								{
-									"id": "set-visible",
-									"objectClass": "uiScissor",
-									"sid": 152442837618890,
-									"parameters": {
-										"visibility": "invisible"
-									}
-								}
-							],
-							"sid": 358108768393336
 						}
 					]
 				}
