@@ -1181,10 +1181,10 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 418183029254977,
+											"sid": 752986049385464,
 											"parameters": {
 												"variable": "wrapOverride",
-												"value": "direction = \"up\" ? uiButton.overrideUp : (direction = \"down\" ? uiButton.overrideDown : (direction = \"left\" ? uiButton.overrideLeft : uiButton.overrideRight))"
+												"value": "direction = \"up\" ? \nuiButton.overrideUp : \n(direction = \"down\" ? uiButton.overrideDown : \n(direction = \"left\" ? uiButton.overrideLeft : \nuiButton.overrideRight))"
 											}
 										}
 									],

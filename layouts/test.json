@@ -728,175 +728,6 @@
 						"origin": "center",
 						"seams": "exact"
 					},
-					"uid": 16,
-					"instanceVariables": {
-						"active": false,
-						"chosen": false,
-						"group": "main",
-						"id": "mainDummy3",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4,
-						"overrideUp": "mainDummy4",
-						"overrideDown": "",
-						"overrideLeft": "",
-						"overrideRight": ""
-					},
-					"behaviors": {
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
-					"sceneGraphData": {
-						"parent-uid": null,
-						"uid": 16,
-						"children": [
-							{
-								"uid": 17,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": true,
-									"h": true,
-									"a": true,
-									"o": true,
-									"v": true,
-									"d": true,
-									"sm": "normal"
-								}
-							}
-						],
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"world": {
-						"x": 353,
-						"y": 93,
-						"width": 129,
-						"height": 24,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "txt",
-					"properties": {
-						"text": "dummy3",
-						"enable-bbcode": true,
-						"font": "system-ui",
-						"size": 8,
-						"line-height": 0,
-						"bold": false,
-						"italic": false,
-						"color": [
-							0,
-							0,
-							0,
-							1
-						],
-						"horizontal-alignment": "center",
-						"vertical-alignment": "center",
-						"wrapping": "word",
-						"icon-set": -1,
-						"initially-visible": true,
-						"origin": "center",
-						"read-aloud": false
-					},
-					"uid": 17,
-					"instanceVariables": {},
-					"behaviors": {},
-					"sceneGraphData": {
-						"parent-uid": 16,
-						"uid": 17,
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": true,
-							"v": true,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"world": {
-						"x": 353,
-						"y": 93,
-						"width": 116,
-						"height": 15,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "uiMainButton",
-					"properties": {
-						"left-margin": 2,
-						"right-margin": 2,
-						"top-margin": 2,
-						"bottom-margin": 2,
-						"edges": "stretch",
-						"fill": "stretch",
-						"initially-visible": true,
-						"origin": "center",
-						"seams": "exact"
-					},
 					"uid": 18,
 					"instanceVariables": {
 						"active": false,
@@ -2231,8 +2062,8 @@
 						}
 					},
 					"world": {
-						"x": 184,
-						"y": -114,
+						"x": 213,
+						"y": -116,
 						"width": 72,
 						"height": 19,
 						"originX": 0.5,
@@ -2303,8 +2134,8 @@
 						}
 					},
 					"world": {
-						"x": 184,
-						"y": -114,
+						"x": 213,
+						"y": -116,
 						"width": 59,
 						"height": 13,
 						"originX": 0.5,
