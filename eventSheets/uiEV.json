@@ -25,7 +25,7 @@
 			"comment": "the actual UI component that is focused right now",
 			"isStatic": false,
 			"isConstant": false,
-			"sid": 279184929937571
+			"sid": 913770933480264
 		},
 		{
 			"eventType": "group",
@@ -34,99 +34,6 @@
 			"description": "",
 			"isActiveOnStart": true,
 			"children": [
-				{
-					"eventType": "comment",
-					"text": "scissor masking, courtesy of reddog",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-start-of-layout",
-							"objectClass": "System",
-							"sid": 724944473861933
-						}
-					],
-					"actions": [],
-					"sid": 651543393564118,
-					"children": [
-						{
-							"eventType": "script",
-							"script": "// hijack draw function\nconst oldDraw = C3.Plugins.Sprite.Instance.prototype.Draw;\n\nC3.Plugins.Sprite.Instance.prototype.Draw = function(renderer) {\n\t\n\t// inst is the instance iterated in this function, sorted by z layer, and only includes instances seeable within the viewport\n    const inst = runtime.getInstanceByUid(this._inst._uid);\n\t\n\t// if a scissor is reached in the z order\n    if (inst.objectType.name === \"uiScissor\") \n\t{\t\n\t\t// get the scroll position\n\t\tconst vW = runtime.viewportWidth / runtime.layout.scale / inst.layer.scale,\n\t\t\t  vH = runtime.viewportHeight / runtime.layout.scale / inst.layer.scale,\n\t\t\t  sX = runtime.layout.scrollX - vW / 2,\n\t\t\t  sY = runtime.layout.scrollY - vH / 2;\n\t\t\t  \n\t\t// get various vars relating to screen position (css pixels)\n\t\tconst pos = inst.layer.layerToCssPx(inst.x - sX, inst.y - sY),\n\t\t\t  size = inst.layer.layerToCssPx(inst.width, inst.height),\n\t\t\t  min = inst.layer.layerToCssPx(0, 0);\n\n\t\t// create scissor\n\t\trenderer.SetScissorRect((pos[0] - min[0]) * devicePixelRatio,\n\t\t\t\t\t\t\t\t(pos[1] - min[1]) * devicePixelRatio,\n\t\t\t\t\t\t\t\t(size[0] - min[0]) * devicePixelRatio,\n\t\t\t\t\t\t\t\t(size[1] - min[1]) * devicePixelRatio);\n    } \n\t\n\t// if a scissor end is reached in the z order, remove the scissor from the renderer so objects render as normal\n\telse if (inst.objectType.name === \"uiScissorEnd\") \n\t{\n        renderer.RemoveScissorRect();\n    } \n\t\n\t// normal objects\n\telse\n\t{\n\t\toldDraw.call(this, renderer);\n    }\n};"
-						},
-						{
-							"eventType": "comment",
-							"text": "this is a minor comment!",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "for-each",
-									"objectClass": "System",
-									"sid": 484147792574434,
-									"parameters": {
-										"object": "uiScissor"
-									}
-								},
-								{
-									"id": "pick-children",
-									"objectClass": "uiScissor",
-									"sid": 609144832028657,
-									"parameters": {
-										"child": "uiScissorEnd",
-										"which": "all"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-position",
-									"objectClass": "uiScissorEnd",
-									"sid": 988429844265384,
-									"parameters": {
-										"x": "uiScissor.X",
-										"y": "uiScissor.Y"
-									}
-								},
-								{
-									"id": "set-size",
-									"objectClass": "uiScissorEnd",
-									"sid": 685839155928370,
-									"parameters": {
-										"width": "uiScissor.Width",
-										"height": "uiScissor.Height"
-									}
-								}
-							],
-							"sid": 246173945043607
-						}
-					]
-				},
 				{
 					"eventType": "comment",
 					"text": "when a UI button is created, set constant properties",
@@ -149,7 +56,7 @@
 						{
 							"id": "on-created",
 							"objectClass": "uiButton",
-							"sid": 352848972853944
+							"sid": 170679725534965
 						}
 					],
 					"actions": [
@@ -172,7 +79,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "uiButton",
-							"sid": 328488006010810,
+							"sid": 403292945053756,
 							"parameters": {
 								"instance-variable": "oWidth",
 								"value": "Self.Width"
@@ -181,7 +88,7 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "uiButton",
-							"sid": 967159514137328,
+							"sid": 604949244160009,
 							"parameters": {
 								"instance-variable": "oHeight",
 								"value": "Self.Height"
@@ -206,26 +113,26 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "uiButton",
-							"sid": 746791561515206,
+							"sid": 662097387894664,
 							"parameters": {
 								"instance-variable": "mAddWidth",
-								"value": "Self.Width + Self.mAddWidth"
+								"value": "Self.oWidth+ Self.mAddWidth"
 							}
 						},
 						{
 							"id": "set-instvar-value",
 							"objectClass": "uiButton",
-							"sid": 606034727725995,
+							"sid": 729428351030530,
 							"parameters": {
 								"instance-variable": "mAddHeight",
-								"value": "Self.Height + Self.mAddHeight"
+								"value": "Self.oHeight+ Self.mAddHeight"
 							}
 						}
 					],
-					"sid": 492153634776170
+					"sid": 580855353191997
 				}
 			],
-			"sid": 385487035699418,
+			"sid": 433446244111998,
 			"text-color": [
 				0,
 				0,
@@ -242,7 +149,7 @@
 		{
 			"eventType": "group",
 			"disabled": false,
-			"title": "ui functions",
+			"title": "ui groups",
 			"description": "",
 			"isActiveOnStart": true,
 			"children": [
@@ -275,13 +182,13 @@
 							"type": "string",
 							"initialValue": "",
 							"comment": "",
-							"sid": 354694740917113
+							"sid": 764043267319577
 						}
 					],
 					"eventType": "function-block",
 					"conditions": [],
 					"actions": [],
-					"sid": 489565823677731,
+					"sid": 880992752506495,
 					"children": [
 						{
 							"eventType": "block",
@@ -289,7 +196,7 @@
 								{
 									"id": "pick-all",
 									"objectClass": "System",
-									"sid": 545062944430058,
+									"sid": 866571671128769,
 									"parameters": {
 										"object": "uiButton"
 									}
@@ -297,7 +204,7 @@
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "uiButton",
-									"sid": 859275977305491,
+									"sid": 585606811525173,
 									"parameters": {
 										"instance-variable": "group",
 										"comparison": 0,
@@ -309,14 +216,14 @@
 								{
 									"id": "set-boolean-instvar",
 									"objectClass": "uiButton",
-									"sid": 621455883579123,
+									"sid": 799689692036383,
 									"parameters": {
 										"instance-variable": "active",
 										"value": "true"
 									}
 								}
 							],
-							"sid": 167485700474800
+							"sid": 382050476880177
 						},
 						{
 							"eventType": "comment",
@@ -340,10 +247,10 @@
 							"actions": [
 								{
 									"callFunction": "uiUpdate",
-									"sid": 703242075932911
+									"sid": 169054072239082
 								}
 							],
-							"sid": 537896926272488
+							"sid": 629899058959210
 						}
 					]
 				},
@@ -360,13 +267,13 @@
 							"type": "string",
 							"initialValue": "",
 							"comment": "",
-							"sid": 893219672307634
+							"sid": 973373613575067
 						}
 					],
 					"eventType": "function-block",
 					"conditions": [],
 					"actions": [],
-					"sid": 255636666609634,
+					"sid": 508680193086791,
 					"children": [
 						{
 							"eventType": "block",
@@ -374,7 +281,7 @@
 								{
 									"id": "pick-all",
 									"objectClass": "System",
-									"sid": 968829843440088,
+									"sid": 994597239661859,
 									"parameters": {
 										"object": "uiButton"
 									}
@@ -382,7 +289,7 @@
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "uiButton",
-									"sid": 398152048002881,
+									"sid": 506080187620859,
 									"parameters": {
 										"instance-variable": "group",
 										"comparison": 0,
@@ -394,14 +301,14 @@
 								{
 									"id": "set-boolean-instvar",
 									"objectClass": "uiButton",
-									"sid": 675945389733719,
+									"sid": 738143951680086,
 									"parameters": {
 										"instance-variable": "active",
 										"value": "false"
 									}
 								}
 							],
-							"sid": 140992257960374
+							"sid": 537447589858821
 						},
 						{
 							"eventType": "comment",
@@ -425,10 +332,10 @@
 							"actions": [
 								{
 									"callFunction": "uiUpdate",
-									"sid": 364552124326099
+									"sid": 270976488533736
 								}
 							],
-							"sid": 348492834346709
+							"sid": 511871459049544
 						}
 					]
 				},
@@ -443,7 +350,7 @@
 					"eventType": "function-block",
 					"conditions": [],
 					"actions": [],
-					"sid": 934088685541463,
+					"sid": 803780571398575,
 					"children": [
 						{
 							"eventType": "block",
@@ -451,7 +358,7 @@
 								{
 									"id": "pick-all",
 									"objectClass": "System",
-									"sid": 116676936925791,
+									"sid": 424387257879674,
 									"parameters": {
 										"object": "uiButton"
 									}
@@ -461,19 +368,46 @@
 								{
 									"id": "set-boolean-instvar",
 									"objectClass": "uiButton",
-									"sid": 757151394425491,
+									"sid": 407084703498232,
 									"parameters": {
 										"instance-variable": "active",
 										"value": "false"
 									}
 								}
 							],
-							"sid": 274940320240862
+							"sid": 423609466569098
+						},
+						{
+							"eventType": "comment",
+							"text": "update the UI afterwards",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"callFunction": "uiUpdate",
+									"sid": 382276741515945
+								}
+							],
+							"sid": 280542622003160
 						}
 					]
 				}
 			],
-			"sid": 701083594783377,
+			"sid": 463389747055586,
 			"text-color": [
 				0,
 				0,
@@ -494,16 +428,6 @@
 			"description": "",
 			"isActiveOnStart": true,
 			"children": [
-				{
-					"eventType": "variable",
-					"name": "UI_ANIMATION_DURATION",
-					"type": "number",
-					"initialValue": "0.1",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": true,
-					"sid": 513194690449862
-				},
 				{
 					"eventType": "comment",
 					"text": "run a UI update",
@@ -533,7 +457,7 @@
 						{
 							"id": "pick-all",
 							"objectClass": "System",
-							"sid": 273994541974220,
+							"sid": 849635044123203,
 							"parameters": {
 								"object": "uiButton"
 							}
@@ -541,14 +465,14 @@
 						{
 							"id": "for-each",
 							"objectClass": "System",
-							"sid": 486524582396524,
+							"sid": 123770364526943,
 							"parameters": {
 								"object": "uiButton"
 							}
 						}
 					],
 					"actions": [],
-					"sid": 369960601649571,
+					"sid": 287374994808595,
 					"children": [
 						{
 							"eventType": "comment",
@@ -572,7 +496,7 @@
 								{
 									"id": "is-boolean-instance-variable-set",
 									"objectClass": "uiButton",
-									"sid": 199151601779016,
+									"sid": 275088124159111,
 									"parameters": {
 										"instance-variable": "active"
 									}
@@ -580,111 +504,34 @@
 							],
 							"actions": [
 								{
-									"id": "set-opacity",
+									"id": "stop-tweens",
 									"objectClass": "uiButton",
-									"sid": 872030246381345,
+									"sid": 167150231167429,
+									"behaviorType": "Tween",
 									"parameters": {
-										"opacity": "100"
+										"tags": "\"fade\""
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "uiButton",
+									"sid": 836614453204239,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fade\"",
+										"property": "offsetOpacity",
+										"end-value": "100",
+										"time": "0.1",
+										"ease": "easeinoutsine",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
 									}
 								}
 							],
-							"sid": 674298251976869,
+							"sid": 853463262393068,
 							"children": [
-								{
-									"eventType": "comment",
-									"text": "if this button is chosen, and wasn't before...",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "uiButton",
-											"sid": 758692319048753,
-											"parameters": {
-												"instance-variable": "id",
-												"comparison": 0,
-												"value": "uiChosenID"
-											}
-										},
-										{
-											"id": "is-boolean-instance-variable-set",
-											"objectClass": "uiButton",
-											"sid": 309790024286504,
-											"parameters": {
-												"instance-variable": "chosen"
-											},
-											"isInverted": true
-										}
-									],
-									"actions": [
-										{
-											"id": "set-boolean-instvar",
-											"objectClass": "uiButton",
-											"sid": 702838148519226,
-											"parameters": {
-												"instance-variable": "chosen",
-												"value": "true"
-											}
-										},
-										{
-											"type": "comment",
-											"text": "make the button grow",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "stop-tweens",
-											"objectClass": "uiButton",
-											"sid": 858684011466703,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSize\""
-											}
-										},
-										{
-											"id": "tween-two-properties",
-											"objectClass": "uiButton",
-											"sid": 554538935802434,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSize grow\"",
-												"property": "size",
-												"end-x": "Self.mAddWidth",
-												"end-y": "Self.mAddHeight",
-												"time": "UI_ANIMATION_DURATION",
-												"ease": "easeoutsine",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										}
-									],
-									"sid": 180946679395287
-								},
 								{
 									"eventType": "comment",
 									"text": "if this button is no longer chosen...",
@@ -707,7 +554,7 @@
 										{
 											"id": "compare-instance-variable",
 											"objectClass": "uiButton",
-											"sid": 266712353194106,
+											"sid": 720378766327013,
 											"parameters": {
 												"instance-variable": "id",
 												"comparison": 0,
@@ -718,7 +565,7 @@
 										{
 											"id": "is-boolean-instance-variable-set",
 											"objectClass": "uiButton",
-											"sid": 178251276064505,
+											"sid": 721500690245466,
 											"parameters": {
 												"instance-variable": "chosen"
 											}
@@ -728,7 +575,7 @@
 										{
 											"id": "set-boolean-instvar",
 											"objectClass": "uiButton",
-											"sid": 594036974079803,
+											"sid": 461743409579952,
 											"parameters": {
 												"instance-variable": "chosen",
 												"value": "false"
@@ -736,7 +583,7 @@
 										},
 										{
 											"type": "comment",
-											"text": "make the button shrink",
+											"text": "call custom action for this button being chosen",
 											"text-color": [
 												0,
 												0,
@@ -751,34 +598,93 @@
 											]
 										},
 										{
-											"id": "stop-tweens",
+											"customAction": "uiUnchoose",
 											"objectClass": "uiButton",
-											"sid": 297917485080867,
-											"behaviorType": "Tween",
+											"sid": 817953296048297
+										}
+									],
+									"sid": 925136316735894
+								},
+								{
+									"eventType": "comment",
+									"text": "if this button is chosen, and wasn't before...",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "uiButton",
+											"sid": 393597686400604,
 											"parameters": {
-												"tags": "\"uiSize\""
+												"instance-variable": "id",
+												"comparison": 0,
+												"value": "uiChosenID"
 											}
 										},
 										{
-											"id": "tween-two-properties",
+											"id": "is-boolean-instance-variable-set",
 											"objectClass": "uiButton",
-											"sid": 726972773042283,
-											"behaviorType": "Tween",
+											"sid": 165919733432946,
 											"parameters": {
-												"tags": "\"uiSize shrink\"",
-												"property": "size",
-												"end-x": "Self.oWidth",
-												"end-y": "Self.oHeight",
-												"time": "UI_ANIMATION_DURATION",
-												"ease": "easeoutsine",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
+												"instance-variable": "chosen"
+											},
+											"isInverted": true
 										}
 									],
-									"sid": 129545969051408
+									"actions": [
+										{
+											"id": "set-boolean-instvar",
+											"objectClass": "uiButton",
+											"sid": 330970529605331,
+											"parameters": {
+												"instance-variable": "chosen",
+												"value": "true"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "call custom action for this button being chosen, but wait 0 seconds first! this allows the unchoose command to trigger before the choose one",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 381886471905668,
+											"parameters": {
+												"seconds": "0"
+											}
+										},
+										{
+											"customAction": "uiChoose",
+											"objectClass": "uiButton",
+											"sid": 942036314679169
+										}
+									],
+									"sid": 821377062167751
 								}
 							]
 						},
@@ -804,20 +710,38 @@
 								{
 									"id": "else",
 									"objectClass": "System",
-									"sid": 196200968090019
+									"sid": 416061703942812
 								}
 							],
 							"actions": [
 								{
-									"id": "set-opacity",
+									"id": "stop-tweens",
 									"objectClass": "uiButton",
-									"sid": 910306804741343,
+									"sid": 148150617642181,
+									"behaviorType": "Tween",
 									"parameters": {
-										"opacity": "50"
+										"tags": "\"fade\""
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "uiButton",
+									"sid": 103283313304794,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fade\"",
+										"property": "offsetOpacity",
+										"end-value": "50",
+										"time": "0.1",
+										"ease": "easeinoutsine",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
 									}
 								}
 							],
-							"sid": 496394224194044,
+							"sid": 378164815100597,
 							"children": [
 								{
 									"eventType": "block",
@@ -825,7 +749,7 @@
 										{
 											"id": "is-boolean-instance-variable-set",
 											"objectClass": "uiButton",
-											"sid": 832106874129213,
+											"sid": 182839888663500,
 											"parameters": {
 												"instance-variable": "chosen"
 											}
@@ -835,7 +759,7 @@
 										{
 											"id": "set-boolean-instvar",
 											"objectClass": "uiButton",
-											"sid": 767481998816798,
+											"sid": 492872517473693,
 											"parameters": {
 												"instance-variable": "chosen",
 												"value": "false"
@@ -843,7 +767,7 @@
 										},
 										{
 											"type": "comment",
-											"text": "make the button shrink",
+											"text": "call custom action for this button being chosen, but wait 0 seconds first! this allows the unchoose command to trigger before the choose one",
 											"text-color": [
 												0,
 												0,
@@ -858,38 +782,206 @@
 											]
 										},
 										{
-											"id": "stop-tweens",
-											"objectClass": "uiButton",
-											"sid": 765918354481648,
-											"behaviorType": "Tween",
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 649144287587445,
 											"parameters": {
-												"tags": "\"uiSize\""
+												"seconds": "0"
 											}
 										},
 										{
-											"id": "tween-two-properties",
+											"customAction": "uiUnchoose",
 											"objectClass": "uiButton",
-											"sid": 394730654044491,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSize shrink\"",
-												"property": "size",
-												"end-x": "Self.oWidth",
-												"end-y": "Self.oHeight",
-												"time": "UI_ANIMATION_DURATION",
-												"ease": "easeoutsine",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
+											"sid": 190114210014675
 										}
 									],
-									"sid": 968673133802648
+									"sid": 377311212058119
 								}
 							]
 						}
 					]
+				},
+				{
+					"eventType": "comment",
+					"text": "custom actions for buttons. you can provide a default behavior here, and override the default by creating an override custom action for the button object.\n\nfor example, right now it's set so that when you chose a button it grows, and unchoosing it makes it shrink again.\n\nif you want a special button type on some layout to instead become brighter, you can make an override by creating a new custom action for that object, and calling the action \"uiChoose\" exactly.\nyou'll know you've done it right because it'll say 'Overridden' next to it.",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "to learn more about custom actions and overriding, see here --> https://www.construct.net/en/make-games/manuals/construct-3/project-primitives/events/custom-actions",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.8470588235294118,
+						0.6431372549019608,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"aceType": "action",
+					"aceName": "uiChoose",
+					"objectClass": "uiButton",
+					"functionDescription": "use overrides to create special events",
+					"functionCategory": "ui",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "custom-ace-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "make the button grow",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"id": "stop-tweens",
+							"objectClass": "uiButton",
+							"sid": 741230181786168,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"uiSize\""
+							}
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "uiButton",
+							"sid": 386839735158150,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"uiSize uiGrow\"",
+								"property": "size",
+								"end-x": "Self.mAddWidth",
+								"end-y": "Self.mAddHeight",
+								"time": "0.1",
+								"ease": "easeoutcubic",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 105502673490743
+				},
+				{
+					"aceType": "action",
+					"aceName": "uiUnchoose",
+					"objectClass": "uiButton",
+					"functionDescription": "use overrides to create special events",
+					"functionCategory": "ui",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "custom-ace-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "make the button shrink",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"id": "stop-tweens",
+							"objectClass": "uiButton",
+							"sid": 229672910932924,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"uiSize\""
+							}
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "uiButton",
+							"sid": 725825198045404,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"uiSize uiShrink\"",
+								"property": "size",
+								"end-x": "Self.oWidth",
+								"end-y": "Self.oHeight",
+								"time": "0.1",
+								"ease": "easeoutcubic",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 286584863228932
+				},
+				{
+					"aceType": "action",
+					"aceName": "uiSelect",
+					"objectClass": "uiButton",
+					"functionDescription": "use overrides to create special events",
+					"functionCategory": "ui",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "custom-ace-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "didn't have any default action I wanted to assign for all buttons on being selected",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						}
+					],
+					"sid": 673538889492542
 				},
 				{
 					"eventType": "comment",
@@ -918,7 +1010,7 @@
 					"eventType": "function-block",
 					"conditions": [],
 					"actions": [],
-					"sid": 675651690985502,
+					"sid": 997360392938089,
 					"children": [
 						{
 							"eventType": "variable",
@@ -928,7 +1020,7 @@
 							"comment": "",
 							"isStatic": false,
 							"isConstant": false,
-							"sid": 223733410331304
+							"sid": 258965409429805
 						},
 						{
 							"eventType": "variable",
@@ -938,7 +1030,7 @@
 							"comment": "",
 							"isStatic": false,
 							"isConstant": false,
-							"sid": 324854367048130
+							"sid": 428243356183770
 						},
 						{
 							"eventType": "block",
@@ -946,7 +1038,7 @@
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "uiButton",
-									"sid": 284114670865324,
+									"sid": 365854396873637,
 									"parameters": {
 										"instance-variable": "id",
 										"comparison": 0,
@@ -956,17 +1048,9 @@
 							],
 							"actions": [
 								{
-									"id": "wait",
-									"objectClass": "System",
-									"sid": 141306202301534,
-									"parameters": {
-										"seconds": "0"
-									}
-								},
-								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 580565488647557,
+									"sid": 374606610672194,
 									"parameters": {
 										"variable": "id",
 										"value": "uiButton.id"
@@ -975,7 +1059,7 @@
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 543187329634831,
+									"sid": 760113739967017,
 									"parameters": {
 										"variable": "group",
 										"value": "uiButton.group"
@@ -1002,11 +1086,28 @@
 									"script": "runtime.callFunction(\"select \" + localVars.id);"
 								},
 								{
-									"type": "script",
-									"script": "runtime.callFunction(\"selectGroup \" + localVars.group);"
+									"type": "comment",
+									"text": "call custom action for this button's selection",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"customAction": "uiSelect",
+									"objectClass": "uiButton",
+									"sid": 885612950540205
 								}
 							],
-							"sid": 335088809364655
+							"sid": 399124229237747
 						}
 					]
 				},
@@ -1039,13 +1140,13 @@
 							"type": "string",
 							"initialValue": "down",
 							"comment": "either left, right, up, or down",
-							"sid": 874877868563485
+							"sid": 469774634205869
 						}
 					],
 					"eventType": "function-block",
 					"conditions": [],
 					"actions": [],
-					"sid": 109452688308014,
+					"sid": 987147102605127,
 					"children": [
 						{
 							"eventType": "comment",
@@ -1069,7 +1170,7 @@
 								{
 									"id": "compare-eventvar",
 									"objectClass": "System",
-									"sid": 611439667892231,
+									"sid": 982219093332401,
 									"parameters": {
 										"variable": "uiChosenID",
 										"comparison": 0,
@@ -1080,10 +1181,10 @@
 							"actions": [
 								{
 									"callFunction": "uiNavigateDefault",
-									"sid": 967623920330535
+									"sid": 101048958971897
 								}
 							],
-							"sid": 755679051588304
+							"sid": 851705460447810
 						},
 						{
 							"eventType": "comment",
@@ -1107,19 +1208,19 @@
 								{
 									"id": "else",
 									"objectClass": "System",
-									"sid": 376504054247077
+									"sid": 455932063616413
 								},
 								{
 									"id": "is-boolean-instance-variable-set",
 									"objectClass": "uiButton",
-									"sid": 353791428994911,
+									"sid": 674450783743648,
 									"parameters": {
 										"instance-variable": "active"
 									}
 								}
 							],
 							"actions": [],
-							"sid": 741323545540570,
+							"sid": 393147469027934,
 							"children": [
 								{
 									"eventType": "comment",
@@ -1145,7 +1246,7 @@
 									"comment": "",
 									"isStatic": false,
 									"isConstant": false,
-									"sid": 514895294867259
+									"sid": 839102647911069
 								},
 								{
 									"eventType": "comment",
@@ -1169,7 +1270,7 @@
 										{
 											"id": "compare-instance-variable",
 											"objectClass": "uiButton",
-											"sid": 144505842030775,
+											"sid": 992797386712371,
 											"parameters": {
 												"instance-variable": "id",
 												"comparison": 0,
@@ -1181,14 +1282,14 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 752986049385464,
+											"sid": 284142715749550,
 											"parameters": {
 												"variable": "wrapOverride",
-												"value": "direction = \"up\" ? \nuiButton.overrideUp : \n(direction = \"down\" ? uiButton.overrideDown : \n(direction = \"left\" ? uiButton.overrideLeft : \nuiButton.overrideRight))"
+												"value": "direction = \"up\" ? uiButton.overrideUp : (direction = \"down\" ? uiButton.overrideDown : (direction = \"left\" ? uiButton.overrideLeft : uiButton.overrideRight))"
 											}
 										}
 									],
-									"sid": 687374258252849
+									"sid": 867965555933643
 								},
 								{
 									"eventType": "comment",
@@ -1212,7 +1313,7 @@
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 124592237419418,
+											"sid": 297368612475991,
 											"parameters": {
 												"variable": "wrapOverride",
 												"comparison": 0,
@@ -1225,18 +1326,14 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 466617592119210,
+											"sid": 181994177541077,
 											"parameters": {
 												"variable": "uiChosenID",
 												"value": "wrapOverride"
 											}
-										},
-										{
-											"callFunction": "uiUpdate",
-											"sid": 139370424265735
 										}
 									],
-									"sid": 151544418606864
+									"sid": 306623932691920
 								},
 								{
 									"eventType": "comment",
@@ -1260,11 +1357,11 @@
 										{
 											"id": "else",
 											"objectClass": "System",
-											"sid": 465738207461506
+											"sid": 463063755976731
 										}
 									],
 									"actions": [],
-									"sid": 467750824244381,
+									"sid": 605734797668566,
 									"children": [
 										{
 											"eventType": "comment",
@@ -1290,7 +1387,7 @@
 											"comment": "",
 											"isStatic": false,
 											"isConstant": false,
-											"sid": 154711365530357
+											"sid": 739727487303927
 										},
 										{
 											"eventType": "variable",
@@ -1300,7 +1397,7 @@
 											"comment": "",
 											"isStatic": false,
 											"isConstant": false,
-											"sid": 615367830924373
+											"sid": 768936246778164
 										},
 										{
 											"eventType": "comment",
@@ -1324,7 +1421,7 @@
 												{
 													"id": "compare-instance-variable",
 													"objectClass": "uiButton",
-													"sid": 249217470451379,
+													"sid": 990844668241464,
 													"parameters": {
 														"instance-variable": "id",
 														"comparison": 0,
@@ -1336,7 +1433,7 @@
 												{
 													"id": "set-eventvar-value",
 													"objectClass": "System",
-													"sid": 522989636184947,
+													"sid": 628137127093190,
 													"parameters": {
 														"variable": "curX",
 														"value": "uiButton.BBoxMidX"
@@ -1345,14 +1442,14 @@
 												{
 													"id": "set-eventvar-value",
 													"objectClass": "System",
-													"sid": 361523518861941,
+													"sid": 642942390691780,
 													"parameters": {
 														"variable": "curY",
 														"value": "uiButton.BBoxMidY"
 													}
 												}
 											],
-											"sid": 939213054335130
+											"sid": 798504998477916
 										},
 										{
 											"eventType": "comment",
@@ -1378,7 +1475,7 @@
 											"comment": "",
 											"isStatic": false,
 											"isConstant": false,
-											"sid": 980098198831011
+											"sid": 369823648394309
 										},
 										{
 											"eventType": "comment",
@@ -1402,7 +1499,7 @@
 												{
 													"id": "compare-eventvar",
 													"objectClass": "System",
-													"sid": 892181989960885,
+													"sid": 173290588228378,
 													"parameters": {
 														"variable": "direction",
 														"comparison": 0,
@@ -1411,7 +1508,7 @@
 												}
 											],
 											"actions": [],
-											"sid": 984289939780938,
+											"sid": 484012962868669,
 											"children": [
 												{
 													"eventType": "comment",
@@ -1435,7 +1532,7 @@
 														{
 															"id": "pick-by-comparison",
 															"objectClass": "System",
-															"sid": 716394428705643,
+															"sid": 992841822086835,
 															"parameters": {
 																"object": "uiButton",
 																"expression": "uiButton.Y",
@@ -1448,14 +1545,14 @@
 														{
 															"customAction": "pickNearest",
 															"objectClass": "uiButton",
-															"sid": 966046123099669,
+															"sid": 653364532296591,
 															"parameters": [
 																"curX",
 																"curY"
 															]
 														}
 													],
-													"sid": 682274971311637
+													"sid": 116050964131516
 												},
 												{
 													"eventType": "comment",
@@ -1479,12 +1576,12 @@
 														{
 															"id": "else",
 															"objectClass": "System",
-															"sid": 537404973702609
+															"sid": 244047952416479
 														},
 														{
 															"id": "for-each-ordered",
 															"objectClass": "System",
-															"sid": 188220341565680,
+															"sid": 754267856251482,
 															"parameters": {
 																"object": "uiButton",
 																"expression": "uiButton.Y",
@@ -1496,19 +1593,19 @@
 														{
 															"id": "stop-loop",
 															"objectClass": "System",
-															"sid": 685315895479571
+															"sid": 302653944726253
 														},
 														{
 															"id": "set-eventvar-value",
 															"objectClass": "System",
-															"sid": 449939323660577,
+															"sid": 422209484640262,
 															"parameters": {
 																"variable": "wrapPos",
 																"value": "uiButton.Y"
 															}
 														}
 													],
-													"sid": 219527354874268,
+													"sid": 817661029342322,
 													"children": [
 														{
 															"eventType": "block",
@@ -1516,7 +1613,7 @@
 																{
 																	"id": "pick-all",
 																	"objectClass": "System",
-																	"sid": 158340437304217,
+																	"sid": 938253161045488,
 																	"parameters": {
 																		"object": "uiButton"
 																	}
@@ -1524,7 +1621,7 @@
 																{
 																	"id": "pick-by-comparison",
 																	"objectClass": "System",
-																	"sid": 466988728697384,
+																	"sid": 426724069814095,
 																	"parameters": {
 																		"object": "uiButton",
 																		"expression": "uiButton.Y",
@@ -1537,14 +1634,14 @@
 																{
 																	"customAction": "pickNearest",
 																	"objectClass": "uiButton",
-																	"sid": 244393563445386,
+																	"sid": 926252388018888,
 																	"parameters": [
 																		"curX",
 																		"curY"
 																	]
 																}
 															],
-															"sid": 662672996959301
+															"sid": 846203125688589
 														}
 													]
 												}
@@ -1556,7 +1653,7 @@
 												{
 													"id": "compare-eventvar",
 													"objectClass": "System",
-													"sid": 113790839717981,
+													"sid": 335250840073180,
 													"parameters": {
 														"variable": "direction",
 														"comparison": 0,
@@ -1565,7 +1662,7 @@
 												}
 											],
 											"actions": [],
-											"sid": 591110176432497,
+											"sid": 978256169249493,
 											"children": [
 												{
 													"eventType": "comment",
@@ -1589,7 +1686,7 @@
 														{
 															"id": "pick-by-comparison",
 															"objectClass": "System",
-															"sid": 391854616674968,
+															"sid": 820184890022692,
 															"parameters": {
 																"object": "uiButton",
 																"expression": "uiButton.Y",
@@ -1602,14 +1699,14 @@
 														{
 															"customAction": "pickNearest",
 															"objectClass": "uiButton",
-															"sid": 271914422481223,
+															"sid": 557368625320309,
 															"parameters": [
 																"curX",
 																"curY"
 															]
 														}
 													],
-													"sid": 670469826494412
+													"sid": 843996136120236
 												},
 												{
 													"eventType": "comment",
@@ -1633,12 +1730,12 @@
 														{
 															"id": "else",
 															"objectClass": "System",
-															"sid": 985463922064366
+															"sid": 605575003324012
 														},
 														{
 															"id": "for-each-ordered",
 															"objectClass": "System",
-															"sid": 503526284546118,
+															"sid": 726712921798509,
 															"parameters": {
 																"object": "uiButton",
 																"expression": "uiButton.Y",
@@ -1650,19 +1747,19 @@
 														{
 															"id": "stop-loop",
 															"objectClass": "System",
-															"sid": 531128413023916
+															"sid": 495796937222876
 														},
 														{
 															"id": "set-eventvar-value",
 															"objectClass": "System",
-															"sid": 444771818200774,
+															"sid": 147608950128850,
 															"parameters": {
 																"variable": "wrapPos",
 																"value": "uiButton.Y"
 															}
 														}
 													],
-													"sid": 906204433830451,
+													"sid": 774383577376960,
 													"children": [
 														{
 															"eventType": "block",
@@ -1670,7 +1767,7 @@
 																{
 																	"id": "pick-all",
 																	"objectClass": "System",
-																	"sid": 327024253431207,
+																	"sid": 638203115122456,
 																	"parameters": {
 																		"object": "uiButton"
 																	}
@@ -1678,7 +1775,7 @@
 																{
 																	"id": "pick-by-comparison",
 																	"objectClass": "System",
-																	"sid": 403725062355833,
+																	"sid": 347965810597637,
 																	"parameters": {
 																		"object": "uiButton",
 																		"expression": "uiButton.Y",
@@ -1691,14 +1788,14 @@
 																{
 																	"customAction": "pickNearest",
 																	"objectClass": "uiButton",
-																	"sid": 431452534556660,
+																	"sid": 389891807287509,
 																	"parameters": [
 																		"curX",
 																		"curY"
 																	]
 																}
 															],
-															"sid": 113013621431992
+															"sid": 794623355461211
 														}
 													]
 												}
@@ -1710,7 +1807,7 @@
 												{
 													"id": "compare-eventvar",
 													"objectClass": "System",
-													"sid": 631391649033030,
+													"sid": 262508781138795,
 													"parameters": {
 														"variable": "direction",
 														"comparison": 0,
@@ -1719,7 +1816,7 @@
 												}
 											],
 											"actions": [],
-											"sid": 442570565210870,
+											"sid": 612805094123976,
 											"children": [
 												{
 													"eventType": "comment",
@@ -1743,7 +1840,7 @@
 														{
 															"id": "pick-by-comparison",
 															"objectClass": "System",
-															"sid": 539871460795515,
+															"sid": 486293493633645,
 															"parameters": {
 																"object": "uiButton",
 																"expression": "uiButton.X",
@@ -1756,14 +1853,14 @@
 														{
 															"customAction": "pickNearest",
 															"objectClass": "uiButton",
-															"sid": 402689114511128,
+															"sid": 958490714596897,
 															"parameters": [
 																"curX",
 																"curY"
 															]
 														}
 													],
-													"sid": 267606701515974
+													"sid": 349159606779093
 												},
 												{
 													"eventType": "comment",
@@ -1787,12 +1884,12 @@
 														{
 															"id": "else",
 															"objectClass": "System",
-															"sid": 974164261025991
+															"sid": 886720999777835
 														},
 														{
 															"id": "for-each-ordered",
 															"objectClass": "System",
-															"sid": 862984844021644,
+															"sid": 831262042319022,
 															"parameters": {
 																"object": "uiButton",
 																"expression": "uiButton.X",
@@ -1804,19 +1901,19 @@
 														{
 															"id": "stop-loop",
 															"objectClass": "System",
-															"sid": 436791297929878
+															"sid": 380995332356017
 														},
 														{
 															"id": "set-eventvar-value",
 															"objectClass": "System",
-															"sid": 524053462768007,
+															"sid": 999223034764072,
 															"parameters": {
 																"variable": "wrapPos",
 																"value": "uiButton.X"
 															}
 														}
 													],
-													"sid": 970498370267015,
+													"sid": 946617431587577,
 													"children": [
 														{
 															"eventType": "block",
@@ -1824,7 +1921,7 @@
 																{
 																	"id": "pick-all",
 																	"objectClass": "System",
-																	"sid": 601333096462378,
+																	"sid": 267538017881430,
 																	"parameters": {
 																		"object": "uiButton"
 																	}
@@ -1832,7 +1929,7 @@
 																{
 																	"id": "pick-by-comparison",
 																	"objectClass": "System",
-																	"sid": 665774791780176,
+																	"sid": 289467833259386,
 																	"parameters": {
 																		"object": "uiButton",
 																		"expression": "uiButton.X",
@@ -1845,14 +1942,14 @@
 																{
 																	"customAction": "pickNearest",
 																	"objectClass": "uiButton",
-																	"sid": 394929435894313,
+																	"sid": 154048107619608,
 																	"parameters": [
 																		"curX",
 																		"curY"
 																	]
 																}
 															],
-															"sid": 807557956321778
+															"sid": 534833864464822
 														}
 													]
 												}
@@ -1864,7 +1961,7 @@
 												{
 													"id": "compare-eventvar",
 													"objectClass": "System",
-													"sid": 517053280268689,
+													"sid": 300336767613251,
 													"parameters": {
 														"variable": "direction",
 														"comparison": 0,
@@ -1873,7 +1970,7 @@
 												}
 											],
 											"actions": [],
-											"sid": 783467666784113,
+											"sid": 550334015572843,
 											"children": [
 												{
 													"eventType": "comment",
@@ -1897,7 +1994,7 @@
 														{
 															"id": "pick-by-comparison",
 															"objectClass": "System",
-															"sid": 275265558107795,
+															"sid": 164963709447700,
 															"parameters": {
 																"object": "uiButton",
 																"expression": "uiButton.X",
@@ -1910,14 +2007,14 @@
 														{
 															"customAction": "pickNearest",
 															"objectClass": "uiButton",
-															"sid": 997813023010804,
+															"sid": 378565094713663,
 															"parameters": [
 																"curX",
 																"curY"
 															]
 														}
 													],
-													"sid": 763323134948912
+													"sid": 741298665719792
 												},
 												{
 													"eventType": "comment",
@@ -1941,12 +2038,12 @@
 														{
 															"id": "else",
 															"objectClass": "System",
-															"sid": 978341251652921
+															"sid": 922947858812657
 														},
 														{
 															"id": "for-each-ordered",
 															"objectClass": "System",
-															"sid": 158241589378189,
+															"sid": 982586643433669,
 															"parameters": {
 																"object": "uiButton",
 																"expression": "uiButton.X",
@@ -1958,19 +2055,19 @@
 														{
 															"id": "stop-loop",
 															"objectClass": "System",
-															"sid": 735753396612043
+															"sid": 640882966710727
 														},
 														{
 															"id": "set-eventvar-value",
 															"objectClass": "System",
-															"sid": 151347058135720,
+															"sid": 889138521602855,
 															"parameters": {
 																"variable": "wrapPos",
 																"value": "uiButton.X"
 															}
 														}
 													],
-													"sid": 692618396144279,
+													"sid": 286999832156508,
 													"children": [
 														{
 															"eventType": "block",
@@ -1978,7 +2075,7 @@
 																{
 																	"id": "pick-all",
 																	"objectClass": "System",
-																	"sid": 669213736134093,
+																	"sid": 314248448818190,
 																	"parameters": {
 																		"object": "uiButton"
 																	}
@@ -1986,7 +2083,7 @@
 																{
 																	"id": "pick-by-comparison",
 																	"objectClass": "System",
-																	"sid": 165191499146759,
+																	"sid": 348248507028335,
 																	"parameters": {
 																		"object": "uiButton",
 																		"expression": "uiButton.X",
@@ -1999,14 +2096,14 @@
 																{
 																	"customAction": "pickNearest",
 																	"objectClass": "uiButton",
-																	"sid": 965388477109457,
+																	"sid": 275326390011480,
 																	"parameters": [
 																		"curX",
 																		"curY"
 																	]
 																}
 															],
-															"sid": 969438473017008
+															"sid": 654744629665874
 														}
 													]
 												}
@@ -2049,14 +2146,14 @@
 							"type": "number",
 							"initialValue": "0",
 							"comment": "",
-							"sid": 204621922336500
+							"sid": 293856214479885
 						},
 						{
 							"name": "y",
 							"type": "number",
 							"initialValue": "0",
 							"comment": "",
-							"sid": 946249041917677
+							"sid": 235663357836610
 						}
 					],
 					"eventType": "custom-ace-block",
@@ -2064,7 +2161,7 @@
 						{
 							"id": "pick-nearestfurthest",
 							"objectClass": "uiButton",
-							"sid": 935762361354406,
+							"sid": 680442033815975,
 							"parameters": {
 								"which": "nearest",
 								"x": "x",
@@ -2076,7 +2173,7 @@
 						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
-							"sid": 171159713428394,
+							"sid": 267641809864441,
 							"parameters": {
 								"variable": "uiChosenID",
 								"value": "uiButton.id"
@@ -2084,10 +2181,10 @@
 						},
 						{
 							"callFunction": "uiUpdate",
-							"sid": 174663249212857
+							"sid": 170522535884347
 						}
 					],
-					"sid": 107884634388161
+					"sid": 488617891165939
 				},
 				{
 					"eventType": "comment",
@@ -2118,14 +2215,14 @@
 						{
 							"id": "is-boolean-instance-variable-set",
 							"objectClass": "uiButton",
-							"sid": 193699652667172,
+							"sid": 950134269510545,
 							"parameters": {
 								"instance-variable": "active"
 							}
 						}
 					],
 					"actions": [],
-					"sid": 597747099036723,
+					"sid": 354687514125026,
 					"children": [
 						{
 							"eventType": "comment",
@@ -2151,7 +2248,7 @@
 							"comment": "",
 							"isStatic": false,
 							"isConstant": false,
-							"sid": 663058131919597
+							"sid": 355646758502732
 						},
 						{
 							"eventType": "variable",
@@ -2161,7 +2258,7 @@
 							"comment": "",
 							"isStatic": false,
 							"isConstant": false,
-							"sid": 155577509096017
+							"sid": 835810560732681
 						},
 						{
 							"eventType": "block",
@@ -2170,7 +2267,7 @@
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 434926687463949,
+									"sid": 222726512999877,
 									"parameters": {
 										"variable": "lastX",
 										"value": "Infinity"
@@ -2179,14 +2276,14 @@
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 137215712198794,
+									"sid": 105157898950239,
 									"parameters": {
 										"variable": "lastY",
 										"value": "Infinity"
 									}
 								}
 							],
-							"sid": 603038075858717
+							"sid": 587526129948929
 						},
 						{
 							"eventType": "comment",
@@ -2212,7 +2309,7 @@
 							"comment": "",
 							"isStatic": false,
 							"isConstant": false,
-							"sid": 382439920350088
+							"sid": 598558359485785
 						},
 						{
 							"eventType": "comment",
@@ -2236,7 +2333,7 @@
 								{
 									"id": "for-each",
 									"objectClass": "System",
-									"sid": 245803776671972,
+									"sid": 621024131492146,
 									"parameters": {
 										"object": "uiButton"
 									}
@@ -2244,7 +2341,7 @@
 								{
 									"id": "compare-x",
 									"objectClass": "uiButton",
-									"sid": 539464265039766,
+									"sid": 631509866801638,
 									"parameters": {
 										"comparison": 3,
 										"x-co-ordinate": "lastX"
@@ -2253,7 +2350,7 @@
 								{
 									"id": "compare-y",
 									"objectClass": "uiButton",
-									"sid": 262515691069161,
+									"sid": 355531241233383,
 									"parameters": {
 										"comparison": 3,
 										"y-co-ordinate": "lastY"
@@ -2264,7 +2361,7 @@
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 262593008932886,
+									"sid": 660417586199479,
 									"parameters": {
 										"variable": "lastX",
 										"value": "uiButton.X"
@@ -2273,7 +2370,7 @@
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 231031682471136,
+									"sid": 477067806126479,
 									"parameters": {
 										"variable": "lastY",
 										"value": "uiButton.Y"
@@ -2282,14 +2379,14 @@
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 413040581223269,
+									"sid": 801906543980576,
 									"parameters": {
 										"variable": "lastID",
 										"value": "uiButton.id"
 									}
 								}
 							],
-							"sid": 520135827255146
+							"sid": 330218668164502
 						},
 						{
 							"eventType": "block",
@@ -2298,7 +2395,7 @@
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 260534519699093,
+									"sid": 727815773247714,
 									"parameters": {
 										"variable": "uiChosenID",
 										"value": "lastID"
@@ -2306,15 +2403,15 @@
 								},
 								{
 									"callFunction": "uiUpdate",
-									"sid": 755494008899590
+									"sid": 484093258561691
 								}
 							],
-							"sid": 903442302295226
+							"sid": 594202503493976
 						}
 					]
 				}
 			],
-			"sid": 539266263456895,
+			"sid": 439547824347311,
 			"text-color": [
 				0,
 				0,
@@ -2335,197 +2432,6 @@
 			"description": "",
 			"isActiveOnStart": true,
 			"children": [
-				{
-					"eventType": "group",
-					"disabled": false,
-					"title": "ui interaction mouse",
-					"description": "",
-					"isActiveOnStart": true,
-					"children": [
-						{
-							"eventType": "comment",
-							"text": "mouseover choosing",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.6431372549019608,
-								0.8470588235294118,
-								0.8745098039215686,
-								1
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-movement",
-									"objectClass": "Mouse",
-									"sid": 808497225244918
-								}
-							],
-							"actions": [],
-							"sid": 516538593116086,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "cursor-is-over-object",
-											"objectClass": "Mouse",
-											"sid": 378372885069337,
-											"parameters": {
-												"object": "uiButton"
-											}
-										},
-										{
-											"id": "is-boolean-instance-variable-set",
-											"objectClass": "uiButton",
-											"sid": 691890170337312,
-											"parameters": {
-												"instance-variable": "active"
-											}
-										},
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "uiButton",
-											"sid": 227556752301559,
-											"parameters": {
-												"instance-variable": "id",
-												"comparison": 0,
-												"value": "uiChosenID"
-											},
-											"isInverted": true
-										}
-									],
-									"actions": [
-										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 663771207723340,
-											"parameters": {
-												"variable": "uiChosenID",
-												"value": "uiButton.id"
-											}
-										},
-										{
-											"callFunction": "uiUpdate",
-											"sid": 620898412616945
-										}
-									],
-									"sid": 338409289319927
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "else",
-											"objectClass": "System",
-											"sid": 984248126236446
-										},
-										{
-											"id": "cursor-is-over-object",
-											"objectClass": "Mouse",
-											"sid": 991832800361876,
-											"parameters": {
-												"object": "uiButton"
-											},
-											"isInverted": true
-										}
-									],
-									"actions": [
-										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 284205007812433,
-											"parameters": {
-												"variable": "uiChosenID",
-												"value": "\"\""
-											}
-										},
-										{
-											"callFunction": "uiUpdate",
-											"sid": 155789473780757
-										}
-									],
-									"sid": 249214344546396
-								}
-							]
-						},
-						{
-							"eventType": "comment",
-							"text": "left click to select option",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.6431372549019608,
-								0.8470588235294118,
-								0.8745098039215686,
-								1
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-object-clicked",
-									"objectClass": "Mouse",
-									"sid": 703717475898357,
-									"parameters": {
-										"mouse-button": "left",
-										"click-type": "clicked",
-										"object-clicked": "uiButton"
-									}
-								},
-								{
-									"id": "is-boolean-instance-variable-set",
-									"objectClass": "uiButton",
-									"sid": 423534823851419,
-									"parameters": {
-										"instance-variable": "active"
-									}
-								},
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "uiButton",
-									"sid": 497715779499100,
-									"parameters": {
-										"instance-variable": "id",
-										"comparison": 0,
-										"value": "uiChosenID"
-									}
-								}
-							],
-							"actions": [
-								{
-									"callFunction": "uiSelect",
-									"sid": 469178439549154
-								}
-							],
-							"sid": 927751200410496
-						}
-					],
-					"sid": 682861504706609,
-					"text-color": [
-						0,
-						0,
-						0,
-						0
-					],
-					"background-color": [
-						0.8392156862745098,
-						0.8392156862745098,
-						0.8392156862745098,
-						1
-					]
-				},
 				{
 					"eventType": "comment",
 					"text": "how long you need to hold down an input in order to start the auto-scroll behavior",
@@ -2550,7 +2456,7 @@
 					"comment": "",
 					"isStatic": false,
 					"isConstant": true,
-					"sid": 528445480356256
+					"sid": 378314207927456
 				},
 				{
 					"eventType": "variable",
@@ -2560,7 +2466,7 @@
 					"comment": "",
 					"isStatic": true,
 					"isConstant": false,
-					"sid": 977941600689288
+					"sid": 252449319312543
 				},
 				{
 					"eventType": "comment",
@@ -2586,7 +2492,7 @@
 					"comment": "",
 					"isStatic": false,
 					"isConstant": true,
-					"sid": 145829861972039
+					"sid": 394353135014144
 				},
 				{
 					"eventType": "variable",
@@ -2596,7 +2502,60 @@
 					"comment": "",
 					"isStatic": true,
 					"isConstant": false,
-					"sid": 521347240148959
+					"sid": 838517155870840
+				},
+				{
+					"eventType": "comment",
+					"text": "decide what input type the player is using",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-any-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 949455506590804
+						},
+						{
+							"id": "on-movement",
+							"objectClass": "Mouse",
+							"sid": 262210843082269
+						}
+					],
+					"actions": [
+						{
+							"id": "set-group-active",
+							"objectClass": "System",
+							"sid": 113857509337122,
+							"parameters": {
+								"group-name": "\"ui interaction mouse\"",
+								"state": "activated"
+							}
+						},
+						{
+							"id": "set-group-active",
+							"objectClass": "System",
+							"sid": 425837749809992,
+							"parameters": {
+								"group-name": "\"ui interaction mouse\"",
+								"state": "activated"
+							}
+						}
+					],
+					"sid": 805670154736444,
+					"isOrBlock": true
 				},
 				{
 					"eventType": "group",
@@ -2605,6 +2564,247 @@
 					"description": "",
 					"isActiveOnStart": true,
 					"children": [
+						{
+							"eventType": "comment",
+							"text": "if gamepad is detected, switch to gamepad controls",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-any-button-pressed",
+									"objectClass": "Gamepad",
+									"sid": 777871741701120,
+									"parameters": {
+										"gamepad": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 696676766590573,
+									"parameters": {
+										"group-name": "\"ui interaction kbm\"",
+										"state": "deactivated"
+									}
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 441829041401889,
+									"parameters": {
+										"group-name": "\"ui interaction gamepad\"",
+										"state": "activated"
+									}
+								}
+							],
+							"sid": 676867129305407
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "ui interaction mouse",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "mouseover choosing",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "on-movement",
+											"objectClass": "Mouse",
+											"sid": 622773710769354
+										}
+									],
+									"actions": [],
+									"sid": 628959894621072,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "cursor-is-over-object",
+													"objectClass": "Mouse",
+													"sid": 192425040276181,
+													"parameters": {
+														"object": "uiButton"
+													}
+												},
+												{
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "uiButton",
+													"sid": 352409929501716,
+													"parameters": {
+														"instance-variable": "active"
+													}
+												},
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiButton",
+													"sid": 385691738199006,
+													"parameters": {
+														"instance-variable": "id",
+														"comparison": 0,
+														"value": "uiChosenID"
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 162451552858529,
+													"parameters": {
+														"variable": "uiChosenID",
+														"value": "uiButton.id"
+													}
+												},
+												{
+													"callFunction": "uiUpdate",
+													"sid": 872239032349348
+												}
+											],
+											"sid": 696075009016612
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 968986339322704
+												},
+												{
+													"id": "cursor-is-over-object",
+													"objectClass": "Mouse",
+													"sid": 449360014755303,
+													"parameters": {
+														"object": "uiButton"
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 569768633869811,
+													"parameters": {
+														"variable": "uiChosenID",
+														"value": "\"\""
+													}
+												},
+												{
+													"callFunction": "uiUpdate",
+													"sid": 332364946797332
+												}
+											],
+											"sid": 714982443843531
+										}
+									]
+								},
+								{
+									"eventType": "comment",
+									"text": "left click to select option",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "on-object-clicked",
+											"objectClass": "Mouse",
+											"sid": 432130099432500,
+											"parameters": {
+												"mouse-button": "left",
+												"click-type": "clicked",
+												"object-clicked": "uiButton"
+											}
+										},
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "uiButton",
+											"sid": 583161459580850,
+											"parameters": {
+												"instance-variable": "active"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "uiButton",
+											"sid": 512429244142103,
+											"parameters": {
+												"instance-variable": "id",
+												"comparison": 0,
+												"value": "uiChosenID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "uiSelect",
+											"sid": 131874979742808
+										}
+									],
+									"sid": 850454692137490
+								}
+							],
+							"sid": 324867638663281,
+							"text-color": [
+								0,
+								0,
+								0,
+								0
+							],
+							"background-color": [
+								0.8392156862745098,
+								0.8392156862745098,
+								0.8392156862745098,
+								1
+							]
+						},
 						{
 							"eventType": "comment",
 							"text": "arrow key auto scroll timer",
@@ -2627,7 +2827,7 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 931712592723327,
+									"sid": 706139004524426,
 									"parameters": {
 										"key": 38
 									}
@@ -2635,7 +2835,7 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 179620757213514,
+									"sid": 435301383473435,
 									"parameters": {
 										"key": 40
 									}
@@ -2643,7 +2843,7 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 678502833888699,
+									"sid": 260658089493248,
 									"parameters": {
 										"key": 37
 									}
@@ -2651,14 +2851,14 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 559858742628502,
+									"sid": 155434706303106,
 									"parameters": {
 										"key": 39
 									}
 								}
 							],
 							"actions": [],
-							"sid": 870689553061948,
+							"sid": 738636649267111,
 							"children": [
 								{
 									"eventType": "comment",
@@ -2682,7 +2882,7 @@
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 310316749916826,
+											"sid": 631655277004797,
 											"parameters": {
 												"variable": "uiInputHeldDownTimer",
 												"comparison": 2,
@@ -2694,14 +2894,14 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 312579132401207,
+											"sid": 157569913585973,
 											"parameters": {
 												"variable": "uiInputHeldDownTimer",
-												"value": "clamp(uiInputHeldDownTimer + dt, 0, uiInputHeldDownDuration)"
+												"value": "min(uiInputHeldDownTimer + dt, uiInputHeldDownDuration)"
 											}
 										}
 									],
-									"sid": 782630766590888
+									"sid": 642252953051761
 								},
 								{
 									"eventType": "comment",
@@ -2725,12 +2925,12 @@
 										{
 											"id": "else",
 											"objectClass": "System",
-											"sid": 509263832555006
+											"sid": 634336687185423
 										},
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 321820906691795,
+											"sid": 274989434103626,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"comparison": 2,
@@ -2742,14 +2942,14 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 409432953171752,
+											"sid": 976680721573900,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
-												"value": "clamp(uiInputAutoTimer + dt, 0, uiInputAutoDuration)"
+												"value": "min(uiInputAutoTimer + dt, uiInputAutoDuration)"
 											}
 										}
 									],
-									"sid": 897295623216722
+									"sid": 439882298750887
 								}
 							],
 							"isOrBlock": true
@@ -2760,14 +2960,14 @@
 								{
 									"id": "else",
 									"objectClass": "System",
-									"sid": 318109600135058
+									"sid": 150858371303558
 								}
 							],
 							"actions": [
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 885615508186304,
+									"sid": 881171252202575,
 									"parameters": {
 										"variable": "uiInputHeldDownTimer",
 										"value": "0"
@@ -2776,15 +2976,14 @@
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 519319369504239,
+									"sid": 124636201583115,
 									"parameters": {
 										"variable": "uiInputAutoTimer",
 										"value": "0"
 									}
 								}
 							],
-							"sid": 619020524415143,
-							"disabled": true
+							"sid": 921233143551038
 						},
 						{
 							"eventType": "comment",
@@ -2808,14 +3007,14 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 211278508913545,
+									"sid": 787182750241841,
 									"parameters": {
 										"key": 38
 									}
 								}
 							],
 							"actions": [],
-							"sid": 871712553629234,
+							"sid": 770764378546302,
 							"children": [
 								{
 									"eventType": "comment",
@@ -2839,19 +3038,19 @@
 										{
 											"id": "trigger-once-while-true",
 											"objectClass": "System",
-											"sid": 717231525148197
+											"sid": 848486126039316
 										}
 									],
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 445007192518433,
+											"sid": 564747591676619,
 											"parameters": [
 												"\"up\""
 											]
 										}
 									],
-									"sid": 898240436765902
+									"sid": 911994286870641
 								},
 								{
 									"eventType": "comment",
@@ -2875,7 +3074,7 @@
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 184634015458355,
+											"sid": 826698161726727,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"comparison": 5,
@@ -2886,7 +3085,7 @@
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 451927001540500,
+											"sid": 850154570832398,
 											"parameters": [
 												"\"up\""
 											]
@@ -2894,14 +3093,14 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 221412403560142,
+											"sid": 874384054258265,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"value": "0"
 											}
 										}
 									],
-									"sid": 698292688541117
+									"sid": 734139827760624
 								}
 							]
 						},
@@ -2911,14 +3110,14 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 860162834850645,
+									"sid": 909579746853575,
 									"parameters": {
 										"key": 40
 									}
 								}
 							],
 							"actions": [],
-							"sid": 269272590239727,
+							"sid": 766116792811506,
 							"children": [
 								{
 									"eventType": "comment",
@@ -2942,19 +3141,19 @@
 										{
 											"id": "trigger-once-while-true",
 											"objectClass": "System",
-											"sid": 205085935846279
+											"sid": 463384398762987
 										}
 									],
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 846508110255678,
+											"sid": 825999188510394,
 											"parameters": [
 												"\"down\""
 											]
 										}
 									],
-									"sid": 238982979030436
+									"sid": 422815163604140
 								},
 								{
 									"eventType": "comment",
@@ -2978,7 +3177,7 @@
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 879697395707546,
+											"sid": 224057806186475,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"comparison": 5,
@@ -2989,7 +3188,7 @@
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 926973195516392,
+											"sid": 363802509646593,
 											"parameters": [
 												"\"down\""
 											]
@@ -2997,14 +3196,14 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 481085489885213,
+											"sid": 916139348638326,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"value": "0"
 											}
 										}
 									],
-									"sid": 928205263749026
+									"sid": 894787315336921
 								}
 							]
 						},
@@ -3014,14 +3213,14 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 653350395893057,
+									"sid": 350471092082664,
 									"parameters": {
 										"key": 37
 									}
 								}
 							],
 							"actions": [],
-							"sid": 605181210764142,
+							"sid": 560559471220859,
 							"children": [
 								{
 									"eventType": "comment",
@@ -3045,19 +3244,19 @@
 										{
 											"id": "trigger-once-while-true",
 											"objectClass": "System",
-											"sid": 713483562421579
+											"sid": 296412975772767
 										}
 									],
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 942479034955793,
+											"sid": 307141226028675,
 											"parameters": [
 												"\"left\""
 											]
 										}
 									],
-									"sid": 109118580743560
+									"sid": 939339905756740
 								},
 								{
 									"eventType": "comment",
@@ -3081,7 +3280,7 @@
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 184369436285506,
+											"sid": 989447640106349,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"comparison": 5,
@@ -3092,7 +3291,7 @@
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 264151896621555,
+											"sid": 606781639795157,
 											"parameters": [
 												"\"left\""
 											]
@@ -3100,14 +3299,14 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 740874777171251,
+											"sid": 416975349194238,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"value": "0"
 											}
 										}
 									],
-									"sid": 251566746931755
+									"sid": 717223090963988
 								}
 							]
 						},
@@ -3117,14 +3316,14 @@
 								{
 									"id": "key-is-down",
 									"objectClass": "Keyboard",
-									"sid": 681100797927412,
+									"sid": 194825863461561,
 									"parameters": {
 										"key": 39
 									}
 								}
 							],
 							"actions": [],
-							"sid": 318408432681929,
+							"sid": 494722574448036,
 							"children": [
 								{
 									"eventType": "comment",
@@ -3148,19 +3347,19 @@
 										{
 											"id": "trigger-once-while-true",
 											"objectClass": "System",
-											"sid": 960760876531510
+											"sid": 746703922880386
 										}
 									],
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 814388905702499,
+											"sid": 185738942115502,
 											"parameters": [
 												"\"right\""
 											]
 										}
 									],
-									"sid": 931817870686026
+									"sid": 603629427771470
 								},
 								{
 									"eventType": "comment",
@@ -3184,7 +3383,7 @@
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 420865310521764,
+											"sid": 949450481666901,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"comparison": 5,
@@ -3195,7 +3394,7 @@
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 287335313981110,
+											"sid": 944887323354913,
 											"parameters": [
 												"\"right\""
 											]
@@ -3203,14 +3402,14 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 713646591605084,
+											"sid": 924056362352718,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"value": "0"
 											}
 										}
 									],
-									"sid": 515997627537490
+									"sid": 635568187274322
 								}
 							]
 						},
@@ -3236,7 +3435,7 @@
 								{
 									"id": "on-key-pressed",
 									"objectClass": "Keyboard",
-									"sid": 451265361927994,
+									"sid": 719218891860791,
 									"parameters": {
 										"key": 13
 									}
@@ -3245,13 +3444,13 @@
 							"actions": [
 								{
 									"callFunction": "uiSelect",
-									"sid": 979392331297134
+									"sid": 147402712828898
 								}
 							],
-							"sid": 702366754479135
+							"sid": 472731994827650
 						}
 					],
-					"sid": 615975906791182,
+					"sid": 356491730607447,
 					"text-color": [
 						0,
 						0,
@@ -3270,8 +3469,66 @@
 					"disabled": false,
 					"title": "ui interaction gamepad",
 					"description": "keep in mind that only gamepad 0 can navigate the UI",
-					"isActiveOnStart": true,
+					"isActiveOnStart": false,
 					"children": [
+						{
+							"eventType": "comment",
+							"text": "if kbm is detected, switch to kbm controls",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-any-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 259024959772267
+								},
+								{
+									"id": "on-movement",
+									"objectClass": "Mouse",
+									"sid": 567639035180473
+								},
+								{
+									"id": "on-any-click",
+									"objectClass": "Mouse",
+									"sid": 877253113149905
+								}
+							],
+							"actions": [
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 756361599831331,
+									"parameters": {
+										"group-name": "\"ui interaction gamepad\"",
+										"state": "deactivated"
+									}
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 454967525739668,
+									"parameters": {
+										"group-name": "\"ui interaction kbm\"",
+										"state": "activated"
+									}
+								}
+							],
+							"sid": 387012741750741,
+							"isOrBlock": true
+						},
 						{
 							"eventType": "comment",
 							"text": "gamepad deadzone for UI navigation",
@@ -3296,7 +3553,7 @@
 							"comment": "",
 							"isStatic": false,
 							"isConstant": true,
-							"sid": 200575700074216
+							"sid": 326690986282096
 						},
 						{
 							"eventType": "comment",
@@ -3320,7 +3577,7 @@
 								{
 									"id": "is-button-down",
 									"objectClass": "Gamepad",
-									"sid": 828126581577291,
+									"sid": 579108754616993,
 									"parameters": {
 										"gamepad": "0",
 										"button": "d-pad-up"
@@ -3329,7 +3586,7 @@
 								{
 									"id": "is-button-down",
 									"objectClass": "Gamepad",
-									"sid": 955737493422120,
+									"sid": 660743015704404,
 									"parameters": {
 										"gamepad": "0",
 										"button": "d-pad-down"
@@ -3338,7 +3595,7 @@
 								{
 									"id": "is-button-down",
 									"objectClass": "Gamepad",
-									"sid": 374436589893551,
+									"sid": 605611276130621,
 									"parameters": {
 										"gamepad": "0",
 										"button": "d-pad-left"
@@ -3347,7 +3604,7 @@
 								{
 									"id": "is-button-down",
 									"objectClass": "Gamepad",
-									"sid": 289641822439115,
+									"sid": 731238958280157,
 									"parameters": {
 										"gamepad": "0",
 										"button": "d-pad-right"
@@ -3356,7 +3613,7 @@
 								{
 									"id": "compare-two-values",
 									"objectClass": "System",
-									"sid": 928417695870039,
+									"sid": 842232211018487,
 									"parameters": {
 										"first-value": "abs(Gamepad.Axis(0, 0))",
 										"comparison": 4,
@@ -3366,7 +3623,7 @@
 								{
 									"id": "compare-two-values",
 									"objectClass": "System",
-									"sid": 643801691019092,
+									"sid": 252317922546443,
 									"parameters": {
 										"first-value": "abs(Gamepad.Axis(0, 1))",
 										"comparison": 4,
@@ -3375,7 +3632,7 @@
 								}
 							],
 							"actions": [],
-							"sid": 806888183673980,
+							"sid": 672358754868691,
 							"children": [
 								{
 									"eventType": "comment",
@@ -3399,7 +3656,7 @@
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 708749145823531,
+											"sid": 364454877117459,
 											"parameters": {
 												"variable": "uiInputHeldDownTimer",
 												"comparison": 2,
@@ -3411,14 +3668,14 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 312911068215444,
+											"sid": 414504372956887,
 											"parameters": {
 												"variable": "uiInputHeldDownTimer",
 												"value": "clamp(uiInputHeldDownTimer + dt, 0, uiInputHeldDownDuration)"
 											}
 										}
 									],
-									"sid": 458972624433860
+									"sid": 683196011574860
 								},
 								{
 									"eventType": "comment",
@@ -3442,12 +3699,12 @@
 										{
 											"id": "else",
 											"objectClass": "System",
-											"sid": 798496915001163
+											"sid": 902319150578924
 										},
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 238398099676646,
+											"sid": 853076626592655,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"comparison": 2,
@@ -3459,14 +3716,14 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 553382174868567,
+											"sid": 192305955468399,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"value": "clamp(uiInputAutoTimer + dt, 0, uiInputAutoDuration)"
 											}
 										}
 									],
-									"sid": 612211705435763
+									"sid": 615198632232688
 								}
 							],
 							"isOrBlock": true
@@ -3477,14 +3734,14 @@
 								{
 									"id": "else",
 									"objectClass": "System",
-									"sid": 558141053618597
+									"sid": 316043067920631
 								}
 							],
 							"actions": [
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 217739194047281,
+									"sid": 246128482186653,
 									"parameters": {
 										"variable": "uiInputHeldDownTimer",
 										"value": "0"
@@ -3493,14 +3750,14 @@
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 682884855838858,
+									"sid": 652468601457643,
 									"parameters": {
 										"variable": "uiInputAutoTimer",
 										"value": "0"
 									}
 								}
 							],
-							"sid": 825583116354151
+							"sid": 984836167149775
 						},
 						{
 							"eventType": "comment",
@@ -3524,7 +3781,7 @@
 								{
 									"id": "is-button-down",
 									"objectClass": "Gamepad",
-									"sid": 909520717182993,
+									"sid": 744618973186353,
 									"parameters": {
 										"gamepad": "0",
 										"button": "d-pad-up"
@@ -3533,7 +3790,7 @@
 								{
 									"id": "compare-two-values",
 									"objectClass": "System",
-									"sid": 720524426989889,
+									"sid": 290414559311102,
 									"parameters": {
 										"first-value": "Gamepad.Axis(0, 1)",
 										"comparison": 2,
@@ -3542,7 +3799,7 @@
 								}
 							],
 							"actions": [],
-							"sid": 400569300413033,
+							"sid": 643831385534256,
 							"children": [
 								{
 									"eventType": "comment",
@@ -3566,19 +3823,19 @@
 										{
 											"id": "trigger-once-while-true",
 											"objectClass": "System",
-											"sid": 278437314667640
+											"sid": 739499215626975
 										}
 									],
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 267901902253066,
+											"sid": 804372321633752,
 											"parameters": [
 												"\"up\""
 											]
 										}
 									],
-									"sid": 485918263936075
+									"sid": 211886943499066
 								},
 								{
 									"eventType": "comment",
@@ -3602,7 +3859,7 @@
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 861900495575855,
+											"sid": 414444566516509,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"comparison": 5,
@@ -3613,7 +3870,7 @@
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 673270824956742,
+											"sid": 574545847605223,
 											"parameters": [
 												"\"up\""
 											]
@@ -3621,14 +3878,14 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 139030278098729,
+											"sid": 638112311821138,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"value": "0"
 											}
 										}
 									],
-									"sid": 823678606788747
+									"sid": 349923477922720
 								}
 							],
 							"isOrBlock": true
@@ -3639,7 +3896,7 @@
 								{
 									"id": "is-button-down",
 									"objectClass": "Gamepad",
-									"sid": 607530186442816,
+									"sid": 735301208507411,
 									"parameters": {
 										"gamepad": "0",
 										"button": "d-pad-down"
@@ -3648,7 +3905,7 @@
 								{
 									"id": "compare-two-values",
 									"objectClass": "System",
-									"sid": 339668674743843,
+									"sid": 862739940539853,
 									"parameters": {
 										"first-value": "Gamepad.Axis(0, 1)",
 										"comparison": 4,
@@ -3657,7 +3914,7 @@
 								}
 							],
 							"actions": [],
-							"sid": 954422381371534,
+							"sid": 103038332921139,
 							"children": [
 								{
 									"eventType": "comment",
@@ -3681,19 +3938,19 @@
 										{
 											"id": "trigger-once-while-true",
 											"objectClass": "System",
-											"sid": 945175470687317
+											"sid": 590939322983886
 										}
 									],
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 515911351178107,
+											"sid": 932039449677468,
 											"parameters": [
 												"\"down\""
 											]
 										}
 									],
-									"sid": 256025823982623
+									"sid": 329981280938684
 								},
 								{
 									"eventType": "comment",
@@ -3717,7 +3974,7 @@
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 136143212888928,
+											"sid": 250362494221857,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"comparison": 5,
@@ -3728,7 +3985,7 @@
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 817448479737278,
+											"sid": 463892752692379,
 											"parameters": [
 												"\"down\""
 											]
@@ -3736,14 +3993,14 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 900874138951304,
+											"sid": 987431328659127,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"value": "0"
 											}
 										}
 									],
-									"sid": 573029962784820
+									"sid": 148065915420144
 								}
 							],
 							"isOrBlock": true
@@ -3754,7 +4011,7 @@
 								{
 									"id": "is-button-down",
 									"objectClass": "Gamepad",
-									"sid": 170982386014945,
+									"sid": 265127501720666,
 									"parameters": {
 										"gamepad": "0",
 										"button": "d-pad-left"
@@ -3763,7 +4020,7 @@
 								{
 									"id": "compare-two-values",
 									"objectClass": "System",
-									"sid": 812012216424382,
+									"sid": 574573285663186,
 									"parameters": {
 										"first-value": "Gamepad.Axis(0, 0)",
 										"comparison": 2,
@@ -3772,7 +4029,7 @@
 								}
 							],
 							"actions": [],
-							"sid": 440133161404015,
+							"sid": 423506226490975,
 							"children": [
 								{
 									"eventType": "comment",
@@ -3796,19 +4053,19 @@
 										{
 											"id": "trigger-once-while-true",
 											"objectClass": "System",
-											"sid": 852049866902041
+											"sid": 714572484423952
 										}
 									],
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 442700698703008,
+											"sid": 861510349236961,
 											"parameters": [
 												"\"left\""
 											]
 										}
 									],
-									"sid": 152271937674756
+									"sid": 519280601964989
 								},
 								{
 									"eventType": "comment",
@@ -3832,7 +4089,7 @@
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 452614020844293,
+											"sid": 213305194090484,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"comparison": 5,
@@ -3843,7 +4100,7 @@
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 393521431796897,
+											"sid": 394488186831383,
 											"parameters": [
 												"\"left\""
 											]
@@ -3851,14 +4108,14 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 832864300611229,
+											"sid": 267958769057932,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"value": "0"
 											}
 										}
 									],
-									"sid": 512518902776808
+									"sid": 100564457860709
 								}
 							],
 							"isOrBlock": true
@@ -3869,7 +4126,7 @@
 								{
 									"id": "is-button-down",
 									"objectClass": "Gamepad",
-									"sid": 935408964139397,
+									"sid": 432025286970337,
 									"parameters": {
 										"gamepad": "0",
 										"button": "d-pad-right"
@@ -3878,7 +4135,7 @@
 								{
 									"id": "compare-two-values",
 									"objectClass": "System",
-									"sid": 805082131792889,
+									"sid": 904697801409172,
 									"parameters": {
 										"first-value": "Gamepad.Axis(0, 0)",
 										"comparison": 4,
@@ -3887,7 +4144,7 @@
 								}
 							],
 							"actions": [],
-							"sid": 946596407759773,
+							"sid": 134448009548286,
 							"children": [
 								{
 									"eventType": "comment",
@@ -3911,19 +4168,19 @@
 										{
 											"id": "trigger-once-while-true",
 											"objectClass": "System",
-											"sid": 480386683786191
+											"sid": 336959417527204
 										}
 									],
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 483391020582232,
+											"sid": 524589869656205,
 											"parameters": [
 												"\"right\""
 											]
 										}
 									],
-									"sid": 452194064554626
+									"sid": 755760386142207
 								},
 								{
 									"eventType": "comment",
@@ -3947,7 +4204,7 @@
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 618840103297133,
+											"sid": 466860924704122,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"comparison": 5,
@@ -3958,7 +4215,7 @@
 									"actions": [
 										{
 											"callFunction": "uiNavigate",
-											"sid": 267967261018624,
+											"sid": 714190046255184,
 											"parameters": [
 												"\"right\""
 											]
@@ -3966,14 +4223,14 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 460728308693811,
+											"sid": 120673351117451,
 											"parameters": {
 												"variable": "uiInputAutoTimer",
 												"value": "0"
 											}
 										}
 									],
-									"sid": 480542032305504
+									"sid": 264177897221117
 								}
 							],
 							"isOrBlock": true
@@ -4000,7 +4257,7 @@
 								{
 									"id": "on-button-pressed",
 									"objectClass": "Gamepad",
-									"sid": 543631671217904,
+									"sid": 669529818870345,
 									"parameters": {
 										"gamepad": "0",
 										"button": "button-a"
@@ -4010,13 +4267,13 @@
 							"actions": [
 								{
 									"callFunction": "uiSelect",
-									"sid": 519648809474586
+									"sid": 770493369326390
 								}
 							],
-							"sid": 966230008102559
+							"sid": 190312799551797
 						}
 					],
-					"sid": 345950636553376,
+					"sid": 598709467607614,
 					"text-color": [
 						0,
 						0,
@@ -4031,7 +4288,7 @@
 					]
 				}
 			],
-			"sid": 371357414851424,
+			"sid": 697365941273327,
 			"text-color": [
 				0,
 				0,

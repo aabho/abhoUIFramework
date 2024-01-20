@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 36800,
+	"savedWithRelease": 36802,
 	"name": "abho's ui framework",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -93,9 +93,7 @@
 		"subfolders": [
 			{
 				"items": [
-					"txt",
-					"uiScissorEnd",
-					"uiScissor"
+					"txt"
 				],
 				"subfolders": [
 					{
