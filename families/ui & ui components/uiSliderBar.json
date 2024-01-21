@@ -30,6 +30,34 @@
 			"desc": "from the sides of this object, how much smaller is the area considered part of the slider?",
 			"show": true,
 			"sid": 348738334168264
+		},
+		{
+			"name": "sliderLeftX",
+			"type": "number",
+			"desc": "used for calculations",
+			"show": false,
+			"sid": 296513928730532
+		},
+		{
+			"name": "sliderLeftY",
+			"type": "number",
+			"desc": "used for calculations",
+			"show": false,
+			"sid": 922248045849824
+		},
+		{
+			"name": "sliderRightX",
+			"type": "number",
+			"desc": "used for calculations",
+			"show": false,
+			"sid": 784268061757396
+		},
+		{
+			"name": "sliderRightY",
+			"type": "number",
+			"desc": "used for calculations",
+			"show": false,
+			"sid": 759760510603086
 		}
 	],
 	"behaviorTypes": [],

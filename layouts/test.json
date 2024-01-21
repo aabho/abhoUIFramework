@@ -1270,55 +1270,6 @@
 						"angle": 0,
 						"zElevation": 0
 					}
-				},
-				{
-					"type": "Camera",
-					"properties": {
-						"initially-visible": false,
-						"initial-animation": "Animation 1",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 39,
-					"instanceVariables": {},
-					"behaviors": {
-						"ScrollTo": {
-							"properties": {
-								"enabled": true
-							}
-						},
-						"Sine": {
-							"properties": {
-								"movement": "horizontal",
-								"wave": "sine",
-								"period": 4,
-								"period-random": 0,
-								"period-offset": 0,
-								"period-offset-random": 0,
-								"magnitude": 50,
-								"magnitude-random": 0,
-								"enabled": false,
-								"live-preview": false
-							}
-						}
-					},
-					"world": {
-						"x": 213.5,
-						"y": 120,
-						"width": 20,
-						"height": 20,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
 				}
 			],
 			"sid": 770644799188388,
@@ -2065,8 +2016,8 @@
 						}
 					},
 					"world": {
-						"x": 214,
-						"y": -140,
+						"x": 208,
+						"y": -111,
 						"width": 159,
 						"height": 12,
 						"originX": 0.5,
@@ -2077,7 +2028,7 @@
 							1,
 							1
 						],
-						"angle": 0,
+						"angle": 0.7853981633974483,
 						"zElevation": 0
 					}
 				},
@@ -2099,7 +2050,11 @@
 						"sliderMin": 0,
 						"sliderMax": 1,
 						"sliderStep": 0.1,
-						"sliderMarginsHorizontal": 2
+						"sliderMarginsHorizontal": 2,
+						"sliderLeftX": 0,
+						"sliderLeftY": 0,
+						"sliderRightX": 0,
+						"sliderRightY": 0
 					},
 					"behaviors": {},
 					"sceneGraphData": {
@@ -2182,7 +2137,11 @@
 						"sliderMin": 0,
 						"sliderMax": 1,
 						"sliderStep": 0.1,
-						"sliderMarginsHorizontal": 2
+						"sliderMarginsHorizontal": 2,
+						"sliderLeftX": 0,
+						"sliderLeftY": 0,
+						"sliderRightX": 0,
+						"sliderRightY": 0
 					},
 					"behaviors": {},
 					"sceneGraphData": {
@@ -2261,8 +2220,8 @@
 						}
 					},
 					"world": {
-						"x": 214,
-						"y": -122,
+						"x": 188,
+						"y": -98,
 						"width": 122,
 						"height": 10,
 						"originX": 0.5,
@@ -2273,7 +2232,7 @@
 							1,
 							1
 						],
-						"angle": 0.17453292519943295,
+						"angle": 0.7853981633974483,
 						"zElevation": 0
 					}
 				},
@@ -2423,8 +2382,8 @@
 						}
 					},
 					"world": {
-						"x": 251,
-						"y": -122,
+						"x": 221,
+						"y": -65,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -2435,7 +2394,7 @@
 							1,
 							1
 						],
-						"angle": 0.17453292519943295,
+						"angle": 0.7853981633974483,
 						"zElevation": 0
 					}
 				},
@@ -2504,8 +2463,8 @@
 						}
 					},
 					"world": {
-						"x": 167,
-						"y": -122,
+						"x": 152,
+						"y": -134,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -2516,7 +2475,7 @@
 							1,
 							1
 						],
-						"angle": 0.17453292519943295,
+						"angle": 0.7853981633974483,
 						"zElevation": 0
 					}
 				},
@@ -2585,8 +2544,8 @@
 						}
 					},
 					"world": {
-						"x": 179,
-						"y": -122,
+						"x": 172,
+						"y": -113,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -2597,7 +2556,7 @@
 							1,
 							1
 						],
-						"angle": 0.17453292519943295,
+						"angle": 0.7853981633974483,
 						"zElevation": 0
 					}
 				}
@@ -3162,6 +3121,89 @@
 			"sid": 652814196729624,
 			"effectTypes": [],
 			"isInitiallyVisible": false,
+			"isInitiallyInteractive": true,
+			"color": [
+				1,
+				1,
+				1,
+				1
+			],
+			"backgroundColor": [
+				0.3686274509803922,
+				0.3686274509803922,
+				0.3686274509803922,
+				1
+			],
+			"isTransparent": true,
+			"parallaxX": 1,
+			"parallaxY": 1,
+			"scaleRate": 1,
+			"forceOwnTexture": false,
+			"renderingMode": "3d",
+			"drawOrder": "z-order",
+			"useRenderCells": false,
+			"blendMode": "normal",
+			"zElevation": 0,
+			"global": false
+		},
+		{
+			"name": "invisible",
+			"overriden": 0,
+			"subLayers": [],
+			"instances": [
+				{
+					"type": "Camera",
+					"properties": {
+						"initially-visible": false,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 39,
+					"instanceVariables": {},
+					"behaviors": {
+						"ScrollTo": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Sine": {
+							"properties": {
+								"movement": "horizontal",
+								"wave": "sine",
+								"period": 4,
+								"period-random": 0,
+								"period-offset": 0,
+								"period-offset-random": 0,
+								"magnitude": 50,
+								"magnitude-random": 0,
+								"enabled": false,
+								"live-preview": false
+							}
+						}
+					},
+					"world": {
+						"x": 213.5,
+						"y": 120,
+						"width": 20,
+						"height": 20,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				}
+			],
+			"sid": 182953637231892,
+			"effectTypes": [],
+			"isInitiallyVisible": true,
 			"isInitiallyInteractive": true,
 			"color": [
 				1,

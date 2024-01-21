@@ -1138,91 +1138,30 @@
 									"sid": 984829212749293
 								},
 								{
-									"eventType": "comment",
-									"text": "width adjusted",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6705882352941176,
-										0.8745098039215686,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"eventType": "variable",
-									"name": "dist",
-									"type": "number",
-									"initialValue": "0",
-									"comment": "width / 2 - margin",
-									"isStatic": false,
-									"isConstant": false,
-									"sid": 899445248722655
-								},
-								{
-									"eventType": "comment",
-									"text": "slider bar positions",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6705882352941176,
-										0.8745098039215686,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"eventType": "variable",
-									"name": "leftX",
-									"type": "number",
-									"initialValue": "0",
-									"comment": "midpoint of sliderbar including margin",
-									"isStatic": false,
-									"isConstant": false,
-									"sid": 269765427069599
-								},
-								{
-									"eventType": "variable",
-									"name": "leftY",
-									"type": "number",
-									"initialValue": "0",
-									"comment": "midpoint of sliderbar including margin",
-									"isStatic": false,
-									"isConstant": false,
-									"sid": 970091127295629
-								},
-								{
-									"eventType": "variable",
-									"name": "rightX",
-									"type": "number",
-									"initialValue": "0",
-									"comment": "midpoint of sliderbar including margin",
-									"isStatic": false,
-									"isConstant": false,
-									"sid": 688266507939673
-								},
-								{
-									"eventType": "variable",
-									"name": "rightY",
-									"type": "number",
-									"initialValue": "0",
-									"comment": "midpoint of sliderbar including margin",
-									"isStatic": false,
-									"isConstant": false,
-									"sid": 639147827142969
-								},
-								{
 									"eventType": "block",
 									"conditions": [],
 									"actions": [
+										{
+											"type": "comment",
+											"text": "calculate the bounds of the slider area, it gets stored as instance variables in uiSliderBar",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"customAction": "uiCalculateMargins [INTERNAL]",
+											"objectClass": "uiSliderHandle",
+											"sid": 926361722741649
+										},
 										{
 											"type": "comment",
 											"text": "calculate a number from 0 to 1, based on the slider value relative to the slider min/max",
@@ -1242,71 +1181,10 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 926822829478276,
+											"sid": 702097203648968,
 											"parameters": {
 												"variable": "lerpHandleToBar",
 												"value": "unlerp(uiSliderBar.sliderMin, uiSliderBar.sliderMax, uiSliderHandle.sliderValue)"
-											}
-										},
-										{
-											"type": "comment",
-											"text": "calculate the bounds of the slider area (this is complicated because it considers the angle of the slider and its margins)",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 263606745578799,
-											"parameters": {
-												"variable": "dist",
-												"value": "uiSliderBar.Width / 2 - uiSliderBar.sliderMarginsHorizontal"
-											}
-										},
-										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 101887123250261,
-											"parameters": {
-												"variable": "leftX",
-												"value": "uiSliderBar.BBoxMidX - cos(uiSliderBar.Angle) * dist"
-											}
-										},
-										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 651244336418808,
-											"parameters": {
-												"variable": "rightX",
-												"value": "uiSliderBar.BBoxMidX + cos(uiSliderBar.Angle) * dist"
-											}
-										},
-										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 415623860694802,
-											"parameters": {
-												"variable": "leftY",
-												"value": "uiSliderBar.BBoxMidY - sin(uiSliderBar.Angle) * dist"
-											}
-										},
-										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 500662160427345,
-											"parameters": {
-												"variable": "rightY",
-												"value": "uiSliderBar.BBoxMidY + sin(uiSliderBar.Angle) * dist"
 											}
 										}
 									],
@@ -1346,10 +1224,10 @@
 												{
 													"customAction": "uiSliderHandleMove",
 													"objectClass": "ui",
-													"sid": 199095249685769,
+													"sid": 904755177062462,
 													"parameters": [
-														"lerp(leftX, rightX, lerpHandleToBar)",
-														"lerp(leftY, rightY, lerpHandleToBar)"
+														"lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, lerpHandleToBar)",
+														"lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, lerpHandleToBar)"
 													]
 												}
 											],
@@ -1384,10 +1262,10 @@
 												{
 													"id": "set-position",
 													"objectClass": "ui",
-													"sid": 703716764570584,
+													"sid": 646665991375560,
 													"parameters": {
-														"x": "lerp(leftX, rightX, lerpHandleToBar)",
-														"y": "lerp(leftY, rightY, lerpHandleToBar)"
+														"x": "lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, lerpHandleToBar)",
+														"y": "lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, lerpHandleToBar)"
 													}
 												}
 											],
@@ -1802,6 +1680,143 @@
 								}
 							],
 							"sid": 957892311071467
+						},
+						{
+							"eventType": "comment",
+							"text": "calculate and set values for margins based on angle",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiCalculateMargins [INTERNAL]",
+							"objectClass": "uiSliderHandle",
+							"functionDescription": "calculate and set values for margins",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [
+								{
+									"id": "pick-parent",
+									"objectClass": "uiSliderHandle",
+									"sid": 537698343593476,
+									"parameters": {
+										"parent": "uiSliderBar",
+										"which": "own"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 130101610024086,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "width adjusted",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6705882352941176,
+										0.8745098039215686,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "variable",
+									"name": "dist",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "width / 2 - margin",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 143249052804218
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 513848186212154,
+											"parameters": {
+												"variable": "dist",
+												"value": "uiSliderBar.Width / 2 - uiSliderBar.sliderMarginsHorizontal"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "calculate the bounds of the slider area (this is complicated because it considers the angle of the slider and its margins)",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "uiSliderBar",
+											"sid": 947384400691266,
+											"parameters": {
+												"instance-variable": "sliderLeftX",
+												"value": "uiSliderBar.BBoxMidX - cos(uiSliderBar.Angle) * dist"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "uiSliderBar",
+											"sid": 292279479150468,
+											"parameters": {
+												"instance-variable": "sliderLeftY",
+												"value": "uiSliderBar.BBoxMidY - sin(uiSliderBar.Angle) * dist"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "uiSliderBar",
+											"sid": 655900820705071,
+											"parameters": {
+												"instance-variable": "sliderRightX",
+												"value": "uiSliderBar.BBoxMidX + cos(uiSliderBar.Angle) * dist"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "uiSliderBar",
+											"sid": 596765755532274,
+											"parameters": {
+												"instance-variable": "sliderRightY",
+												"value": "uiSliderBar.BBoxMidY + sin(uiSliderBar.Angle) * dist"
+											}
+										}
+									],
+									"sid": 648475546296878
+								}
+							]
 						}
 					],
 					"sid": 671963439530446,
@@ -2062,22 +2077,6 @@
 							],
 							"sid": 364808941281007
 						}
-					]
-				},
-				{
-					"eventType": "comment",
-					"text": "the rest of these are internal, so I don't recommend manually calling them or changing them anyways",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.8470588235294118,
-						0.6431372549019608,
-						0.8745098039215686,
-						1
 					]
 				},
 				{
@@ -3972,7 +3971,7 @@
 										{
 											"id": "is-boolean-instance-variable-set",
 											"objectClass": "ui",
-											"sid": 964239018328673,
+											"sid": 274947338551726,
 											"parameters": {
 												"instance-variable": "active"
 											}
@@ -3980,11 +3979,21 @@
 										{
 											"id": "compare-instance-variable",
 											"objectClass": "ui",
-											"sid": 830716126804805,
+											"sid": 665464517496647,
 											"parameters": {
 												"instance-variable": "id",
 												"comparison": 0,
 												"value": "uiChosenID"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 424488898606024,
+											"parameters": {
+												"variable": "uiSelectedSliderHandle",
+												"comparison": 0,
+												"value": "\"\""
 											}
 										}
 									],
@@ -3995,6 +4004,232 @@
 										}
 									],
 									"sid": 501408826394700
+								},
+								{
+									"eventType": "comment",
+									"text": "slider behavior",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 936275852689223,
+											"parameters": {
+												"variable": "uiSelectedSliderHandle",
+												"comparison": 0,
+												"value": "\"\""
+											},
+											"isInverted": true
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "ui",
+											"sid": 367455949746098,
+											"parameters": {
+												"instance-variable": "id",
+												"comparison": 0,
+												"value": "uiSelectedSliderHandle"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 317261726233650,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "slider drag",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "variable",
+											"name": "mRotatedX",
+											"type": "number",
+											"initialValue": "0",
+											"comment": "",
+											"isStatic": false,
+											"isConstant": false,
+											"sid": 744388463383024
+										},
+										{
+											"eventType": "variable",
+											"name": "mUnlerped",
+											"type": "number",
+											"initialValue": "0",
+											"comment": "",
+											"isStatic": false,
+											"isConstant": false,
+											"sid": 388165724651854
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-movement",
+													"objectClass": "Mouse",
+													"sid": 164501868657835
+												},
+												{
+													"id": "pick-by-unique-id",
+													"objectClass": "uiSliderHandle",
+													"sid": 834438021117723,
+													"parameters": {
+														"unique-id": "ui.UID"
+													}
+												},
+												{
+													"id": "pick-parent",
+													"objectClass": "uiSliderHandle",
+													"sid": 484190672096578,
+													"parameters": {
+														"parent": "uiSliderBar",
+														"which": "own"
+													}
+												}
+											],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "basically takes mouse position and rotates it relative to the slider bar angle",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 133574050130371,
+													"parameters": {
+														"variable": "mRotatedX",
+														"value": "cos(-uiSliderBar.Angle) * (Mouse.X - uiSliderBar.X) - sin(-uiSliderBar.Angle) * (Mouse.Y - uiSliderBar.Y)"
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 677963039171038,
+													"parameters": {
+														"variable": "mUnlerped",
+														"value": "unlerp(-uiSliderBar.Width / 2 + uiSliderBar.sliderMarginsHorizontal, uiSliderBar.Width / 2 - uiSliderBar.sliderMarginsHorizontal, mRotatedX)"
+													}
+												},
+												{
+													"type": "comment",
+													"text": "calculate slider value using mUnlerped and slider bar range",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 152943875542977,
+													"parameters": {
+														"instance-variable": "sliderValue",
+														"value": "round(lerp(uiSliderBar.sliderMin, uiSliderBar.sliderMax, mUnlerped) / uiSliderBar.sliderStep) * uiSliderBar.sliderStep"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 718353294743135,
+													"parameters": {
+														"instance-variable": "sliderValue",
+														"value": "clamp(Self.sliderValue, uiSliderBar.sliderMin, uiSliderBar.sliderMax)"
+													}
+												}
+											],
+											"sid": 547040472563690
+										},
+										{
+											"eventType": "comment",
+											"text": "deselect",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-button-released",
+													"objectClass": "Mouse",
+													"sid": 386334659508468,
+													"parameters": {
+														"mouse-button": "left"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 964663314127139,
+													"parameters": {
+														"variable": "uiSelectedSliderHandle",
+														"value": "\"\""
+													}
+												},
+												{
+													"customAction": "uiSliderHandleDeselect",
+													"objectClass": "ui",
+													"sid": 271016208152837
+												}
+											],
+											"sid": 356706211341932
+										}
+									]
 								}
 							],
 							"sid": 337367277458422,
