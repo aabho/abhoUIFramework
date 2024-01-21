@@ -56,7 +56,7 @@
 					"instanceVariables": {
 						"active": false,
 						"chosen": false,
-						"group": "main",
+						"section": "main",
 						"id": "mainPlayGame",
 						"oWidth": 0,
 						"oHeight": 0,
@@ -225,7 +225,7 @@
 					"instanceVariables": {
 						"active": false,
 						"chosen": false,
-						"group": "main",
+						"section": "main",
 						"id": "mainSettings",
 						"oWidth": 0,
 						"oHeight": 0,
@@ -394,7 +394,7 @@
 					"instanceVariables": {
 						"active": false,
 						"chosen": false,
-						"group": "main",
+						"section": "main",
 						"id": "mainDummy",
 						"oWidth": 0,
 						"oHeight": 0,
@@ -563,7 +563,7 @@
 					"instanceVariables": {
 						"active": false,
 						"chosen": false,
-						"group": "main",
+						"section": "main",
 						"id": "mainDummy2",
 						"oWidth": 0,
 						"oHeight": 0,
@@ -732,7 +732,7 @@
 					"instanceVariables": {
 						"active": false,
 						"chosen": false,
-						"group": "main",
+						"section": "main",
 						"id": "mainDummy4",
 						"oWidth": 0,
 						"oHeight": 0,
@@ -901,7 +901,7 @@
 					"instanceVariables": {
 						"active": false,
 						"chosen": false,
-						"group": "main",
+						"section": "main",
 						"id": "mainQuit",
 						"oWidth": 0,
 						"oHeight": 0,
@@ -1556,7 +1556,7 @@
 					"instanceVariables": {
 						"active": false,
 						"chosen": false,
-						"group": "mainSettingsApply",
+						"section": "mainSettingsApply",
 						"id": "mainSettingsApply",
 						"oWidth": 0,
 						"oHeight": 0,
@@ -1653,7 +1653,7 @@
 					"instanceVariables": {
 						"active": false,
 						"chosen": false,
-						"group": "mainSettings",
+						"section": "mainSettings",
 						"id": "mainSettingsBack",
 						"oWidth": 0,
 						"oHeight": 0,
@@ -2113,7 +2113,7 @@
 					"instanceVariables": {
 						"active": false,
 						"chosen": false,
-						"group": "mainQuit",
+						"section": "mainQuit",
 						"id": "mainQuitConfirm",
 						"oWidth": 0,
 						"oHeight": 0,
@@ -2282,7 +2282,7 @@
 					"instanceVariables": {
 						"active": false,
 						"chosen": false,
-						"group": "mainQuit",
+						"section": "mainQuit",
 						"id": "mainQuitCancel",
 						"oWidth": 0,
 						"oHeight": 0,

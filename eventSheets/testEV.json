@@ -7,7 +7,7 @@
 		},
 		{
 			"eventType": "comment",
-			"text": "on start of layout, activate the main group",
+			"text": "on start of layout, activate the main section",
 			"text-color": [
 				0,
 				0,
@@ -32,7 +32,7 @@
 			],
 			"actions": [
 				{
-					"callFunction": "uiEnableGroup",
+					"callFunction": "uiEnableSection",
 					"sid": 972922684092992,
 					"parameters": [
 						"\"main\""
@@ -68,7 +68,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "when ANY button that has the group \"main\" is selected...",
+					"text": "when ANY button that has the section \"main\" is selected...",
 					"text-color": [
 						0,
 						0,
@@ -162,225 +162,247 @@
 					"sid": 974698822890559
 				},
 				{
-					"eventType": "comment",
-					"text": "quit selected",
+					"eventType": "group",
+					"disabled": false,
+					"title": "main main",
+					"description": "I know the name of this group is a bit strange, but I always put the name of the layout before putting the name of the UI section, which in this case... yeah.",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "quit selected",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "select mainQuit",
+							"functionDescription": "",
+							"functionCategory": "select",
+							"functionReturnType": "none",
+							"functionCopyPicked": true,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [],
+							"sid": 296968464749764,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "disable the main menu, and enable the quit confirmation ui",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"callFunction": "uiEnableSection",
+											"sid": 993432673397228,
+											"parameters": [
+												"\"mainQuit\""
+											]
+										},
+										{
+											"callFunction": "uiDisableSection",
+											"sid": 274078826139542,
+											"parameters": [
+												"\"main\""
+											]
+										},
+										{
+											"type": "comment",
+											"text": "make the quit menu move onto the screen",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-layer-visible",
+											"objectClass": "System",
+											"sid": 755575869254307,
+											"parameters": {
+												"layer": "\"quit confirm\"",
+												"visibility": "visible"
+											}
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiMainQuitBg",
+											"sid": 874411357088735,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"move\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainQuitBg",
+											"sid": 553748785454300,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"move\"",
+												"property": "offsetY",
+												"end-value": "Self.tY",
+												"time": "0.2",
+												"ease": "easeoutsine",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 897689551717139
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "settings",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "select mainSettings",
+							"functionDescription": "",
+							"functionCategory": "select",
+							"functionReturnType": "none",
+							"functionCopyPicked": true,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [],
+							"sid": 917958174478447,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"callFunction": "uiEnableSection",
+											"sid": 493391209093917,
+											"parameters": [
+												"\"mainSettings\""
+											]
+										},
+										{
+											"callFunction": "uiDisableSection",
+											"sid": 514706532525314,
+											"parameters": [
+												"\"main\""
+											]
+										},
+										{
+											"type": "comment",
+											"text": "make settings drop down",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-layer-visible",
+											"objectClass": "System",
+											"sid": 243339950490133,
+											"parameters": {
+												"layer": "\"settings\"",
+												"visibility": "visible"
+											}
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiMainSettingsBg",
+											"sid": 916847032016759,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"move\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainSettingsBg",
+											"sid": 235467360857710,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"move\"",
+												"property": "offsetY",
+												"end-value": "Self.tY",
+												"time": "0.2",
+												"ease": "easeoutsine",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 300464399961150
+								}
+							]
+						}
+					],
+					"sid": 116526648231413,
 					"text-color": [
 						0,
 						0,
 						0,
-						1
+						0
 					],
 					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
+						0.8392156862745098,
+						0.8392156862745098,
+						0.8392156862745098,
 						1
-					]
-				},
-				{
-					"functionName": "select mainQuit",
-					"functionDescription": "",
-					"functionCategory": "select",
-					"functionReturnType": "none",
-					"functionCopyPicked": true,
-					"functionIsAsync": false,
-					"functionParameters": [],
-					"eventType": "function-block",
-					"conditions": [],
-					"actions": [],
-					"sid": 429831850431480,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [],
-							"actions": [
-								{
-									"type": "comment",
-									"text": "disable the main menu, and enable the quit confirmation ui",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"callFunction": "uiEnableGroup",
-									"sid": 403789125289163,
-									"parameters": [
-										"\"mainQuit\""
-									]
-								},
-								{
-									"callFunction": "uiDisableGroup",
-									"sid": 574549239351832,
-									"parameters": [
-										"\"main\""
-									]
-								},
-								{
-									"type": "comment",
-									"text": "make the quit menu move onto the screen",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"id": "set-layer-visible",
-									"objectClass": "System",
-									"sid": 853327687489651,
-									"parameters": {
-										"layer": "\"quit confirm\"",
-										"visibility": "visible"
-									}
-								},
-								{
-									"id": "stop-tweens",
-									"objectClass": "uiMainQuitBg",
-									"sid": 658164552356663,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"move\""
-									}
-								},
-								{
-									"id": "tween-one-property",
-									"objectClass": "uiMainQuitBg",
-									"sid": 205201230575818,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"move\"",
-										"property": "offsetY",
-										"end-value": "Self.tY",
-										"time": "0.2",
-										"ease": "easeoutsine",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
-									}
-								}
-							],
-							"sid": 154992849680672
-						}
-					]
-				},
-				{
-					"eventType": "comment",
-					"text": "settings",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"functionName": "select mainSettings",
-					"functionDescription": "",
-					"functionCategory": "select",
-					"functionReturnType": "none",
-					"functionCopyPicked": true,
-					"functionIsAsync": false,
-					"functionParameters": [],
-					"eventType": "function-block",
-					"conditions": [],
-					"actions": [],
-					"sid": 737375685633800,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [],
-							"actions": [
-								{
-									"callFunction": "uiEnableGroup",
-									"sid": 608843637727975,
-									"parameters": [
-										"\"\""
-									]
-								},
-								{
-									"callFunction": "uiDisableGroup",
-									"sid": 472440849391342,
-									"parameters": [
-										"\"\""
-									]
-								},
-								{
-									"type": "comment",
-									"text": "make settings drop down",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"id": "set-layer-visible",
-									"objectClass": "System",
-									"sid": 993491355403734,
-									"parameters": {
-										"layer": "\"settings\"",
-										"visibility": "visible"
-									}
-								},
-								{
-									"id": "stop-tweens",
-									"objectClass": "uiMainSettingsBg",
-									"sid": 629276083275729,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"move\""
-									}
-								},
-								{
-									"id": "tween-one-property",
-									"objectClass": "uiMainSettingsBg",
-									"sid": 663823135829784,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"move\"",
-										"property": "offsetY",
-										"end-value": "Self.tY",
-										"time": "0.2",
-										"ease": "easeoutsine",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
-									}
-								}
-							],
-							"sid": 178292893025673
-						}
 					]
 				},
 				{
@@ -392,7 +414,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "when ANY button that has the group \"mainQuit\" is selected...",
+							"text": "when ANY button that has the section \"mainQuit\" is selected...",
 							"text-color": [
 								0,
 								0,
@@ -519,7 +541,7 @@
 									"conditions": [],
 									"actions": [
 										{
-											"callFunction": "uiDisableAllGroups",
+											"callFunction": "uiDisableAllSections",
 											"sid": 610313680969286
 										},
 										{
@@ -609,14 +631,14 @@
 									"conditions": [],
 									"actions": [
 										{
-											"callFunction": "uiEnableGroup",
+											"callFunction": "uiEnableSection",
 											"sid": 895400612353177,
 											"parameters": [
 												"\"\""
 											]
 										},
 										{
-											"callFunction": "uiDisableGroup",
+											"callFunction": "uiDisableSection",
 											"sid": 879424459886586,
 											"parameters": [
 												"\"\""
@@ -707,7 +729,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "when ANY button that has the group \"mainSettings\" is selected...",
+							"text": "when ANY button that has the section \"mainSettings\" is selected...",
 							"text-color": [
 								0,
 								0,
@@ -834,21 +856,21 @@
 									"conditions": [],
 									"actions": [
 										{
-											"callFunction": "uiEnableGroup",
+											"callFunction": "uiEnableSection",
 											"sid": 900948281765681,
 											"parameters": [
 												"\"\""
 											]
 										},
 										{
-											"callFunction": "uiDisableGroup",
+											"callFunction": "uiDisableSection",
 											"sid": 665620099772880,
 											"parameters": [
 												"\"\""
 											]
 										},
 										{
-											"callFunction": "uiDisableGroup",
+											"callFunction": "uiDisableSection",
 											"sid": 758621448850453,
 											"parameters": [
 												"\"\""

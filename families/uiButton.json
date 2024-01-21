@@ -18,9 +18,9 @@
 			"sid": 219814938662544
 		},
 		{
-			"name": "group",
+			"name": "section",
 			"type": "string",
-			"desc": "every button in a group shares this var",
+			"desc": "every button in a section shares this var",
 			"show": true,
 			"sid": 123641396199175
 		},
