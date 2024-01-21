@@ -35,7 +35,6 @@
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"members": [
-		"uiMainSettingsSlider",
-		"uiMainSettingsSliderBar"
+		"uiMainSettingsSlider"
 	]
 }

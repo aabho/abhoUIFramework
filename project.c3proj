@@ -127,11 +127,17 @@
 	"autosaveData": null,
 	"containers": [],
 	"families": {
-		"items": [
-			"ui",
-			"uiSlider"
-		],
-		"subfolders": []
+		"items": [],
+		"subfolders": [
+			{
+				"items": [
+					"ui",
+					"uiSlider"
+				],
+				"subfolders": [],
+				"name": "ui & ui components"
+			}
+		]
 	},
 	"layouts": {
 		"items": [

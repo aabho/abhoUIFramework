@@ -125,40 +125,6 @@
 								"instance-variable": "oHeight",
 								"value": "Self.Height"
 							}
-						},
-						{
-							"type": "comment",
-							"text": "add the original size to the mouseover size (if you set it to 4 in properties, then it will be 4 more than the original size)",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "ui",
-							"sid": 662097387894664,
-							"parameters": {
-								"instance-variable": "mAddWidth",
-								"value": "Self.oWidth+ Self.mAddWidth"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "ui",
-							"sid": 729428351030530,
-							"parameters": {
-								"instance-variable": "mAddHeight",
-								"value": "Self.oHeight+ Self.mAddHeight"
-							}
 						}
 					],
 					"sid": 580855353191997
@@ -938,22 +904,22 @@
 						{
 							"id": "set-size",
 							"objectClass": "ui",
-							"sid": 471036801059981,
+							"sid": 290951342153250,
 							"parameters": {
-								"width": "Self.mAddWidth + 4",
-								"height": "Self.mAddHeight + 4"
+								"width": "Self.oWidth + 8",
+								"height": "Self.oHeight + 8"
 							}
 						},
 						{
 							"id": "tween-two-properties",
 							"objectClass": "ui",
-							"sid": 164620828043711,
+							"sid": 440506082403054,
 							"behaviorType": "Tween",
 							"parameters": {
 								"tags": "\"uiSize uiGrow\"",
 								"property": "size",
-								"end-x": "Self.mAddWidth",
-								"end-y": "Self.mAddHeight",
+								"end-x": "Self.oWidth + 4",
+								"end-y": "Self.oHeight + 4",
 								"time": "0.1",
 								"ease": "easeoutcubic",
 								"destroy-on-complete": "no",
@@ -2757,39 +2723,80 @@
 												{
 													"id": "is-boolean-instance-variable-set",
 													"objectClass": "ui",
-													"sid": 490527470127452,
+													"sid": 191247888393426,
 													"parameters": {
 														"instance-variable": "active"
 													}
-												},
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "ui",
-													"sid": 977029400034418,
-													"parameters": {
-														"instance-variable": "id",
-														"comparison": 0,
-														"value": "uiChosenID"
-													},
-													"isInverted": true
 												}
 											],
-											"actions": [
+											"actions": [],
+											"sid": 766944397163852,
+											"children": [
 												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 300642866436856,
-													"parameters": {
-														"variable": "uiChosenID",
-														"value": "ui.id"
-													}
+													"eventType": "comment",
+													"text": "choose this component, but only if it's not already chosen",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
 												},
 												{
-													"callFunction": "uiUpdate [INTERNAL]",
-													"sid": 308640139377725
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "ui",
+															"sid": 917494570516345,
+															"parameters": {
+																"instance-variable": "id",
+																"comparison": 0,
+																"value": "uiChosenID"
+															},
+															"isInverted": true
+														}
+													],
+													"actions": [
+														{
+															"id": "set-eventvar-value",
+															"objectClass": "System",
+															"sid": 168511754010821,
+															"parameters": {
+																"variable": "uiChosenID",
+																"value": "ui.id"
+															}
+														},
+														{
+															"callFunction": "uiUpdate [INTERNAL]",
+															"sid": 294382381035618
+														}
+													],
+													"sid": 635614601165071
 												}
+											]
+										},
+										{
+											"eventType": "comment",
+											"text": "if not over any ui components that are active",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
 											],
-											"sid": 766944397163852
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
 										},
 										{
 											"eventType": "block",
@@ -2798,15 +2805,6 @@
 													"id": "else",
 													"objectClass": "System",
 													"sid": 827272743309556
-												},
-												{
-													"id": "cursor-is-over-object",
-													"objectClass": "Mouse",
-													"sid": 755734096738003,
-													"parameters": {
-														"object": "ui"
-													},
-													"isInverted": true
 												}
 											],
 											"actions": [

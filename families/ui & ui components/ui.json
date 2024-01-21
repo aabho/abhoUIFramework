@@ -4,13 +4,6 @@
 	"sid": 822770670897346,
 	"instanceVariables": [
 		{
-			"name": "component",
-			"type": "string",
-			"desc": "used to identify the behavior of this UI object",
-			"show": true,
-			"sid": 353574442411682
-		},
-		{
 			"name": "section",
 			"type": "string",
 			"desc": "every button in a section shares this var",
@@ -79,20 +72,6 @@
 			"desc": "for size animations, can remove this if you'd like",
 			"show": false,
 			"sid": 304615723960730
-		},
-		{
-			"name": "mAddWidth",
-			"type": "number",
-			"desc": "for size animations, can remove this if you'd like",
-			"show": true,
-			"sid": 196487588006921
-		},
-		{
-			"name": "mAddHeight",
-			"type": "number",
-			"desc": "for size animations, can remove this if you'd like",
-			"show": true,
-			"sid": 629137152964272
 		}
 	],
 	"behaviorTypes": [

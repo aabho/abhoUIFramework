@@ -54,7 +54,6 @@
 					},
 					"uid": 4,
 					"instanceVariables": {
-						"component": "button",
 						"section": "main",
 						"id": "mainPlayGame",
 						"active": false,
@@ -64,9 +63,7 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4
+						"oHeight": 0
 					},
 					"behaviors": {
 						"Tween": {
@@ -224,7 +221,6 @@
 					},
 					"uid": 6,
 					"instanceVariables": {
-						"component": "button",
 						"section": "main",
 						"id": "mainSettings",
 						"active": false,
@@ -234,9 +230,7 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4
+						"oHeight": 0
 					},
 					"behaviors": {
 						"Tween": {
@@ -394,7 +388,6 @@
 					},
 					"uid": 11,
 					"instanceVariables": {
-						"component": "button",
 						"section": "main",
 						"id": "mainDummy",
 						"active": false,
@@ -404,9 +397,7 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4
+						"oHeight": 0
 					},
 					"behaviors": {
 						"Tween": {
@@ -564,7 +555,6 @@
 					},
 					"uid": 13,
 					"instanceVariables": {
-						"component": "button",
 						"section": "main",
 						"id": "mainDummy2",
 						"active": false,
@@ -574,9 +564,7 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4
+						"oHeight": 0
 					},
 					"behaviors": {
 						"Tween": {
@@ -734,7 +722,6 @@
 					},
 					"uid": 18,
 					"instanceVariables": {
-						"component": "button",
 						"section": "main",
 						"id": "mainDummy4",
 						"active": false,
@@ -744,9 +731,7 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4
+						"oHeight": 0
 					},
 					"behaviors": {
 						"Tween": {
@@ -904,7 +889,6 @@
 					},
 					"uid": 8,
 					"instanceVariables": {
-						"component": "button",
 						"section": "main",
 						"id": "mainQuit",
 						"active": false,
@@ -914,9 +898,7 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4
+						"oHeight": 0
 					},
 					"behaviors": {
 						"Tween": {
@@ -1459,6 +1441,36 @@
 									"d": true,
 									"sm": "normal"
 								}
+							},
+							{
+								"uid": 17,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							},
+							{
+								"uid": 16,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
 							}
 						],
 						"flags": {
@@ -1590,7 +1602,6 @@
 					},
 					"uid": 32,
 					"instanceVariables": {
-						"component": "button",
 						"section": "mainSettingsApply",
 						"id": "mainSettingsApply",
 						"active": false,
@@ -1600,9 +1611,7 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4
+						"oHeight": 0
 					},
 					"behaviors": {
 						"Tween": {
@@ -1688,7 +1697,6 @@
 					},
 					"uid": 33,
 					"instanceVariables": {
-						"component": "button",
 						"section": "mainSettings",
 						"id": "mainSettingsBack",
 						"active": false,
@@ -1698,9 +1706,7 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4
+						"oHeight": 0
 					},
 					"behaviors": {
 						"Tween": {
@@ -1943,7 +1949,7 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"sceneGraphData": {
-						"parent-uid": null,
+						"parent-uid": 30,
 						"uid": 16,
 						"flags": {
 							"x": true,
@@ -2015,7 +2021,7 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"sceneGraphData": {
-						"parent-uid": null,
+						"parent-uid": 30,
 						"uid": 17,
 						"flags": {
 							"x": true,
@@ -2074,7 +2080,6 @@
 					},
 					"uid": 21,
 					"instanceVariables": {
-						"component": "slider",
 						"section": "mainSettings",
 						"id": "mainSettingsSfx",
 						"active": false,
@@ -2085,8 +2090,6 @@
 						"overrideRight": "",
 						"oWidth": 0,
 						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4,
 						"sliderMin": 0,
 						"sliderMax": 1,
 						"sliderStep": 0.1,
@@ -2102,6 +2105,23 @@
 					"sceneGraphData": {
 						"parent-uid": 30,
 						"uid": 21,
+						"children": [
+							{
+								"uid": 37,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": false,
+									"h": false,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
 						"flags": {
 							"x": true,
 							"y": true,
@@ -2159,7 +2179,6 @@
 					},
 					"uid": 36,
 					"instanceVariables": {
-						"component": "slider",
 						"section": "mainSettings",
 						"id": "mainSettingsMus",
 						"active": false,
@@ -2170,8 +2189,6 @@
 						"overrideRight": "",
 						"oWidth": 0,
 						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4,
 						"sliderMin": 0,
 						"sliderMax": 1,
 						"sliderStep": 0.1,
@@ -2217,6 +2234,84 @@
 						"y": -122,
 						"width": 122,
 						"height": 10,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsSliderBar",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 37,
+					"instanceVariables": {
+						"section": "mainSettings",
+						"id": "mainSettingsSfx",
+						"active": false,
+						"chosen": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": 21,
+						"uid": 37,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 238,
+						"y": -163,
+						"width": 6,
+						"height": 16,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -2463,7 +2558,6 @@
 					},
 					"uid": 26,
 					"instanceVariables": {
-						"component": "button",
 						"section": "mainQuit",
 						"id": "mainQuitConfirm",
 						"active": false,
@@ -2473,9 +2567,7 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4
+						"oHeight": 0
 					},
 					"behaviors": {
 						"Tween": {
@@ -2633,7 +2725,6 @@
 					},
 					"uid": 28,
 					"instanceVariables": {
-						"component": "button",
 						"section": "mainQuit",
 						"id": "mainQuitCancel",
 						"active": false,
@@ -2643,9 +2734,7 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4
+						"oHeight": 0
 					},
 					"behaviors": {
 						"Tween": {
