@@ -52,7 +52,33 @@
 				},
 				{
 					"eventType": "block",
-					"conditions": [],
+					"conditions": [
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 918322724446110
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 853002016782602
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 829340321242569
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 863837880588552
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 469587087697181
+						}
+					],
 					"actions": [],
 					"sid": 957305225824796,
 					"children": [
@@ -106,7 +132,37 @@
 						},
 						{
 							"eventType": "block",
-							"conditions": [],
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 860290664661237,
+									"parameters": {
+										"first-value": "Infinity + 1",
+										"comparison": 4,
+										"second-value": "Infinity"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 597654937339946,
+									"parameters": {
+										"first-value": "pi",
+										"comparison": 0,
+										"second-value": "3"
+									}
+								},
+								{
+									"id": "is-number-nan",
+									"objectClass": "System",
+									"sid": 180011320337324,
+									"parameters": {
+										"number": "1/0"
+									},
+									"isInverted": true
+								}
+							],
 							"actions": [
 								{
 									"type": "comment",
@@ -157,8 +213,7 @@
 									]
 								}
 							],
-							"sid": 923480747021074,
-							"isOrBlock": true
+							"sid": 923480747021074
 						}
 					]
 				}

@@ -71,7 +71,7 @@
 					"conditions": [
 						{
 							"id": "on-created",
-							"objectClass": "uiButton",
+							"objectClass": "ui",
 							"sid": 170679725534965
 						}
 					],
@@ -110,7 +110,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "uiButton",
+							"objectClass": "ui",
 							"sid": 403292945053756,
 							"parameters": {
 								"instance-variable": "oWidth",
@@ -119,7 +119,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "uiButton",
+							"objectClass": "ui",
 							"sid": 604949244160009,
 							"parameters": {
 								"instance-variable": "oHeight",
@@ -144,7 +144,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "uiButton",
+							"objectClass": "ui",
 							"sid": 662097387894664,
 							"parameters": {
 								"instance-variable": "mAddWidth",
@@ -153,7 +153,7 @@
 						},
 						{
 							"id": "set-instvar-value",
-							"objectClass": "uiButton",
+							"objectClass": "ui",
 							"sid": 729428351030530,
 							"parameters": {
 								"instance-variable": "mAddHeight",
@@ -246,12 +246,12 @@
 									"objectClass": "System",
 									"sid": 866571671128769,
 									"parameters": {
-										"object": "uiButton"
+										"object": "ui"
 									}
 								},
 								{
 									"id": "compare-instance-variable",
-									"objectClass": "uiButton",
+									"objectClass": "ui",
 									"sid": 585606811525173,
 									"parameters": {
 										"instance-variable": "section",
@@ -263,7 +263,7 @@
 							"actions": [
 								{
 									"id": "set-boolean-instvar",
-									"objectClass": "uiButton",
+									"objectClass": "ui",
 									"sid": 799689692036383,
 									"parameters": {
 										"instance-variable": "active",
@@ -331,12 +331,12 @@
 									"objectClass": "System",
 									"sid": 994597239661859,
 									"parameters": {
-										"object": "uiButton"
+										"object": "ui"
 									}
 								},
 								{
 									"id": "compare-instance-variable",
-									"objectClass": "uiButton",
+									"objectClass": "ui",
 									"sid": 506080187620859,
 									"parameters": {
 										"instance-variable": "section",
@@ -348,7 +348,7 @@
 							"actions": [
 								{
 									"id": "set-boolean-instvar",
-									"objectClass": "uiButton",
+									"objectClass": "ui",
 									"sid": 738143951680086,
 									"parameters": {
 										"instance-variable": "active",
@@ -408,14 +408,14 @@
 									"objectClass": "System",
 									"sid": 424387257879674,
 									"parameters": {
-										"object": "uiButton"
+										"object": "ui"
 									}
 								}
 							],
 							"actions": [
 								{
 									"id": "set-boolean-instvar",
-									"objectClass": "uiButton",
+									"objectClass": "ui",
 									"sid": 407084703498232,
 									"parameters": {
 										"instance-variable": "active",
@@ -523,7 +523,7 @@
 							"objectClass": "System",
 							"sid": 849635044123203,
 							"parameters": {
-								"object": "uiButton"
+								"object": "ui"
 							}
 						},
 						{
@@ -531,7 +531,7 @@
 							"objectClass": "System",
 							"sid": 123770364526943,
 							"parameters": {
-								"object": "uiButton"
+								"object": "ui"
 							}
 						}
 					],
@@ -559,7 +559,7 @@
 							"conditions": [
 								{
 									"id": "is-boolean-instance-variable-set",
-									"objectClass": "uiButton",
+									"objectClass": "ui",
 									"sid": 275088124159111,
 									"parameters": {
 										"instance-variable": "active"
@@ -569,7 +569,7 @@
 							"actions": [
 								{
 									"id": "stop-tweens",
-									"objectClass": "uiButton",
+									"objectClass": "ui",
 									"sid": 167150231167429,
 									"behaviorType": "Tween",
 									"parameters": {
@@ -578,7 +578,7 @@
 								},
 								{
 									"id": "tween-one-property",
-									"objectClass": "uiButton",
+									"objectClass": "ui",
 									"sid": 836614453204239,
 									"behaviorType": "Tween",
 									"parameters": {
@@ -617,7 +617,7 @@
 									"conditions": [
 										{
 											"id": "compare-instance-variable",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 720378766327013,
 											"parameters": {
 												"instance-variable": "id",
@@ -628,7 +628,7 @@
 										},
 										{
 											"id": "is-boolean-instance-variable-set",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 721500690245466,
 											"parameters": {
 												"instance-variable": "chosen"
@@ -638,7 +638,7 @@
 									"actions": [
 										{
 											"id": "set-boolean-instvar",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 461743409579952,
 											"parameters": {
 												"instance-variable": "chosen",
@@ -663,7 +663,7 @@
 										},
 										{
 											"customAction": "uiUnchoose",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 817953296048297
 										}
 									],
@@ -690,7 +690,7 @@
 									"conditions": [
 										{
 											"id": "compare-instance-variable",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 393597686400604,
 											"parameters": {
 												"instance-variable": "id",
@@ -700,7 +700,7 @@
 										},
 										{
 											"id": "is-boolean-instance-variable-set",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 165919733432946,
 											"parameters": {
 												"instance-variable": "chosen"
@@ -711,7 +711,7 @@
 									"actions": [
 										{
 											"id": "set-boolean-instvar",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 330970529605331,
 											"parameters": {
 												"instance-variable": "chosen",
@@ -744,7 +744,7 @@
 										},
 										{
 											"customAction": "uiChoose",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 942036314679169
 										}
 									],
@@ -780,7 +780,7 @@
 							"actions": [
 								{
 									"id": "stop-tweens",
-									"objectClass": "uiButton",
+									"objectClass": "ui",
 									"sid": 148150617642181,
 									"behaviorType": "Tween",
 									"parameters": {
@@ -789,7 +789,7 @@
 								},
 								{
 									"id": "tween-one-property",
-									"objectClass": "uiButton",
+									"objectClass": "ui",
 									"sid": 103283313304794,
 									"behaviorType": "Tween",
 									"parameters": {
@@ -812,7 +812,7 @@
 									"conditions": [
 										{
 											"id": "is-boolean-instance-variable-set",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 182839888663500,
 											"parameters": {
 												"instance-variable": "chosen"
@@ -822,7 +822,7 @@
 									"actions": [
 										{
 											"id": "set-boolean-instvar",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 492872517473693,
 											"parameters": {
 												"instance-variable": "chosen",
@@ -855,7 +855,7 @@
 										},
 										{
 											"customAction": "uiUnchoose",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 190114210014675
 										}
 									],
@@ -900,7 +900,7 @@
 				{
 					"aceType": "action",
 					"aceName": "uiChoose",
-					"objectClass": "uiButton",
+					"objectClass": "ui",
 					"functionDescription": "use overrides to create special events",
 					"functionCategory": "ui",
 					"functionReturnType": "none",
@@ -928,7 +928,7 @@
 						},
 						{
 							"id": "stop-tweens",
-							"objectClass": "uiButton",
+							"objectClass": "ui",
 							"sid": 107145453359263,
 							"behaviorType": "Tween",
 							"parameters": {
@@ -937,7 +937,7 @@
 						},
 						{
 							"id": "set-size",
-							"objectClass": "uiButton",
+							"objectClass": "ui",
 							"sid": 471036801059981,
 							"parameters": {
 								"width": "Self.mAddWidth + 4",
@@ -946,7 +946,7 @@
 						},
 						{
 							"id": "tween-two-properties",
-							"objectClass": "uiButton",
+							"objectClass": "ui",
 							"sid": 164620828043711,
 							"behaviorType": "Tween",
 							"parameters": {
@@ -968,7 +968,7 @@
 				{
 					"aceType": "action",
 					"aceName": "uiUnchoose",
-					"objectClass": "uiButton",
+					"objectClass": "ui",
 					"functionDescription": "use overrides to create special events",
 					"functionCategory": "ui",
 					"functionReturnType": "none",
@@ -996,7 +996,7 @@
 						},
 						{
 							"id": "stop-tweens",
-							"objectClass": "uiButton",
+							"objectClass": "ui",
 							"sid": 229672910932924,
 							"behaviorType": "Tween",
 							"parameters": {
@@ -1005,7 +1005,7 @@
 						},
 						{
 							"id": "tween-two-properties",
-							"objectClass": "uiButton",
+							"objectClass": "ui",
 							"sid": 725825198045404,
 							"behaviorType": "Tween",
 							"parameters": {
@@ -1027,7 +1027,7 @@
 				{
 					"aceType": "action",
 					"aceName": "uiSelect",
-					"objectClass": "uiButton",
+					"objectClass": "ui",
 					"functionDescription": "use overrides to create special events",
 					"functionCategory": "ui",
 					"functionReturnType": "none",
@@ -1126,7 +1126,7 @@
 							"conditions": [
 								{
 									"id": "compare-instance-variable",
-									"objectClass": "uiButton",
+									"objectClass": "ui",
 									"sid": 365854396873637,
 									"parameters": {
 										"instance-variable": "id",
@@ -1142,7 +1142,7 @@
 									"sid": 374606610672194,
 									"parameters": {
 										"variable": "id",
-										"value": "uiButton.id"
+										"value": "ui.id"
 									}
 								},
 								{
@@ -1151,7 +1151,7 @@
 									"sid": 760113739967017,
 									"parameters": {
 										"variable": "section",
-										"value": "uiButton.section"
+										"value": "ui.section"
 									}
 								},
 								{
@@ -1192,7 +1192,7 @@
 								},
 								{
 									"customAction": "uiSelect",
-									"objectClass": "uiButton",
+									"objectClass": "ui",
 									"sid": 885612950540205
 								}
 							],
@@ -1317,7 +1317,7 @@
 								},
 								{
 									"id": "is-boolean-instance-variable-set",
-									"objectClass": "uiButton",
+									"objectClass": "ui",
 									"sid": 674450783743648,
 									"parameters": {
 										"instance-variable": "active"
@@ -1374,7 +1374,7 @@
 									"conditions": [
 										{
 											"id": "compare-instance-variable",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 992797386712371,
 											"parameters": {
 												"instance-variable": "id",
@@ -1390,7 +1390,7 @@
 											"sid": 284142715749550,
 											"parameters": {
 												"variable": "wrapOverride",
-												"value": "direction = \"up\" ? uiButton.overrideUp : (direction = \"down\" ? uiButton.overrideDown : (direction = \"left\" ? uiButton.overrideLeft : uiButton.overrideRight))"
+												"value": "direction = \"up\" ? ui.overrideUp : (direction = \"down\" ? ui.overrideDown : (direction = \"left\" ? ui.overrideLeft : ui.overrideRight))"
 											}
 										}
 									],
@@ -1525,7 +1525,7 @@
 											"conditions": [
 												{
 													"id": "compare-instance-variable",
-													"objectClass": "uiButton",
+													"objectClass": "ui",
 													"sid": 990844668241464,
 													"parameters": {
 														"instance-variable": "id",
@@ -1541,7 +1541,7 @@
 													"sid": 628137127093190,
 													"parameters": {
 														"variable": "curX",
-														"value": "uiButton.BBoxMidX"
+														"value": "ui.BBoxMidX"
 													}
 												},
 												{
@@ -1550,7 +1550,7 @@
 													"sid": 642942390691780,
 													"parameters": {
 														"variable": "curY",
-														"value": "uiButton.BBoxMidY"
+														"value": "ui.BBoxMidY"
 													}
 												}
 											],
@@ -1639,8 +1639,8 @@
 															"objectClass": "System",
 															"sid": 992841822086835,
 															"parameters": {
-																"object": "uiButton",
-																"expression": "uiButton.Y",
+																"object": "ui",
+																"expression": "ui.Y",
 																"comparison": 2,
 																"value": "curY"
 															}
@@ -1649,7 +1649,7 @@
 													"actions": [
 														{
 															"customAction": "pickNearest [INTERNAL]",
-															"objectClass": "uiButton",
+															"objectClass": "ui",
 															"sid": 653364532296591,
 															"parameters": [
 																"curX",
@@ -1688,8 +1688,8 @@
 															"objectClass": "System",
 															"sid": 754267856251482,
 															"parameters": {
-																"object": "uiButton",
-																"expression": "uiButton.Y",
+																"object": "ui",
+																"expression": "ui.Y",
 																"order": "descending"
 															}
 														}
@@ -1706,7 +1706,7 @@
 															"sid": 422209484640262,
 															"parameters": {
 																"variable": "wrapPos",
-																"value": "uiButton.Y"
+																"value": "ui.Y"
 															}
 														}
 													],
@@ -1720,7 +1720,7 @@
 																	"objectClass": "System",
 																	"sid": 938253161045488,
 																	"parameters": {
-																		"object": "uiButton"
+																		"object": "ui"
 																	}
 																},
 																{
@@ -1728,8 +1728,8 @@
 																	"objectClass": "System",
 																	"sid": 426724069814095,
 																	"parameters": {
-																		"object": "uiButton",
-																		"expression": "uiButton.Y",
+																		"object": "ui",
+																		"expression": "ui.Y",
 																		"comparison": 0,
 																		"value": "wrapPos"
 																	}
@@ -1738,7 +1738,7 @@
 															"actions": [
 																{
 																	"customAction": "pickNearest [INTERNAL]",
-																	"objectClass": "uiButton",
+																	"objectClass": "ui",
 																	"sid": 926252388018888,
 																	"parameters": [
 																		"curX",
@@ -1793,8 +1793,8 @@
 															"objectClass": "System",
 															"sid": 820184890022692,
 															"parameters": {
-																"object": "uiButton",
-																"expression": "uiButton.Y",
+																"object": "ui",
+																"expression": "ui.Y",
 																"comparison": 4,
 																"value": "curY"
 															}
@@ -1803,7 +1803,7 @@
 													"actions": [
 														{
 															"customAction": "pickNearest [INTERNAL]",
-															"objectClass": "uiButton",
+															"objectClass": "ui",
 															"sid": 557368625320309,
 															"parameters": [
 																"curX",
@@ -1842,8 +1842,8 @@
 															"objectClass": "System",
 															"sid": 726712921798509,
 															"parameters": {
-																"object": "uiButton",
-																"expression": "uiButton.Y",
+																"object": "ui",
+																"expression": "ui.Y",
 																"order": "ascending"
 															}
 														}
@@ -1860,7 +1860,7 @@
 															"sid": 147608950128850,
 															"parameters": {
 																"variable": "wrapPos",
-																"value": "uiButton.Y"
+																"value": "ui.Y"
 															}
 														}
 													],
@@ -1874,7 +1874,7 @@
 																	"objectClass": "System",
 																	"sid": 638203115122456,
 																	"parameters": {
-																		"object": "uiButton"
+																		"object": "ui"
 																	}
 																},
 																{
@@ -1882,8 +1882,8 @@
 																	"objectClass": "System",
 																	"sid": 347965810597637,
 																	"parameters": {
-																		"object": "uiButton",
-																		"expression": "uiButton.Y",
+																		"object": "ui",
+																		"expression": "ui.Y",
 																		"comparison": 0,
 																		"value": "wrapPos"
 																	}
@@ -1892,7 +1892,7 @@
 															"actions": [
 																{
 																	"customAction": "pickNearest [INTERNAL]",
-																	"objectClass": "uiButton",
+																	"objectClass": "ui",
 																	"sid": 389891807287509,
 																	"parameters": [
 																		"curX",
@@ -1947,8 +1947,8 @@
 															"objectClass": "System",
 															"sid": 486293493633645,
 															"parameters": {
-																"object": "uiButton",
-																"expression": "uiButton.X",
+																"object": "ui",
+																"expression": "ui.X",
 																"comparison": 2,
 																"value": "curX"
 															}
@@ -1957,7 +1957,7 @@
 													"actions": [
 														{
 															"customAction": "pickNearest [INTERNAL]",
-															"objectClass": "uiButton",
+															"objectClass": "ui",
 															"sid": 958490714596897,
 															"parameters": [
 																"curX",
@@ -1996,8 +1996,8 @@
 															"objectClass": "System",
 															"sid": 831262042319022,
 															"parameters": {
-																"object": "uiButton",
-																"expression": "uiButton.X",
+																"object": "ui",
+																"expression": "ui.X",
 																"order": "descending"
 															}
 														}
@@ -2014,7 +2014,7 @@
 															"sid": 999223034764072,
 															"parameters": {
 																"variable": "wrapPos",
-																"value": "uiButton.X"
+																"value": "ui.X"
 															}
 														}
 													],
@@ -2028,7 +2028,7 @@
 																	"objectClass": "System",
 																	"sid": 267538017881430,
 																	"parameters": {
-																		"object": "uiButton"
+																		"object": "ui"
 																	}
 																},
 																{
@@ -2036,8 +2036,8 @@
 																	"objectClass": "System",
 																	"sid": 289467833259386,
 																	"parameters": {
-																		"object": "uiButton",
-																		"expression": "uiButton.X",
+																		"object": "ui",
+																		"expression": "ui.X",
 																		"comparison": 0,
 																		"value": "wrapPos"
 																	}
@@ -2046,7 +2046,7 @@
 															"actions": [
 																{
 																	"customAction": "pickNearest [INTERNAL]",
-																	"objectClass": "uiButton",
+																	"objectClass": "ui",
 																	"sid": 154048107619608,
 																	"parameters": [
 																		"curX",
@@ -2101,8 +2101,8 @@
 															"objectClass": "System",
 															"sid": 164963709447700,
 															"parameters": {
-																"object": "uiButton",
-																"expression": "uiButton.X",
+																"object": "ui",
+																"expression": "ui.X",
 																"comparison": 4,
 																"value": "curX"
 															}
@@ -2111,7 +2111,7 @@
 													"actions": [
 														{
 															"customAction": "pickNearest [INTERNAL]",
-															"objectClass": "uiButton",
+															"objectClass": "ui",
 															"sid": 378565094713663,
 															"parameters": [
 																"curX",
@@ -2150,8 +2150,8 @@
 															"objectClass": "System",
 															"sid": 982586643433669,
 															"parameters": {
-																"object": "uiButton",
-																"expression": "uiButton.X",
+																"object": "ui",
+																"expression": "ui.X",
 																"order": "ascending"
 															}
 														}
@@ -2168,7 +2168,7 @@
 															"sid": 889138521602855,
 															"parameters": {
 																"variable": "wrapPos",
-																"value": "uiButton.X"
+																"value": "ui.X"
 															}
 														}
 													],
@@ -2182,7 +2182,7 @@
 																	"objectClass": "System",
 																	"sid": 314248448818190,
 																	"parameters": {
-																		"object": "uiButton"
+																		"object": "ui"
 																	}
 																},
 																{
@@ -2190,8 +2190,8 @@
 																	"objectClass": "System",
 																	"sid": 348248507028335,
 																	"parameters": {
-																		"object": "uiButton",
-																		"expression": "uiButton.X",
+																		"object": "ui",
+																		"expression": "ui.X",
 																		"comparison": 0,
 																		"value": "wrapPos"
 																	}
@@ -2200,7 +2200,7 @@
 															"actions": [
 																{
 																	"customAction": "pickNearest [INTERNAL]",
-																	"objectClass": "uiButton",
+																	"objectClass": "ui",
 																	"sid": 275326390011480,
 																	"parameters": [
 																		"curX",
@@ -2239,7 +2239,7 @@
 				{
 					"aceType": "action",
 					"aceName": "pickNearest [INTERNAL]",
-					"objectClass": "uiButton",
+					"objectClass": "ui",
 					"functionDescription": "pick the nearest UI component out of all instances that are passed to this",
 					"functionCategory": "ui",
 					"functionReturnType": "none",
@@ -2265,7 +2265,7 @@
 					"conditions": [
 						{
 							"id": "pick-nearestfurthest",
-							"objectClass": "uiButton",
+							"objectClass": "ui",
 							"sid": 680442033815975,
 							"parameters": {
 								"which": "nearest",
@@ -2281,7 +2281,7 @@
 							"sid": 267641809864441,
 							"parameters": {
 								"variable": "uiChosenID",
-								"value": "uiButton.id"
+								"value": "ui.id"
 							}
 						},
 						{
@@ -2319,7 +2319,7 @@
 					"conditions": [
 						{
 							"id": "is-boolean-instance-variable-set",
-							"objectClass": "uiButton",
+							"objectClass": "ui",
 							"sid": 950134269510545,
 							"parameters": {
 								"instance-variable": "active"
@@ -2440,12 +2440,12 @@
 									"objectClass": "System",
 									"sid": 621024131492146,
 									"parameters": {
-										"object": "uiButton"
+										"object": "ui"
 									}
 								},
 								{
 									"id": "compare-x",
-									"objectClass": "uiButton",
+									"objectClass": "ui",
 									"sid": 631509866801638,
 									"parameters": {
 										"comparison": 3,
@@ -2454,7 +2454,7 @@
 								},
 								{
 									"id": "compare-y",
-									"objectClass": "uiButton",
+									"objectClass": "ui",
 									"sid": 355531241233383,
 									"parameters": {
 										"comparison": 3,
@@ -2469,7 +2469,7 @@
 									"sid": 660417586199479,
 									"parameters": {
 										"variable": "lastX",
-										"value": "uiButton.X"
+										"value": "ui.X"
 									}
 								},
 								{
@@ -2478,7 +2478,7 @@
 									"sid": 477067806126479,
 									"parameters": {
 										"variable": "lastY",
-										"value": "uiButton.Y"
+										"value": "ui.Y"
 									}
 								},
 								{
@@ -2487,7 +2487,7 @@
 									"sid": 801906543980576,
 									"parameters": {
 										"variable": "lastID",
-										"value": "uiButton.id"
+										"value": "ui.id"
 									}
 								}
 							],
@@ -2627,7 +2627,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "if ui input was triggered on this frame",
+					"text": "if ui input was triggered on this frame (make sure this variable is above the events, won't work otherwise)",
 					"text-color": [
 						0,
 						0,
@@ -2650,59 +2650,6 @@
 					"isStatic": false,
 					"isConstant": false,
 					"sid": 962201239257947
-				},
-				{
-					"eventType": "comment",
-					"text": "decide what input type the player is using",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-any-key-pressed",
-							"objectClass": "Keyboard",
-							"sid": 949455506590804
-						},
-						{
-							"id": "on-movement",
-							"objectClass": "Mouse",
-							"sid": 262210843082269
-						}
-					],
-					"actions": [
-						{
-							"id": "set-group-active",
-							"objectClass": "System",
-							"sid": 113857509337122,
-							"parameters": {
-								"group-name": "\"ui interaction mouse\"",
-								"state": "activated"
-							}
-						},
-						{
-							"id": "set-group-active",
-							"objectClass": "System",
-							"sid": 425837749809992,
-							"parameters": {
-								"group-name": "\"ui interaction mouse\"",
-								"state": "activated"
-							}
-						}
-					],
-					"sid": 805670154736444,
-					"isOrBlock": true
 				},
 				{
 					"eventType": "group",
@@ -2804,12 +2751,12 @@
 													"objectClass": "Mouse",
 													"sid": 934913208119614,
 													"parameters": {
-														"object": "uiButton"
+														"object": "ui"
 													}
 												},
 												{
 													"id": "is-boolean-instance-variable-set",
-													"objectClass": "uiButton",
+													"objectClass": "ui",
 													"sid": 490527470127452,
 													"parameters": {
 														"instance-variable": "active"
@@ -2817,7 +2764,7 @@
 												},
 												{
 													"id": "compare-instance-variable",
-													"objectClass": "uiButton",
+													"objectClass": "ui",
 													"sid": 977029400034418,
 													"parameters": {
 														"instance-variable": "id",
@@ -2834,7 +2781,7 @@
 													"sid": 300642866436856,
 													"parameters": {
 														"variable": "uiChosenID",
-														"value": "uiButton.id"
+														"value": "ui.id"
 													}
 												},
 												{
@@ -2857,7 +2804,7 @@
 													"objectClass": "Mouse",
 													"sid": 755734096738003,
 													"parameters": {
-														"object": "uiButton"
+														"object": "ui"
 													},
 													"isInverted": true
 												}
@@ -2907,12 +2854,12 @@
 											"parameters": {
 												"mouse-button": "left",
 												"click-type": "clicked",
-												"object-clicked": "uiButton"
+												"object-clicked": "ui"
 											}
 										},
 										{
 											"id": "is-boolean-instance-variable-set",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 964239018328673,
 											"parameters": {
 												"instance-variable": "active"
@@ -2920,7 +2867,7 @@
 										},
 										{
 											"id": "compare-instance-variable",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 830716126804805,
 											"parameters": {
 												"instance-variable": "id",

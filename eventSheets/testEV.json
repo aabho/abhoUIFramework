@@ -114,7 +114,7 @@
 						{
 							"customAction": "uiSelect",
 							"objectClass": "uiMainButton",
-							"customActionObjectClass": "uiButton",
+							"customActionObjectClass": "ui",
 							"sid": 354804342021472
 						},
 						{
@@ -460,7 +460,7 @@
 								{
 									"customAction": "uiSelect",
 									"objectClass": "uiMainQuitButton",
-									"customActionObjectClass": "uiButton",
+									"customActionObjectClass": "ui",
 									"sid": 391430290362098
 								},
 								{
@@ -551,15 +551,15 @@
 											"parameters": {
 												"object-to-create": "Particles",
 												"layer": "\"quit confirm\"",
-												"x": "uiButton.X",
-												"y": "uiButton.Y",
+												"x": "ui.X",
+												"y": "ui.Y",
 												"create-hierarchy": false,
 												"template-name": "\"\""
 											}
 										},
 										{
 											"id": "set-default-color",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 574160268007345,
 											"parameters": {
 												"color": "rgbEx255(255, 0, 0)"
@@ -567,7 +567,7 @@
 										},
 										{
 											"id": "tween-one-property",
-											"objectClass": "uiButton",
+											"objectClass": "ui",
 											"sid": 800079479170424,
 											"behaviorType": "Tween",
 											"parameters": {
@@ -632,16 +632,16 @@
 									"actions": [
 										{
 											"callFunction": "uiEnableSection",
-											"sid": 895400612353177,
+											"sid": 292679896486895,
 											"parameters": [
-												"\"\""
+												"\"main\""
 											]
 										},
 										{
 											"callFunction": "uiDisableSection",
-											"sid": 879424459886586,
+											"sid": 387979334557620,
 											"parameters": [
-												"\"\""
+												"\"mainQuit\""
 											]
 										},
 										{
@@ -775,7 +775,7 @@
 								{
 									"customAction": "uiSelect",
 									"objectClass": "uiMainSettingsButton",
-									"customActionObjectClass": "uiButton",
+									"customActionObjectClass": "ui",
 									"sid": 195218284513436
 								},
 								{
@@ -857,23 +857,16 @@
 									"actions": [
 										{
 											"callFunction": "uiEnableSection",
-											"sid": 900948281765681,
+											"sid": 894830298270813,
 											"parameters": [
-												"\"\""
+												"\"main\""
 											]
 										},
 										{
 											"callFunction": "uiDisableSection",
-											"sid": 665620099772880,
+											"sid": 853848025532462,
 											"parameters": [
-												"\"\""
-											]
-										},
-										{
-											"callFunction": "uiDisableSection",
-											"sid": 758621448850453,
-											"parameters": [
-												"\"\""
+												"\"mainSettings\""
 											]
 										},
 										{

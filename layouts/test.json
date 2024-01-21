@@ -17,9 +17,9 @@
 				1
 			],
 			"backgroundColor": [
-				0.26666666666666666,
-				0.26666666666666666,
-				0.29411764705882354,
+				0.09803921568627451,
+				0.09803921568627451,
+				0.10196078431372549,
 				1
 			],
 			"isTransparent": false,
@@ -54,18 +54,19 @@
 					},
 					"uid": 4,
 					"instanceVariables": {
-						"active": false,
-						"chosen": false,
+						"component": "button",
 						"section": "main",
 						"id": "mainPlayGame",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4,
+						"active": false,
+						"chosen": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
-						"overrideRight": ""
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mAddWidth": 4,
+						"mAddHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -223,18 +224,19 @@
 					},
 					"uid": 6,
 					"instanceVariables": {
-						"active": false,
-						"chosen": false,
+						"component": "button",
 						"section": "main",
 						"id": "mainSettings",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4,
+						"active": false,
+						"chosen": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
-						"overrideRight": ""
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mAddWidth": 4,
+						"mAddHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -392,18 +394,19 @@
 					},
 					"uid": 11,
 					"instanceVariables": {
-						"active": false,
-						"chosen": false,
+						"component": "button",
 						"section": "main",
 						"id": "mainDummy",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4,
+						"active": false,
+						"chosen": false,
 						"overrideUp": "mainDummy2",
 						"overrideDown": "",
 						"overrideLeft": "",
-						"overrideRight": ""
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mAddWidth": 4,
+						"mAddHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -561,18 +564,19 @@
 					},
 					"uid": 13,
 					"instanceVariables": {
-						"active": false,
-						"chosen": false,
+						"component": "button",
 						"section": "main",
 						"id": "mainDummy2",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4,
+						"active": false,
+						"chosen": false,
 						"overrideUp": "",
 						"overrideDown": "mainDummy",
 						"overrideLeft": "",
-						"overrideRight": ""
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mAddWidth": 4,
+						"mAddHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -730,18 +734,19 @@
 					},
 					"uid": 18,
 					"instanceVariables": {
-						"active": false,
-						"chosen": false,
+						"component": "button",
 						"section": "main",
 						"id": "mainDummy4",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4,
+						"active": false,
+						"chosen": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
-						"overrideRight": ""
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mAddWidth": 4,
+						"mAddHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -899,18 +904,19 @@
 					},
 					"uid": 8,
 					"instanceVariables": {
-						"active": false,
-						"chosen": false,
+						"component": "button",
 						"section": "main",
 						"id": "mainQuit",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4,
+						"active": false,
+						"chosen": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
-						"overrideRight": ""
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mAddWidth": 4,
+						"mAddHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -1423,6 +1429,36 @@
 									"d": true,
 									"sm": "normal"
 								}
+							},
+							{
+								"uid": 21,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							},
+							{
+								"uid": 36,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
 							}
 						],
 						"flags": {
@@ -1473,7 +1509,7 @@
 						"text": "SETTINGS",
 						"enable-bbcode": true,
 						"font": "system-ui",
-						"size": 8,
+						"size": 12,
 						"line-height": -4,
 						"bold": false,
 						"italic": false,
@@ -1554,18 +1590,19 @@
 					},
 					"uid": 32,
 					"instanceVariables": {
-						"active": false,
-						"chosen": false,
+						"component": "button",
 						"section": "mainSettingsApply",
 						"id": "mainSettingsApply",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4,
+						"active": false,
+						"chosen": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
-						"overrideRight": ""
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mAddWidth": 4,
+						"mAddHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -1651,18 +1688,19 @@
 					},
 					"uid": 33,
 					"instanceVariables": {
-						"active": false,
-						"chosen": false,
+						"component": "button",
 						"section": "mainSettings",
 						"id": "mainSettingsBack",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4,
+						"active": false,
+						"chosen": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
-						"overrideRight": ""
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mAddWidth": 4,
+						"mAddHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -1865,6 +1903,320 @@
 						"y": -28,
 						"width": 59,
 						"height": 13,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "SFX",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 8,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 16,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 16,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 214,
+						"y": -181.5,
+						"width": 159,
+						"height": 12,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "MUSIC",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 8,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 17,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 17,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 214,
+						"y": -140,
+						"width": 159,
+						"height": 12,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsSlider",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 21,
+					"instanceVariables": {
+						"component": "slider",
+						"section": "mainSettings",
+						"id": "mainSettingsSfx",
+						"active": false,
+						"chosen": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mAddWidth": 4,
+						"mAddHeight": 4,
+						"sliderMin": 0,
+						"sliderMax": 1,
+						"sliderStep": 0.1,
+						"sliderValue": 0.5
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": 30,
+						"uid": 21,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 214,
+						"y": -163,
+						"width": 122,
+						"height": 10,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsSlider",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 36,
+					"instanceVariables": {
+						"component": "slider",
+						"section": "mainSettings",
+						"id": "mainSettingsMus",
+						"active": false,
+						"chosen": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mAddWidth": 4,
+						"mAddHeight": 4,
+						"sliderMin": 0,
+						"sliderMax": 1,
+						"sliderStep": 0.1,
+						"sliderValue": 0.5
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": 30,
+						"uid": 36,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 214,
+						"y": -122,
+						"width": 122,
+						"height": 10,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -2111,18 +2463,19 @@
 					},
 					"uid": 26,
 					"instanceVariables": {
-						"active": false,
-						"chosen": false,
+						"component": "button",
 						"section": "mainQuit",
 						"id": "mainQuitConfirm",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4,
+						"active": false,
+						"chosen": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
-						"overrideRight": ""
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mAddWidth": 4,
+						"mAddHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -2280,18 +2633,19 @@
 					},
 					"uid": 28,
 					"instanceVariables": {
-						"active": false,
-						"chosen": false,
+						"component": "button",
 						"section": "mainQuit",
 						"id": "mainQuitCancel",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mAddWidth": 4,
-						"mAddHeight": 4,
+						"active": false,
+						"chosen": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
-						"overrideRight": ""
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mAddWidth": 4,
+						"mAddHeight": 4
 					},
 					"behaviors": {
 						"Tween": {

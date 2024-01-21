@@ -1,21 +1,14 @@
 {
-	"name": "uiButton",
+	"name": "ui",
 	"plugin-id": "NinePatch",
 	"sid": 822770670897346,
 	"instanceVariables": [
 		{
-			"name": "active",
-			"type": "boolean",
-			"desc": "if this button is active or not (change via enable group functions)",
-			"show": false,
-			"sid": 199199960581072
-		},
-		{
-			"name": "chosen",
-			"type": "boolean",
-			"desc": "secret bool for recording when this button has been chosen",
-			"show": false,
-			"sid": 219814938662544
+			"name": "component",
+			"type": "string",
+			"desc": "used to identify the behavior of this UI object",
+			"show": true,
+			"sid": 353574442411682
 		},
 		{
 			"name": "section",
@@ -32,32 +25,18 @@
 			"sid": 148285385236211
 		},
 		{
-			"name": "oWidth",
-			"type": "number",
-			"desc": "original (don't need to modify)",
+			"name": "active",
+			"type": "boolean",
+			"desc": "if this button is active or not (change via enable group functions)",
 			"show": false,
-			"sid": 335556124087137
+			"sid": 199199960581072
 		},
 		{
-			"name": "oHeight",
-			"type": "number",
-			"desc": "original (don't need to modify)",
+			"name": "chosen",
+			"type": "boolean",
+			"desc": "secret bool for recording when this button has been chosen",
 			"show": false,
-			"sid": 304615723960730
-		},
-		{
-			"name": "mAddWidth",
-			"type": "number",
-			"desc": "mouseover (relative to original - for example, 8 would mean that the object would expand by 8 pixels)",
-			"show": true,
-			"sid": 196487588006921
-		},
-		{
-			"name": "mAddHeight",
-			"type": "number",
-			"desc": "mouseover (relative to original)",
-			"show": true,
-			"sid": 629137152964272
+			"sid": 219814938662544
 		},
 		{
 			"name": "overrideUp",
@@ -86,6 +65,34 @@
 			"desc": "override this input - leave blank for normal navigation",
 			"show": true,
 			"sid": 737904635594192
+		},
+		{
+			"name": "oWidth",
+			"type": "number",
+			"desc": "for size animations, can remove this if you'd like",
+			"show": false,
+			"sid": 335556124087137
+		},
+		{
+			"name": "oHeight",
+			"type": "number",
+			"desc": "for size animations, can remove this if you'd like",
+			"show": false,
+			"sid": 304615723960730
+		},
+		{
+			"name": "mAddWidth",
+			"type": "number",
+			"desc": "for size animations, can remove this if you'd like",
+			"show": true,
+			"sid": 196487588006921
+		},
+		{
+			"name": "mAddHeight",
+			"type": "number",
+			"desc": "for size animations, can remove this if you'd like",
+			"show": true,
+			"sid": 629137152964272
 		}
 	],
 	"behaviorTypes": [
@@ -99,6 +106,8 @@
 	"members": [
 		"uiMainButton",
 		"uiMainQuitButton",
-		"uiMainSettingsButton"
+		"uiMainSettingsButton",
+		"uiMainSettingsSlider",
+		"uiMainSettingsSliderBar"
 	]
 }

@@ -1,0 +1,41 @@
+{
+	"name": "uiSlider",
+	"plugin-id": "NinePatch",
+	"sid": 334967625349609,
+	"instanceVariables": [
+		{
+			"name": "sliderMin",
+			"type": "number",
+			"desc": "slider minimum value",
+			"show": true,
+			"sid": 804397689080131
+		},
+		{
+			"name": "sliderMax",
+			"type": "number",
+			"desc": "slider maximum value",
+			"show": true,
+			"sid": 165949582555165
+		},
+		{
+			"name": "sliderStep",
+			"type": "number",
+			"desc": "slider step (increments by which the slider snaps to)",
+			"show": true,
+			"sid": 169924928491699
+		},
+		{
+			"name": "sliderValue",
+			"type": "number",
+			"desc": "slider value",
+			"show": true,
+			"sid": 463530432742647
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"uiMainSettingsSlider",
+		"uiMainSettingsSliderBar"
+	]
+}

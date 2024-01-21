@@ -102,7 +102,9 @@
 							"uiMainButton",
 							"uiMainQuitButton",
 							"uiMainSettingsBg",
-							"uiMainSettingsButton"
+							"uiMainSettingsButton",
+							"uiMainSettingsSlider",
+							"uiMainSettingsSliderBar"
 						],
 						"subfolders": [],
 						"name": "main"
@@ -126,7 +128,8 @@
 	"containers": [],
 	"families": {
 		"items": [
-			"uiButton"
+			"ui",
+			"uiSlider"
 		],
 		"subfolders": []
 	},
