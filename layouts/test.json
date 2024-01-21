@@ -63,7 +63,9 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -230,7 +232,9 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -397,7 +401,9 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -564,7 +570,9 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -731,7 +739,9 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -898,7 +908,9 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -1611,7 +1623,9 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -1706,7 +1720,9 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -2080,28 +2096,12 @@
 					},
 					"uid": 21,
 					"instanceVariables": {
-						"section": "mainSettings",
-						"id": "mainSettingsSfx",
-						"active": false,
-						"chosen": false,
-						"overrideUp": "",
-						"overrideDown": "",
-						"overrideLeft": "",
-						"overrideRight": "",
-						"oWidth": 0,
-						"oHeight": 0,
 						"sliderMin": 0,
 						"sliderMax": 1,
 						"sliderStep": 0.1,
-						"sliderValue": 0.5
+						"sliderMarginsHorizontal": 2
 					},
-					"behaviors": {
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
+					"behaviors": {},
 					"sceneGraphData": {
 						"parent-uid": 30,
 						"uid": 21,
@@ -2179,31 +2179,62 @@
 					},
 					"uid": 36,
 					"instanceVariables": {
-						"section": "mainSettings",
-						"id": "mainSettingsMus",
-						"active": false,
-						"chosen": false,
-						"overrideUp": "",
-						"overrideDown": "",
-						"overrideLeft": "",
-						"overrideRight": "",
-						"oWidth": 0,
-						"oHeight": 0,
 						"sliderMin": 0,
 						"sliderMax": 1,
 						"sliderStep": 0.1,
-						"sliderValue": 0.5
+						"sliderMarginsHorizontal": 2
 					},
-					"behaviors": {
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
+					"behaviors": {},
 					"sceneGraphData": {
 						"parent-uid": 30,
 						"uid": 36,
+						"children": [
+							{
+								"uid": 38,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": false,
+									"h": false,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							},
+							{
+								"uid": 40,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": false,
+									"h": false,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							},
+							{
+								"uid": 41,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": false,
+									"h": false,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
 						"flags": {
 							"x": true,
 							"y": true,
@@ -2242,7 +2273,7 @@
 							1,
 							1
 						],
-						"angle": 0,
+						"angle": 0.17453292519943295,
 						"zElevation": 0
 					}
 				},
@@ -2270,7 +2301,10 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2,
+						"sliderValue": 0.5
 					},
 					"behaviors": {
 						"Tween": {
@@ -2310,7 +2344,7 @@
 					"world": {
 						"x": 238,
 						"y": -163,
-						"width": 6,
+						"width": 8,
 						"height": 16,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -2321,6 +2355,249 @@
 							1
 						],
 						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsSliderBar",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 38,
+					"instanceVariables": {
+						"section": "mainSettings",
+						"id": "mainSettingsMusHigh",
+						"active": false,
+						"chosen": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2,
+						"sliderValue": 1
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": 36,
+						"uid": 38,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 251,
+						"y": -122,
+						"width": 8,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0.17453292519943295,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsSliderBar",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 40,
+					"instanceVariables": {
+						"section": "mainSettings",
+						"id": "mainSettingsMusLow",
+						"active": false,
+						"chosen": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2,
+						"sliderValue": 0.1
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": 36,
+						"uid": 40,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 167,
+						"y": -122,
+						"width": 8,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0.17453292519943295,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsSliderBar",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 41,
+					"instanceVariables": {
+						"section": "mainSettings",
+						"id": "mainSettingsMusMid",
+						"active": false,
+						"chosen": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2,
+						"sliderValue": 0.3
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": 36,
+						"uid": 41,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 179,
+						"y": -122,
+						"width": 8,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0.17453292519943295,
 						"zElevation": 0
 					}
 				}
@@ -2567,7 +2844,9 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
 					},
 					"behaviors": {
 						"Tween": {
@@ -2734,7 +3013,9 @@
 						"overrideLeft": "",
 						"overrideRight": "",
 						"oWidth": 0,
-						"oHeight": 0
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
 					},
 					"behaviors": {
 						"Tween": {

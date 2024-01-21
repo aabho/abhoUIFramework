@@ -3,7 +3,7 @@
 	"events": [
 		{
 			"eventType": "comment",
-			"text": "UI variables (don't adjust these directly, use the relevant functions)",
+			"text": "UI states (don't adjust these directly, use the relevant functions)",
 			"text-color": [
 				0,
 				0,
@@ -26,6 +26,16 @@
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 913770933480264
+		},
+		{
+			"eventType": "variable",
+			"name": "uiSelectedSliderHandle",
+			"type": "string",
+			"initialValue": "",
+			"comment": "if a slider handle is selected, directional inputs will affect its value",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 607184615196283
 		},
 		{
 			"eventType": "comment",
@@ -443,6 +453,563 @@
 			"isActiveOnStart": true,
 			"children": [
 				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "ui behavior custom actions",
+					"description": "has custom actions you can edit or overwrite elsewhere",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "with these custom actions, you can provide a default behavior here, and override the default by creating an override custom action for the button object.\n\nfor example, right now it's set so that when you chose a button it grows, and unchoosing it makes it shrink again.\n\nif you want a special button type on some layout to instead become brighter, you can make an override by creating a new custom action for that object, and calling the action \"uiChoose\" exactly.\nyou'll know you've done it right because it'll say 'Overridden' next to it.\n\nto learn more about custom actions and overriding, see here --> https://www.construct.net/en/make-games/manuals/construct-3/project-primitives/events/custom-actions",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8470588235294118,
+								0.6431372549019608,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "ui component custom action handlers",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiChoose",
+							"objectClass": "ui",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "make the component grow",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 488305179469395,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize\""
+									}
+								},
+								{
+									"id": "set-size",
+									"objectClass": "ui",
+									"sid": 345263868707227,
+									"parameters": {
+										"width": "Self.oWidth + Self.mGrowWidth * 2",
+										"height": "Self.oHeight + Self.mGrowHeight * 2"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "ui",
+									"sid": 881550861042138,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize\"",
+										"property": "size",
+										"end-x": "Self.oWidth + Self.mGrowWidth",
+										"end-y": "Self.oHeight + Self.mGrowHeight",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 869175676686136
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiUnchoose",
+							"objectClass": "ui",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "make the component shrink",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 655991360181376,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize\""
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "ui",
+									"sid": 431809353969008,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize\"",
+										"property": "size",
+										"end-x": "Self.oWidth",
+										"end-y": "Self.oHeight",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 338656560347036
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiSelect",
+							"objectClass": "ui",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "didn't have any default action I wanted to assign for all components on being selected",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								}
+							],
+							"sid": 402602645325787
+						},
+						{
+							"eventType": "comment",
+							"text": "ui slider handle custom action handlers",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiSliderHandleSelect",
+							"objectClass": "ui",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "uiSlider",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "grow component even larger",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 569471401017717,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleSize\""
+									}
+								},
+								{
+									"id": "set-size",
+									"objectClass": "ui",
+									"sid": 684264155477178,
+									"parameters": {
+										"width": "Self.oWidth + Self.mGrowWidth * 4",
+										"height": "Self.oHeight + Self.mGrowHeight * 4"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "ui",
+									"sid": 163346696046214,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleSize\"",
+										"property": "size",
+										"end-x": "Self.oWidth + Self.mGrowWidth * 3",
+										"end-y": "Self.oHeight + Self.mGrowHeight * 3",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "change color",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "ui",
+									"sid": 832887183154094,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleColor\"",
+										"property": "offsetColor",
+										"end-value": "rgbEx(100,30,30)",
+										"time": "0.1",
+										"ease": "noease",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 472385461718503
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiSliderHandleDeselect",
+							"objectClass": "ui",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "uiSlider",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "shrink component",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 397225791902699,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize\""
+									}
+								},
+								{
+									"id": "set-size",
+									"objectClass": "ui",
+									"sid": 625851327100561,
+									"parameters": {
+										"width": "Self.oWidth + Self.mGrowWidth * 2",
+										"height": "Self.oHeight + Self.mGrowHeight * 2"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "ui",
+									"sid": 177874625245392,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize\"",
+										"property": "size",
+										"end-x": "Self.oWidth + Self.mGrowWidth",
+										"end-y": "Self.oHeight + Self.mGrowHeight",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "restore color",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "ui",
+									"sid": 539882970649228,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleColor\"",
+										"property": "offsetColor",
+										"end-value": "rgbEx(100, 100, 100)",
+										"time": "0.1",
+										"ease": "noease",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 983213054550167
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiSliderHandleMove",
+							"objectClass": "ui",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "uiSlider",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [
+								{
+									"name": "x",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "go to pos",
+									"sid": 325856232708106
+								},
+								{
+									"name": "y",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "go to pos",
+									"sid": 572066980597889
+								}
+							],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "size blip animation",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 200497887289284,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleSize\""
+									}
+								},
+								{
+									"id": "set-size",
+									"objectClass": "ui",
+									"sid": 273245915291581,
+									"parameters": {
+										"width": "Self.oWidth + Self.mGrowWidth * 2",
+										"height": "Self.oHeight + Self.mGrowHeight * 2"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "ui",
+									"sid": 183411795717391,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleSize\"",
+										"property": "size",
+										"end-x": "Self.oWidth + Self.mGrowWidth * 3",
+										"end-y": "Self.oHeight + Self.mGrowHeight * 3",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "tween the slider bar towards its new position",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 157297509193769,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleMove\""
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "ui",
+									"sid": 137182136271985,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleMove\"",
+										"property": "position",
+										"end-x": "x",
+										"end-y": "y",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 607679803247236
+						}
+					],
+					"sid": 134548567102579,
+					"text-color": [
+						0,
+						0,
+						0,
+						0
+					],
+					"background-color": [
+						0.8392156862745098,
+						0.8392156862745098,
+						0.8392156862745098,
+						1
+					]
+				},
+				{
 					"eventType": "comment",
 					"text": "some functions here are marked with [INTERNAL], meaning that you shouldn't be using them when making your game unless it's for a specific niche case where you know what you're doing",
 					"text-color": [
@@ -506,7 +1073,333 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "if button is active",
+							"text": "if this component is a slider handle",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "uiSliderHandle",
+									"sid": 912568709650992,
+									"parameters": {
+										"unique-id": "ui.UID"
+									}
+								},
+								{
+									"id": "pick-parent",
+									"objectClass": "uiSliderHandle",
+									"sid": 707560259517962,
+									"parameters": {
+										"parent": "uiSliderBar",
+										"which": "own"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 551346774199741,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "unlerped value from 0 to 1",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6705882352941176,
+										0.8745098039215686,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "variable",
+									"name": "lerpHandleToBar",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "value from 0 to 1",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 984829212749293
+								},
+								{
+									"eventType": "comment",
+									"text": "width adjusted",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6705882352941176,
+										0.8745098039215686,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "variable",
+									"name": "dist",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "width / 2 - margin",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 899445248722655
+								},
+								{
+									"eventType": "comment",
+									"text": "slider bar positions",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6705882352941176,
+										0.8745098039215686,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "variable",
+									"name": "leftX",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "midpoint of sliderbar including margin",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 269765427069599
+								},
+								{
+									"eventType": "variable",
+									"name": "leftY",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "midpoint of sliderbar including margin",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 970091127295629
+								},
+								{
+									"eventType": "variable",
+									"name": "rightX",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "midpoint of sliderbar including margin",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 688266507939673
+								},
+								{
+									"eventType": "variable",
+									"name": "rightY",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "midpoint of sliderbar including margin",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 639147827142969
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "calculate a number from 0 to 1, based on the slider value relative to the slider min/max",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 926822829478276,
+											"parameters": {
+												"variable": "lerpHandleToBar",
+												"value": "unlerp(uiSliderBar.sliderMin, uiSliderBar.sliderMax, uiSliderHandle.sliderValue)"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "calculate the bounds of the slider area (this is complicated because it considers the angle of the slider and its margins)",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 263606745578799,
+											"parameters": {
+												"variable": "dist",
+												"value": "uiSliderBar.Width / 2 - uiSliderBar.sliderMarginsHorizontal"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 101887123250261,
+											"parameters": {
+												"variable": "leftX",
+												"value": "uiSliderBar.BBoxMidX - cos(uiSliderBar.Angle) * dist"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 651244336418808,
+											"parameters": {
+												"variable": "rightX",
+												"value": "uiSliderBar.BBoxMidX + cos(uiSliderBar.Angle) * dist"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 415623860694802,
+											"parameters": {
+												"variable": "leftY",
+												"value": "uiSliderBar.BBoxMidY - sin(uiSliderBar.Angle) * dist"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 500662160427345,
+											"parameters": {
+												"variable": "rightY",
+												"value": "uiSliderBar.BBoxMidY + sin(uiSliderBar.Angle) * dist"
+											}
+										}
+									],
+									"sid": 712814764859323,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "ui",
+													"sid": 454389153350697,
+													"parameters": {
+														"instance-variable": "id",
+														"comparison": 0,
+														"value": "uiSelectedSliderHandle"
+													}
+												}
+											],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "move the slider handle relative to the slider bar by calling a customizable custom action",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"customAction": "uiSliderHandleMove",
+													"objectClass": "ui",
+													"sid": 199095249685769,
+													"parameters": [
+														"lerp(leftX, rightX, lerpHandleToBar)",
+														"lerp(leftY, rightY, lerpHandleToBar)"
+													]
+												}
+											],
+											"sid": 640888546055493
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 796856776905493
+												}
+											],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "simply set position if this slider isn't being selected and dragged right now",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "set-position",
+													"objectClass": "ui",
+													"sid": 703716764570584,
+													"parameters": {
+														"x": "lerp(leftX, rightX, lerpHandleToBar)",
+														"y": "lerp(leftY, rightY, lerpHandleToBar)"
+													}
+												}
+											],
+											"sid": 697481159810798
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "if component is active",
 							"text-color": [
 								0,
 								0,
@@ -584,7 +1477,7 @@
 										{
 											"id": "compare-instance-variable",
 											"objectClass": "ui",
-											"sid": 720378766327013,
+											"sid": 960605948853046,
 											"parameters": {
 												"instance-variable": "id",
 												"comparison": 0,
@@ -595,7 +1488,7 @@
 										{
 											"id": "is-boolean-instance-variable-set",
 											"objectClass": "ui",
-											"sid": 721500690245466,
+											"sid": 386326078852608,
 											"parameters": {
 												"instance-variable": "chosen"
 											}
@@ -605,7 +1498,7 @@
 										{
 											"id": "set-boolean-instvar",
 											"objectClass": "ui",
-											"sid": 461743409579952,
+											"sid": 706922212555731,
 											"parameters": {
 												"instance-variable": "chosen",
 												"value": "false"
@@ -630,10 +1523,10 @@
 										{
 											"customAction": "uiUnchoose",
 											"objectClass": "ui",
-											"sid": 817953296048297
+											"sid": 853602551057910
 										}
 									],
-									"sid": 925136316735894
+									"sid": 558095197451075
 								},
 								{
 									"eventType": "comment",
@@ -657,7 +1550,7 @@
 										{
 											"id": "compare-instance-variable",
 											"objectClass": "ui",
-											"sid": 393597686400604,
+											"sid": 113056791035593,
 											"parameters": {
 												"instance-variable": "id",
 												"comparison": 0,
@@ -667,7 +1560,7 @@
 										{
 											"id": "is-boolean-instance-variable-set",
 											"objectClass": "ui",
-											"sid": 165919733432946,
+											"sid": 537036692241451,
 											"parameters": {
 												"instance-variable": "chosen"
 											},
@@ -678,7 +1571,7 @@
 										{
 											"id": "set-boolean-instvar",
 											"objectClass": "ui",
-											"sid": 330970529605331,
+											"sid": 933809320401363,
 											"parameters": {
 												"instance-variable": "chosen",
 												"value": "true"
@@ -703,7 +1596,7 @@
 										{
 											"id": "wait",
 											"objectClass": "System",
-											"sid": 381886471905668,
+											"sid": 938549173868308,
 											"parameters": {
 												"seconds": "0"
 											}
@@ -711,10 +1604,10 @@
 										{
 											"customAction": "uiChoose",
 											"objectClass": "ui",
-											"sid": 942036314679169
+											"sid": 810541408044926
 										}
 									],
-									"sid": 821377062167751
+									"sid": 823201715147950
 								}
 							]
 						},
@@ -832,195 +1725,98 @@
 					]
 				},
 				{
-					"eventType": "comment",
-					"text": "button custom action handlers",
+					"eventType": "group",
+					"disabled": false,
+					"title": "ui behavior slider",
+					"description": "has actions you shouldn't edit, consider looking at \"ui behavior custom actions\" instead to edit slider animations",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "navigate a slider using step increments",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiIncrement [INTERNAL]",
+							"objectClass": "uiSliderHandle",
+							"functionDescription": "increments slider by a step",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [
+								{
+									"name": "steps",
+									"type": "number",
+									"initialValue": "1",
+									"comment": "usually -1 or 1",
+									"sid": 993044985477042
+								}
+							],
+							"eventType": "custom-ace-block",
+							"conditions": [
+								{
+									"id": "pick-parent",
+									"objectClass": "uiSliderHandle",
+									"sid": 857007856477985,
+									"parameters": {
+										"parent": "uiSliderBar",
+										"which": "own"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "add-to-instvar",
+									"objectClass": "uiSliderHandle",
+									"sid": 291921702420383,
+									"parameters": {
+										"instance-variable": "sliderValue",
+										"value": "uiSliderBar.sliderStep * steps"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "uiSliderHandle",
+									"sid": 599980882015976,
+									"parameters": {
+										"instance-variable": "sliderValue",
+										"value": "clamp(Self.sliderValue, uiSliderBar.sliderMin, uiSliderBar.sliderMax)"
+									}
+								},
+								{
+									"callFunction": "uiUpdate [INTERNAL]",
+									"sid": 526852986915132
+								}
+							],
+							"sid": 957892311071467
+						}
+					],
+					"sid": 671963439530446,
 					"text-color": [
 						0,
 						0,
 						0,
-						1
+						0
 					],
 					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
+						0.8392156862745098,
+						0.8392156862745098,
+						0.8392156862745098,
 						1
 					]
-				},
-				{
-					"eventType": "comment",
-					"text": "with these custom actions, you can provide a default behavior here, and override the default by creating an override custom action for the button object.\n\nfor example, right now it's set so that when you chose a button it grows, and unchoosing it makes it shrink again.\n\nif you want a special button type on some layout to instead become brighter, you can make an override by creating a new custom action for that object, and calling the action \"uiChoose\" exactly.\nyou'll know you've done it right because it'll say 'Overridden' next to it.\n\nto learn more about custom actions and overriding, see here --> https://www.construct.net/en/make-games/manuals/construct-3/project-primitives/events/custom-actions",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.8470588235294118,
-						0.6431372549019608,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"aceType": "action",
-					"aceName": "uiChoose",
-					"objectClass": "ui",
-					"functionDescription": "use overrides to create special events",
-					"functionCategory": "ui",
-					"functionReturnType": "none",
-					"functionCopyPicked": false,
-					"functionIsAsync": false,
-					"functionParameters": [],
-					"eventType": "custom-ace-block",
-					"conditions": [],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "make the button grow",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"id": "stop-tweens",
-							"objectClass": "ui",
-							"sid": 107145453359263,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"uiSize\""
-							}
-						},
-						{
-							"id": "set-size",
-							"objectClass": "ui",
-							"sid": 290951342153250,
-							"parameters": {
-								"width": "Self.oWidth + 8",
-								"height": "Self.oHeight + 8"
-							}
-						},
-						{
-							"id": "tween-two-properties",
-							"objectClass": "ui",
-							"sid": 440506082403054,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"uiSize uiGrow\"",
-								"property": "size",
-								"end-x": "Self.oWidth + 4",
-								"end-y": "Self.oHeight + 4",
-								"time": "0.1",
-								"ease": "easeoutcubic",
-								"destroy-on-complete": "no",
-								"loop": "no",
-								"ping-pong": "no",
-								"repeat-count": "1"
-							}
-						}
-					],
-					"sid": 260784383734343
-				},
-				{
-					"aceType": "action",
-					"aceName": "uiUnchoose",
-					"objectClass": "ui",
-					"functionDescription": "use overrides to create special events",
-					"functionCategory": "ui",
-					"functionReturnType": "none",
-					"functionCopyPicked": false,
-					"functionIsAsync": false,
-					"functionParameters": [],
-					"eventType": "custom-ace-block",
-					"conditions": [],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "make the button shrink",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"id": "stop-tweens",
-							"objectClass": "ui",
-							"sid": 229672910932924,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"uiSize\""
-							}
-						},
-						{
-							"id": "tween-two-properties",
-							"objectClass": "ui",
-							"sid": 725825198045404,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"uiSize uiShrink\"",
-								"property": "size",
-								"end-x": "Self.oWidth",
-								"end-y": "Self.oHeight",
-								"time": "0.1",
-								"ease": "easeoutcubic",
-								"destroy-on-complete": "no",
-								"loop": "no",
-								"ping-pong": "no",
-								"repeat-count": "1"
-							}
-						}
-					],
-					"sid": 286584863228932
-				},
-				{
-					"aceType": "action",
-					"aceName": "uiSelect",
-					"objectClass": "ui",
-					"functionDescription": "use overrides to create special events",
-					"functionCategory": "ui",
-					"functionReturnType": "none",
-					"functionCopyPicked": false,
-					"functionIsAsync": false,
-					"functionParameters": [],
-					"eventType": "custom-ace-block",
-					"conditions": [],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "didn't have any default action I wanted to assign for all buttons on being selected",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						}
-					],
-					"sid": 673538889492542
 				},
 				{
 					"eventType": "comment",
@@ -1039,22 +1835,6 @@
 					]
 				},
 				{
-					"eventType": "comment",
-					"text": "will call a function with the syntax (\"select \" & uiButton.id)\nex: Function \"select mainPlay\"\nadd this function to any event sheet to register when a button is selected\n\nkeep in mind that if you change a button's ID, you'll have to change the name of its function, too",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.8470588235294118,
-						0.6431372549019608,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
 					"functionName": "uiSelect [INTERNAL]",
 					"functionDescription": "selects the currently chosen UI component",
 					"functionCategory": "ui",
@@ -1063,66 +1843,200 @@
 					"functionIsAsync": false,
 					"functionParameters": [],
 					"eventType": "function-block",
-					"conditions": [],
-					"actions": [],
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "ui",
+							"sid": 290159773353537,
+							"parameters": {
+								"instance-variable": "id",
+								"comparison": 0,
+								"value": "uiChosenID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "will call a function with the syntax (\"select \" & uiButton.id)\nex: Function \"select mainPlay\"\nadd this function to any event sheet to register when a button is selected\n\nkeep in mind that if you change a button's ID, you'll have to change the name of its function, too",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8470588235294118,
+								0.6431372549019608,
+								0.8745098039215686,
+								1
+							]
+						}
+					],
 					"sid": 997360392938089,
 					"children": [
 						{
-							"eventType": "variable",
-							"name": "id",
-							"type": "string",
-							"initialValue": "",
-							"comment": "",
-							"isStatic": false,
-							"isConstant": false,
-							"sid": 258965409429805
-						},
-						{
-							"eventType": "variable",
-							"name": "section",
-							"type": "string",
-							"initialValue": "",
-							"comment": "",
-							"isStatic": false,
-							"isConstant": false,
-							"sid": 428243356183770
+							"eventType": "comment",
+							"text": "if this is a slider handle",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
 						},
 						{
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "compare-instance-variable",
-									"objectClass": "ui",
-									"sid": 365854396873637,
+									"id": "pick-by-unique-id",
+									"objectClass": "uiSliderHandle",
+									"sid": 530183444450114,
 									"parameters": {
-										"instance-variable": "id",
-										"comparison": 0,
-										"value": "uiChosenID"
+										"unique-id": "ui.UID"
 									}
+								},
+								{
+									"id": "pick-parent",
+									"objectClass": "uiSliderHandle",
+									"sid": 638721636843171,
+									"parameters": {
+										"parent": "uiSliderBar",
+										"which": "own"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 578889860351711,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 500820099146554,
+											"parameters": {
+												"variable": "uiSelectedSliderHandle",
+												"comparison": 0,
+												"value": "\"\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "enter a state where all navigation only affects the slider value, and then call custom action, signifies handle being 'picked up' rather than being selected once",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 840713537628348,
+											"parameters": {
+												"variable": "uiSelectedSliderHandle",
+												"value": "uiChosenID"
+											}
+										},
+										{
+											"customAction": "uiSliderHandleSelect",
+											"objectClass": "ui",
+											"sid": 773269949428798
+										}
+									],
+									"sid": 989311956665173
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 561058476439114
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "go back to normal navigation, and then call custom action, signifies handle being 'put down'",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 641088629416147,
+											"parameters": {
+												"variable": "uiSelectedSliderHandle",
+												"value": "\"\""
+											}
+										},
+										{
+											"customAction": "uiSliderHandleDeselect",
+											"objectClass": "ui",
+											"sid": 775704129734893
+										}
+									],
+									"sid": 835461318027177
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "else, treat it as a normal button",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 166588794431580
 								}
 							],
 							"actions": [
 								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 374606610672194,
-									"parameters": {
-										"variable": "id",
-										"value": "ui.id"
-									}
-								},
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 760113739967017,
-									"parameters": {
-										"variable": "section",
-										"value": "ui.section"
-									}
-								},
-								{
 									"type": "comment",
-									"text": "call function with js, so that any function name can be called at runtime",
+									"text": "call function with js, so that any function name can be called at runtime, and then call custom action for this button's selection",
 									"text-color": [
 										0,
 										0,
@@ -1138,37 +2052,21 @@
 								},
 								{
 									"type": "script",
-									"script": "runtime.callFunction(\"select \" + localVars.id);"
-								},
-								{
-									"type": "comment",
-									"text": "call custom action for this button's selection",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
+									"script": "runtime.callFunction(\"select \" + runtime.objects.ui.getFirstPickedInstance().instVars.id);"
 								},
 								{
 									"customAction": "uiSelect",
 									"objectClass": "ui",
-									"sid": 885612950540205
+									"sid": 920336686766115
 								}
 							],
-							"sid": 399124229237747
+							"sid": 364808941281007
 						}
 					]
 				},
 				{
 					"eventType": "comment",
-					"text": "the rest of these are internal, so I don't recommend manually calling them anyways",
+					"text": "the rest of these are internal, so I don't recommend manually calling them or changing them anyways",
 					"text-color": [
 						0,
 						0,
@@ -1221,7 +2119,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "if no UI component is currently chosen, then pick a default one",
+							"text": "if we're dealing with a slider handle, then navigation affects the handle instead",
 							"text-color": [
 								0,
 								0,
@@ -1241,130 +2139,47 @@
 								{
 									"id": "compare-eventvar",
 									"objectClass": "System",
-									"sid": 982219093332401,
+									"sid": 693028028134504,
 									"parameters": {
-										"variable": "uiChosenID",
-										"comparison": 0,
+										"variable": "uiSelectedSliderHandle",
+										"comparison": 1,
 										"value": "\"\""
 									}
-								}
-							],
-							"actions": [
-								{
-									"callFunction": "uiNavigateDefault [INTERNAL]",
-									"sid": 101048958971897
-								}
-							],
-							"sid": 851705460447810
-						},
-						{
-							"eventType": "comment",
-							"text": "else, perform the navigation",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "else",
-									"objectClass": "System",
-									"sid": 455932063616413
 								},
 								{
-									"id": "is-boolean-instance-variable-set",
+									"id": "compare-instance-variable",
 									"objectClass": "ui",
-									"sid": 674450783743648,
+									"sid": 392589119898223,
 									"parameters": {
-										"instance-variable": "active"
+										"instance-variable": "id",
+										"comparison": 0,
+										"value": "uiSelectedSliderHandle"
+									}
+								},
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "uiSliderHandle",
+									"sid": 316561315505832,
+									"parameters": {
+										"unique-id": "ui.UID"
+									}
+								},
+								{
+									"id": "pick-parent",
+									"objectClass": "uiSliderHandle",
+									"sid": 421925116201409,
+									"parameters": {
+										"parent": "uiSliderBar",
+										"which": "own"
 									}
 								}
 							],
 							"actions": [],
-							"sid": 393147469027934,
+							"sid": 753624902621659,
 							"children": [
 								{
 									"eventType": "comment",
-									"text": "in case an override is present, skip all else and perform the override",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6705882352941176,
-										0.8745098039215686,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"eventType": "variable",
-									"name": "wrapOverride",
-									"type": "string",
-									"initialValue": "",
-									"comment": "",
-									"isStatic": false,
-									"isConstant": false,
-									"sid": 839102647911069
-								},
-								{
-									"eventType": "comment",
-									"text": "find relevant override string from instance variables",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "ui",
-											"sid": 992797386712371,
-											"parameters": {
-												"instance-variable": "id",
-												"comparison": 0,
-												"value": "uiChosenID"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 284142715749550,
-											"parameters": {
-												"variable": "wrapOverride",
-												"value": "direction = \"up\" ? ui.overrideUp : (direction = \"down\" ? ui.overrideDown : (direction = \"left\" ? ui.overrideLeft : ui.overrideRight))"
-											}
-										}
-									],
-									"sid": 867965555933643
-								},
-								{
-									"eventType": "comment",
-									"text": "if override is present, perform it",
+									"text": "the math here is very specific\nwe take the sin() or cos() of the angle of the slider bar\nthen we take the sign() of it, which provides either -1, 0, or 1\nfinally depending on if its an increment or decrement we make it negative or positive\n\nthis allows increments to work even with irregular slider bar angles",
 									"text-color": [
 										0,
 										0,
@@ -1384,31 +2199,175 @@
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 297368612475991,
+											"sid": 805462121070113,
 											"parameters": {
-												"variable": "wrapOverride",
+												"variable": "direction",
 												"comparison": 0,
-												"value": "\"\""
-											},
-											"isInverted": true
+												"value": "\"up\""
+											}
 										}
 									],
 									"actions": [
 										{
-											"id": "set-eventvar-value",
+											"customAction": "uiIncrement [INTERNAL]",
+											"objectClass": "uiSliderHandle",
+											"sid": 851714034447011,
+											"parameters": [
+												"-sign(sin(uiSliderBar.Angle))"
+											]
+										}
+									],
+									"sid": 557324245065138
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 181994177541077,
+											"sid": 706575924710606,
 											"parameters": {
-												"variable": "uiChosenID",
-												"value": "wrapOverride"
+												"variable": "direction",
+												"comparison": 0,
+												"value": "\"down\""
 											}
 										}
 									],
-									"sid": 306623932691920
+									"actions": [
+										{
+											"customAction": "uiIncrement [INTERNAL]",
+											"objectClass": "uiSliderHandle",
+											"sid": 894267365028333,
+											"parameters": [
+												"sign(sin(uiSliderBar.Angle))"
+											]
+										}
+									],
+									"sid": 516032398754226
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 560604345256883,
+											"parameters": {
+												"variable": "direction",
+												"comparison": 0,
+												"value": "\"left\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"customAction": "uiIncrement [INTERNAL]",
+											"objectClass": "uiSliderHandle",
+											"sid": 551237636038948,
+											"parameters": [
+												"-sign(cos(uiSliderBar.Angle))"
+											]
+										}
+									],
+									"sid": 404604160905926
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 143500042478231,
+											"parameters": {
+												"variable": "direction",
+												"comparison": 0,
+												"value": "\"right\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"customAction": "uiIncrement [INTERNAL]",
+											"objectClass": "uiSliderHandle",
+											"sid": 590683070194193,
+											"parameters": [
+												"sign(cos(uiSliderBar.Angle))"
+											]
+										}
+									],
+									"sid": 108975727761779
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "otherwise navigate all ui components",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 159969537310671
+								}
+							],
+							"actions": [],
+							"sid": 587441702962528,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "if no UI component is currently chosen, then pick a default one",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 909471801326298,
+											"parameters": {
+												"variable": "uiChosenID",
+												"comparison": 0,
+												"value": "\"\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "uiNavigateDefault [INTERNAL]",
+											"sid": 121555635338119
+										}
+									],
+									"sid": 125383155750413
 								},
 								{
 									"eventType": "comment",
-									"text": "else, perform normal navigation",
+									"text": "else, perform the navigation",
 									"text-color": [
 										0,
 										0,
@@ -1428,15 +2387,23 @@
 										{
 											"id": "else",
 											"objectClass": "System",
-											"sid": 463063755976731
+											"sid": 233766769320838
+										},
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "ui",
+											"sid": 730068716930036,
+											"parameters": {
+												"instance-variable": "active"
+											}
 										}
 									],
 									"actions": [],
-									"sid": 605734797668566,
+									"sid": 622028310648162,
 									"children": [
 										{
 											"eventType": "comment",
-											"text": "these vars track the position of the UI component that was chosen prior to navigating",
+											"text": "in case an override is present, skip all else and perform the override",
 											"text-color": [
 												0,
 												0,
@@ -1452,27 +2419,17 @@
 										},
 										{
 											"eventType": "variable",
-											"name": "curX",
-											"type": "number",
-											"initialValue": "0",
+											"name": "wrapOverride",
+											"type": "string",
+											"initialValue": "",
 											"comment": "",
 											"isStatic": false,
 											"isConstant": false,
-											"sid": 739727487303927
-										},
-										{
-											"eventType": "variable",
-											"name": "curY",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 768936246778164
+											"sid": 112351524060100
 										},
 										{
 											"eventType": "comment",
-											"text": "record last chosen component position",
+											"text": "find relevant override string from instance variables",
 											"text-color": [
 												0,
 												0,
@@ -1492,7 +2449,7 @@
 												{
 													"id": "compare-instance-variable",
 													"objectClass": "ui",
-													"sid": 990844668241464,
+													"sid": 242351728561598,
 													"parameters": {
 														"instance-variable": "id",
 														"comparison": 0,
@@ -1504,53 +2461,18 @@
 												{
 													"id": "set-eventvar-value",
 													"objectClass": "System",
-													"sid": 628137127093190,
+													"sid": 418684570984272,
 													"parameters": {
-														"variable": "curX",
-														"value": "ui.BBoxMidX"
-													}
-												},
-												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 642942390691780,
-													"parameters": {
-														"variable": "curY",
-														"value": "ui.BBoxMidY"
+														"variable": "wrapOverride",
+														"value": "direction = \"up\" ? ui.overrideUp : (direction = \"down\" ? ui.overrideDown : (direction = \"left\" ? ui.overrideLeft : ui.overrideRight))"
 													}
 												}
 											],
-											"sid": 798504998477916
+											"sid": 111059313066501
 										},
 										{
 											"eventType": "comment",
-											"text": "find the lowest or highest x/y value to wrap around to, and use this var to find all instances on the same pos",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.6705882352941176,
-												0.8745098039215686,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"eventType": "variable",
-											"name": "wrapPos",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 369823648394309
-										},
-										{
-											"eventType": "comment",
-											"text": "next, find the new option to choose depending on the direction",
+											"text": "if override is present, perform it",
 											"text-color": [
 												0,
 												0,
@@ -1570,20 +2492,63 @@
 												{
 													"id": "compare-eventvar",
 													"objectClass": "System",
-													"sid": 173290588228378,
+													"sid": 108786019384298,
 													"parameters": {
-														"variable": "direction",
+														"variable": "wrapOverride",
 														"comparison": 0,
-														"value": "\"up\""
+														"value": "\"\""
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 145164901297677,
+													"parameters": {
+														"variable": "uiChosenID",
+														"value": "wrapOverride"
 													}
+												},
+												{
+													"callFunction": "uiUpdate [INTERNAL]",
+													"sid": 610488710137355
+												}
+											],
+											"sid": 947041100176302
+										},
+										{
+											"eventType": "comment",
+											"text": "else, perform normal navigation",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 442215471097052
 												}
 											],
 											"actions": [],
-											"sid": 484012962868669,
+											"sid": 883243135976043,
 											"children": [
 												{
 													"eventType": "comment",
-													"text": "if components exist in this direction, pick the closest of them",
+													"text": "these vars track the position of the UI component that was chosen prior to navigating",
 													"text-color": [
 														0,
 														0,
@@ -1591,43 +2556,35 @@
 														1
 													],
 													"background-color": [
+														0.6705882352941176,
 														0.8745098039215686,
-														0.8352941176470589,
 														0.6431372549019608,
 														1
 													]
 												},
 												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "pick-by-comparison",
-															"objectClass": "System",
-															"sid": 992841822086835,
-															"parameters": {
-																"object": "ui",
-																"expression": "ui.Y",
-																"comparison": 2,
-																"value": "curY"
-															}
-														}
-													],
-													"actions": [
-														{
-															"customAction": "pickNearest [INTERNAL]",
-															"objectClass": "ui",
-															"sid": 653364532296591,
-															"parameters": [
-																"curX",
-																"curY"
-															]
-														}
-													],
-													"sid": 116050964131516
+													"eventType": "variable",
+													"name": "curX",
+													"type": "number",
+													"initialValue": "0",
+													"comment": "",
+													"isStatic": false,
+													"isConstant": false,
+													"sid": 461888327416165
+												},
+												{
+													"eventType": "variable",
+													"name": "curY",
+													"type": "number",
+													"initialValue": "0",
+													"comment": "",
+													"isStatic": false,
+													"isConstant": false,
+													"sid": 489682919619747
 												},
 												{
 													"eventType": "comment",
-													"text": "if none found, wrap around to UI on the other side of the screen",
+													"text": "record last chosen component position",
 													"text-color": [
 														0,
 														0,
@@ -1645,59 +2602,125 @@
 													"eventType": "block",
 													"conditions": [
 														{
-															"id": "else",
-															"objectClass": "System",
-															"sid": 244047952416479
-														},
-														{
-															"id": "for-each-ordered",
-															"objectClass": "System",
-															"sid": 754267856251482,
+															"id": "compare-instance-variable",
+															"objectClass": "ui",
+															"sid": 937949927655990,
 															"parameters": {
-																"object": "ui",
-																"expression": "ui.Y",
-																"order": "descending"
+																"instance-variable": "id",
+																"comparison": 0,
+																"value": "uiChosenID"
 															}
 														}
 													],
 													"actions": [
 														{
-															"id": "stop-loop",
+															"id": "set-eventvar-value",
 															"objectClass": "System",
-															"sid": 302653944726253
+															"sid": 250137976760910,
+															"parameters": {
+																"variable": "curX",
+																"value": "ui.BBoxMidX"
+															}
 														},
 														{
 															"id": "set-eventvar-value",
 															"objectClass": "System",
-															"sid": 422209484640262,
+															"sid": 822821077418350,
 															"parameters": {
-																"variable": "wrapPos",
-																"value": "ui.Y"
+																"variable": "curY",
+																"value": "ui.BBoxMidY"
 															}
 														}
 													],
-													"sid": 817661029342322,
+													"sid": 797783058246956
+												},
+												{
+													"eventType": "comment",
+													"text": "find the lowest or highest x/y value to wrap around to, and use this var to find all instances on the same pos",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.6705882352941176,
+														0.8745098039215686,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "variable",
+													"name": "wrapPos",
+													"type": "number",
+													"initialValue": "0",
+													"comment": "",
+													"isStatic": false,
+													"isConstant": false,
+													"sid": 662167780040902
+												},
+												{
+													"eventType": "comment",
+													"text": "next, find the new option to choose depending on the direction",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-eventvar",
+															"objectClass": "System",
+															"sid": 558858503544292,
+															"parameters": {
+																"variable": "direction",
+																"comparison": 0,
+																"value": "\"up\""
+															}
+														}
+													],
+													"actions": [],
+													"sid": 726379402053246,
 													"children": [
+														{
+															"eventType": "comment",
+															"text": "if components exist in this direction, pick the closest of them",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
 														{
 															"eventType": "block",
 															"conditions": [
 																{
-																	"id": "pick-all",
-																	"objectClass": "System",
-																	"sid": 938253161045488,
-																	"parameters": {
-																		"object": "ui"
-																	}
-																},
-																{
 																	"id": "pick-by-comparison",
 																	"objectClass": "System",
-																	"sid": 426724069814095,
+																	"sid": 391985846615055,
 																	"parameters": {
 																		"object": "ui",
 																		"expression": "ui.Y",
-																		"comparison": 0,
-																		"value": "wrapPos"
+																		"comparison": 2,
+																		"value": "curY"
 																	}
 																}
 															],
@@ -1705,307 +2728,153 @@
 																{
 																	"customAction": "pickNearest [INTERNAL]",
 																	"objectClass": "ui",
-																	"sid": 926252388018888,
+																	"sid": 593107239264496,
 																	"parameters": [
 																		"curX",
 																		"curY"
 																	]
 																}
 															],
-															"sid": 846203125688589
-														}
-													]
-												}
-											]
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-eventvar",
-													"objectClass": "System",
-													"sid": 335250840073180,
-													"parameters": {
-														"variable": "direction",
-														"comparison": 0,
-														"value": "\"down\""
-													}
-												}
-											],
-											"actions": [],
-											"sid": 978256169249493,
-											"children": [
-												{
-													"eventType": "comment",
-													"text": "if components exist in this direction, pick the closest of them",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"eventType": "block",
-													"conditions": [
+															"sid": 735729789065847
+														},
 														{
-															"id": "pick-by-comparison",
-															"objectClass": "System",
-															"sid": 820184890022692,
-															"parameters": {
-																"object": "ui",
-																"expression": "ui.Y",
-																"comparison": 4,
-																"value": "curY"
-															}
-														}
-													],
-													"actions": [
-														{
-															"customAction": "pickNearest [INTERNAL]",
-															"objectClass": "ui",
-															"sid": 557368625320309,
-															"parameters": [
-																"curX",
-																"curY"
+															"eventType": "comment",
+															"text": "if none found, wrap around to UI on the other side of the screen",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
 															]
-														}
-													],
-													"sid": 843996136120236
-												},
-												{
-													"eventType": "comment",
-													"text": "if none found, wrap around to UI on the other side of the screen",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "else",
-															"objectClass": "System",
-															"sid": 605575003324012
 														},
-														{
-															"id": "for-each-ordered",
-															"objectClass": "System",
-															"sid": 726712921798509,
-															"parameters": {
-																"object": "ui",
-																"expression": "ui.Y",
-																"order": "ascending"
-															}
-														}
-													],
-													"actions": [
-														{
-															"id": "stop-loop",
-															"objectClass": "System",
-															"sid": 495796937222876
-														},
-														{
-															"id": "set-eventvar-value",
-															"objectClass": "System",
-															"sid": 147608950128850,
-															"parameters": {
-																"variable": "wrapPos",
-																"value": "ui.Y"
-															}
-														}
-													],
-													"sid": 774383577376960,
-													"children": [
 														{
 															"eventType": "block",
 															"conditions": [
 																{
-																	"id": "pick-all",
+																	"id": "else",
 																	"objectClass": "System",
-																	"sid": 638203115122456,
-																	"parameters": {
-																		"object": "ui"
-																	}
+																	"sid": 781218248973933
 																},
 																{
-																	"id": "pick-by-comparison",
+																	"id": "for-each-ordered",
 																	"objectClass": "System",
-																	"sid": 347965810597637,
+																	"sid": 884131158522852,
 																	"parameters": {
 																		"object": "ui",
 																		"expression": "ui.Y",
-																		"comparison": 0,
-																		"value": "wrapPos"
+																		"order": "descending"
 																	}
 																}
 															],
 															"actions": [
 																{
-																	"customAction": "pickNearest [INTERNAL]",
-																	"objectClass": "ui",
-																	"sid": 389891807287509,
-																	"parameters": [
-																		"curX",
-																		"curY"
-																	]
+																	"id": "stop-loop",
+																	"objectClass": "System",
+																	"sid": 839597594874054
+																},
+																{
+																	"id": "set-eventvar-value",
+																	"objectClass": "System",
+																	"sid": 185575802982783,
+																	"parameters": {
+																		"variable": "wrapPos",
+																		"value": "ui.Y"
+																	}
 																}
 															],
-															"sid": 794623355461211
-														}
-													]
-												}
-											]
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-eventvar",
-													"objectClass": "System",
-													"sid": 262508781138795,
-													"parameters": {
-														"variable": "direction",
-														"comparison": 0,
-														"value": "\"left\""
-													}
-												}
-											],
-											"actions": [],
-											"sid": 612805094123976,
-											"children": [
-												{
-													"eventType": "comment",
-													"text": "if components exist in this direction, pick the closest of them",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "pick-by-comparison",
-															"objectClass": "System",
-															"sid": 486293493633645,
-															"parameters": {
-																"object": "ui",
-																"expression": "ui.X",
-																"comparison": 2,
-																"value": "curX"
-															}
-														}
-													],
-													"actions": [
-														{
-															"customAction": "pickNearest [INTERNAL]",
-															"objectClass": "ui",
-															"sid": 958490714596897,
-															"parameters": [
-																"curX",
-																"curY"
+															"sid": 826800599428692,
+															"children": [
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "pick-all",
+																			"objectClass": "System",
+																			"sid": 106446747845792,
+																			"parameters": {
+																				"object": "ui"
+																			}
+																		},
+																		{
+																			"id": "pick-by-comparison",
+																			"objectClass": "System",
+																			"sid": 777128034733916,
+																			"parameters": {
+																				"object": "ui",
+																				"expression": "ui.Y",
+																				"comparison": 0,
+																				"value": "wrapPos"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"customAction": "pickNearest [INTERNAL]",
+																			"objectClass": "ui",
+																			"sid": 145985545042263,
+																			"parameters": [
+																				"curX",
+																				"curY"
+																			]
+																		}
+																	],
+																	"sid": 474552307671124
+																}
 															]
 														}
-													],
-													"sid": 349159606779093
-												},
-												{
-													"eventType": "comment",
-													"text": "if none found, wrap around to UI on the other side of the screen",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
 													]
 												},
 												{
 													"eventType": "block",
 													"conditions": [
 														{
-															"id": "else",
+															"id": "compare-eventvar",
 															"objectClass": "System",
-															"sid": 886720999777835
-														},
-														{
-															"id": "for-each-ordered",
-															"objectClass": "System",
-															"sid": 831262042319022,
+															"sid": 235244798757279,
 															"parameters": {
-																"object": "ui",
-																"expression": "ui.X",
-																"order": "descending"
+																"variable": "direction",
+																"comparison": 0,
+																"value": "\"down\""
 															}
 														}
 													],
-													"actions": [
-														{
-															"id": "stop-loop",
-															"objectClass": "System",
-															"sid": 380995332356017
-														},
-														{
-															"id": "set-eventvar-value",
-															"objectClass": "System",
-															"sid": 999223034764072,
-															"parameters": {
-																"variable": "wrapPos",
-																"value": "ui.X"
-															}
-														}
-													],
-													"sid": 946617431587577,
+													"actions": [],
+													"sid": 581418261114044,
 													"children": [
+														{
+															"eventType": "comment",
+															"text": "if components exist in this direction, pick the closest of them",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
 														{
 															"eventType": "block",
 															"conditions": [
 																{
-																	"id": "pick-all",
-																	"objectClass": "System",
-																	"sid": 267538017881430,
-																	"parameters": {
-																		"object": "ui"
-																	}
-																},
-																{
 																	"id": "pick-by-comparison",
 																	"objectClass": "System",
-																	"sid": 289467833259386,
+																	"sid": 731889676781775,
 																	"parameters": {
 																		"object": "ui",
-																		"expression": "ui.X",
-																		"comparison": 0,
-																		"value": "wrapPos"
+																		"expression": "ui.Y",
+																		"comparison": 4,
+																		"value": "curY"
 																	}
 																}
 															],
@@ -2013,153 +2882,153 @@
 																{
 																	"customAction": "pickNearest [INTERNAL]",
 																	"objectClass": "ui",
-																	"sid": 154048107619608,
+																	"sid": 108926923618426,
 																	"parameters": [
 																		"curX",
 																		"curY"
 																	]
 																}
 															],
-															"sid": 534833864464822
-														}
-													]
-												}
-											]
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-eventvar",
-													"objectClass": "System",
-													"sid": 300336767613251,
-													"parameters": {
-														"variable": "direction",
-														"comparison": 0,
-														"value": "\"right\""
-													}
-												}
-											],
-											"actions": [],
-											"sid": 550334015572843,
-											"children": [
-												{
-													"eventType": "comment",
-													"text": "if components exist in this direction, pick the closest of them",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"eventType": "block",
-													"conditions": [
+															"sid": 270498429900897
+														},
 														{
-															"id": "pick-by-comparison",
-															"objectClass": "System",
-															"sid": 164963709447700,
-															"parameters": {
-																"object": "ui",
-																"expression": "ui.X",
-																"comparison": 4,
-																"value": "curX"
-															}
-														}
-													],
-													"actions": [
-														{
-															"customAction": "pickNearest [INTERNAL]",
-															"objectClass": "ui",
-															"sid": 378565094713663,
-															"parameters": [
-																"curX",
-																"curY"
+															"eventType": "comment",
+															"text": "if none found, wrap around to UI on the other side of the screen",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
 															]
-														}
-													],
-													"sid": 741298665719792
-												},
-												{
-													"eventType": "comment",
-													"text": "if none found, wrap around to UI on the other side of the screen",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "else",
-															"objectClass": "System",
-															"sid": 922947858812657
 														},
-														{
-															"id": "for-each-ordered",
-															"objectClass": "System",
-															"sid": 982586643433669,
-															"parameters": {
-																"object": "ui",
-																"expression": "ui.X",
-																"order": "ascending"
-															}
-														}
-													],
-													"actions": [
-														{
-															"id": "stop-loop",
-															"objectClass": "System",
-															"sid": 640882966710727
-														},
-														{
-															"id": "set-eventvar-value",
-															"objectClass": "System",
-															"sid": 889138521602855,
-															"parameters": {
-																"variable": "wrapPos",
-																"value": "ui.X"
-															}
-														}
-													],
-													"sid": 286999832156508,
-													"children": [
 														{
 															"eventType": "block",
 															"conditions": [
 																{
-																	"id": "pick-all",
+																	"id": "else",
 																	"objectClass": "System",
-																	"sid": 314248448818190,
-																	"parameters": {
-																		"object": "ui"
-																	}
+																	"sid": 864431409406587
 																},
+																{
+																	"id": "for-each-ordered",
+																	"objectClass": "System",
+																	"sid": 143744569136153,
+																	"parameters": {
+																		"object": "ui",
+																		"expression": "ui.Y",
+																		"order": "ascending"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "stop-loop",
+																	"objectClass": "System",
+																	"sid": 251477592952601
+																},
+																{
+																	"id": "set-eventvar-value",
+																	"objectClass": "System",
+																	"sid": 130530487833890,
+																	"parameters": {
+																		"variable": "wrapPos",
+																		"value": "ui.Y"
+																	}
+																}
+															],
+															"sid": 197612212637984,
+															"children": [
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "pick-all",
+																			"objectClass": "System",
+																			"sid": 327904270653321,
+																			"parameters": {
+																				"object": "ui"
+																			}
+																		},
+																		{
+																			"id": "pick-by-comparison",
+																			"objectClass": "System",
+																			"sid": 308364200774272,
+																			"parameters": {
+																				"object": "ui",
+																				"expression": "ui.Y",
+																				"comparison": 0,
+																				"value": "wrapPos"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"customAction": "pickNearest [INTERNAL]",
+																			"objectClass": "ui",
+																			"sid": 694819005768689,
+																			"parameters": [
+																				"curX",
+																				"curY"
+																			]
+																		}
+																	],
+																	"sid": 229743643624374
+																}
+															]
+														}
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-eventvar",
+															"objectClass": "System",
+															"sid": 937538602174152,
+															"parameters": {
+																"variable": "direction",
+																"comparison": 0,
+																"value": "\"left\""
+															}
+														}
+													],
+													"actions": [],
+													"sid": 808808053615776,
+													"children": [
+														{
+															"eventType": "comment",
+															"text": "if components exist in this direction, pick the closest of them",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
 																{
 																	"id": "pick-by-comparison",
 																	"objectClass": "System",
-																	"sid": 348248507028335,
+																	"sid": 453365819737750,
 																	"parameters": {
 																		"object": "ui",
 																		"expression": "ui.X",
-																		"comparison": 0,
-																		"value": "wrapPos"
+																		"comparison": 2,
+																		"value": "curX"
 																	}
 																}
 															],
@@ -2167,14 +3036,259 @@
 																{
 																	"customAction": "pickNearest [INTERNAL]",
 																	"objectClass": "ui",
-																	"sid": 275326390011480,
+																	"sid": 679246433410555,
 																	"parameters": [
 																		"curX",
 																		"curY"
 																	]
 																}
 															],
-															"sid": 654744629665874
+															"sid": 296153351828354
+														},
+														{
+															"eventType": "comment",
+															"text": "if none found, wrap around to UI on the other side of the screen",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "else",
+																	"objectClass": "System",
+																	"sid": 578493180122902
+																},
+																{
+																	"id": "for-each-ordered",
+																	"objectClass": "System",
+																	"sid": 231947549808851,
+																	"parameters": {
+																		"object": "ui",
+																		"expression": "ui.X",
+																		"order": "descending"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "stop-loop",
+																	"objectClass": "System",
+																	"sid": 403112920147263
+																},
+																{
+																	"id": "set-eventvar-value",
+																	"objectClass": "System",
+																	"sid": 809862222389651,
+																	"parameters": {
+																		"variable": "wrapPos",
+																		"value": "ui.X"
+																	}
+																}
+															],
+															"sid": 640957912593814,
+															"children": [
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "pick-all",
+																			"objectClass": "System",
+																			"sid": 916504086379140,
+																			"parameters": {
+																				"object": "ui"
+																			}
+																		},
+																		{
+																			"id": "pick-by-comparison",
+																			"objectClass": "System",
+																			"sid": 488392979826129,
+																			"parameters": {
+																				"object": "ui",
+																				"expression": "ui.X",
+																				"comparison": 0,
+																				"value": "wrapPos"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"customAction": "pickNearest [INTERNAL]",
+																			"objectClass": "ui",
+																			"sid": 937467634268284,
+																			"parameters": [
+																				"curX",
+																				"curY"
+																			]
+																		}
+																	],
+																	"sid": 237660404845339
+																}
+															]
+														}
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-eventvar",
+															"objectClass": "System",
+															"sid": 174324658399013,
+															"parameters": {
+																"variable": "direction",
+																"comparison": 0,
+																"value": "\"right\""
+															}
+														}
+													],
+													"actions": [],
+													"sid": 577269317273807,
+													"children": [
+														{
+															"eventType": "comment",
+															"text": "if components exist in this direction, pick the closest of them",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "pick-by-comparison",
+																	"objectClass": "System",
+																	"sid": 657850402148967,
+																	"parameters": {
+																		"object": "ui",
+																		"expression": "ui.X",
+																		"comparison": 4,
+																		"value": "curX"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"customAction": "pickNearest [INTERNAL]",
+																	"objectClass": "ui",
+																	"sid": 677844030637781,
+																	"parameters": [
+																		"curX",
+																		"curY"
+																	]
+																}
+															],
+															"sid": 401738636874286
+														},
+														{
+															"eventType": "comment",
+															"text": "if none found, wrap around to UI on the other side of the screen",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "else",
+																	"objectClass": "System",
+																	"sid": 454779719936247
+																},
+																{
+																	"id": "for-each-ordered",
+																	"objectClass": "System",
+																	"sid": 548068388101221,
+																	"parameters": {
+																		"object": "ui",
+																		"expression": "ui.X",
+																		"order": "ascending"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "stop-loop",
+																	"objectClass": "System",
+																	"sid": 571288710317476
+																},
+																{
+																	"id": "set-eventvar-value",
+																	"objectClass": "System",
+																	"sid": 270877590843743,
+																	"parameters": {
+																		"variable": "wrapPos",
+																		"value": "ui.X"
+																	}
+																}
+															],
+															"sid": 503539951728831,
+															"children": [
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "pick-all",
+																			"objectClass": "System",
+																			"sid": 292129469740014,
+																			"parameters": {
+																				"object": "ui"
+																			}
+																		},
+																		{
+																			"id": "pick-by-comparison",
+																			"objectClass": "System",
+																			"sid": 247821493121298,
+																			"parameters": {
+																				"object": "ui",
+																				"expression": "ui.X",
+																				"comparison": 0,
+																				"value": "wrapPos"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"customAction": "pickNearest [INTERNAL]",
+																			"objectClass": "ui",
+																			"sid": 579859786797154,
+																			"parameters": [
+																				"curX",
+																				"curY"
+																			]
+																		}
+																	],
+																	"sid": 381495965184244
+																}
+															]
 														}
 													]
 												}

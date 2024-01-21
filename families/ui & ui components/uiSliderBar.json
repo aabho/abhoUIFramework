@@ -1,5 +1,5 @@
 {
-	"name": "uiSlider",
+	"name": "uiSliderBar",
 	"plugin-id": "NinePatch",
 	"sid": 334967625349609,
 	"instanceVariables": [
@@ -25,11 +25,11 @@
 			"sid": 169924928491699
 		},
 		{
-			"name": "sliderValue",
+			"name": "sliderMarginsHorizontal",
 			"type": "number",
-			"desc": "slider value",
+			"desc": "from the sides of this object, how much smaller is the area considered part of the slider?",
 			"show": true,
-			"sid": 463530432742647
+			"sid": 348738334168264
 		}
 	],
 	"behaviorTypes": [],

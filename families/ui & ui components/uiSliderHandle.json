@@ -1,0 +1,19 @@
+{
+	"name": "uiSliderHandle",
+	"plugin-id": "NinePatch",
+	"sid": 407084313195358,
+	"instanceVariables": [
+		{
+			"name": "sliderValue",
+			"type": "number",
+			"desc": "the value for this slider handle",
+			"show": true,
+			"sid": 328473832908605
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"uiMainSettingsSliderBar"
+	]
+}

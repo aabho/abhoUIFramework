@@ -132,7 +132,8 @@
 			{
 				"items": [
 					"ui",
-					"uiSlider"
+					"uiSliderBar",
+					"uiSliderHandle"
 				],
 				"subfolders": [],
 				"name": "ui & ui components"

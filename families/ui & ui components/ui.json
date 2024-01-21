@@ -72,6 +72,20 @@
 			"desc": "for size animations, can remove this if you'd like",
 			"show": false,
 			"sid": 304615723960730
+		},
+		{
+			"name": "mGrowWidth",
+			"type": "number",
+			"desc": "for size animations, can remove this if you'd like",
+			"show": true,
+			"sid": 225978314220080
+		},
+		{
+			"name": "mGrowHeight",
+			"type": "number",
+			"desc": "for size animations, can remove this if you'd like",
+			"show": true,
+			"sid": 401344996623242
 		}
 	],
 	"behaviorTypes": [
@@ -86,7 +100,6 @@
 		"uiMainButton",
 		"uiMainQuitButton",
 		"uiMainSettingsButton",
-		"uiMainSettingsSlider",
 		"uiMainSettingsSliderBar"
 	]
 }
