@@ -4847,8 +4847,8 @@
 							],
 							"actions": [
 								{
-									"callFunction": "uiNavigate [INTERNAL]",
-									"sid": 962162746673252,
+									"callFunction": "uiInput [INTERNAL]",
+									"sid": 918339904625794,
 									"parameters": [
 										"\"up\""
 									]
@@ -4882,8 +4882,8 @@
 							],
 							"actions": [
 								{
-									"callFunction": "uiNavigate [INTERNAL]",
-									"sid": 746470680620768,
+									"callFunction": "uiInput [INTERNAL]",
+									"sid": 197141682526786,
 									"parameters": [
 										"\"down\""
 									]
@@ -4917,8 +4917,8 @@
 							],
 							"actions": [
 								{
-									"callFunction": "uiNavigate [INTERNAL]",
-									"sid": 979028168155605,
+									"callFunction": "uiInput [INTERNAL]",
+									"sid": 288090170936378,
 									"parameters": [
 										"\"left\""
 									]
@@ -4952,8 +4952,8 @@
 							],
 							"actions": [
 								{
-									"callFunction": "uiNavigate [INTERNAL]",
-									"sid": 141219683464337,
+									"callFunction": "uiInput [INTERNAL]",
+									"sid": 233149977047889,
 									"parameters": [
 										"\"right\""
 									]
