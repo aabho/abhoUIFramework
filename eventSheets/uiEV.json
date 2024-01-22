@@ -1265,32 +1265,6 @@
 							"sid": 551346774199741,
 							"children": [
 								{
-									"eventType": "comment",
-									"text": "unlerped value from 0 to 1",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6705882352941176,
-										0.8745098039215686,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"eventType": "variable",
-									"name": "lerpHandleToBar",
-									"type": "number",
-									"initialValue": "0",
-									"comment": "value from 0 to 1",
-									"isStatic": false,
-									"isConstant": false,
-									"sid": 984829212749293
-								},
-								{
 									"eventType": "block",
 									"conditions": [
 										{
@@ -1369,12 +1343,12 @@
 											]
 										},
 										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 702097203648968,
+											"id": "set-instvar-value",
+											"objectClass": "uiSliderHandle",
+											"sid": 126094137622682,
 											"parameters": {
-												"variable": "lerpHandleToBar",
-												"value": "unlerp(uiSliderBar.sliderMin, uiSliderBar.sliderMax, uiSliderHandle.sliderValue)"
+												"instance-variable": "sliderProgress",
+												"value": "unlerp(uiSliderBar.sliderMin, uiSliderBar.sliderMax, Self.sliderValue)"
 											}
 										}
 									],
@@ -1414,10 +1388,10 @@
 												{
 													"customAction": "uiSliderHandleMove",
 													"objectClass": "ui",
-													"sid": 904755177062462,
+													"sid": 467921694889671,
 													"parameters": [
-														"lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, lerpHandleToBar)",
-														"lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, lerpHandleToBar)"
+														"lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, uiSliderHandle.sliderProgress)",
+														"lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, uiSliderHandle.sliderProgress)"
 													]
 												}
 											],
@@ -1452,10 +1426,10 @@
 												{
 													"id": "set-position",
 													"objectClass": "ui",
-													"sid": 646665991375560,
+													"sid": 267382785265451,
 													"parameters": {
-														"x": "lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, lerpHandleToBar)",
-														"y": "lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, lerpHandleToBar)"
+														"x": "lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, uiSliderHandle.sliderProgress)",
+														"y": "lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, uiSliderHandle.sliderProgress)"
 													}
 												}
 											],

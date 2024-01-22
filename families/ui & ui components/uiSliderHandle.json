@@ -16,11 +16,19 @@
 			"desc": "the last recorded slider value, for recording any changes",
 			"show": false,
 			"sid": 362613484672940
+		},
+		{
+			"name": "sliderProgress",
+			"type": "number",
+			"desc": "read only - as opposed to slider value, this is just from 0 to 1",
+			"show": false,
+			"sid": 495410087118274
 		}
 	],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"members": [
-		"uiMainSettingsSliderHandle"
+		"uiMainSettingsSliderHandleCommon",
+		"uiMainSettingsSliderHandleSFX"
 	]
 }
