@@ -939,6 +939,52 @@
 							"children": [
 								{
 									"eventType": "comment",
+									"text": "numbers above handles get updated on created",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "on-created",
+											"objectClass": "uiMainSettingsSliderHandleCommon",
+											"sid": 617400958668034
+										},
+										{
+											"id": "pick-children",
+											"objectClass": "uiMainSettingsSliderHandleCommon",
+											"sid": 223038064917113,
+											"parameters": {
+												"child": "txt",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-text",
+											"objectClass": "txt",
+											"sid": 645840261579572,
+											"parameters": {
+												"text": "uiMainSettingsSliderHandleCommon.sliderValue"
+											}
+										}
+									],
+									"sid": 638598401821584
+								},
+								{
+									"eventType": "comment",
 									"text": "numbers above handles get updated on move",
 									"text-color": [
 										0,
