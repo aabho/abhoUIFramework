@@ -130,11 +130,32 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "ui",
-							"sid": 604949244160009,
+							"sid": 685686691077195,
 							"parameters": {
 								"instance-variable": "oHeight",
 								"value": "Self.Height"
 							}
+						},
+						{
+							"type": "comment",
+							"text": "call deactivate for this button on default",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"customAction": "uiDeactivate",
+							"objectClass": "ui",
+							"sid": 223975118696300
 						}
 					],
 					"sid": 580855353191997
@@ -461,7 +482,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "with these custom actions, you can provide a default behavior here, and override the default by creating an override custom action for the button object.\n\nfor example, right now it's set so that when you chose a button it grows, and unchoosing it makes it shrink again.\n\nif you want a special button type on some layout to instead become brighter, you can make an override by creating a new custom action for that object, and calling the action \"uiChoose\" exactly.\nyou'll know you've done it right because it'll say 'Overridden' next to it.\n\nto learn more about custom actions and overriding, see here --> https://www.construct.net/en/make-games/manuals/construct-3/project-primitives/events/custom-actions",
+							"text": "with these custom actions, you can provide a default behavior here, and override the default by creating an override custom action for the button object.\n\nfor example, right now it's set so that when you chose a button it grows, and unchoosing it makes it shrink again.\n\nif you want a special button type on some layout to instead become brighter, you can make an override by creating a new custom action for that object, and calling the action \"uiChoose\" exactly.\nyou'll know you've done it right because it'll say 'Overridden' next to it. if it has any parameters, copy those over too.\n\nlastly, if you wanted to do the default behavior but THEN ALSO do something custom, then you can call the family custom action as part of the overwrite to turn it into an extension.\nif that didn't make sense, it's a little complicated to explain here, so see link below.\n\nto learn more about custom actions and overriding, see here --> https://www.construct.net/en/make-games/manuals/construct-3/project-primitives/events/custom-actions",
 							"text-color": [
 								0,
 								0,
@@ -622,7 +643,7 @@
 							"actions": [
 								{
 									"type": "comment",
-									"text": "make the component grow",
+									"text": "make the component grow when chosen (mouseover, highlight, whatever you want to call it)",
 									"text-color": [
 										0,
 										0,
@@ -690,7 +711,7 @@
 							"actions": [
 								{
 									"type": "comment",
-									"text": "make the component shrink",
+									"text": "make the component shrink when no longer chosen",
 									"text-color": [
 										0,
 										0,
@@ -749,7 +770,7 @@
 							"actions": [
 								{
 									"type": "comment",
-									"text": "didn't have any default action I wanted to assign for all components on being selected",
+									"text": "didn't have any default action I wanted to assign for all components on being selected.",
 									"text-color": [
 										0,
 										0,
@@ -760,6 +781,22 @@
 										0.8745098039215686,
 										0.8352941176470589,
 										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"type": "comment",
+									"text": "keep in mind you shouldn't use this custom action when making events for when a button is clicked... this is intended for animations/sounds only.\nfor actually doing something when a specific button gets clicked, see the comment on the function 'uiSelect [INTERNAL]'",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8470588235294118,
+										0.6431372549019608,
+										0.8745098039215686,
 										1
 									]
 								}
@@ -4098,6 +4135,14 @@
 															"sid": 160528664035956,
 															"parameters": {
 																"instance-variable": "active"
+															}
+														},
+														{
+															"id": "pick-topbottom",
+															"objectClass": "ui",
+															"sid": 457667582288057,
+															"parameters": {
+																"which": "top"
 															}
 														}
 													],

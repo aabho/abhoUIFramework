@@ -111,7 +111,8 @@
 							"uiMainSettingsBg",
 							"uiMainSettingsButton",
 							"uiMainSettingsSliderBar",
-							"uiMainSettingsSliderHandle"
+							"uiMainSettingsSliderHandle",
+							"uiMainSettingsSliderHandleGlyph"
 						],
 						"subfolders": [],
 						"name": "main"
