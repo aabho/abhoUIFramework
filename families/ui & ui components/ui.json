@@ -25,7 +25,14 @@
 			"sid": 199199960581072
 		},
 		{
-			"name": "chosen",
+			"name": "activeTrigger",
+			"type": "boolean",
+			"desc": "secret bool for recording when this button has been activated",
+			"show": false,
+			"sid": 641181051726585
+		},
+		{
+			"name": "chosenTrigger",
 			"type": "boolean",
 			"desc": "secret bool for recording when this button has been chosen",
 			"show": false,

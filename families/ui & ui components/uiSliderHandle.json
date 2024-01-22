@@ -9,6 +9,13 @@
 			"desc": "the value for this slider handle",
 			"show": true,
 			"sid": 328473832908605
+		},
+		{
+			"name": "sliderValueLast",
+			"type": "number",
+			"desc": "the last recorded slider value, for recording any changes",
+			"show": false,
+			"sid": 362613484672940
 		}
 	],
 	"behaviorTypes": [],

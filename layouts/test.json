@@ -57,7 +57,8 @@
 						"section": "main",
 						"id": "mainPlayGame",
 						"active": false,
-						"chosen": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
@@ -226,7 +227,8 @@
 						"section": "main",
 						"id": "mainSettings",
 						"active": false,
-						"chosen": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
@@ -395,7 +397,8 @@
 						"section": "main",
 						"id": "mainDummy",
 						"active": false,
-						"chosen": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
 						"overrideUp": "mainDummy2",
 						"overrideDown": "",
 						"overrideLeft": "",
@@ -564,7 +567,8 @@
 						"section": "main",
 						"id": "mainDummy2",
 						"active": false,
-						"chosen": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
 						"overrideUp": "",
 						"overrideDown": "mainDummy",
 						"overrideLeft": "",
@@ -733,7 +737,8 @@
 						"section": "main",
 						"id": "mainDummy4",
 						"active": false,
-						"chosen": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
@@ -902,7 +907,8 @@
 						"section": "main",
 						"id": "mainQuit",
 						"active": false,
-						"chosen": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
@@ -1568,7 +1574,8 @@
 						"section": "mainSettingsApply",
 						"id": "mainSettingsApply",
 						"active": false,
-						"chosen": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
@@ -1665,7 +1672,8 @@
 						"section": "mainSettings",
 						"id": "mainSettingsBack",
 						"active": false,
-						"chosen": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
@@ -2254,7 +2262,8 @@
 						"section": "mainSettings",
 						"id": "mainSettingsSfx",
 						"active": false,
-						"chosen": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
@@ -2263,7 +2272,8 @@
 						"oHeight": 0,
 						"mGrowWidth": 2,
 						"mGrowHeight": 2,
-						"sliderValue": 0.5
+						"sliderValue": 0.5,
+						"sliderValueLast": 0
 					},
 					"behaviors": {
 						"Tween": {
@@ -2335,7 +2345,8 @@
 						"section": "mainSettings",
 						"id": "mainSettingsMusHigh",
 						"active": false,
-						"chosen": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
@@ -2344,7 +2355,8 @@
 						"oHeight": 0,
 						"mGrowWidth": 2,
 						"mGrowHeight": 2,
-						"sliderValue": 1
+						"sliderValue": 1,
+						"sliderValueLast": 0
 					},
 					"behaviors": {
 						"Tween": {
@@ -2356,6 +2368,23 @@
 					"sceneGraphData": {
 						"parent-uid": 36,
 						"uid": 38,
+						"children": [
+							{
+								"uid": 42,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": true,
+									"v": true,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
 						"flags": {
 							"x": true,
 							"y": true,
@@ -2416,7 +2445,8 @@
 						"section": "mainSettings",
 						"id": "mainSettingsMusLow",
 						"active": false,
-						"chosen": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
@@ -2425,7 +2455,8 @@
 						"oHeight": 0,
 						"mGrowWidth": 2,
 						"mGrowHeight": 2,
-						"sliderValue": 0.1
+						"sliderValue": 0.1,
+						"sliderValueLast": 0
 					},
 					"behaviors": {
 						"Tween": {
@@ -2497,7 +2528,8 @@
 						"section": "mainSettings",
 						"id": "mainSettingsMusMid",
 						"active": false,
-						"chosen": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
@@ -2506,7 +2538,8 @@
 						"oHeight": 0,
 						"mGrowWidth": 2,
 						"mGrowHeight": 2,
-						"sliderValue": 0.3
+						"sliderValue": 0.3,
+						"sliderValueLast": 0
 					},
 					"behaviors": {
 						"Tween": {
@@ -2548,6 +2581,78 @@
 						"y": -113,
 						"width": 8,
 						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0.7853981633974483,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "10",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 6,
+						"line-height": 0,
+						"bold": false,
+						"italic": false,
+						"color": [
+							1,
+							0.1607843137254902,
+							0.1607843137254902,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 42,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 38,
+						"uid": 42,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": true,
+							"v": true,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 231,
+						"y": -75,
+						"width": 10,
+						"height": 8,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -2797,7 +2902,8 @@
 						"section": "mainQuit",
 						"id": "mainQuitConfirm",
 						"active": false,
-						"chosen": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",
@@ -2966,7 +3072,8 @@
 						"section": "mainQuit",
 						"id": "mainQuitCancel",
 						"active": false,
-						"chosen": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
 						"overrideUp": "",
 						"overrideDown": "",
 						"overrideLeft": "",

@@ -493,6 +493,122 @@
 						},
 						{
 							"aceType": "action",
+							"aceName": "uiActivate",
+							"objectClass": "ui",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "fade in when this component's section is activated",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 612766994776376,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fade\""
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "ui",
+									"sid": 985074785977948,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fade\"",
+										"property": "offsetOpacity",
+										"end-value": "100",
+										"time": "0.1",
+										"ease": "easeinoutsine",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 442478475669122
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiDeactivate",
+							"objectClass": "ui",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "fade out a little when this component's section is deactivated",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 148150617642181,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fade\""
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "ui",
+									"sid": 103283313304794,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fade\"",
+										"property": "offsetOpacity",
+										"end-value": "50",
+										"time": "0.1",
+										"ease": "easeinoutsine",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 935798798239016
+						},
+						{
+							"aceType": "action",
 							"aceName": "uiChoose",
 							"objectClass": "ui",
 							"functionDescription": "use overrides to create special events",
@@ -924,10 +1040,10 @@
 								{
 									"id": "set-size",
 									"objectClass": "ui",
-									"sid": 273245915291581,
+									"sid": 996859001285809,
 									"parameters": {
-										"width": "Self.oWidth + Self.mGrowWidth * 2",
-										"height": "Self.oHeight + Self.mGrowHeight * 2"
+										"width": "Self.oWidth + Self.mGrowWidth * 4",
+										"height": "Self.oHeight + Self.mGrowHeight * -1"
 									}
 								},
 								{
@@ -1139,8 +1255,45 @@
 								},
 								{
 									"eventType": "block",
-									"conditions": [],
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "uiSliderHandle",
+											"sid": 846835594526618,
+											"parameters": {
+												"instance-variable": "sliderValue",
+												"comparison": 0,
+												"value": "Self.sliderValueLast"
+											},
+											"isInverted": true
+										}
+									],
 									"actions": [
+										{
+											"type": "comment",
+											"text": "reset slider last value, which is used to test if the slider value changes, and prevent updates if not",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "uiSliderHandle",
+											"sid": 166675786726673,
+											"parameters": {
+												"instance-variable": "sliderValueLast",
+												"value": "Self.sliderValue"
+											}
+										},
 										{
 											"type": "comment",
 											"text": "calculate the bounds of the slider area, it gets stored as instance variables in uiSliderBar",
@@ -1239,7 +1392,7 @@
 												{
 													"id": "else",
 													"objectClass": "System",
-													"sid": 796856776905493
+													"sid": 962247007242235
 												}
 											],
 											"actions": [
@@ -1285,9 +1438,9 @@
 								1
 							],
 							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
 								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
 								1
 							]
 						},
@@ -1303,36 +1456,56 @@
 									}
 								}
 							],
-							"actions": [
-								{
-									"id": "stop-tweens",
-									"objectClass": "ui",
-									"sid": 167150231167429,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"fade\""
-									}
-								},
-								{
-									"id": "tween-one-property",
-									"objectClass": "ui",
-									"sid": 836614453204239,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"fade\"",
-										"property": "offsetOpacity",
-										"end-value": "100",
-										"time": "0.1",
-										"ease": "easeinoutsine",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
-									}
-								}
-							],
+							"actions": [],
 							"sid": 853463262393068,
 							"children": [
+								{
+									"eventType": "comment",
+									"text": "if button hasn't been activated yet",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "ui",
+											"sid": 626353976345272,
+											"parameters": {
+												"instance-variable": "activeTrigger"
+											},
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-boolean-instvar",
+											"objectClass": "ui",
+											"sid": 807779372349440,
+											"parameters": {
+												"instance-variable": "activeTrigger",
+												"value": "true"
+											}
+										},
+										{
+											"customAction": "uiActivate",
+											"objectClass": "ui",
+											"sid": 284616410942234
+										}
+									],
+									"sid": 345207331100030
+								},
 								{
 									"eventType": "comment",
 									"text": "if this button is no longer chosen...",
@@ -1368,7 +1541,7 @@
 											"objectClass": "ui",
 											"sid": 386326078852608,
 											"parameters": {
-												"instance-variable": "chosen"
+												"instance-variable": "chosenTrigger"
 											}
 										}
 									],
@@ -1378,25 +1551,9 @@
 											"objectClass": "ui",
 											"sid": 706922212555731,
 											"parameters": {
-												"instance-variable": "chosen",
+												"instance-variable": "chosenTrigger",
 												"value": "false"
 											}
-										},
-										{
-											"type": "comment",
-											"text": "call custom action for this button being chosen",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
 										},
 										{
 											"customAction": "uiUnchoose",
@@ -1440,7 +1597,7 @@
 											"objectClass": "ui",
 											"sid": 537036692241451,
 											"parameters": {
-												"instance-variable": "chosen"
+												"instance-variable": "chosenTrigger"
 											},
 											"isInverted": true
 										}
@@ -1451,7 +1608,7 @@
 											"objectClass": "ui",
 											"sid": 933809320401363,
 											"parameters": {
-												"instance-variable": "chosen",
+												"instance-variable": "chosenTrigger",
 												"value": "true"
 											}
 										},
@@ -1491,7 +1648,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "if not, set button to lower opacity",
+							"text": "if deactivated",
 							"text-color": [
 								0,
 								0,
@@ -1499,9 +1656,9 @@
 								1
 							],
 							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
 								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
 								1
 							]
 						},
@@ -1514,36 +1671,71 @@
 									"sid": 416061703942812
 								}
 							],
-							"actions": [
-								{
-									"id": "stop-tweens",
-									"objectClass": "ui",
-									"sid": 148150617642181,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"fade\""
-									}
-								},
-								{
-									"id": "tween-one-property",
-									"objectClass": "ui",
-									"sid": 103283313304794,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"fade\"",
-										"property": "offsetOpacity",
-										"end-value": "50",
-										"time": "0.1",
-										"ease": "easeinoutsine",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
-									}
-								}
-							],
+							"actions": [],
 							"sid": 378164815100597,
 							"children": [
+								{
+									"eventType": "comment",
+									"text": "if button was recently deactivated",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "ui",
+											"sid": 187833803416459,
+											"parameters": {
+												"instance-variable": "activeTrigger"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-boolean-instvar",
+											"objectClass": "ui",
+											"sid": 146913903781621,
+											"parameters": {
+												"instance-variable": "activeTrigger",
+												"value": "false"
+											}
+										},
+										{
+											"customAction": "uiDeactivate",
+											"objectClass": "ui",
+											"sid": 528346017841800
+										}
+									],
+									"sid": 508759697909949
+								},
+								{
+									"eventType": "comment",
+									"text": "if this button was chosen but deactivated, unchoose it",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
 								{
 									"eventType": "block",
 									"conditions": [
@@ -1552,7 +1744,7 @@
 											"objectClass": "ui",
 											"sid": 182839888663500,
 											"parameters": {
-												"instance-variable": "chosen"
+												"instance-variable": "chosenTrigger"
 											}
 										}
 									],
@@ -1562,7 +1754,7 @@
 											"objectClass": "ui",
 											"sid": 492872517473693,
 											"parameters": {
-												"instance-variable": "chosen",
+												"instance-variable": "chosenTrigger",
 												"value": "false"
 											}
 										},
@@ -3796,7 +3988,7 @@
 							"children": [
 								{
 									"eventType": "comment",
-									"text": "mouseover choosing",
+									"text": "normal component behavior",
 									"text-color": [
 										0,
 										0,
@@ -3814,90 +4006,22 @@
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "on-movement",
-											"objectClass": "Mouse",
-											"sid": 312232859470722
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 579409464553540,
+											"parameters": {
+												"variable": "uiSelectedSliderHandle",
+												"comparison": 0,
+												"value": "\"\""
+											}
 										}
 									],
 									"actions": [],
-									"sid": 304875631331570,
+									"sid": 479933755112591,
 									"children": [
 										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "cursor-is-over-object",
-													"objectClass": "Mouse",
-													"sid": 934913208119614,
-													"parameters": {
-														"object": "ui"
-													}
-												},
-												{
-													"id": "is-boolean-instance-variable-set",
-													"objectClass": "ui",
-													"sid": 191247888393426,
-													"parameters": {
-														"instance-variable": "active"
-													}
-												}
-											],
-											"actions": [],
-											"sid": 766944397163852,
-											"children": [
-												{
-													"eventType": "comment",
-													"text": "choose this component, but only if it's not already chosen",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "compare-instance-variable",
-															"objectClass": "ui",
-															"sid": 917494570516345,
-															"parameters": {
-																"instance-variable": "id",
-																"comparison": 0,
-																"value": "uiChosenID"
-															},
-															"isInverted": true
-														}
-													],
-													"actions": [
-														{
-															"id": "set-eventvar-value",
-															"objectClass": "System",
-															"sid": 168511754010821,
-															"parameters": {
-																"variable": "uiChosenID",
-																"value": "ui.id"
-															}
-														},
-														{
-															"callFunction": "uiUpdate [INTERNAL]",
-															"sid": 294382381035618
-														}
-													],
-													"sid": 635614601165071
-												}
-											]
-										},
-										{
 											"eventType": "comment",
-											"text": "if not over any ui components that are active",
+											"text": "mouseover choosing",
 											"text-color": [
 												0,
 												0,
@@ -3915,95 +4039,188 @@
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "else",
-													"objectClass": "System",
-													"sid": 827272743309556
+													"id": "on-movement",
+													"objectClass": "Mouse",
+													"sid": 412202122790779
+												}
+											],
+											"actions": [],
+											"sid": 989730306628821,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "cursor-is-over-object",
+															"objectClass": "Mouse",
+															"sid": 528769375796042,
+															"parameters": {
+																"object": "ui"
+															}
+														},
+														{
+															"id": "is-boolean-instance-variable-set",
+															"objectClass": "ui",
+															"sid": 160528664035956,
+															"parameters": {
+																"instance-variable": "active"
+															}
+														}
+													],
+													"actions": [],
+													"sid": 174919643547602,
+													"children": [
+														{
+															"eventType": "comment",
+															"text": "choose this component, but only if it's not already chosen",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-instance-variable",
+																	"objectClass": "ui",
+																	"sid": 926548900980808,
+																	"parameters": {
+																		"instance-variable": "id",
+																		"comparison": 0,
+																		"value": "uiChosenID"
+																	},
+																	"isInverted": true
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-eventvar-value",
+																	"objectClass": "System",
+																	"sid": 616052344379076,
+																	"parameters": {
+																		"variable": "uiChosenID",
+																		"value": "ui.id"
+																	}
+																},
+																{
+																	"callFunction": "uiUpdate [INTERNAL]",
+																	"sid": 346320101828300
+																}
+															],
+															"sid": 738015037011255
+														}
+													]
+												},
+												{
+													"eventType": "comment",
+													"text": "if not over any ui components that are active",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 756443887702203
+														}
+													],
+													"actions": [
+														{
+															"id": "set-eventvar-value",
+															"objectClass": "System",
+															"sid": 457164347131928,
+															"parameters": {
+																"variable": "uiChosenID",
+																"value": "\"\""
+															}
+														},
+														{
+															"callFunction": "uiUpdate [INTERNAL]",
+															"sid": 924015033452500
+														}
+													],
+													"sid": 867068802163474
+												}
+											]
+										},
+										{
+											"eventType": "comment",
+											"text": "left click to select option",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-object-clicked",
+													"objectClass": "Mouse",
+													"sid": 927657011283432,
+													"parameters": {
+														"mouse-button": "left",
+														"click-type": "clicked",
+														"object-clicked": "ui"
+													}
+												},
+												{
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "ui",
+													"sid": 403921855125956,
+													"parameters": {
+														"instance-variable": "active"
+													}
+												},
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "ui",
+													"sid": 937640283653920,
+													"parameters": {
+														"instance-variable": "id",
+														"comparison": 0,
+														"value": "uiChosenID"
+													}
 												}
 											],
 											"actions": [
 												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 950728688762797,
-													"parameters": {
-														"variable": "uiChosenID",
-														"value": "\"\""
-													}
-												},
-												{
-													"callFunction": "uiUpdate [INTERNAL]",
-													"sid": 176129085671698
+													"callFunction": "uiSelect [INTERNAL]",
+													"sid": 997749398218695
 												}
 											],
-											"sid": 133778702633998
+											"sid": 232048851247820
 										}
 									]
-								},
-								{
-									"eventType": "comment",
-									"text": "left click to select option",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6431372549019608,
-										0.8470588235294118,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "on-object-clicked",
-											"objectClass": "Mouse",
-											"sid": 158941440016468,
-											"parameters": {
-												"mouse-button": "left",
-												"click-type": "clicked",
-												"object-clicked": "ui"
-											}
-										},
-										{
-											"id": "is-boolean-instance-variable-set",
-											"objectClass": "ui",
-											"sid": 274947338551726,
-											"parameters": {
-												"instance-variable": "active"
-											}
-										},
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "ui",
-											"sid": 665464517496647,
-											"parameters": {
-												"instance-variable": "id",
-												"comparison": 0,
-												"value": "uiChosenID"
-											}
-										},
-										{
-											"id": "compare-eventvar",
-											"objectClass": "System",
-											"sid": 424488898606024,
-											"parameters": {
-												"variable": "uiSelectedSliderHandle",
-												"comparison": 0,
-												"value": "\"\""
-											}
-										}
-									],
-									"actions": [
-										{
-											"callFunction": "uiSelect [INTERNAL]",
-											"sid": 559407269408686
-										}
-									],
-									"sid": 501408826394700
 								},
 								{
 									"eventType": "comment",
@@ -4025,15 +4242,9 @@
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "compare-eventvar",
+											"id": "else",
 											"objectClass": "System",
-											"sid": 936275852689223,
-											"parameters": {
-												"variable": "uiSelectedSliderHandle",
-												"comparison": 0,
-												"value": "\"\""
-											},
-											"isInverted": true
+											"sid": 705188079644493
 										},
 										{
 											"id": "compare-instance-variable",
@@ -4179,6 +4390,26 @@
 														"instance-variable": "sliderValue",
 														"value": "clamp(Self.sliderValue, uiSliderBar.sliderMin, uiSliderBar.sliderMax)"
 													}
+												},
+												{
+													"type": "comment",
+													"text": "update",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"callFunction": "uiUpdate [INTERNAL]",
+													"sid": 549535516119643
 												}
 											],
 											"sid": 547040472563690
