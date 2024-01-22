@@ -58,6 +58,13 @@
 			"desc": "used for calculations",
 			"show": false,
 			"sid": 759760510603086
+		},
+		{
+			"name": "sliderTickObjectName",
+			"type": "string",
+			"desc": "the name of the object that you want to use as a slider tick (put this object in the uiSliderTick family too), can leave empty for no ticks",
+			"show": true,
+			"sid": 712916648607647
 		}
 	],
 	"behaviorTypes": [],

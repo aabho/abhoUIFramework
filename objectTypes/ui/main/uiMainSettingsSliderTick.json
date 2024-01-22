@@ -1,20 +1,20 @@
 {
-	"name": "uiMainSettingsSliderHandleSFX",
+	"name": "uiMainSettingsSliderTick",
 	"plugin-id": "NinePatch",
-	"sid": 147680291634376,
+	"sid": 545829926969274,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"image": {
-		"width": 10,
-		"height": 10,
+		"width": 1,
+		"height": 4,
 		"originX": 0.5,
 		"originY": 0.5,
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
-		"imageSpriteId": 3965261,
+		"imageSpriteId": 3123298,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

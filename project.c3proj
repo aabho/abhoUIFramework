@@ -104,9 +104,10 @@
 							"uiMainSettingsBg",
 							"uiMainSettingsButton",
 							"uiMainSettingsSliderBar",
-							"uiMainSettingsSliderHandleCommon",
+							"uiMainSettingsSliderHandleMus",
 							"uiMainSettingsSliderHandleGlyph",
-							"uiMainSettingsSliderHandleSFX"
+							"uiMainSettingsSliderHandleSFX",
+							"uiMainSettingsSliderTick"
 						],
 						"subfolders": [],
 						"name": "main"
@@ -135,7 +136,8 @@
 				"items": [
 					"ui",
 					"uiSliderBar",
-					"uiSliderHandle"
+					"uiSliderHandle",
+					"uiSliderTick"
 				],
 				"subfolders": [],
 				"name": "ui & ui components"

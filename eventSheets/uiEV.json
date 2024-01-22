@@ -88,6 +88,27 @@
 					"actions": [
 						{
 							"type": "comment",
+							"text": "call deactivate for this button on default",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"customAction": "uiDeactivate",
+							"objectClass": "ui",
+							"sid": 585097267770542
+						},
+						{
+							"type": "comment",
 							"text": "here, I choose to record the width and height of every button by default so that I can manipulate their sizes for animations later. this isn't required and you could do anything else here, or nothing at all if you wish.",
 							"text-color": [
 								0,
@@ -99,22 +120,6 @@
 								0.8470588235294118,
 								0.6431372549019608,
 								0.8745098039215686,
-								1
-							]
-						},
-						{
-							"type": "comment",
-							"text": "the original size is recorded, for when this button is not chosen and is idle",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
 								1
 							]
 						},
@@ -135,10 +140,39 @@
 								"instance-variable": "oHeight",
 								"value": "Self.Height"
 							}
-						},
+						}
+					],
+					"sid": 580855353191997
+				},
+				{
+					"eventType": "comment",
+					"text": "when slider bar is created",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "uiSliderBar",
+							"sid": 369462476146655
+						}
+					],
+					"actions": [
 						{
 							"type": "comment",
-							"text": "call deactivate for this button on default",
+							"text": "update the ticks",
 							"text-color": [
 								0,
 								0,
@@ -153,12 +187,12 @@
 							]
 						},
 						{
-							"customAction": "uiDeactivate",
-							"objectClass": "ui",
-							"sid": 223975118696300
+							"customAction": "uiSliderTicksUpdate [INTERNAL]",
+							"objectClass": "uiSliderBar",
+							"sid": 370002973378039
 						}
 					],
-					"sid": 580855353191997
+					"sid": 177085453243089
 				}
 			],
 			"sid": 433446244111998,
@@ -1030,24 +1064,18 @@
 							"functionReturnType": "none",
 							"functionCopyPicked": false,
 							"functionIsAsync": false,
-							"functionParameters": [
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [
 								{
-									"name": "x",
-									"type": "number",
-									"initialValue": "0",
-									"comment": "go to pos",
-									"sid": 325856232708106
-								},
-								{
-									"name": "y",
-									"type": "number",
-									"initialValue": "0",
-									"comment": "go to pos",
-									"sid": 572066980597889
+									"id": "pick-by-unique-id",
+									"objectClass": "uiSliderHandle",
+									"sid": 244054437295041,
+									"parameters": {
+										"unique-id": "ui.UID"
+									}
 								}
 							],
-							"eventType": "custom-ace-block",
-							"conditions": [],
 							"actions": [
 								{
 									"type": "comment",
@@ -1100,52 +1128,87 @@
 										"ping-pong": "no",
 										"repeat-count": "1"
 									}
-								},
-								{
-									"type": "comment",
-									"text": "tween the slider bar towards its new position",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"id": "stop-tweens",
-									"objectClass": "ui",
-									"sid": 157297509193769,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"uiSliderHandleMove\""
-									}
-								},
-								{
-									"id": "tween-two-properties",
-									"objectClass": "ui",
-									"sid": 137182136271985,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"uiSliderHandleMove\"",
-										"property": "position",
-										"end-x": "x",
-										"end-y": "y",
-										"time": "0.1",
-										"ease": "easeoutcubic",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
-									}
 								}
 							],
-							"sid": 607679803247236
+							"sid": 607679803247236,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-parent",
+											"objectClass": "ui",
+											"sid": 890845192600894,
+											"parameters": {
+												"parent": "uiSliderBar",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "tween the slider bar towards its new position",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "ui",
+											"sid": 727469101088785,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiSliderHandleMove\""
+											}
+										},
+										{
+											"type": "comment",
+											"text": "the tween here is pretty specific about what it wants to do - it uses lerp to find the right position to go to.\nif you want to override this action without calling this default, then take note of the expression used here so you can get the right slider position.\n\nalso note that this action has a condition, which is needed so that this slider handle knows the bounds of the slider bar it's a child of, so careful of that when overriding this custom action without extending... the condition doesn't carry to your override.",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8470588235294118,
+												0.6431372549019608,
+												0.8745098039215686,
+												1
+											]
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "ui",
+											"sid": 476320732811623,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiSliderHandleMove\"",
+												"property": "position",
+												"end-x": "lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, uiSliderHandle.sliderProgress)",
+												"end-y": "lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, uiSliderHandle.sliderProgress)",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 808130255274297
+								}
+							]
 						}
 					],
 					"sid": 134548567102579,
@@ -1180,7 +1243,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "run a UI update",
+					"text": "run a general UI update (not all things will be magically updated with this function, there may be other functions or actions used for updates as well)",
 					"text-color": [
 						0,
 						0,
@@ -1322,34 +1385,9 @@
 											]
 										},
 										{
-											"customAction": "uiCalculateMargins [INTERNAL]",
-											"objectClass": "uiSliderHandle",
-											"sid": 926361722741649
-										},
-										{
-											"type": "comment",
-											"text": "calculate a number from 0 to 1, based on the slider value relative to the slider min/max",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "set-instvar-value",
-											"objectClass": "uiSliderHandle",
-											"sid": 126094137622682,
-											"parameters": {
-												"instance-variable": "sliderProgress",
-												"value": "unlerp(uiSliderBar.sliderMin, uiSliderBar.sliderMax, Self.sliderValue)"
-											}
+											"customAction": "uiSliderCalculateMargins [INTERNAL]",
+											"objectClass": "uiSliderBar",
+											"sid": 917990889128825
 										}
 									],
 									"sid": 712814764859323,
@@ -1388,11 +1426,7 @@
 												{
 													"customAction": "uiSliderHandleMove",
 													"objectClass": "ui",
-													"sid": 467921694889671,
-													"parameters": [
-														"lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, uiSliderHandle.sliderProgress)",
-														"lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, uiSliderHandle.sliderProgress)"
-													]
+													"sid": 870408753661564
 												}
 											],
 											"sid": 640888546055493
@@ -1830,10 +1864,10 @@
 						},
 						{
 							"aceType": "action",
-							"aceName": "uiIncrement [INTERNAL]",
+							"aceName": "uiSliderIncrement [INTERNAL]",
 							"objectClass": "uiSliderHandle",
 							"functionDescription": "increments slider by a step",
-							"functionCategory": "ui",
+							"functionCategory": "uiSlider",
 							"functionReturnType": "none",
 							"functionCopyPicked": false,
 							"functionIsAsync": false,
@@ -1869,12 +1903,62 @@
 									}
 								},
 								{
+									"type": "comment",
+									"text": "snap to step and clamp value",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "uiSliderHandle",
+									"sid": 648269759772834,
+									"parameters": {
+										"instance-variable": "sliderValue",
+										"value": "round(Self.sliderValue / uiSliderBar.sliderStep) * uiSliderBar.sliderStep"
+									}
+								},
+								{
 									"id": "set-instvar-value",
 									"objectClass": "uiSliderHandle",
 									"sid": 599980882015976,
 									"parameters": {
 										"instance-variable": "sliderValue",
 										"value": "clamp(Self.sliderValue, uiSliderBar.sliderMin, uiSliderBar.sliderMax)"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "calculate a number from 0 to 1, based on the slider value relative to the slider min/max",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "uiSliderHandle",
+									"sid": 874505174076184,
+									"parameters": {
+										"instance-variable": "sliderProgress",
+										"value": "unlerp(uiSliderBar.sliderMin, uiSliderBar.sliderMax, Self.sliderValue)"
 									}
 								},
 								{
@@ -1902,26 +1986,16 @@
 						},
 						{
 							"aceType": "action",
-							"aceName": "uiCalculateMargins [INTERNAL]",
-							"objectClass": "uiSliderHandle",
+							"aceName": "uiSliderCalculateMargins [INTERNAL]",
+							"objectClass": "uiSliderBar",
 							"functionDescription": "calculate and set values for margins",
-							"functionCategory": "ui",
+							"functionCategory": "uiSlider",
 							"functionReturnType": "none",
 							"functionCopyPicked": false,
 							"functionIsAsync": false,
 							"functionParameters": [],
 							"eventType": "custom-ace-block",
-							"conditions": [
-								{
-									"id": "pick-parent",
-									"objectClass": "uiSliderHandle",
-									"sid": 537698343593476,
-									"parameters": {
-										"parent": "uiSliderBar",
-										"which": "own"
-									}
-								}
-							],
+							"conditions": [],
 							"actions": [],
 							"sid": 130101610024086,
 							"children": [
@@ -2018,6 +2092,307 @@
 										}
 									],
 									"sid": 648475546296878
+								}
+							]
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiSliderTicksUpdate [INTERNAL]",
+							"objectClass": "uiSliderBar",
+							"functionDescription": "update the ticks on this slider bar",
+							"functionCategory": "uiSlider",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "if it so happens that you change the properties of a uiSliderBar (maybe you changed the max, min, or steps) then it would be fine to call this to recalculate where the ticks go",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8470588235294118,
+										0.6431372549019608,
+										0.8745098039215686,
+										1
+									]
+								}
+							],
+							"sid": 637562339041312,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "used for loop",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6705882352941176,
+										0.8745098039215686,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "variable",
+									"name": "lerpPos",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "0 to 1",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 334368023240512
+								},
+								{
+									"eventType": "variable",
+									"name": "ticks",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "how many ticks will be placed",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 138546630853792
+								},
+								{
+									"eventType": "comment",
+									"text": "remove existing ticks",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "uiSliderBar",
+											"sid": 700047185686055,
+											"parameters": {
+												"child": "uiSliderTick",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "destroy",
+											"objectClass": "uiSliderTick",
+											"sid": 914770463848937
+										}
+									],
+									"sid": 323296888051456
+								},
+								{
+									"eventType": "comment",
+									"text": "setup",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "calculate margins to place ticks at",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"customAction": "uiSliderCalculateMargins [INTERNAL]",
+											"objectClass": "uiSliderBar",
+											"sid": 891455264899077
+										},
+										{
+											"type": "comment",
+											"text": "calculate how many ticks to place",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 416919066285203,
+											"parameters": {
+												"variable": "ticks",
+												"value": "floor((uiSliderBar.sliderMax - uiSliderBar.sliderMin) / uiSliderBar.sliderStep) - 1"
+											}
+										}
+									],
+									"sid": 256832670539772
+								},
+								{
+									"eventType": "comment",
+									"text": "this loop doesn't consider the minimum and maximum as a place to put a tick",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 531451693572756,
+											"parameters": {
+												"name": "\"tick\"",
+												"start-index": "1",
+												"end-index": "ticks"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 601320767325595,
+											"parameters": {
+												"variable": "lerpPos",
+												"value": "unlerp(0, ticks + 1, loopindex(\"tick\"))"
+											}
+										},
+										{
+											"id": "create-object-by-name",
+											"objectClass": "System",
+											"sid": 452428709145482,
+											"parameters": {
+												"object-name": "uiSliderBar.sliderTickObjectName",
+												"layer": "uiSliderBar.LayerName",
+												"x": "lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, lerpPos)",
+												"y": "lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, lerpPos)",
+												"create-hierarchy": true,
+												"template-name": "\"\""
+											}
+										}
+									],
+									"sid": 280458245689196,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "use this condition to reference the tick we created",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-last-created",
+													"objectClass": "System",
+													"sid": 555205317977098,
+													"parameters": {
+														"object": "uiSliderTick"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "move-to-object",
+													"objectClass": "uiSliderTick",
+													"sid": 745641832963734,
+													"parameters": {
+														"where": "in-front",
+														"object": "uiSliderBar"
+													}
+												},
+												{
+													"id": "add-child",
+													"objectClass": "uiSliderBar",
+													"sid": 900992505287923,
+													"parameters": {
+														"child": "uiSliderTick",
+														"transform-x": true,
+														"transform-y": true,
+														"transform-w": true,
+														"transform-h": true,
+														"transform-a": true,
+														"transform-o": true,
+														"transform-z-elevation": true,
+														"transform-visibility": true,
+														"destroy-with-parent": true
+													}
+												},
+												{
+													"id": "set-angle",
+													"objectClass": "uiSliderTick",
+													"sid": 647140306681807,
+													"parameters": {
+														"angle": "uiSliderBar.Angle"
+													}
+												}
+											],
+											"sid": 147461425985676
+										}
+									]
 								}
 							]
 						}
@@ -2172,6 +2547,22 @@
 												"variable": "uiSelectedSliderHandle",
 												"value": "uiChosenID"
 											}
+										},
+										{
+											"type": "comment",
+											"text": "in-line to-do or issue",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.6431372549019608,
+												0.6431372549019608,
+												1
+											]
 										},
 										{
 											"customAction": "uiSliderHandleSelect",
@@ -2411,7 +2802,7 @@
 									],
 									"actions": [
 										{
-											"customAction": "uiIncrement [INTERNAL]",
+											"customAction": "uiSliderIncrement [INTERNAL]",
 											"objectClass": "uiSliderHandle",
 											"sid": 851714034447011,
 											"parameters": [
@@ -2437,7 +2828,7 @@
 									],
 									"actions": [
 										{
-											"customAction": "uiIncrement [INTERNAL]",
+											"customAction": "uiSliderIncrement [INTERNAL]",
 											"objectClass": "uiSliderHandle",
 											"sid": 894267365028333,
 											"parameters": [
@@ -2463,7 +2854,7 @@
 									],
 									"actions": [
 										{
-											"customAction": "uiIncrement [INTERNAL]",
+											"customAction": "uiSliderIncrement [INTERNAL]",
 											"objectClass": "uiSliderHandle",
 											"sid": 551237636038948,
 											"parameters": [
@@ -2489,7 +2880,7 @@
 									],
 									"actions": [
 										{
-											"customAction": "uiIncrement [INTERNAL]",
+											"customAction": "uiSliderIncrement [INTERNAL]",
 											"objectClass": "uiSliderHandle",
 											"sid": 590683070194193,
 											"parameters": [

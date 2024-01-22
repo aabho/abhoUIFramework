@@ -2040,14 +2040,16 @@
 					},
 					"uid": 21,
 					"instanceVariables": {
-						"sliderMin": 0,
-						"sliderMax": 1,
-						"sliderStep": 0.1,
+						"sliderMin": 5,
+						"sliderMax": 15,
+						"sliderStep": 1,
 						"sliderMarginsHorizontal": 2,
 						"sliderLeftX": 0,
 						"sliderLeftY": 0,
 						"sliderRightX": 0,
-						"sliderRightY": 0
+						"sliderRightY": 0,
+						"sliderTickObjectName": "uiMainSettingsSliderTick",
+						"id": "sfx"
 					},
 					"behaviors": {},
 					"sceneGraphData": {
@@ -2134,7 +2136,9 @@
 						"sliderLeftX": 0,
 						"sliderLeftY": 0,
 						"sliderRightX": 0,
-						"sliderRightY": 0
+						"sliderRightY": 0,
+						"sliderTickObjectName": "uiMainSettingsSliderTick",
+						"id": "mus"
 					},
 					"behaviors": {},
 					"sceneGraphData": {
@@ -2245,7 +2249,7 @@
 					}
 				},
 				{
-					"type": "uiMainSettingsSliderHandleCommon",
+					"type": "uiMainSettingsSliderHandleMus",
 					"properties": {
 						"left-margin": 2,
 						"right-margin": 2,
@@ -2278,6 +2282,11 @@
 					},
 					"behaviors": {
 						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"TweenSliderHandle": {
 							"properties": {
 								"enabled": true
 							}
@@ -2346,7 +2355,7 @@
 					}
 				},
 				{
-					"type": "uiMainSettingsSliderHandleCommon",
+					"type": "uiMainSettingsSliderHandleMus",
 					"properties": {
 						"left-margin": 2,
 						"right-margin": 2,
@@ -2379,6 +2388,11 @@
 					},
 					"behaviors": {
 						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"TweenSliderHandle": {
 							"properties": {
 								"enabled": true
 							}
@@ -2447,7 +2461,7 @@
 					}
 				},
 				{
-					"type": "uiMainSettingsSliderHandleCommon",
+					"type": "uiMainSettingsSliderHandleMus",
 					"properties": {
 						"left-margin": 2,
 						"right-margin": 2,
@@ -2480,6 +2494,11 @@
 					},
 					"behaviors": {
 						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"TweenSliderHandle": {
 							"properties": {
 								"enabled": true
 							}
@@ -2826,12 +2845,17 @@
 						"oHeight": 0,
 						"mGrowWidth": 2,
 						"mGrowHeight": 2,
-						"sliderValue": 0.5,
+						"sliderValue": 10,
 						"sliderValueLast": 0,
 						"sliderProgress": 0
 					},
 					"behaviors": {
 						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"TweenSliderHandle": {
 							"properties": {
 								"enabled": true
 							}
@@ -2870,6 +2894,39 @@
 						"y": -178,
 						"width": 8,
 						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsSliderTick",
+					"properties": {
+						"left-margin": 0,
+						"right-margin": 0,
+						"top-margin": 0,
+						"bottom-margin": 0,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "overlap"
+					},
+					"uid": 37,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": -17,
+						"y": 31,
+						"width": 1,
+						"height": 4,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
