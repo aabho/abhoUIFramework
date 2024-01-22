@@ -1,10 +1,16 @@
 {
 	"name": "uiMainSettingsSliderBar",
 	"plugin-id": "NinePatch",
-	"sid": 292824528637160,
+	"sid": 680688437831815,
 	"isGlobal": false,
 	"instanceVariables": [],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Rotate",
+			"name": "Rotate",
+			"sid": 668374457830984
+		}
+	],
 	"effectTypes": [],
 	"image": {
 		"width": 10,
@@ -14,7 +20,7 @@
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
-		"imageSpriteId": 5191016,
+		"imageSpriteId": 5319914,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

@@ -929,6 +929,39 @@
 									"sid": 276787597068250
 								}
 							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 623110585602757,
+									"parameters": {
+										"object": "uiMainSettingsSliderHandle"
+									}
+								},
+								{
+									"id": "pick-children",
+									"objectClass": "uiMainSettingsSliderHandle",
+									"sid": 893241156002587,
+									"parameters": {
+										"child": "txt",
+										"which": "own"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "txt",
+									"sid": 441430447776757,
+									"parameters": {
+										"text": "uiMainSettingsSliderHandle.sliderValue"
+									}
+								}
+							],
+							"sid": 355441071353300
 						}
 					],
 					"sid": 446797142748565,

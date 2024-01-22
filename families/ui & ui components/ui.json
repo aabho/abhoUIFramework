@@ -107,6 +107,6 @@
 		"uiMainButton",
 		"uiMainQuitButton",
 		"uiMainSettingsButton",
-		"uiMainSettingsSliderBar"
+		"uiMainSettingsSliderHandle"
 	]
 }

@@ -1412,21 +1412,6 @@
 								}
 							},
 							{
-								"uid": 17,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": true,
-									"h": true,
-									"a": true,
-									"o": false,
-									"v": false,
-									"d": true,
-									"sm": "normal"
-								}
-							},
-							{
 								"uid": 16,
 								"flags": {
 									"x": true,
@@ -1953,7 +1938,7 @@
 					},
 					"world": {
 						"x": 214,
-						"y": -181.5,
+						"y": -191,
 						"width": 159,
 						"height": 12,
 						"originX": 0.5,
@@ -1996,14 +1981,14 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"sceneGraphData": {
-						"parent-uid": 30,
+						"parent-uid": 36,
 						"uid": 17,
 						"flags": {
 							"x": true,
 							"y": true,
 							"z": true,
-							"w": true,
-							"h": true,
+							"w": false,
+							"h": false,
 							"a": true,
 							"o": false,
 							"v": false,
@@ -2024,9 +2009,9 @@
 						}
 					},
 					"world": {
-						"x": 208,
-						"y": -111,
-						"width": 159,
+						"x": 214,
+						"y": -131,
+						"width": 54,
 						"height": 12,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -2036,12 +2021,12 @@
 							1,
 							1
 						],
-						"angle": 0.7853981633974483,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
 				{
-					"type": "uiMainSettingsSlider",
+					"type": "uiMainSettingsSliderBar",
 					"properties": {
 						"left-margin": 2,
 						"right-margin": 2,
@@ -2064,7 +2049,16 @@
 						"sliderRightX": 0,
 						"sliderRightY": 0
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Rotate": {
+							"properties": {
+								"speed": 0,
+								"acceleration": 0,
+								"enabled": true,
+								"live-preview": false
+							}
+						}
+					},
 					"sceneGraphData": {
 						"parent-uid": 30,
 						"uid": 21,
@@ -2112,7 +2106,7 @@
 					},
 					"world": {
 						"x": 214,
-						"y": -163,
+						"y": -178,
 						"width": 122,
 						"height": 10,
 						"originX": 0.5,
@@ -2128,7 +2122,7 @@
 					}
 				},
 				{
-					"type": "uiMainSettingsSlider",
+					"type": "uiMainSettingsSliderBar",
 					"properties": {
 						"left-margin": 2,
 						"right-margin": 2,
@@ -2143,15 +2137,24 @@
 					"uid": 36,
 					"instanceVariables": {
 						"sliderMin": 0,
-						"sliderMax": 1,
-						"sliderStep": 0.1,
+						"sliderMax": 10,
+						"sliderStep": 1,
 						"sliderMarginsHorizontal": 2,
 						"sliderLeftX": 0,
 						"sliderLeftY": 0,
 						"sliderRightX": 0,
 						"sliderRightY": 0
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Rotate": {
+							"properties": {
+								"speed": 10,
+								"acceleration": 0,
+								"enabled": true,
+								"live-preview": false
+							}
+						}
+					},
 					"sceneGraphData": {
 						"parent-uid": 30,
 						"uid": 36,
@@ -2200,6 +2203,21 @@
 									"d": true,
 									"sm": "normal"
 								}
+							},
+							{
+								"uid": 17,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": false,
+									"h": false,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
 							}
 						],
 						"flags": {
@@ -2228,8 +2246,8 @@
 						}
 					},
 					"world": {
-						"x": 188,
-						"y": -98,
+						"x": 214,
+						"y": -107,
 						"width": 122,
 						"height": 10,
 						"originX": 0.5,
@@ -2240,12 +2258,12 @@
 							1,
 							1
 						],
-						"angle": 0.7853981633974483,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
 				{
-					"type": "uiMainSettingsSliderBar",
+					"type": "uiMainSettingsSliderHandle",
 					"properties": {
 						"left-margin": 2,
 						"right-margin": 2,
@@ -2312,7 +2330,7 @@
 					},
 					"world": {
 						"x": 238,
-						"y": -163,
+						"y": -178,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -2328,7 +2346,7 @@
 					}
 				},
 				{
-					"type": "uiMainSettingsSliderBar",
+					"type": "uiMainSettingsSliderHandle",
 					"properties": {
 						"left-margin": 2,
 						"right-margin": 2,
@@ -2355,7 +2373,7 @@
 						"oHeight": 0,
 						"mGrowWidth": 2,
 						"mGrowHeight": 2,
-						"sliderValue": 1,
+						"sliderValue": 10,
 						"sliderValueLast": 0
 					},
 					"behaviors": {
@@ -2411,8 +2429,8 @@
 						}
 					},
 					"world": {
-						"x": 221,
-						"y": -65,
+						"x": 261,
+						"y": -107,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -2423,12 +2441,12 @@
 							1,
 							1
 						],
-						"angle": 0.7853981633974483,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
 				{
-					"type": "uiMainSettingsSliderBar",
+					"type": "uiMainSettingsSliderHandle",
 					"properties": {
 						"left-margin": 2,
 						"right-margin": 2,
@@ -2455,7 +2473,7 @@
 						"oHeight": 0,
 						"mGrowWidth": 2,
 						"mGrowHeight": 2,
-						"sliderValue": 0.1,
+						"sliderValue": 1,
 						"sliderValueLast": 0
 					},
 					"behaviors": {
@@ -2468,6 +2486,23 @@
 					"sceneGraphData": {
 						"parent-uid": 36,
 						"uid": 40,
+						"children": [
+							{
+								"uid": 44,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": true,
+									"v": true,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
 						"flags": {
 							"x": true,
 							"y": true,
@@ -2494,8 +2529,8 @@
 						}
 					},
 					"world": {
-						"x": 152,
-						"y": -134,
+						"x": 164,
+						"y": -107,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -2506,12 +2541,12 @@
 							1,
 							1
 						],
-						"angle": 0.7853981633974483,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
 				{
-					"type": "uiMainSettingsSliderBar",
+					"type": "uiMainSettingsSliderHandle",
 					"properties": {
 						"left-margin": 2,
 						"right-margin": 2,
@@ -2538,7 +2573,7 @@
 						"oHeight": 0,
 						"mGrowWidth": 2,
 						"mGrowHeight": 2,
-						"sliderValue": 0.3,
+						"sliderValue": 3,
 						"sliderValueLast": 0
 					},
 					"behaviors": {
@@ -2551,6 +2586,23 @@
 					"sceneGraphData": {
 						"parent-uid": 36,
 						"uid": 41,
+						"children": [
+							{
+								"uid": 43,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": true,
+									"v": true,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
 						"flags": {
 							"x": true,
 							"y": true,
@@ -2577,8 +2629,8 @@
 						}
 					},
 					"world": {
-						"x": 172,
-						"y": -113,
+						"x": 193,
+						"y": -107,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -2589,7 +2641,7 @@
 							1,
 							1
 						],
-						"angle": 0.7853981633974483,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
@@ -2649,8 +2701,8 @@
 						}
 					},
 					"world": {
-						"x": 231,
-						"y": -75,
+						"x": 261,
+						"y": -122,
 						"width": 10,
 						"height": 8,
 						"originX": 0.5,
@@ -2661,7 +2713,151 @@
 							1,
 							1
 						],
-						"angle": 0.7853981633974483,
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "10",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 6,
+						"line-height": 0,
+						"bold": false,
+						"italic": false,
+						"color": [
+							1,
+							0.1607843137254902,
+							0.1607843137254902,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 43,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 41,
+						"uid": 43,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": true,
+							"v": true,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 192,
+						"y": -122,
+						"width": 10,
+						"height": 8,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "10",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 6,
+						"line-height": 0,
+						"bold": false,
+						"italic": false,
+						"color": [
+							1,
+							0.1607843137254902,
+							0.1607843137254902,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 44,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 40,
+						"uid": 44,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": true,
+							"v": true,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 164,
+						"y": -122,
+						"width": 10,
+						"height": 8,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
 						"zElevation": 0
 					}
 				}

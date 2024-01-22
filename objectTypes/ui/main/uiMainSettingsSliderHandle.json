@@ -1,7 +1,7 @@
 {
-	"name": "uiMainSettingsSlider",
+	"name": "uiMainSettingsSliderHandle",
 	"plugin-id": "NinePatch",
-	"sid": 680688437831815,
+	"sid": 292824528637160,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
@@ -14,7 +14,7 @@
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
-		"imageSpriteId": 5319914,
+		"imageSpriteId": 5191016,
 		"useCollisionPoly": true,
 		"tag": ""
 	}
