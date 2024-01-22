@@ -572,7 +572,7 @@
 						"overrideUp": "",
 						"overrideDown": "mainDummy",
 						"overrideLeft": "",
-						"overrideRight": "",
+						"overrideRight": "mainDummy4",
 						"oWidth": 0,
 						"oHeight": 0,
 						"mGrowWidth": 4,
@@ -734,7 +734,7 @@
 					},
 					"uid": 18,
 					"instanceVariables": {
-						"section": "main",
+						"section": "mainWIP",
 						"id": "mainDummy4",
 						"active": false,
 						"activeTrigger": false,

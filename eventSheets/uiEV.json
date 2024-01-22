@@ -2690,13 +2690,39 @@
 														"value": "\"\""
 													},
 													"isInverted": true
+												},
+												{
+													"id": "pick-all",
+													"objectClass": "System",
+													"sid": 379099515081822,
+													"parameters": {
+														"object": "ui"
+													}
+												},
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "ui",
+													"sid": 510372679042455,
+													"parameters": {
+														"instance-variable": "id",
+														"comparison": 0,
+														"value": "wrapOverride"
+													}
+												},
+												{
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "ui",
+													"sid": 926478347177587,
+													"parameters": {
+														"instance-variable": "active"
+													}
 												}
 											],
 											"actions": [
 												{
 													"id": "set-eventvar-value",
 													"objectClass": "System",
-													"sid": 145164901297677,
+													"sid": 827206944227771,
 													"parameters": {
 														"variable": "uiChosenID",
 														"value": "wrapOverride"
@@ -2704,7 +2730,7 @@
 												},
 												{
 													"callFunction": "uiUpdate [INTERNAL]",
-													"sid": 610488710137355
+													"sid": 665287944506169
 												}
 											],
 											"sid": 947041100176302
@@ -3534,6 +3560,14 @@
 					],
 					"eventType": "custom-ace-block",
 					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "ui",
+							"sid": 719720866513252,
+							"parameters": {
+								"instance-variable": "active"
+							}
+						},
 						{
 							"id": "pick-nearestfurthest",
 							"objectClass": "ui",
