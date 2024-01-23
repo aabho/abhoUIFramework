@@ -1010,7 +1010,7 @@
 								},
 								{
 									"eventType": "comment",
-									"text": "numbers above handles get updated on move",
+									"text": "numbers above handles get updated when position gets updated",
 									"text-color": [
 										0,
 										0,
@@ -1026,7 +1026,7 @@
 								},
 								{
 									"aceType": "action",
-									"aceName": "uiSliderHandleMove",
+									"aceName": "uiSliderHandleUpdatePosition",
 									"objectClass": "uiMainSettingsSliderHandleMus",
 									"functionDescription": "",
 									"functionCategory": "ui",
@@ -1038,18 +1038,18 @@
 									"conditions": [],
 									"actions": [
 										{
-											"customAction": "uiSliderHandleMove",
+											"customAction": "uiSliderHandleUpdatePosition",
 											"objectClass": "uiMainSettingsSliderHandleMus",
 											"customActionObjectClass": "uiSliderHandle",
-											"sid": 623862092056620
+											"sid": 564140570318671
 										},
 										{
 											"customAction": "updateNumber",
 											"objectClass": "uiMainSettingsSliderHandleMus",
-											"sid": 406939982201192
+											"sid": 717213404542891
 										}
 									],
-									"sid": 705149694022920
+									"sid": 443865050617719
 								},
 								{
 									"eventType": "comment",
@@ -1408,67 +1408,18 @@
 											],
 											"actions": [
 												{
-													"id": "set-instvar-value",
-													"objectClass": "uiMainSettingsSliderBar",
-													"sid": 426640897210484,
-													"parameters": {
-														"instance-variable": "sliderMax",
-														"value": "uiMainSettingsSliderHandleSFX.sliderValue"
-													}
-												},
-												{
-													"customAction": "uiSliderTicksUpdate [INTERNAL]",
+													"customAction": "uiSliderChangeProperties [INTERNAL]",
 													"objectClass": "uiMainSettingsSliderBar",
 													"customActionObjectClass": "uiSliderBar",
-													"sid": 140603977531559
+													"sid": 586249357160920,
+													"parameters": [
+														"0",
+														"uiMainSettingsSliderHandleSFX.sliderValue",
+														"1"
+													]
 												}
 											],
-											"sid": 915887843360795,
-											"children": [
-												{
-													"eventType": "comment",
-													"text": "adjust music slider handles",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "for-each",
-															"objectClass": "System",
-															"sid": 543803975693701,
-															"parameters": {
-																"object": "uiMainSettingsSliderHandleMus"
-															}
-														}
-													],
-													"actions": [
-														{
-															"customAction": "uiSliderHandleUpdatePosition",
-															"objectClass": "uiMainSettingsSliderHandleMus",
-															"customActionObjectClass": "uiSliderHandle",
-															"sid": 968235186305611
-														},
-														{
-															"customAction": "updateNumber",
-															"objectClass": "uiMainSettingsSliderHandleMus",
-															"sid": 103350177600647
-														}
-													],
-													"sid": 526318417017321
-												}
-											]
+											"sid": 915887843360795
 										}
 									]
 								},

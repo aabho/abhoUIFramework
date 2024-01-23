@@ -2280,6 +2280,156 @@
 							]
 						},
 						{
+							"eventType": "comment",
+							"text": "change the properties of this slider",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiSliderChangeProperties [INTERNAL]",
+							"objectClass": "uiSliderBar",
+							"functionDescription": "change the properties of this slider",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [
+								{
+									"name": "setMin",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "set property",
+									"sid": 808548204433826
+								},
+								{
+									"name": "setMax",
+									"type": "number",
+									"initialValue": "1",
+									"comment": "set property",
+									"sid": 711662980387504
+								},
+								{
+									"name": "setSteps",
+									"type": "number",
+									"initialValue": "0.1",
+									"comment": "set property",
+									"sid": 933656659127781
+								}
+							],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "uiSliderBar",
+									"sid": 292502350098699,
+									"parameters": {
+										"instance-variable": "sliderMin",
+										"value": "setMin"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "uiSliderBar",
+									"sid": 282175571139847,
+									"parameters": {
+										"instance-variable": "sliderMax",
+										"value": "setMax"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "uiSliderBar",
+									"sid": 194450935403771,
+									"parameters": {
+										"instance-variable": "sliderStep",
+										"value": "setSteps"
+									}
+								},
+								{
+									"customAction": "uiSliderTicksUpdate [INTERNAL]",
+									"objectClass": "uiSliderBar",
+									"sid": 474726338458175
+								}
+							],
+							"sid": 597551107550344,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "update position of slider handles",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "uiSliderBar",
+											"sid": 592822998283451,
+											"parameters": {
+												"child": "uiSliderHandle",
+												"which": "own"
+											}
+										},
+										{
+											"id": "for-each",
+											"objectClass": "System",
+											"sid": 248085954869030,
+											"parameters": {
+												"object": "uiSliderHandle"
+											}
+										}
+									],
+									"actions": [
+										{
+											"customAction": "uiSliderHandleUpdatePosition",
+											"objectClass": "uiSliderHandle",
+											"sid": 648079798059093
+										}
+									],
+									"sid": 111504314859569
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "generate ticks (little lines that appear at every step)",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
 							"aceType": "action",
 							"aceName": "uiSliderTicksUpdate [INTERNAL]",
 							"objectClass": "uiSliderBar",
@@ -2387,7 +2537,7 @@
 								},
 								{
 									"eventType": "comment",
-									"text": "setup",
+									"text": "if an object name has been assigned as the tick mark",
 									"text-color": [
 										0,
 										0,
@@ -2403,7 +2553,19 @@
 								},
 								{
 									"eventType": "block",
-									"conditions": [],
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "uiSliderBar",
+											"sid": 818484019262754,
+											"parameters": {
+												"instance-variable": "sliderTickObjectName",
+												"comparison": 0,
+												"value": "\"\""
+											},
+											"isInverted": true
+										}
+									],
 									"actions": [
 										{
 											"type": "comment",
@@ -2452,67 +2614,11 @@
 											}
 										}
 									],
-									"sid": 256832670539772
-								},
-								{
-									"eventType": "comment",
-									"text": "this loop doesn't consider the minimum and maximum as a place to put a tick",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "for",
-											"objectClass": "System",
-											"sid": 531451693572756,
-											"parameters": {
-												"name": "\"tick\"",
-												"start-index": "1",
-												"end-index": "ticks"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 601320767325595,
-											"parameters": {
-												"variable": "lerpPos",
-												"value": "unlerp(0, ticks + 1, loopindex(\"tick\"))"
-											}
-										},
-										{
-											"id": "create-object-by-name",
-											"objectClass": "System",
-											"sid": 452428709145482,
-											"parameters": {
-												"object-name": "uiSliderBar.sliderTickObjectName",
-												"layer": "uiSliderBar.LayerName",
-												"x": "lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, lerpPos)",
-												"y": "lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, lerpPos)",
-												"create-hierarchy": true,
-												"template-name": "\"\""
-											}
-										}
-									],
-									"sid": 280458245689196,
+									"sid": 256832670539772,
 									"children": [
 										{
 											"eventType": "comment",
-											"text": "use this condition to reference the tick we created",
+											"text": "this loop doesn't consider the minimum and maximum as a place to put a tick",
 											"text-color": [
 												0,
 												0,
@@ -2530,51 +2636,109 @@
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "pick-last-created",
+													"id": "for",
 													"objectClass": "System",
-													"sid": 555205317977098,
+													"sid": 214476838104230,
 													"parameters": {
-														"object": "uiSliderTick"
+														"name": "\"tick\"",
+														"start-index": "1",
+														"end-index": "ticks"
 													}
 												}
 											],
 											"actions": [
 												{
-													"id": "move-to-object",
-													"objectClass": "uiSliderTick",
-													"sid": 745641832963734,
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 159727687698810,
 													"parameters": {
-														"where": "in-front",
-														"object": "uiSliderBar"
+														"variable": "lerpPos",
+														"value": "unlerp(0, ticks + 1, loopindex(\"tick\"))"
 													}
 												},
 												{
-													"id": "add-child",
-													"objectClass": "uiSliderBar",
-													"sid": 900992505287923,
+													"id": "create-object-by-name",
+													"objectClass": "System",
+													"sid": 620193974217064,
 													"parameters": {
-														"child": "uiSliderTick",
-														"transform-x": true,
-														"transform-y": true,
-														"transform-w": true,
-														"transform-h": true,
-														"transform-a": true,
-														"transform-o": true,
-														"transform-z-elevation": true,
-														"transform-visibility": true,
-														"destroy-with-parent": true
-													}
-												},
-												{
-													"id": "set-angle",
-													"objectClass": "uiSliderTick",
-													"sid": 647140306681807,
-													"parameters": {
-														"angle": "uiSliderBar.Angle"
+														"object-name": "uiSliderBar.sliderTickObjectName",
+														"layer": "uiSliderBar.LayerName",
+														"x": "lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, lerpPos)",
+														"y": "lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, lerpPos)",
+														"create-hierarchy": true,
+														"template-name": "\"\""
 													}
 												}
 											],
-											"sid": 147461425985676
+											"sid": 568499734196190,
+											"children": [
+												{
+													"eventType": "comment",
+													"text": "use this condition to reference the tick we created",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "pick-last-created",
+															"objectClass": "System",
+															"sid": 281081211249941,
+															"parameters": {
+																"object": "uiSliderTick"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "move-to-object",
+															"objectClass": "uiSliderTick",
+															"sid": 822489192809630,
+															"parameters": {
+																"where": "in-front",
+																"object": "uiSliderBar"
+															}
+														},
+														{
+															"id": "add-child",
+															"objectClass": "uiSliderBar",
+															"sid": 312451051257527,
+															"parameters": {
+																"child": "uiSliderTick",
+																"transform-x": true,
+																"transform-y": true,
+																"transform-w": true,
+																"transform-h": true,
+																"transform-a": true,
+																"transform-o": true,
+																"transform-z-elevation": true,
+																"transform-visibility": true,
+																"destroy-with-parent": true
+															}
+														},
+														{
+															"id": "set-angle",
+															"objectClass": "uiSliderTick",
+															"sid": 656782493311184,
+															"parameters": {
+																"angle": "uiSliderBar.Angle"
+															}
+														}
+													],
+													"sid": 293620686261366
+												}
+											]
 										}
 									]
 								}
