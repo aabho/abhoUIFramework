@@ -1,0 +1,11 @@
+{
+	"name": "uiSliderTick",
+	"plugin-id": "NinePatch",
+	"sid": 128726547428423,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"uiMainSettingsSliderTick"
+	]
+}

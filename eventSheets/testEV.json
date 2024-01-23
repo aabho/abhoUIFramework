@@ -7,6 +7,22 @@
 		},
 		{
 			"eventType": "comment",
+			"text": "the test layout and testEV are basically a playground to try out the implementations in uiEV\nthey aren't important to anything that goes on in uiEV, so feel free to experiement here and see how the test example works",
+			"text-color": [
+				0,
+				0,
+				0,
+				1
+			],
+			"background-color": [
+				0.8470588235294118,
+				0.6431372549019608,
+				0.8745098039215686,
+				1
+			]
+		},
+		{
+			"eventType": "comment",
 			"text": "on start of layout, activate the main section",
 			"text-color": [
 				0,
@@ -545,19 +561,6 @@
 											"sid": 610313680969286
 										},
 										{
-											"id": "create-object",
-											"objectClass": "System",
-											"sid": 230914326958543,
-											"parameters": {
-												"object-to-create": "Particles",
-												"layer": "\"quit confirm\"",
-												"x": "ui.X",
-												"y": "ui.Y",
-												"create-hierarchy": false,
-												"template-name": "\"\""
-											}
-										},
-										{
 											"id": "set-default-color",
 											"objectClass": "ui",
 											"sid": 574160268007345,
@@ -933,13 +936,31 @@
 						{
 							"eventType": "group",
 							"disabled": false,
-							"title": "main settings slider handle common",
+							"title": "main settings slider handle mus",
 							"description": "",
 							"isActiveOnStart": true,
 							"children": [
 								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "on-created",
+											"objectClass": "uiMainSettingsSliderHandleMus",
+											"sid": 617400958668034
+										}
+									],
+									"actions": [
+										{
+											"customAction": "updateNumber",
+											"objectClass": "uiMainSettingsSliderHandleMus",
+											"sid": 910325014981599
+										}
+									],
+									"sid": 638598401821584
+								},
+								{
 									"eventType": "comment",
-									"text": "numbers above handles get updated on created",
+									"text": "numbers above handles get updated",
 									"text-color": [
 										0,
 										0,
@@ -954,17 +975,21 @@
 									]
 								},
 								{
-									"eventType": "block",
+									"aceType": "action",
+									"aceName": "updateNumber",
+									"objectClass": "uiMainSettingsSliderHandleMus",
+									"functionDescription": "not an override, just a normal action",
+									"functionCategory": "",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
 									"conditions": [
 										{
-											"id": "on-created",
-											"objectClass": "uiMainSettingsSliderHandleCommon",
-											"sid": 617400958668034
-										},
-										{
 											"id": "pick-children",
-											"objectClass": "uiMainSettingsSliderHandleCommon",
-											"sid": 223038064917113,
+											"objectClass": "uiMainSettingsSliderHandleMus",
+											"sid": 521219835855560,
 											"parameters": {
 												"child": "txt",
 												"which": "own"
@@ -975,13 +1000,13 @@
 										{
 											"id": "set-text",
 											"objectClass": "txt",
-											"sid": 645840261579572,
+											"sid": 303434977272306,
 											"parameters": {
-												"text": "uiMainSettingsSliderHandleCommon.sliderValue"
+												"text": "uiMainSettingsSliderHandleMus.sliderValue"
 											}
 										}
 									],
-									"sid": 638598401821584
+									"sid": 419216149418016
 								},
 								{
 									"eventType": "comment",
@@ -1002,86 +1027,29 @@
 								{
 									"aceType": "action",
 									"aceName": "uiSliderHandleMove",
-									"objectClass": "uiMainSettingsSliderHandleCommon",
+									"objectClass": "uiMainSettingsSliderHandleMus",
 									"functionDescription": "",
-									"functionCategory": "uiSlider",
+									"functionCategory": "ui",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
 									"functionIsAsync": false,
-									"functionParameters": [
-										{
-											"name": "x",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "",
-											"sid": 622593768041568
-										},
-										{
-											"name": "y",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "",
-											"sid": 357756409713684
-										}
-									],
+									"functionParameters": [],
 									"eventType": "custom-ace-block",
 									"conditions": [],
 									"actions": [
 										{
 											"customAction": "uiSliderHandleMove",
-											"objectClass": "uiMainSettingsSliderHandleCommon",
-											"customActionObjectClass": "ui",
-											"sid": 963435293123226,
-											"parameters": [
-												"x",
-												"y"
-											]
+											"objectClass": "uiMainSettingsSliderHandleMus",
+											"customActionObjectClass": "uiSliderHandle",
+											"sid": 623862092056620
 										},
 										{
-											"type": "comment",
-											"text": "careful here! I specifically put the condition to pick the child underneath as a subevent, because I want the original call above to always trigger regardless.",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
+											"customAction": "updateNumber",
+											"objectClass": "uiMainSettingsSliderHandleMus",
+											"sid": 406939982201192
 										}
 									],
-									"sid": 705149694022920,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "pick-children",
-													"objectClass": "uiMainSettingsSliderHandleCommon",
-													"sid": 954741150897765,
-													"parameters": {
-														"child": "txt",
-														"which": "own"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-text",
-													"objectClass": "txt",
-													"sid": 473714179196221,
-													"parameters": {
-														"text": "uiMainSettingsSliderHandleCommon.sliderValue"
-													}
-												}
-											],
-											"sid": 996593981831611
-										}
-									]
+									"sid": 705149694022920
 								},
 								{
 									"eventType": "comment",
@@ -1102,9 +1070,9 @@
 								{
 									"aceType": "action",
 									"aceName": "uiSliderHandleSelect",
-									"objectClass": "uiMainSettingsSliderHandleCommon",
+									"objectClass": "uiMainSettingsSliderHandleMus",
 									"functionDescription": "",
-									"functionCategory": "uiSlider",
+									"functionCategory": "ui",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
 									"functionIsAsync": false,
@@ -1114,9 +1082,9 @@
 									"actions": [
 										{
 											"customAction": "uiSliderHandleSelect",
-											"objectClass": "uiMainSettingsSliderHandleCommon",
-											"customActionObjectClass": "ui",
-											"sid": 834883461652843
+											"objectClass": "uiMainSettingsSliderHandleMus",
+											"customActionObjectClass": "uiSliderHandle",
+											"sid": 358288544997483
 										},
 										{
 											"id": "create-object",
@@ -1125,15 +1093,15 @@
 											"parameters": {
 												"object-to-create": "uiMainSettingsSliderHandleGlyph",
 												"layer": "\"settings\"",
-												"x": "uiMainSettingsSliderHandleCommon.X",
-												"y": "uiMainSettingsSliderHandleCommon.Y",
+												"x": "uiMainSettingsSliderHandleMus.X",
+												"y": "uiMainSettingsSliderHandleMus.Y",
 												"create-hierarchy": false,
 												"template-name": "\"\""
 											}
 										},
 										{
 											"id": "add-child",
-											"objectClass": "uiMainSettingsSliderHandleCommon",
+											"objectClass": "uiMainSettingsSliderHandleMus",
 											"sid": 763736890167682,
 											"parameters": {
 												"child": "uiMainSettingsSliderHandleGlyph",
@@ -1153,7 +1121,7 @@
 											"objectClass": "uiMainSettingsSliderHandleGlyph",
 											"sid": 952961226856742,
 											"parameters": {
-												"angle": "uiMainSettingsSliderHandleCommon.Angle"
+												"angle": "uiMainSettingsSliderHandleMus.Angle"
 											}
 										},
 										{
@@ -1203,9 +1171,9 @@
 								{
 									"aceType": "action",
 									"aceName": "uiSliderHandleDeselect",
-									"objectClass": "uiMainSettingsSliderHandleCommon",
+									"objectClass": "uiMainSettingsSliderHandleMus",
 									"functionDescription": "",
-									"functionCategory": "uiSlider",
+									"functionCategory": "ui",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
 									"functionIsAsync": false,
@@ -1215,9 +1183,9 @@
 									"actions": [
 										{
 											"customAction": "uiSliderHandleDeselect",
-											"objectClass": "uiMainSettingsSliderHandleCommon",
-											"customActionObjectClass": "ui",
-											"sid": 671204097452465
+											"objectClass": "uiMainSettingsSliderHandleMus",
+											"customActionObjectClass": "uiSliderHandle",
+											"sid": 950432929124040
 										}
 									],
 									"sid": 803598717128567,
@@ -1227,7 +1195,7 @@
 											"conditions": [
 												{
 													"id": "pick-children",
-													"objectClass": "uiMainSettingsSliderHandleCommon",
+													"objectClass": "uiMainSettingsSliderHandleMus",
 													"sid": 773533599465884,
 													"parameters": {
 														"child": "uiMainSettingsSliderHandleGlyph",
@@ -1386,38 +1354,19 @@
 									"aceName": "uiSliderHandleMove",
 									"objectClass": "uiMainSettingsSliderHandleSFX",
 									"functionDescription": "",
-									"functionCategory": "uiSlider",
+									"functionCategory": "ui",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
 									"functionIsAsync": false,
-									"functionParameters": [
-										{
-											"name": "x",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "",
-											"sid": 395353598690024
-										},
-										{
-											"name": "y",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "",
-											"sid": 743609699576973
-										}
-									],
+									"functionParameters": [],
 									"eventType": "custom-ace-block",
 									"conditions": [],
 									"actions": [
 										{
 											"customAction": "uiSliderHandleMove",
 											"objectClass": "uiMainSettingsSliderHandleSFX",
-											"customActionObjectClass": "ui",
-											"sid": 805685607762757,
-											"parameters": [
-												"x",
-												"y"
-											]
+											"customActionObjectClass": "uiSliderHandle",
+											"sid": 126502344548104
 										},
 										{
 											"customAction": "specialColor",
@@ -1425,7 +1374,103 @@
 											"sid": 169443390061209
 										}
 									],
-									"sid": 503077780473953
+									"sid": 503077780473953,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "adjust the music slider based on the sfx slider value",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiMainSettingsSliderBar",
+													"sid": 333353023943560,
+													"parameters": {
+														"instance-variable": "id",
+														"comparison": 0,
+														"value": "\"mus\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiMainSettingsSliderBar",
+													"sid": 426640897210484,
+													"parameters": {
+														"instance-variable": "sliderMax",
+														"value": "uiMainSettingsSliderHandleSFX.sliderValue"
+													}
+												},
+												{
+													"customAction": "uiSliderTicksUpdate [INTERNAL]",
+													"objectClass": "uiMainSettingsSliderBar",
+													"customActionObjectClass": "uiSliderBar",
+													"sid": 140603977531559
+												}
+											],
+											"sid": 915887843360795,
+											"children": [
+												{
+													"eventType": "comment",
+													"text": "adjust music slider handles",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "for-each",
+															"objectClass": "System",
+															"sid": 543803975693701,
+															"parameters": {
+																"object": "uiMainSettingsSliderHandleMus"
+															}
+														}
+													],
+													"actions": [
+														{
+															"customAction": "uiSliderHandleUpdatePosition",
+															"objectClass": "uiMainSettingsSliderHandleMus",
+															"customActionObjectClass": "uiSliderHandle",
+															"sid": 968235186305611
+														},
+														{
+															"customAction": "updateNumber",
+															"objectClass": "uiMainSettingsSliderHandleMus",
+															"sid": 103350177600647
+														}
+													],
+													"sid": 526318417017321
+												}
+											]
+										}
+									]
 								},
 								{
 									"eventType": "comment",
@@ -1448,7 +1493,7 @@
 									"aceName": "uiSliderHandleSelect",
 									"objectClass": "uiMainSettingsSliderHandleSFX",
 									"functionDescription": "",
-									"functionCategory": "uiSlider",
+									"functionCategory": "ui",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
 									"functionIsAsync": false,
@@ -1459,8 +1504,8 @@
 										{
 											"customAction": "uiSliderHandleSelect",
 											"objectClass": "uiMainSettingsSliderHandleSFX",
-											"customActionObjectClass": "ui",
-											"sid": 966061171694352
+											"customActionObjectClass": "uiSliderHandle",
+											"sid": 662700694724145
 										},
 										{
 											"id": "create-object",
@@ -1554,7 +1599,7 @@
 									"aceName": "uiSliderHandleDeselect",
 									"objectClass": "uiMainSettingsSliderHandleSFX",
 									"functionDescription": "",
-									"functionCategory": "uiSlider",
+									"functionCategory": "ui",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
 									"functionIsAsync": false,
@@ -1565,8 +1610,8 @@
 										{
 											"customAction": "uiSliderHandleDeselect",
 											"objectClass": "uiMainSettingsSliderHandleSFX",
-											"customActionObjectClass": "ui",
-											"sid": 813068036639142
+											"customActionObjectClass": "uiSliderHandle",
+											"sid": 586483809126587
 										}
 									],
 									"sid": 533972934199482,

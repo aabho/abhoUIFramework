@@ -1202,80 +1202,6 @@
 						"angle": 0,
 						"zElevation": 0
 					}
-				},
-				{
-					"type": "Particles",
-					"properties": {
-						"rate": 50,
-						"spray-cone": 360,
-						"type": "one-shot",
-						"object": -1,
-						"initially-visible": true,
-						"live-preview": false,
-						"speed": 200,
-						"size": 4,
-						"opacity": 100,
-						"grow-rate": 0,
-						"x-randomiser": 0,
-						"y-randomiser": 0,
-						"initial-speed-randomiser": 0,
-						"size-randomiser": 0,
-						"grow-rate-randomiser": 0,
-						"acceleration": -150,
-						"gravity": 0,
-						"angle-randomiser": 0,
-						"life-speed-randomiser": 800,
-						"opacity-randomiser": 0,
-						"destroy-mode": "fade-to-invisible",
-						"timeout": 0.5
-					},
-					"uid": 23,
-					"instanceVariables": {},
-					"behaviors": {},
-					"sceneGraphData": {
-						"parent-uid": null,
-						"uid": 23,
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"world": {
-						"x": -39,
-						"y": 20,
-						"width": 11,
-						"height": 11,
-						"originX": 0,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
 				}
 			],
 			"sid": 770644799188388,
@@ -2040,14 +1966,16 @@
 					},
 					"uid": 21,
 					"instanceVariables": {
-						"sliderMin": 0,
-						"sliderMax": 1,
-						"sliderStep": 0.1,
+						"sliderMin": 5,
+						"sliderMax": 15,
+						"sliderStep": 1,
 						"sliderMarginsHorizontal": 2,
 						"sliderLeftX": 0,
 						"sliderLeftY": 0,
 						"sliderRightX": 0,
-						"sliderRightY": 0
+						"sliderRightY": 0,
+						"sliderTickObjectName": "uiMainSettingsSliderTick",
+						"id": "sfx"
 					},
 					"behaviors": {},
 					"sceneGraphData": {
@@ -2134,7 +2062,9 @@
 						"sliderLeftX": 0,
 						"sliderLeftY": 0,
 						"sliderRightX": 0,
-						"sliderRightY": 0
+						"sliderRightY": 0,
+						"sliderTickObjectName": "uiMainSettingsSliderTick",
+						"id": "mus"
 					},
 					"behaviors": {},
 					"sceneGraphData": {
@@ -2245,7 +2175,7 @@
 					}
 				},
 				{
-					"type": "uiMainSettingsSliderHandleCommon",
+					"type": "uiMainSettingsSliderHandleMus",
 					"properties": {
 						"left-margin": 2,
 						"right-margin": 2,
@@ -2346,7 +2276,7 @@
 					}
 				},
 				{
-					"type": "uiMainSettingsSliderHandleCommon",
+					"type": "uiMainSettingsSliderHandleMus",
 					"properties": {
 						"left-margin": 2,
 						"right-margin": 2,
@@ -2447,7 +2377,7 @@
 					}
 				},
 				{
-					"type": "uiMainSettingsSliderHandleCommon",
+					"type": "uiMainSettingsSliderHandleMus",
 					"properties": {
 						"left-margin": 2,
 						"right-margin": 2,
@@ -2826,7 +2756,7 @@
 						"oHeight": 0,
 						"mGrowWidth": 2,
 						"mGrowHeight": 2,
-						"sliderValue": 0.5,
+						"sliderValue": 10,
 						"sliderValueLast": 0,
 						"sliderProgress": 0
 					},
@@ -2870,6 +2800,39 @@
 						"y": -178,
 						"width": 8,
 						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsSliderTick",
+					"properties": {
+						"left-margin": 0,
+						"right-margin": 0,
+						"top-margin": 0,
+						"bottom-margin": 0,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "overlap"
+					},
+					"uid": 37,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": -17,
+						"y": 31,
+						"width": 1,
+						"height": 4,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
