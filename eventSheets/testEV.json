@@ -936,6 +936,383 @@
 						{
 							"eventType": "group",
 							"disabled": false,
+							"title": "main settings slider handle sfx",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "set color based on value",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"aceType": "action",
+									"aceName": "specialColor",
+									"objectClass": "uiMainSettingsSliderHandleSFX",
+									"functionDescription": "",
+									"functionCategory": "",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiMainSettingsSliderHandleSFX",
+											"sid": 342989970921286,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiSliderHandleColor\""
+											}
+										},
+										{
+											"id": "set-default-color",
+											"objectClass": "uiMainSettingsSliderHandleSFX",
+											"sid": 963496390760755,
+											"parameters": {
+												"color": "rgbEx(lerp(100, 0, Self.sliderProgress), lerp(0, 100, Self.sliderProgress), 0)"
+											}
+										}
+									],
+									"sid": 368247146722842,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-children",
+													"objectClass": "uiMainSettingsSliderHandleSFX",
+													"sid": 109868143210456,
+													"parameters": {
+														"child": "uiMainSettingsSliderHandleGlyph",
+														"which": "own"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-default-color",
+													"objectClass": "uiMainSettingsSliderHandleGlyph",
+													"sid": 270830958792609,
+													"parameters": {
+														"color": "uiMainSettingsSliderHandleSFX.ColorValue"
+													}
+												}
+											],
+											"sid": 485987033801434
+										}
+									]
+								},
+								{
+									"eventType": "comment",
+									"text": "numbers above handles get updated on move",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiSliderHandleMove",
+									"objectClass": "uiMainSettingsSliderHandleSFX",
+									"functionDescription": "",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [],
+									"actions": [
+										{
+											"customAction": "uiSliderHandleMove",
+											"objectClass": "uiMainSettingsSliderHandleSFX",
+											"customActionObjectClass": "uiSliderHandle",
+											"sid": 728139057547194
+										},
+										{
+											"customAction": "specialColor",
+											"objectClass": "uiMainSettingsSliderHandleSFX",
+											"sid": 774476231700416
+										}
+									],
+									"sid": 416290841604446,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "adjust the music slider based on the sfx slider value",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiMainSettingsSliderBar",
+													"sid": 548486350434306,
+													"parameters": {
+														"instance-variable": "id",
+														"comparison": 0,
+														"value": "\"mus\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"customAction": "uiSliderChangeProperties [INTERNAL]",
+													"objectClass": "uiMainSettingsSliderBar",
+													"customActionObjectClass": "uiSliderBar",
+													"sid": 830572122052189,
+													"parameters": [
+														"0",
+														"uiMainSettingsSliderHandleSFX.sliderValue",
+														"1"
+													]
+												}
+											],
+											"sid": 173114302552439
+										}
+									]
+								},
+								{
+									"eventType": "comment",
+									"text": "create glyph",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiSliderHandleSelect",
+									"objectClass": "uiMainSettingsSliderHandleSFX",
+									"functionDescription": "",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [],
+									"actions": [
+										{
+											"customAction": "uiSliderHandleSelect",
+											"objectClass": "uiMainSettingsSliderHandleSFX",
+											"customActionObjectClass": "uiSliderHandle",
+											"sid": 160591112410428
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 230484841377416,
+											"parameters": {
+												"object-to-create": "uiMainSettingsSliderHandleGlyph",
+												"layer": "\"settings\"",
+												"x": "uiMainSettingsSliderHandleSFX.X",
+												"y": "uiMainSettingsSliderHandleSFX.Y",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "add-child",
+											"objectClass": "uiMainSettingsSliderHandleSFX",
+											"sid": 843389892363211,
+											"parameters": {
+												"child": "uiMainSettingsSliderHandleGlyph",
+												"transform-x": true,
+												"transform-y": true,
+												"transform-w": false,
+												"transform-h": false,
+												"transform-a": true,
+												"transform-o": true,
+												"transform-z-elevation": true,
+												"transform-visibility": true,
+												"destroy-with-parent": true
+											}
+										},
+										{
+											"id": "set-angle",
+											"objectClass": "uiMainSettingsSliderHandleGlyph",
+											"sid": 301468387200216,
+											"parameters": {
+												"angle": "uiMainSettingsSliderHandleSFX.Angle"
+											}
+										},
+										{
+											"id": "set-width",
+											"objectClass": "uiMainSettingsSliderHandleGlyph",
+											"sid": 256145281154417,
+											"parameters": {
+												"width": "0"
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainSettingsSliderHandleGlyph",
+											"sid": 626439969882528,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"grow\"",
+												"property": "offsetWidth",
+												"end-value": "32",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"customAction": "specialColor",
+											"objectClass": "uiMainSettingsSliderHandleSFX",
+											"sid": 606522008765386
+										}
+									],
+									"sid": 574158627861397
+								},
+								{
+									"eventType": "comment",
+									"text": "destroy glyph",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiSliderHandleDeselect",
+									"objectClass": "uiMainSettingsSliderHandleSFX",
+									"functionDescription": "",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [],
+									"actions": [
+										{
+											"customAction": "uiSliderHandleDeselect",
+											"objectClass": "uiMainSettingsSliderHandleSFX",
+											"customActionObjectClass": "uiSliderHandle",
+											"sid": 603799069470381
+										}
+									],
+									"sid": 179333234380143,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-children",
+													"objectClass": "uiMainSettingsSliderHandleSFX",
+													"sid": 108634117898872,
+													"parameters": {
+														"child": "uiMainSettingsSliderHandleGlyph",
+														"which": "own"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "stop-tweens",
+													"objectClass": "uiMainSettingsSliderHandleGlyph",
+													"sid": 462599174631445,
+													"behaviorType": "Tween",
+													"parameters": {
+														"tags": "\"grow\""
+													}
+												},
+												{
+													"id": "tween-one-property",
+													"objectClass": "uiMainSettingsSliderHandleGlyph",
+													"sid": 570725568178168,
+													"behaviorType": "Tween",
+													"parameters": {
+														"tags": "\"shrink\"",
+														"property": "offsetWidth",
+														"end-value": "0",
+														"time": "0.1",
+														"ease": "easeoutcubic",
+														"destroy-on-complete": "yes",
+														"loop": "no",
+														"ping-pong": "no",
+														"repeat-count": "1"
+													}
+												}
+											],
+											"sid": 323678477931310
+										}
+									]
+								}
+							],
+							"sid": 842645557077451,
+							"text-color": [
+								0,
+								0,
+								0,
+								0
+							],
+							"background-color": [
+								0.8392156862745098,
+								0.8392156862745098,
+								0.8392156862745098,
+								1
+							]
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
 							"title": "main settings slider handle mus",
 							"description": "",
 							"isActiveOnStart": true,
@@ -1237,383 +1614,6 @@
 								}
 							],
 							"sid": 672656558661624,
-							"text-color": [
-								0,
-								0,
-								0,
-								0
-							],
-							"background-color": [
-								0.8392156862745098,
-								0.8392156862745098,
-								0.8392156862745098,
-								1
-							]
-						},
-						{
-							"eventType": "group",
-							"disabled": false,
-							"title": "main settings slider handle sfx",
-							"description": "",
-							"isActiveOnStart": true,
-							"children": [
-								{
-									"eventType": "comment",
-									"text": "set color based on value",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6431372549019608,
-										0.8470588235294118,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"aceType": "action",
-									"aceName": "specialColor",
-									"objectClass": "uiMainSettingsSliderHandleSFX",
-									"functionDescription": "",
-									"functionCategory": "",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [],
-									"actions": [
-										{
-											"id": "stop-tweens",
-											"objectClass": "uiMainSettingsSliderHandleSFX",
-											"sid": 287607505194555,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSliderHandleColor\""
-											}
-										},
-										{
-											"id": "set-default-color",
-											"objectClass": "uiMainSettingsSliderHandleSFX",
-											"sid": 170163097830069,
-											"parameters": {
-												"color": "rgbEx(lerp(100, 0, Self.sliderProgress), lerp(0, 100, Self.sliderProgress), 0)"
-											}
-										}
-									],
-									"sid": 805613306524219,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "pick-children",
-													"objectClass": "uiMainSettingsSliderHandleSFX",
-													"sid": 296569476648259,
-													"parameters": {
-														"child": "uiMainSettingsSliderHandleGlyph",
-														"which": "own"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-default-color",
-													"objectClass": "uiMainSettingsSliderHandleGlyph",
-													"sid": 370963447873049,
-													"parameters": {
-														"color": "uiMainSettingsSliderHandleSFX.ColorValue"
-													}
-												}
-											],
-											"sid": 195704085026886
-										}
-									]
-								},
-								{
-									"eventType": "comment",
-									"text": "numbers above handles get updated on move",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6431372549019608,
-										0.8470588235294118,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"aceType": "action",
-									"aceName": "uiSliderHandleMove",
-									"objectClass": "uiMainSettingsSliderHandleSFX",
-									"functionDescription": "",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [],
-									"actions": [
-										{
-											"customAction": "uiSliderHandleMove",
-											"objectClass": "uiMainSettingsSliderHandleSFX",
-											"customActionObjectClass": "uiSliderHandle",
-											"sid": 126502344548104
-										},
-										{
-											"customAction": "specialColor",
-											"objectClass": "uiMainSettingsSliderHandleSFX",
-											"sid": 169443390061209
-										}
-									],
-									"sid": 503077780473953,
-									"children": [
-										{
-											"eventType": "comment",
-											"text": "adjust the music slider based on the sfx slider value",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "uiMainSettingsSliderBar",
-													"sid": 333353023943560,
-													"parameters": {
-														"instance-variable": "id",
-														"comparison": 0,
-														"value": "\"mus\""
-													}
-												}
-											],
-											"actions": [
-												{
-													"customAction": "uiSliderChangeProperties [INTERNAL]",
-													"objectClass": "uiMainSettingsSliderBar",
-													"customActionObjectClass": "uiSliderBar",
-													"sid": 586249357160920,
-													"parameters": [
-														"0",
-														"uiMainSettingsSliderHandleSFX.sliderValue",
-														"1"
-													]
-												}
-											],
-											"sid": 915887843360795
-										}
-									]
-								},
-								{
-									"eventType": "comment",
-									"text": "create glyph",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6431372549019608,
-										0.8470588235294118,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"aceType": "action",
-									"aceName": "uiSliderHandleSelect",
-									"objectClass": "uiMainSettingsSliderHandleSFX",
-									"functionDescription": "",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [],
-									"actions": [
-										{
-											"customAction": "uiSliderHandleSelect",
-											"objectClass": "uiMainSettingsSliderHandleSFX",
-											"customActionObjectClass": "uiSliderHandle",
-											"sid": 662700694724145
-										},
-										{
-											"id": "create-object",
-											"objectClass": "System",
-											"sid": 581213280894325,
-											"parameters": {
-												"object-to-create": "uiMainSettingsSliderHandleGlyph",
-												"layer": "\"settings\"",
-												"x": "uiMainSettingsSliderHandleSFX.X",
-												"y": "uiMainSettingsSliderHandleSFX.Y",
-												"create-hierarchy": false,
-												"template-name": "\"\""
-											}
-										},
-										{
-											"id": "add-child",
-											"objectClass": "uiMainSettingsSliderHandleSFX",
-											"sid": 999602818608761,
-											"parameters": {
-												"child": "uiMainSettingsSliderHandleGlyph",
-												"transform-x": true,
-												"transform-y": true,
-												"transform-w": false,
-												"transform-h": false,
-												"transform-a": true,
-												"transform-o": true,
-												"transform-z-elevation": true,
-												"transform-visibility": true,
-												"destroy-with-parent": true
-											}
-										},
-										{
-											"id": "set-angle",
-											"objectClass": "uiMainSettingsSliderHandleGlyph",
-											"sid": 664026745517592,
-											"parameters": {
-												"angle": "uiMainSettingsSliderHandleSFX.Angle"
-											}
-										},
-										{
-											"id": "set-width",
-											"objectClass": "uiMainSettingsSliderHandleGlyph",
-											"sid": 593353153180486,
-											"parameters": {
-												"width": "0"
-											}
-										},
-										{
-											"id": "tween-one-property",
-											"objectClass": "uiMainSettingsSliderHandleGlyph",
-											"sid": 296504066353188,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"grow\"",
-												"property": "offsetWidth",
-												"end-value": "32",
-												"time": "0.1",
-												"ease": "easeoutcubic",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										},
-										{
-											"customAction": "specialColor",
-											"objectClass": "uiMainSettingsSliderHandleSFX",
-											"sid": 902932388096565
-										}
-									],
-									"sid": 983662723979903
-								},
-								{
-									"eventType": "comment",
-									"text": "destroy glyph",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6431372549019608,
-										0.8470588235294118,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"aceType": "action",
-									"aceName": "uiSliderHandleDeselect",
-									"objectClass": "uiMainSettingsSliderHandleSFX",
-									"functionDescription": "",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [],
-									"actions": [
-										{
-											"customAction": "uiSliderHandleDeselect",
-											"objectClass": "uiMainSettingsSliderHandleSFX",
-											"customActionObjectClass": "uiSliderHandle",
-											"sid": 586483809126587
-										}
-									],
-									"sid": 533972934199482,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "pick-children",
-													"objectClass": "uiMainSettingsSliderHandleSFX",
-													"sid": 281127392974294,
-													"parameters": {
-														"child": "uiMainSettingsSliderHandleGlyph",
-														"which": "own"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "stop-tweens",
-													"objectClass": "uiMainSettingsSliderHandleGlyph",
-													"sid": 362645775606547,
-													"behaviorType": "Tween",
-													"parameters": {
-														"tags": "\"grow\""
-													}
-												},
-												{
-													"id": "tween-one-property",
-													"objectClass": "uiMainSettingsSliderHandleGlyph",
-													"sid": 887843367295737,
-													"behaviorType": "Tween",
-													"parameters": {
-														"tags": "\"shrink\"",
-														"property": "offsetWidth",
-														"end-value": "0",
-														"time": "0.1",
-														"ease": "easeoutcubic",
-														"destroy-on-complete": "yes",
-														"loop": "no",
-														"ping-pong": "no",
-														"repeat-count": "1"
-													}
-												}
-											],
-											"sid": 986112082136579
-										}
-									]
-								}
-							],
-							"sid": 642512339159715,
 							"text-color": [
 								0,
 								0,

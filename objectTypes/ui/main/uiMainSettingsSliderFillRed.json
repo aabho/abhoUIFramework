@@ -1,20 +1,20 @@
 {
-	"name": "uiMainSettingsSliderHandleSFX",
+	"name": "uiMainSettingsSliderFillRed",
 	"plugin-id": "NinePatch",
-	"sid": 147680291634376,
+	"sid": 482858123464932,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"image": {
-		"width": 10,
-		"height": 10,
+		"width": 8,
+		"height": 6,
 		"originX": 0.5,
 		"originY": 0.5,
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
-		"imageSpriteId": 617051,
+		"imageSpriteId": 1508768,
 		"useCollisionPoly": true,
 		"tag": ""
 	}

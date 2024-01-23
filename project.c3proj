@@ -99,7 +99,9 @@
 							"uiMainSettingsSliderHandleMus",
 							"uiMainSettingsSliderHandleGlyph",
 							"uiMainSettingsSliderHandleSFX",
-							"uiMainSettingsSliderTick"
+							"uiMainSettingsSliderTick",
+							"uiMainSettingsSliderFill",
+							"uiMainSettingsSliderFillRed"
 						],
 						"subfolders": [],
 						"name": "main"
@@ -126,12 +128,20 @@
 		"subfolders": [
 			{
 				"items": [
-					"ui",
-					"uiSliderBar",
-					"uiSliderHandle",
-					"uiSliderTick"
+					"ui"
 				],
-				"subfolders": [],
+				"subfolders": [
+					{
+						"items": [
+							"uiSliderBar",
+							"uiSliderHandle",
+							"uiSliderTick",
+							"uiSliderFill"
+						],
+						"subfolders": [],
+						"name": "ui sliders"
+					}
+				],
 				"name": "ui & ui components"
 			}
 		]

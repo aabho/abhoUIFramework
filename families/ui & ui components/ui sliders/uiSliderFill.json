@@ -1,0 +1,27 @@
+{
+	"name": "uiSliderFill",
+	"plugin-id": "NinePatch",
+	"sid": 250675947499645,
+	"instanceVariables": [
+		{
+			"name": "sliderFillStartID",
+			"type": "string",
+			"desc": "name of ui handle id (not name), or leave empty to start at left side",
+			"show": true,
+			"sid": 262815521949832
+		},
+		{
+			"name": "sliderFillEndID",
+			"type": "string",
+			"desc": "name of ui handle id (not name), or leave empty to start at right side",
+			"show": true,
+			"sid": 276202695134831
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"uiMainSettingsSliderFill",
+		"uiMainSettingsSliderFillRed"
+	]
+}
