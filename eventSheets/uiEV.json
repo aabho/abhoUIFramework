@@ -29,10 +29,10 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "uiSelectedSliderHandle",
+			"name": "uiInputState",
 			"type": "string",
 			"initialValue": "",
-			"comment": "if a slider handle is selected, directional inputs will affect its value",
+			"comment": "usually blank, but can be used to tell events that the normal navigation has been overriden (for example, by a slider)",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 607184615196283
@@ -62,7 +62,7 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "when a UI button is created, initialize some properties",
+					"text": "when a UI component is created, initialize some properties",
 					"text-color": [
 						0,
 						0,
@@ -109,7 +109,7 @@
 						},
 						{
 							"type": "comment",
-							"text": "here, I choose to record the width and height of every button by default so that I can manipulate their sizes for animations later. this isn't required and you could do anything else here, or nothing at all if you wish.",
+							"text": "here, I choose to record the width and height of every button by default so that I can manipulate their sizes for animations later. this isn't required and you could do anything else here.",
 							"text-color": [
 								0,
 								0,
@@ -193,6 +193,56 @@
 						}
 					],
 					"sid": 177085453243089
+				},
+				{
+					"eventType": "comment",
+					"text": "when slider handle is created (which is also considered a UI component)",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "uiSliderHandle",
+							"sid": 789682201173150
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "update the slider value to fit",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"customAction": "uiSliderValueUpdate [INTERNAL]",
+							"objectClass": "uiSliderHandle",
+							"sid": 311814909188544
+						}
+					],
+					"sid": 192319671713503
 				}
 			],
 			"sid": 433446244111998,
@@ -854,17 +904,42 @@
 							]
 						},
 						{
+							"eventType": "comment",
+							"text": "when overriding this custom action, the conditions don't carry to your override.\n\nthese custom actions exist on the uiSliderHandle family, but we tie it to the relevant ui family object with a UID check and perform changes there to access the tween behavior and size variables (which are not required)",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8470588235294118,
+								0.6431372549019608,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
 							"aceType": "action",
 							"aceName": "uiSliderHandleSelect",
-							"objectClass": "ui",
+							"objectClass": "uiSliderHandle",
 							"functionDescription": "use overrides to create special events",
-							"functionCategory": "uiSlider",
+							"functionCategory": "ui",
 							"functionReturnType": "none",
 							"functionCopyPicked": false,
 							"functionIsAsync": false,
 							"functionParameters": [],
 							"eventType": "custom-ace-block",
-							"conditions": [],
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "ui",
+									"sid": 136669795714846,
+									"parameters": {
+										"unique-id": "uiSliderHandle.UID"
+									}
+								}
+							],
 							"actions": [
 								{
 									"type": "comment",
@@ -957,15 +1032,24 @@
 						{
 							"aceType": "action",
 							"aceName": "uiSliderHandleDeselect",
-							"objectClass": "ui",
+							"objectClass": "uiSliderHandle",
 							"functionDescription": "use overrides to create special events",
-							"functionCategory": "uiSlider",
+							"functionCategory": "ui",
 							"functionReturnType": "none",
 							"functionCopyPicked": false,
 							"functionIsAsync": false,
 							"functionParameters": [],
 							"eventType": "custom-ace-block",
-							"conditions": [],
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "ui",
+									"sid": 257383213214421,
+									"parameters": {
+										"unique-id": "uiSliderHandle.UID"
+									}
+								}
+							],
 							"actions": [
 								{
 									"type": "comment",
@@ -1058,9 +1142,9 @@
 						{
 							"aceType": "action",
 							"aceName": "uiSliderHandleMove",
-							"objectClass": "ui",
+							"objectClass": "uiSliderHandle",
 							"functionDescription": "use overrides to create special events",
-							"functionCategory": "uiSlider",
+							"functionCategory": "ui",
 							"functionReturnType": "none",
 							"functionCopyPicked": false,
 							"functionIsAsync": false,
@@ -1069,10 +1153,10 @@
 							"conditions": [
 								{
 									"id": "pick-by-unique-id",
-									"objectClass": "uiSliderHandle",
-									"sid": 244054437295041,
+									"objectClass": "ui",
+									"sid": 494747514126768,
 									"parameters": {
-										"unique-id": "ui.UID"
+										"unique-id": "uiSliderHandle.UID"
 									}
 								}
 							],
@@ -1096,7 +1180,7 @@
 								{
 									"id": "stop-tweens",
 									"objectClass": "ui",
-									"sid": 200497887289284,
+									"sid": 886487926336435,
 									"behaviorType": "Tween",
 									"parameters": {
 										"tags": "\"uiSliderHandleSize\""
@@ -1105,7 +1189,7 @@
 								{
 									"id": "set-size",
 									"objectClass": "ui",
-									"sid": 996859001285809,
+									"sid": 448281181222316,
 									"parameters": {
 										"width": "Self.oWidth + Self.mGrowWidth * 4",
 										"height": "Self.oHeight + Self.mGrowHeight * -1"
@@ -1114,7 +1198,7 @@
 								{
 									"id": "tween-two-properties",
 									"objectClass": "ui",
-									"sid": 183411795717391,
+									"sid": 192038062952623,
 									"behaviorType": "Tween",
 									"parameters": {
 										"tags": "\"uiSliderHandleSize\"",
@@ -1128,87 +1212,144 @@
 										"ping-pong": "no",
 										"repeat-count": "1"
 									}
+								},
+								{
+									"type": "comment",
+									"text": "here, I pass off the rest of the move handler to another custom action which simply updates position. \n\nthe reason uiSliderHandleMove and uiSliderHandleUpdatePosition are different is because you may want to update the slider's position without necessarily triggering the animation where you move the handle, such as when manually updating a slider's properties",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8470588235294118,
+										0.6431372549019608,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"customAction": "uiSliderHandleUpdatePosition",
+									"objectClass": "uiSliderHandle",
+									"sid": 547797406326312
 								}
 							],
-							"sid": 607679803247236,
-							"children": [
+							"sid": 607679803247236
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiSliderHandleUpdatePosition",
+							"objectClass": "uiSliderHandle",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [
 								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "pick-parent",
-											"objectClass": "ui",
-											"sid": 890845192600894,
-											"parameters": {
-												"parent": "uiSliderBar",
-												"which": "own"
-											}
-										}
-									],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "tween the slider bar towards its new position",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "stop-tweens",
-											"objectClass": "ui",
-											"sid": 727469101088785,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSliderHandleMove\""
-											}
-										},
-										{
-											"type": "comment",
-											"text": "the tween here is pretty specific about what it wants to do - it uses lerp to find the right position to go to.\nif you want to override this action without calling this default, then take note of the expression used here so you can get the right slider position.\n\nalso note that this action has a condition, which is needed so that this slider handle knows the bounds of the slider bar it's a child of, so careful of that when overriding this custom action without extending... the condition doesn't carry to your override.",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8470588235294118,
-												0.6431372549019608,
-												0.8745098039215686,
-												1
-											]
-										},
-										{
-											"id": "tween-two-properties",
-											"objectClass": "ui",
-											"sid": 476320732811623,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSliderHandleMove\"",
-												"property": "position",
-												"end-x": "lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, uiSliderHandle.sliderProgress)",
-												"end-y": "lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, uiSliderHandle.sliderProgress)",
-												"time": "0.1",
-												"ease": "easeoutcubic",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										}
-									],
-									"sid": 808130255274297
+									"id": "pick-by-unique-id",
+									"objectClass": "ui",
+									"sid": 142278508504610,
+									"parameters": {
+										"unique-id": "uiSliderHandle.UID"
+									}
+								},
+								{
+									"id": "pick-parent",
+									"objectClass": "uiSliderHandle",
+									"sid": 139020184326019,
+									"parameters": {
+										"parent": "uiSliderBar",
+										"which": "own"
+									}
 								}
-							]
+							],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "call this update action which recalculates the progress value of the slider handles",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"customAction": "uiSliderValueUpdate [INTERNAL]",
+									"objectClass": "uiSliderHandle",
+									"sid": 146952642218735
+								},
+								{
+									"type": "comment",
+									"text": "tween the slider bar towards its new position",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 622438159907485,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleMove\""
+									}
+								},
+								{
+									"type": "comment",
+									"text": "the tween here is pretty specific about what it wants to do - it uses lerp to find the right position to go to.\nif you want to override this action without calling this default, then take note of the expression used here so you can get the right slider position.",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8470588235294118,
+										0.6431372549019608,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "ui",
+									"sid": 840863270934792,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleMove\"",
+										"property": "position",
+										"end-x": "lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, uiSliderHandle.sliderProgress)",
+										"end-y": "lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, uiSliderHandle.sliderProgress)",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 224750280723978
 						}
 					],
 					"sid": 134548567102579,
@@ -1398,18 +1539,18 @@
 												{
 													"id": "compare-instance-variable",
 													"objectClass": "ui",
-													"sid": 454389153350697,
+													"sid": 923592132430407,
 													"parameters": {
 														"instance-variable": "id",
 														"comparison": 0,
-														"value": "uiSelectedSliderHandle"
+														"value": "uiChosenID"
 													}
 												}
 											],
 											"actions": [
 												{
 													"type": "comment",
-													"text": "move the slider handle relative to the slider bar by calling a customizable custom action",
+													"text": "custom action for player dragging the handle + update handle's position later on",
 													"text-color": [
 														0,
 														0,
@@ -1425,8 +1566,8 @@
 												},
 												{
 													"customAction": "uiSliderHandleMove",
-													"objectClass": "ui",
-													"sid": 870408753661564
+													"objectClass": "uiSliderHandle",
+													"sid": 533328764301292
 												}
 											],
 											"sid": 640888546055493
@@ -1437,13 +1578,13 @@
 												{
 													"id": "else",
 													"objectClass": "System",
-													"sid": 962247007242235
+													"sid": 635293481529080
 												}
 											],
 											"actions": [
 												{
 													"type": "comment",
-													"text": "simply set position if this slider isn't being selected and dragged right now",
+													"text": "just update the handle's position",
 													"text-color": [
 														0,
 														0,
@@ -1458,16 +1599,12 @@
 													]
 												},
 												{
-													"id": "set-position",
-													"objectClass": "ui",
-													"sid": 267382785265451,
-													"parameters": {
-														"x": "lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, uiSliderHandle.sliderProgress)",
-														"y": "lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, uiSliderHandle.sliderProgress)"
-													}
+													"customAction": "uiSliderHandleUpdatePosition",
+													"objectClass": "uiSliderHandle",
+													"sid": 480568086978255
 												}
 											],
-											"sid": 697481159810798
+											"sid": 617346400762806
 										}
 									]
 								}
@@ -1867,7 +2004,7 @@
 							"aceName": "uiSliderIncrement [INTERNAL]",
 							"objectClass": "uiSliderHandle",
 							"functionDescription": "increments slider by a step",
-							"functionCategory": "uiSlider",
+							"functionCategory": "ui",
 							"functionReturnType": "none",
 							"functionCopyPicked": false,
 							"functionIsAsync": false,
@@ -1903,6 +2040,57 @@
 									}
 								},
 								{
+									"customAction": "uiSliderValueUpdate [INTERNAL]",
+									"objectClass": "uiSliderHandle",
+									"sid": 511396331190710
+								},
+								{
+									"callFunction": "uiUpdate [INTERNAL]",
+									"sid": 526852986915132
+								}
+							],
+							"sid": 957892311071467
+						},
+						{
+							"eventType": "comment",
+							"text": "call after adjusting slider value/min/max/steps to snap and clamp value",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiSliderValueUpdate [INTERNAL]",
+							"objectClass": "uiSliderHandle",
+							"functionDescription": "call after adjusting slider value/min/max/steps",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [
+								{
+									"id": "pick-parent",
+									"objectClass": "uiSliderHandle",
+									"sid": 969923877492438,
+									"parameters": {
+										"parent": "uiSliderBar",
+										"which": "own"
+									}
+								}
+							],
+							"actions": [
+								{
 									"type": "comment",
 									"text": "snap to step and clamp value",
 									"text-color": [
@@ -1921,7 +2109,7 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "uiSliderHandle",
-									"sid": 648269759772834,
+									"sid": 687079044852549,
 									"parameters": {
 										"instance-variable": "sliderValue",
 										"value": "round(Self.sliderValue / uiSliderBar.sliderStep) * uiSliderBar.sliderStep"
@@ -1930,7 +2118,7 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "uiSliderHandle",
-									"sid": 599980882015976,
+									"sid": 147071510164183,
 									"parameters": {
 										"instance-variable": "sliderValue",
 										"value": "clamp(Self.sliderValue, uiSliderBar.sliderMin, uiSliderBar.sliderMax)"
@@ -1955,18 +2143,14 @@
 								{
 									"id": "set-instvar-value",
 									"objectClass": "uiSliderHandle",
-									"sid": 874505174076184,
+									"sid": 257403417979549,
 									"parameters": {
 										"instance-variable": "sliderProgress",
 										"value": "unlerp(uiSliderBar.sliderMin, uiSliderBar.sliderMax, Self.sliderValue)"
 									}
-								},
-								{
-									"callFunction": "uiUpdate [INTERNAL]",
-									"sid": 526852986915132
 								}
 							],
-							"sid": 957892311071467
+							"sid": 572519449539681
 						},
 						{
 							"eventType": "comment",
@@ -1989,7 +2173,7 @@
 							"aceName": "uiSliderCalculateMargins [INTERNAL]",
 							"objectClass": "uiSliderBar",
 							"functionDescription": "calculate and set values for margins",
-							"functionCategory": "uiSlider",
+							"functionCategory": "ui",
 							"functionReturnType": "none",
 							"functionCopyPicked": false,
 							"functionIsAsync": false,
@@ -2100,7 +2284,7 @@
 							"aceName": "uiSliderTicksUpdate [INTERNAL]",
 							"objectClass": "uiSliderBar",
 							"functionDescription": "update the ticks on this slider bar",
-							"functionCategory": "uiSlider",
+							"functionCategory": "ui",
 							"functionReturnType": "none",
 							"functionCopyPicked": false,
 							"functionIsAsync": false,
@@ -2516,7 +2700,7 @@
 											"objectClass": "System",
 											"sid": 500820099146554,
 											"parameters": {
-												"variable": "uiSelectedSliderHandle",
+												"variable": "uiInputState",
 												"comparison": 0,
 												"value": "\"\""
 											}
@@ -2542,32 +2726,16 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 840713537628348,
+											"sid": 813243396289187,
 											"parameters": {
-												"variable": "uiSelectedSliderHandle",
-												"value": "uiChosenID"
+												"variable": "uiInputState",
+												"value": "\"slider\""
 											}
 										},
 										{
-											"type": "comment",
-											"text": "in-line to-do or issue",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.6431372549019608,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
 											"customAction": "uiSliderHandleSelect",
-											"objectClass": "ui",
-											"sid": 773269949428798
+											"objectClass": "uiSliderHandle",
+											"sid": 440157380190572
 										}
 									],
 									"sid": 989311956665173
@@ -2603,14 +2771,14 @@
 											"objectClass": "System",
 											"sid": 641088629416147,
 											"parameters": {
-												"variable": "uiSelectedSliderHandle",
+												"variable": "uiInputState",
 												"value": "\"\""
 											}
 										},
 										{
 											"customAction": "uiSliderHandleDeselect",
-											"objectClass": "ui",
-											"sid": 775704129734893
+											"objectClass": "uiSliderHandle",
+											"sid": 283178149921826
 										}
 									],
 									"sid": 835461318027177
@@ -2732,21 +2900,21 @@
 								{
 									"id": "compare-eventvar",
 									"objectClass": "System",
-									"sid": 693028028134504,
+									"sid": 364630128021528,
 									"parameters": {
-										"variable": "uiSelectedSliderHandle",
-										"comparison": 1,
-										"value": "\"\""
+										"variable": "uiInputState",
+										"comparison": 0,
+										"value": "\"slider\""
 									}
 								},
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "ui",
-									"sid": 392589119898223,
+									"sid": 108272459045746,
 									"parameters": {
 										"instance-variable": "id",
 										"comparison": 0,
-										"value": "uiSelectedSliderHandle"
+										"value": "uiChosenID"
 									}
 								},
 								{
@@ -4446,7 +4614,7 @@
 											"objectClass": "System",
 											"sid": 579409464553540,
 											"parameters": {
-												"variable": "uiSelectedSliderHandle",
+												"variable": "uiInputState",
 												"comparison": 0,
 												"value": "\"\""
 											}
@@ -4691,13 +4859,31 @@
 											"sid": 705188079644493
 										},
 										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 635794598209502,
+											"parameters": {
+												"variable": "uiInputState",
+												"comparison": 0,
+												"value": "\"slider\""
+											}
+										},
+										{
 											"id": "compare-instance-variable",
 											"objectClass": "ui",
-											"sid": 367455949746098,
+											"sid": 693873601013167,
 											"parameters": {
 												"instance-variable": "id",
 												"comparison": 0,
-												"value": "uiSelectedSliderHandle"
+												"value": "uiChosenID"
+											}
+										},
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "uiSliderHandle",
+											"sid": 849997514318029,
+											"parameters": {
+												"unique-id": "ui.UID"
 											}
 										}
 									],
@@ -4747,14 +4933,6 @@
 													"id": "on-movement",
 													"objectClass": "Mouse",
 													"sid": 164501868657835
-												},
-												{
-													"id": "pick-by-unique-id",
-													"objectClass": "uiSliderHandle",
-													"sid": 834438021117723,
-													"parameters": {
-														"unique-id": "ui.UID"
-													}
 												},
 												{
 													"id": "pick-parent",
@@ -4827,13 +5005,9 @@
 													}
 												},
 												{
-													"id": "set-instvar-value",
+													"customAction": "uiSliderValueUpdate [INTERNAL]",
 													"objectClass": "uiSliderHandle",
-													"sid": 718353294743135,
-													"parameters": {
-														"instance-variable": "sliderValue",
-														"value": "clamp(Self.sliderValue, uiSliderBar.sliderMin, uiSliderBar.sliderMax)"
-													}
+													"sid": 779042853415093
 												},
 												{
 													"type": "comment",
@@ -4888,18 +5062,18 @@
 											],
 											"actions": [
 												{
+													"customAction": "uiSliderHandleDeselect",
+													"objectClass": "uiSliderHandle",
+													"sid": 625680237070629
+												},
+												{
 													"id": "set-eventvar-value",
 													"objectClass": "System",
 													"sid": 964663314127139,
 													"parameters": {
-														"variable": "uiSelectedSliderHandle",
+														"variable": "uiInputState",
 														"value": "\"\""
 													}
-												},
-												{
-													"customAction": "uiSliderHandleDeselect",
-													"objectClass": "ui",
-													"sid": 271016208152837
 												}
 											],
 											"sid": 356706211341932

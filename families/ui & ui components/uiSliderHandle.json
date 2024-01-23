@@ -25,13 +25,7 @@
 			"sid": 495410087118274
 		}
 	],
-	"behaviorTypes": [
-		{
-			"behaviorId": "Tween",
-			"name": "TweenSliderHandle",
-			"sid": 628383908619059
-		}
-	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"members": [
 		"uiMainSettingsSliderHandleMus",
