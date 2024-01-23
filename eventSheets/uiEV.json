@@ -2836,7 +2836,60 @@
 									}
 								}
 							],
-							"actions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "these groups are specifically to do with navigation, whether that be directional, or with a mouse.\ndisable all of them and enable the relevant ones later",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 617093969720528,
+									"parameters": {
+										"group-name": "\"ui behavior navigate default\"",
+										"state": "deactivated"
+									}
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 430900371819694,
+									"parameters": {
+										"group-name": "\"ui behavior navigate slider\"",
+										"state": "deactivated"
+									}
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 625847031589979,
+									"parameters": {
+										"group-name": "\"ui interaction mouse default\"",
+										"state": "deactivated"
+									}
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 480245112991825,
+									"parameters": {
+										"group-name": "\"ui interaction mouse slider\"",
+										"state": "deactivated"
+									}
+								}
+							],
 							"sid": 578889860351711,
 							"children": [
 								{
@@ -2883,6 +2936,24 @@
 											"customAction": "uiSliderHandleSelect",
 											"objectClass": "uiSliderHandle",
 											"sid": 440157380190572
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 647171279821325,
+											"parameters": {
+												"group-name": "\"ui behavior navigate slider\"",
+												"state": "activated"
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 794137843993164,
+											"parameters": {
+												"group-name": "\"ui interaction mouse slider\"",
+												"state": "activated"
+											}
 										}
 									],
 									"sid": 989311956665173
@@ -2926,6 +2997,24 @@
 											"customAction": "uiSliderHandleDeselect",
 											"objectClass": "uiSliderHandle",
 											"sid": 283178149921826
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 811944489503495,
+											"parameters": {
+												"group-name": "\"ui behavior navigate default\"",
+												"state": "activated"
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 125457369829657,
+											"parameters": {
+												"group-name": "\"ui interaction mouse default\"",
+												"state": "activated"
+											}
 										}
 									],
 									"sid": 835461318027177
@@ -3025,89 +3114,6 @@
 					"actions": [],
 					"sid": 987147102605127,
 					"children": [
-						{
-							"eventType": "comment",
-							"text": "enable the group with necessary navigation controls",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-eventvar",
-									"objectClass": "System",
-									"sid": 712664830416068,
-									"parameters": {
-										"variable": "uiInputState",
-										"comparison": 0,
-										"value": "\"slider\""
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 235084616373770,
-									"parameters": {
-										"group-name": "\"ui behavior navigate slider\"",
-										"state": "activated"
-									}
-								},
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 435574737354783,
-									"parameters": {
-										"group-name": "\"ui behavior navigate default\"",
-										"state": "deactivated"
-									}
-								}
-							],
-							"sid": 811688833436983
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "else",
-									"objectClass": "System",
-									"sid": 142699198332675
-								}
-							],
-							"actions": [
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 189364604175637,
-									"parameters": {
-										"group-name": "\"ui behavior navigate default\"",
-										"state": "activated"
-									}
-								},
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 337975057696164,
-									"parameters": {
-										"group-name": "\"ui behavior navigate slider\"",
-										"state": "deactivated"
-									}
-								}
-							],
-							"sid": 691281230650432
-						},
 						{
 							"eventType": "group",
 							"disabled": false,
@@ -4856,37 +4862,11 @@
 							"isActiveOnStart": true,
 							"children": [
 								{
-									"eventType": "comment",
-									"text": "normal component behavior",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6431372549019608,
-										0.8470588235294118,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-eventvar",
-											"objectClass": "System",
-											"sid": 579409464553540,
-											"parameters": {
-												"variable": "uiInputState",
-												"comparison": 0,
-												"value": "\"\""
-											}
-										}
-									],
-									"actions": [],
-									"sid": 479933755112591,
+									"eventType": "group",
+									"disabled": false,
+									"title": "ui interaction mouse default",
+									"description": "",
+									"isActiveOnStart": true,
 									"children": [
 										{
 											"eventType": "comment",
@@ -4898,9 +4878,9 @@
 												1
 											],
 											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
 												0.6431372549019608,
+												0.8470588235294118,
+												0.8745098039215686,
 												1
 											]
 										},
@@ -4910,11 +4890,11 @@
 												{
 													"id": "on-movement",
 													"objectClass": "Mouse",
-													"sid": 412202122790779
+													"sid": 261707104811829
 												}
 											],
 											"actions": [],
-											"sid": 989730306628821,
+											"sid": 942097870333824,
 											"children": [
 												{
 													"eventType": "block",
@@ -4922,7 +4902,7 @@
 														{
 															"id": "cursor-is-over-object",
 															"objectClass": "Mouse",
-															"sid": 528769375796042,
+															"sid": 984524195608806,
 															"parameters": {
 																"object": "ui"
 															}
@@ -4930,7 +4910,7 @@
 														{
 															"id": "is-boolean-instance-variable-set",
 															"objectClass": "ui",
-															"sid": 160528664035956,
+															"sid": 655687633785626,
 															"parameters": {
 																"instance-variable": "active"
 															}
@@ -4938,14 +4918,14 @@
 														{
 															"id": "pick-topbottom",
 															"objectClass": "ui",
-															"sid": 457667582288057,
+															"sid": 372783779861564,
 															"parameters": {
 																"which": "top"
 															}
 														}
 													],
 													"actions": [],
-													"sid": 174919643547602,
+													"sid": 838192395915096,
 													"children": [
 														{
 															"eventType": "comment",
@@ -4969,7 +4949,7 @@
 																{
 																	"id": "compare-instance-variable",
 																	"objectClass": "ui",
-																	"sid": 926548900980808,
+																	"sid": 133218763864826,
 																	"parameters": {
 																		"instance-variable": "id",
 																		"comparison": 0,
@@ -4982,7 +4962,7 @@
 																{
 																	"id": "set-eventvar-value",
 																	"objectClass": "System",
-																	"sid": 616052344379076,
+																	"sid": 784709900385634,
 																	"parameters": {
 																		"variable": "uiChosenID",
 																		"value": "ui.id"
@@ -4990,10 +4970,10 @@
 																},
 																{
 																	"callFunction": "uiUpdate [INTERNAL]",
-																	"sid": 346320101828300
+																	"sid": 975455699868694
 																}
 															],
-															"sid": 738015037011255
+															"sid": 684978855532792
 														}
 													]
 												},
@@ -5019,14 +4999,14 @@
 														{
 															"id": "else",
 															"objectClass": "System",
-															"sid": 756443887702203
+															"sid": 434238287632517
 														}
 													],
 													"actions": [
 														{
 															"id": "set-eventvar-value",
 															"objectClass": "System",
-															"sid": 457164347131928,
+															"sid": 212720223275474,
 															"parameters": {
 																"variable": "uiChosenID",
 																"value": "\"\""
@@ -5034,10 +5014,10 @@
 														},
 														{
 															"callFunction": "uiUpdate [INTERNAL]",
-															"sid": 924015033452500
+															"sid": 425310211980795
 														}
 													],
-													"sid": 867068802163474
+													"sid": 282626455617679
 												}
 											]
 										},
@@ -5051,9 +5031,9 @@
 												1
 											],
 											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
 												0.6431372549019608,
+												0.8470588235294118,
+												0.8745098039215686,
 												1
 											]
 										},
@@ -5063,7 +5043,7 @@
 												{
 													"id": "on-object-clicked",
 													"objectClass": "Mouse",
-													"sid": 927657011283432,
+													"sid": 595052091919200,
 													"parameters": {
 														"mouse-button": "left",
 														"click-type": "clicked",
@@ -5073,7 +5053,7 @@
 												{
 													"id": "is-boolean-instance-variable-set",
 													"objectClass": "ui",
-													"sid": 403921855125956,
+													"sid": 276855271312044,
 													"parameters": {
 														"instance-variable": "active"
 													}
@@ -5081,7 +5061,7 @@
 												{
 													"id": "compare-instance-variable",
 													"objectClass": "ui",
-													"sid": 937640283653920,
+													"sid": 628698250443344,
 													"parameters": {
 														"instance-variable": "id",
 														"comparison": 0,
@@ -5092,72 +5072,36 @@
 											"actions": [
 												{
 													"callFunction": "uiSelect [INTERNAL]",
-													"sid": 997749398218695
+													"sid": 157368584660778
 												}
 											],
-											"sid": 232048851247820
+											"sid": 985887129287988
 										}
-									]
-								},
-								{
-									"eventType": "comment",
-									"text": "slider behavior",
+									],
+									"sid": 999065392554826,
 									"text-color": [
 										0,
 										0,
 										0,
-										1
+										0
 									],
 									"background-color": [
-										0.6431372549019608,
-										0.8470588235294118,
-										0.8745098039215686,
+										0.8392156862745098,
+										0.8392156862745098,
+										0.8392156862745098,
 										1
 									]
 								},
 								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "else",
-											"objectClass": "System",
-											"sid": 705188079644493
-										},
-										{
-											"id": "compare-eventvar",
-											"objectClass": "System",
-											"sid": 635794598209502,
-											"parameters": {
-												"variable": "uiInputState",
-												"comparison": 0,
-												"value": "\"slider\""
-											}
-										},
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "ui",
-											"sid": 693873601013167,
-											"parameters": {
-												"instance-variable": "id",
-												"comparison": 0,
-												"value": "uiChosenID"
-											}
-										},
-										{
-											"id": "pick-by-unique-id",
-											"objectClass": "uiSliderHandle",
-											"sid": 849997514318029,
-											"parameters": {
-												"unique-id": "ui.UID"
-											}
-										}
-									],
-									"actions": [],
-									"sid": 317261726233650,
+									"eventType": "group",
+									"disabled": false,
+									"title": "ui interaction mouse slider",
+									"description": "",
+									"isActiveOnStart": true,
 									"children": [
 										{
 											"eventType": "comment",
-											"text": "slider drag",
+											"text": "pick slider handle",
 											"text-color": [
 												0,
 												0,
@@ -5165,151 +5109,9 @@
 												1
 											],
 											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
 												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"eventType": "variable",
-											"name": "mRotatedX",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 744388463383024
-										},
-										{
-											"eventType": "variable",
-											"name": "mUnlerped",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 388165724651854
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "on-movement",
-													"objectClass": "Mouse",
-													"sid": 164501868657835
-												},
-												{
-													"id": "pick-parent",
-													"objectClass": "uiSliderHandle",
-													"sid": 484190672096578,
-													"parameters": {
-														"parent": "uiSliderBar",
-														"which": "own"
-													}
-												}
-											],
-											"actions": [
-												{
-													"type": "comment",
-													"text": "basically takes mouse position and rotates it relative to the slider bar angle",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 133574050130371,
-													"parameters": {
-														"variable": "mRotatedX",
-														"value": "cos(-uiSliderBar.Angle) * (Mouse.X - uiSliderBar.X) - sin(-uiSliderBar.Angle) * (Mouse.Y - uiSliderBar.Y)"
-													}
-												},
-												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 677963039171038,
-													"parameters": {
-														"variable": "mUnlerped",
-														"value": "unlerp(-uiSliderBar.Width / 2 + uiSliderBar.sliderMarginsHorizontal, uiSliderBar.Width / 2 - uiSliderBar.sliderMarginsHorizontal, mRotatedX)"
-													}
-												},
-												{
-													"type": "comment",
-													"text": "calculate slider value using mUnlerped and slider bar range",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"id": "set-instvar-value",
-													"objectClass": "uiSliderHandle",
-													"sid": 152943875542977,
-													"parameters": {
-														"instance-variable": "sliderValue",
-														"value": "round(lerp(uiSliderBar.sliderMin, uiSliderBar.sliderMax, mUnlerped) / uiSliderBar.sliderStep) * uiSliderBar.sliderStep"
-													}
-												},
-												{
-													"customAction": "uiSliderValueUpdate [INTERNAL]",
-													"objectClass": "uiSliderHandle",
-													"sid": 779042853415093
-												},
-												{
-													"type": "comment",
-													"text": "update",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"callFunction": "uiUpdate [INTERNAL]",
-													"sid": 549535516119643
-												}
-											],
-											"sid": 547040472563690
-										},
-										{
-											"eventType": "comment",
-											"text": "deselect",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
+												0.8470588235294118,
 												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
 												1
 											]
 										},
@@ -5317,32 +5119,220 @@
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "on-button-released",
-													"objectClass": "Mouse",
-													"sid": 386334659508468,
+													"id": "compare-instance-variable",
+													"objectClass": "ui",
+													"sid": 359743882200392,
 													"parameters": {
-														"mouse-button": "left"
+														"instance-variable": "id",
+														"comparison": 0,
+														"value": "uiChosenID"
 													}
-												}
-											],
-											"actions": [
-												{
-													"customAction": "uiSliderHandleDeselect",
-													"objectClass": "uiSliderHandle",
-													"sid": 625680237070629
 												},
 												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 964663314127139,
+													"id": "pick-by-unique-id",
+													"objectClass": "uiSliderHandle",
+													"sid": 600770729959209,
 													"parameters": {
-														"variable": "uiInputState",
-														"value": "\"\""
+														"unique-id": "ui.UID"
 													}
 												}
 											],
-											"sid": 356706211341932
+											"actions": [],
+											"sid": 883996795692687,
+											"children": [
+												{
+													"eventType": "comment",
+													"text": "slider drag",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "variable",
+													"name": "mRotatedX",
+													"type": "number",
+													"initialValue": "0",
+													"comment": "",
+													"isStatic": false,
+													"isConstant": false,
+													"sid": 350922095919316
+												},
+												{
+													"eventType": "variable",
+													"name": "mUnlerped",
+													"type": "number",
+													"initialValue": "0",
+													"comment": "",
+													"isStatic": false,
+													"isConstant": false,
+													"sid": 858484654230947
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "on-movement",
+															"objectClass": "Mouse",
+															"sid": 525748338857072
+														},
+														{
+															"id": "pick-parent",
+															"objectClass": "uiSliderHandle",
+															"sid": 983631444754204,
+															"parameters": {
+																"parent": "uiSliderBar",
+																"which": "own"
+															}
+														}
+													],
+													"actions": [
+														{
+															"type": "comment",
+															"text": "basically takes mouse position and rotates it relative to the slider bar angle",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"id": "set-eventvar-value",
+															"objectClass": "System",
+															"sid": 486940528724835,
+															"parameters": {
+																"variable": "mRotatedX",
+																"value": "cos(-uiSliderBar.Angle) * (Mouse.X - uiSliderBar.X) - sin(-uiSliderBar.Angle) * (Mouse.Y - uiSliderBar.Y)"
+															}
+														},
+														{
+															"id": "set-eventvar-value",
+															"objectClass": "System",
+															"sid": 705811510185613,
+															"parameters": {
+																"variable": "mUnlerped",
+																"value": "unlerp(-uiSliderBar.Width / 2 + uiSliderBar.sliderMarginsHorizontal, uiSliderBar.Width / 2 - uiSliderBar.sliderMarginsHorizontal, mRotatedX)"
+															}
+														},
+														{
+															"type": "comment",
+															"text": "calculate slider value using mUnlerped and slider bar range",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"id": "set-instvar-value",
+															"objectClass": "uiSliderHandle",
+															"sid": 886998938927968,
+															"parameters": {
+																"instance-variable": "sliderValue",
+																"value": "round(lerp(uiSliderBar.sliderMin, uiSliderBar.sliderMax, mUnlerped) / uiSliderBar.sliderStep) * uiSliderBar.sliderStep"
+															}
+														},
+														{
+															"customAction": "uiSliderValueUpdate [INTERNAL]",
+															"objectClass": "uiSliderHandle",
+															"sid": 857763245144217
+														},
+														{
+															"type": "comment",
+															"text": "update",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"callFunction": "uiUpdate [INTERNAL]",
+															"sid": 824931437936369
+														}
+													],
+													"sid": 917795547053660
+												},
+												{
+													"eventType": "comment",
+													"text": "deselect",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "on-button-released",
+															"objectClass": "Mouse",
+															"sid": 708183864161103,
+															"parameters": {
+																"mouse-button": "left"
+															}
+														}
+													],
+													"actions": [
+														{
+															"callFunction": "uiSelect [INTERNAL]",
+															"sid": 270684532330304
+														}
+													],
+													"sid": 455804005202954
+												}
+											]
 										}
+									],
+									"sid": 639461418920418,
+									"text-color": [
+										0,
+										0,
+										0,
+										0
+									],
+									"background-color": [
+										0.8392156862745098,
+										0.8392156862745098,
+										0.8392156862745098,
+										1
 									]
 								}
 							],

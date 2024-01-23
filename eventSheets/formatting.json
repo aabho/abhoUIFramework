@@ -4,27 +4,6 @@
 		{
 			"eventType": "group",
 			"disabled": false,
-			"title": "this is a group that's easier to copy paste",
-			"description": "",
-			"isActiveOnStart": true,
-			"children": [],
-			"sid": 615309172275044,
-			"text-color": [
-				0,
-				0,
-				0,
-				0
-			],
-			"background-color": [
-				0.8392156862745098,
-				0.8392156862745098,
-				0.8392156862745098,
-				1
-			]
-		},
-		{
-			"eventType": "group",
-			"disabled": false,
 			"title": "this is a group!",
 			"description": "",
 			"isActiveOnStart": true,
@@ -103,6 +82,27 @@
 					"actions": [],
 					"sid": 957305225824796,
 					"children": [
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "this is a group that's easier to copy paste",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [],
+							"sid": 671714599697702,
+							"text-color": [
+								0,
+								0,
+								0,
+								0
+							],
+							"background-color": [
+								0.8392156862745098,
+								0.8392156862745098,
+								0.8392156862745098,
+								1
+							]
+						},
 						{
 							"eventType": "comment",
 							"text": "this is a minor comment!",
