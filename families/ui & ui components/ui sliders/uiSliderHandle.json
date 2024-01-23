@@ -4,25 +4,46 @@
 	"sid": 407084313195358,
 	"instanceVariables": [
 		{
-			"name": "sliderValue",
+			"name": "sliderHandleValue",
 			"type": "number",
 			"desc": "the value for this slider handle",
 			"show": true,
 			"sid": 328473832908605
 		},
 		{
-			"name": "sliderValueLast",
+			"name": "sliderHandleValueLast",
 			"type": "number",
 			"desc": "the last recorded slider value, for recording any changes",
 			"show": false,
 			"sid": 362613484672940
 		},
 		{
-			"name": "sliderProgress",
+			"name": "sliderHandleProgress",
 			"type": "number",
 			"desc": "read only - as opposed to slider value, this is just from 0 to 1",
 			"show": false,
 			"sid": 495410087118274
+		},
+		{
+			"name": "sliderHandleRuleLesser",
+			"type": "string",
+			"desc": "if not empty, enter id of other handle this one must be lesser than",
+			"show": true,
+			"sid": 851522218705076
+		},
+		{
+			"name": "sliderHandleRuleGreater",
+			"type": "string",
+			"desc": "if not empty, enter id of other handle this one must be greater than",
+			"show": true,
+			"sid": 950117501792964
+		},
+		{
+			"name": "sliderHandleRuleAllowEqual",
+			"type": "boolean",
+			"desc": "if lesser/greater rules allows value to be equal to other handle",
+			"show": true,
+			"sid": 914364876419004
 		}
 	],
 	"behaviorTypes": [],

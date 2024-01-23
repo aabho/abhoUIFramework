@@ -1395,8 +1395,8 @@
 									"parameters": {
 										"tags": "\"uiSliderHandleMove\"",
 										"property": "position",
-										"end-x": "lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, uiSliderHandle.sliderProgress)",
-										"end-y": "lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, uiSliderHandle.sliderProgress)",
+										"end-x": "lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, uiSliderHandle.sliderHandleProgress)",
+										"end-y": "lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, uiSliderHandle.sliderHandleProgress)",
 										"time": "0.1",
 										"ease": "easeoutcubic",
 										"destroy-on-complete": "no",
@@ -1609,9 +1609,9 @@
 											"objectClass": "uiSliderHandle",
 											"sid": 846835594526618,
 											"parameters": {
-												"instance-variable": "sliderValue",
+												"instance-variable": "sliderHandleValue",
 												"comparison": 0,
-												"value": "Self.sliderValueLast"
+												"value": "Self.sliderHandleValueLast"
 											},
 											"isInverted": true
 										}
@@ -1638,8 +1638,8 @@
 											"objectClass": "uiSliderHandle",
 											"sid": 166675786726673,
 											"parameters": {
-												"instance-variable": "sliderValueLast",
-												"value": "Self.sliderValue"
+												"instance-variable": "sliderHandleValueLast",
+												"value": "Self.sliderHandleValue"
 											}
 										},
 										{
@@ -2175,7 +2175,7 @@
 											"objectClass": "uiSliderHandle",
 											"sid": 728691365208549,
 											"parameters": {
-												"instance-variable": "sliderValue",
+												"instance-variable": "sliderHandleValue",
 												"value": "uiSliderBar.sliderStep * steps"
 											}
 										},
@@ -2229,10 +2229,68 @@
 											}
 										}
 									],
-									"actions": [
+									"actions": [],
+									"sid": 514219255249301,
+									"children": [
 										{
-											"type": "comment",
-											"text": "snap to step and clamp value",
+											"eventType": "comment",
+											"text": "hold the lesser and greater values if they exist",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.6705882352941176,
+												0.8745098039215686,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "variable",
+											"name": "lesserValueExists",
+											"type": "boolean",
+											"initialValue": "false",
+											"comment": "hold var",
+											"isStatic": false,
+											"isConstant": false,
+											"sid": 420333602701907
+										},
+										{
+											"eventType": "variable",
+											"name": "lesserValue",
+											"type": "number",
+											"initialValue": "0",
+											"comment": "hold var",
+											"isStatic": false,
+											"isConstant": false,
+											"sid": 813839922192201
+										},
+										{
+											"eventType": "variable",
+											"name": "greaterValueExists",
+											"type": "boolean",
+											"initialValue": "false",
+											"comment": "hold var",
+											"isStatic": false,
+											"isConstant": false,
+											"sid": 888989311673054
+										},
+										{
+											"eventType": "variable",
+											"name": "greaterValue",
+											"type": "number",
+											"initialValue": "0",
+											"comment": "hold var",
+											"isStatic": false,
+											"isConstant": false,
+											"sid": 792736892673782
+										},
+										{
+											"eventType": "comment",
+											"text": "set up",
 											"text-color": [
 												0,
 												0,
@@ -2247,26 +2305,40 @@
 											]
 										},
 										{
-											"id": "set-instvar-value",
-											"objectClass": "uiSliderHandle",
-											"sid": 790399943050446,
-											"parameters": {
-												"instance-variable": "sliderValue",
-												"value": "round(Self.sliderValue / uiSliderBar.sliderStep) * uiSliderBar.sliderStep"
-											}
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "snap to slider steps",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 310352325285112,
+													"parameters": {
+														"instance-variable": "sliderHandleValue",
+														"value": "round(Self.sliderHandleValue / uiSliderBar.sliderStep) * uiSliderBar.sliderStep"
+													}
+												}
+											],
+											"sid": 658176858930676
 										},
 										{
-											"id": "set-instvar-value",
-											"objectClass": "uiSliderHandle",
-											"sid": 754310141630649,
-											"parameters": {
-												"instance-variable": "sliderValue",
-												"value": "clamp(Self.sliderValue, uiSliderBar.sliderMin, uiSliderBar.sliderMax)"
-											}
-										},
-										{
-											"type": "comment",
-											"text": "calculate a number from 0 to 1, based on the slider value relative to the slider min/max",
+											"eventType": "comment",
+											"text": "if lesser rule handle exists, store lesser value",
 											"text-color": [
 												0,
 												0,
@@ -2281,16 +2353,411 @@
 											]
 										},
 										{
-											"id": "set-instvar-value",
-											"objectClass": "uiSliderHandle",
-											"sid": 948103627815828,
-											"parameters": {
-												"instance-variable": "sliderProgress",
-												"value": "unlerp(uiSliderBar.sliderMin, uiSliderBar.sliderMax, Self.sliderValue)"
-											}
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiSliderHandle",
+													"sid": 809693716735811,
+													"parameters": {
+														"instance-variable": "sliderHandleRuleLesser",
+														"comparison": 0,
+														"value": "\"\""
+													},
+													"isInverted": true
+												},
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "ui",
+													"sid": 864090763579902,
+													"parameters": {
+														"instance-variable": "id",
+														"comparison": 0,
+														"value": "uiSliderHandle.sliderHandleRuleLesser"
+													}
+												},
+												{
+													"id": "pick-all",
+													"objectClass": "System",
+													"sid": 913830204401311,
+													"parameters": {
+														"object": "uiSliderHandle"
+													}
+												},
+												{
+													"id": "pick-by-unique-id",
+													"objectClass": "uiSliderHandle",
+													"sid": 405087470084228,
+													"parameters": {
+														"unique-id": "ui.UID"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 605246219792685,
+													"parameters": {
+														"variable": "lesserValueExists",
+														"value": "true"
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 515045893255686,
+													"parameters": {
+														"variable": "lesserValue",
+														"value": "uiSliderHandle.sliderHandleValue"
+													}
+												}
+											],
+											"sid": 249994560549701
+										},
+										{
+											"eventType": "comment",
+											"text": "if greater rule handle exists, store greater value",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiSliderHandle",
+													"sid": 482159348393696,
+													"parameters": {
+														"instance-variable": "sliderHandleRuleGreater",
+														"comparison": 0,
+														"value": "\"\""
+													},
+													"isInverted": true
+												},
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "ui",
+													"sid": 286894880246816,
+													"parameters": {
+														"instance-variable": "id",
+														"comparison": 0,
+														"value": "uiSliderHandle.sliderHandleRuleGreater"
+													}
+												},
+												{
+													"id": "pick-all",
+													"objectClass": "System",
+													"sid": 591122195546557,
+													"parameters": {
+														"object": "uiSliderHandle"
+													}
+												},
+												{
+													"id": "pick-by-unique-id",
+													"objectClass": "uiSliderHandle",
+													"sid": 474071561988825,
+													"parameters": {
+														"unique-id": "ui.UID"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 777410259737965,
+													"parameters": {
+														"variable": "greaterValueExists",
+														"value": "true"
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 187988650371866,
+													"parameters": {
+														"variable": "greaterValue",
+														"value": "uiSliderHandle.sliderHandleValue"
+													}
+												}
+											],
+											"sid": 299651132636996
+										},
+										{
+											"eventType": "comment",
+											"text": "modify this handle's value based on lesser and greater rules",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "comment",
+											"text": "don't get confused! this value must be LESS THAN the 'lesserValue' but GREATER THAN the 'greaterValue'!",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8470588235294118,
+												0.6431372549019608,
+												0.8745098039215686,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 252279271152432,
+													"parameters": {
+														"variable": "lesserValueExists"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 810401513046202,
+													"parameters": {
+														"instance-variable": "sliderHandleValue",
+														"value": "min(Self.sliderHandleValue, lesserValue)"
+													}
+												}
+											],
+											"sid": 364127281251589,
+											"children": [
+												{
+													"eventType": "comment",
+													"text": "if equal value isn't allowed, and values are equal, subtract a step",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "is-boolean-instance-variable-set",
+															"objectClass": "uiSliderHandle",
+															"sid": 204676292213560,
+															"parameters": {
+																"instance-variable": "sliderHandleRuleAllowEqual"
+															},
+															"isInverted": true
+														},
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "uiSliderHandle",
+															"sid": 757228651952348,
+															"parameters": {
+																"instance-variable": "sliderHandleValue",
+																"comparison": 0,
+																"value": "lesserValue"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "add-to-instvar",
+															"objectClass": "uiSliderHandle",
+															"sid": 225859609583076,
+															"parameters": {
+																"instance-variable": "sliderHandleValue",
+																"value": "-uiSliderBar.sliderStep"
+															}
+														}
+													],
+													"sid": 278098988844027
+												}
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 566041471625074,
+													"parameters": {
+														"variable": "greaterValueExists"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 895868813086795,
+													"parameters": {
+														"instance-variable": "sliderHandleValue",
+														"value": "max(Self.sliderHandleValue, greaterValue)"
+													}
+												}
+											],
+											"sid": 293559829280442,
+											"children": [
+												{
+													"eventType": "comment",
+													"text": "if equal value isn't allowed, and values are equal, add a step",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "is-boolean-instance-variable-set",
+															"objectClass": "uiSliderHandle",
+															"sid": 695977403208519,
+															"parameters": {
+																"instance-variable": "sliderHandleRuleAllowEqual"
+															},
+															"isInverted": true
+														},
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "uiSliderHandle",
+															"sid": 655303257028728,
+															"parameters": {
+																"instance-variable": "sliderHandleValue",
+																"comparison": 0,
+																"value": "greaterValue"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "add-to-instvar",
+															"objectClass": "uiSliderHandle",
+															"sid": 438043267469995,
+															"parameters": {
+																"instance-variable": "sliderHandleValue",
+																"value": "uiSliderBar.sliderStep"
+															}
+														}
+													],
+													"sid": 895100812411689
+												}
+											]
+										},
+										{
+											"eventType": "comment",
+											"text": "final adjustments to this value",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "clamp value to slider bar range",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 118862622527679,
+													"parameters": {
+														"instance-variable": "sliderHandleValue",
+														"value": "clamp(Self.sliderHandleValue, uiSliderBar.sliderMin, uiSliderBar.sliderMax)"
+													}
+												},
+												{
+													"type": "comment",
+													"text": "calculate a number from 0 to 1, based on the slider value relative to the slider min/max",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 186424565019738,
+													"parameters": {
+														"instance-variable": "sliderHandleProgress",
+														"value": "unlerp(uiSliderBar.sliderMin, uiSliderBar.sliderMax, Self.sliderHandleValue)"
+													}
+												}
+											],
+											"sid": 977467313729969
 										}
-									],
-									"sid": 514219255249301
+									]
 								}
 							],
 							"sid": 580428367919378,
@@ -5802,7 +6269,7 @@
 															"objectClass": "uiSliderHandle",
 															"sid": 886998938927968,
 															"parameters": {
-																"instance-variable": "sliderValue",
+																"instance-variable": "sliderHandleValue",
 																"value": "round(lerp(uiSliderBar.sliderMin, uiSliderBar.sliderMax, mUnlerped) / uiSliderBar.sliderStep) * uiSliderBar.sliderStep"
 															}
 														},

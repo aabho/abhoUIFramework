@@ -983,7 +983,7 @@
 											"objectClass": "uiMainSettingsSliderHandleSFX",
 											"sid": 963496390760755,
 											"parameters": {
-												"color": "rgbEx(lerp(100, 0, Self.sliderProgress), lerp(0, 100, Self.sliderProgress), 0)"
+												"color": "rgbEx(lerp(100, 0, Self.sliderHandleProgress), lerp(0, 100, Self.sliderHandleProgress), 0)"
 											}
 										}
 									],
@@ -1097,7 +1097,7 @@
 													"sid": 830572122052189,
 													"parameters": [
 														"0",
-														"uiMainSettingsSliderHandleSFX.sliderValue",
+														"uiMainSettingsSliderHandleSFX.sliderHandleValue",
 														"1"
 													]
 												}
@@ -1379,7 +1379,7 @@
 											"objectClass": "txt",
 											"sid": 303434977272306,
 											"parameters": {
-												"text": "uiMainSettingsSliderHandleMus.sliderValue"
+												"text": "uiMainSettingsSliderHandleMus.sliderHandleValue"
 											}
 										}
 									],
