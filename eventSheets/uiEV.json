@@ -2796,24 +2796,7 @@
 							}
 						}
 					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "will call a function with the syntax (\"select \" & uiButton.id)\nex: Function \"select mainPlay\"\nadd this function to any event sheet to register when a button is selected\n\nkeep in mind that if you change a button's ID, you'll have to change the name of its function, too",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8470588235294118,
-								0.6431372549019608,
-								0.8745098039215686,
-								1
-							]
-						}
-					],
+					"actions": [],
 					"sid": 997360392938089,
 					"children": [
 						{
@@ -2977,7 +2960,7 @@
 							"actions": [
 								{
 									"type": "comment",
-									"text": "call function with js, so that any function name can be called at runtime, and then call custom action for this button's selection",
+									"text": "will call a function with the syntax (\"select \" & uiButton.id)\nex: Function \"select mainPlay\"\nadd this function to any event sheet to register when a button is selected\n\nkeep in mind that if you change a button's ID, you'll have to change the name of its function, too",
 									"text-color": [
 										0,
 										0,
@@ -2985,9 +2968,9 @@
 										1
 									],
 									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
+										0.8470588235294118,
 										0.6431372549019608,
+										0.8745098039215686,
 										1
 									]
 								},
@@ -3044,7 +3027,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "if we're dealing with a slider handle, then navigation affects the handle instead",
+							"text": "enable the group with necessary navigation controls",
 							"text-color": [
 								0,
 								0,
@@ -3064,181 +3047,35 @@
 								{
 									"id": "compare-eventvar",
 									"objectClass": "System",
-									"sid": 364630128021528,
+									"sid": 712664830416068,
 									"parameters": {
 										"variable": "uiInputState",
 										"comparison": 0,
 										"value": "\"slider\""
 									}
-								},
+								}
+							],
+							"actions": [
 								{
-									"id": "compare-instance-variable",
-									"objectClass": "ui",
-									"sid": 108272459045746,
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 235084616373770,
 									"parameters": {
-										"instance-variable": "id",
-										"comparison": 0,
-										"value": "uiChosenID"
+										"group-name": "\"ui behavior navigate slider\"",
+										"state": "activated"
 									}
 								},
 								{
-									"id": "pick-by-unique-id",
-									"objectClass": "uiSliderHandle",
-									"sid": 316561315505832,
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 435574737354783,
 									"parameters": {
-										"unique-id": "ui.UID"
-									}
-								},
-								{
-									"id": "pick-parent",
-									"objectClass": "uiSliderHandle",
-									"sid": 421925116201409,
-									"parameters": {
-										"parent": "uiSliderBar",
-										"which": "own"
+										"group-name": "\"ui behavior navigate default\"",
+										"state": "deactivated"
 									}
 								}
 							],
-							"actions": [],
-							"sid": 753624902621659,
-							"children": [
-								{
-									"eventType": "comment",
-									"text": "the math here is very specific\nwe take the sin() or cos() of the angle of the slider bar\nthen we take the sign() of it, which provides either -1, 0, or 1\nfinally depending on if its an increment or decrement we make it negative or positive\n\nthis allows increments to work even with irregular slider bar angles",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-eventvar",
-											"objectClass": "System",
-											"sid": 805462121070113,
-											"parameters": {
-												"variable": "direction",
-												"comparison": 0,
-												"value": "\"up\""
-											}
-										}
-									],
-									"actions": [
-										{
-											"customAction": "uiSliderIncrement [INTERNAL]",
-											"objectClass": "uiSliderHandle",
-											"sid": 851714034447011,
-											"parameters": [
-												"-sign(sin(uiSliderBar.Angle))"
-											]
-										}
-									],
-									"sid": 557324245065138
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-eventvar",
-											"objectClass": "System",
-											"sid": 706575924710606,
-											"parameters": {
-												"variable": "direction",
-												"comparison": 0,
-												"value": "\"down\""
-											}
-										}
-									],
-									"actions": [
-										{
-											"customAction": "uiSliderIncrement [INTERNAL]",
-											"objectClass": "uiSliderHandle",
-											"sid": 894267365028333,
-											"parameters": [
-												"sign(sin(uiSliderBar.Angle))"
-											]
-										}
-									],
-									"sid": 516032398754226
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-eventvar",
-											"objectClass": "System",
-											"sid": 560604345256883,
-											"parameters": {
-												"variable": "direction",
-												"comparison": 0,
-												"value": "\"left\""
-											}
-										}
-									],
-									"actions": [
-										{
-											"customAction": "uiSliderIncrement [INTERNAL]",
-											"objectClass": "uiSliderHandle",
-											"sid": 551237636038948,
-											"parameters": [
-												"-sign(cos(uiSliderBar.Angle))"
-											]
-										}
-									],
-									"sid": 404604160905926
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-eventvar",
-											"objectClass": "System",
-											"sid": 143500042478231,
-											"parameters": {
-												"variable": "direction",
-												"comparison": 0,
-												"value": "\"right\""
-											}
-										}
-									],
-									"actions": [
-										{
-											"customAction": "uiSliderIncrement [INTERNAL]",
-											"objectClass": "uiSliderHandle",
-											"sid": 590683070194193,
-											"parameters": [
-												"sign(cos(uiSliderBar.Angle))"
-											]
-										}
-									],
-									"sid": 108975727761779
-								}
-							]
-						},
-						{
-							"eventType": "comment",
-							"text": "otherwise navigate all ui components",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
+							"sid": 811688833436983
 						},
 						{
 							"eventType": "block",
@@ -3246,11 +3083,215 @@
 								{
 									"id": "else",
 									"objectClass": "System",
-									"sid": 159969537310671
+									"sid": 142699198332675
 								}
 							],
-							"actions": [],
-							"sid": 587441702962528,
+							"actions": [
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 189364604175637,
+									"parameters": {
+										"group-name": "\"ui behavior navigate default\"",
+										"state": "activated"
+									}
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 337975057696164,
+									"parameters": {
+										"group-name": "\"ui behavior navigate slider\"",
+										"state": "deactivated"
+									}
+								}
+							],
+							"sid": 691281230650432
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "ui behavior navigate slider",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "ui",
+											"sid": 745924809757055,
+											"parameters": {
+												"instance-variable": "id",
+												"comparison": 0,
+												"value": "uiChosenID"
+											}
+										},
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "uiSliderHandle",
+											"sid": 903060764549188,
+											"parameters": {
+												"unique-id": "ui.UID"
+											}
+										},
+										{
+											"id": "pick-parent",
+											"objectClass": "uiSliderHandle",
+											"sid": 677024960368170,
+											"parameters": {
+												"parent": "uiSliderBar",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 523292021109681,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "the math here is very specific\nwe take the sin() or cos() of the angle of the slider bar\nthen we take the sign() of it, which provides either -1, 0, or 1\nfinally depending on if its an increment or decrement we make it negative or positive\n\nthis allows increments to work even with irregular slider bar angles",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 118477166721524,
+													"parameters": {
+														"variable": "direction",
+														"comparison": 0,
+														"value": "\"up\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"customAction": "uiSliderIncrement [INTERNAL]",
+													"objectClass": "uiSliderHandle",
+													"sid": 622897031523574,
+													"parameters": [
+														"-sign(sin(uiSliderBar.Angle))"
+													]
+												}
+											],
+											"sid": 991831160799145
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 385131324918435,
+													"parameters": {
+														"variable": "direction",
+														"comparison": 0,
+														"value": "\"down\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"customAction": "uiSliderIncrement [INTERNAL]",
+													"objectClass": "uiSliderHandle",
+													"sid": 549045893706389,
+													"parameters": [
+														"sign(sin(uiSliderBar.Angle))"
+													]
+												}
+											],
+											"sid": 791230943562378
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 834382995245971,
+													"parameters": {
+														"variable": "direction",
+														"comparison": 0,
+														"value": "\"left\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"customAction": "uiSliderIncrement [INTERNAL]",
+													"objectClass": "uiSliderHandle",
+													"sid": 576994497635109,
+													"parameters": [
+														"-sign(cos(uiSliderBar.Angle))"
+													]
+												}
+											],
+											"sid": 266755001089826
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 191403606137333,
+													"parameters": {
+														"variable": "direction",
+														"comparison": 0,
+														"value": "\"right\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"customAction": "uiSliderIncrement [INTERNAL]",
+													"objectClass": "uiSliderHandle",
+													"sid": 107798599752278,
+													"parameters": [
+														"sign(cos(uiSliderBar.Angle))"
+													]
+												}
+											],
+											"sid": 857163562290052
+										}
+									]
+								}
+							],
+							"sid": 679830483219022,
+							"text-color": [
+								0,
+								0,
+								0,
+								0
+							],
+							"background-color": [
+								0.8392156862745098,
+								0.8392156862745098,
+								0.8392156862745098,
+								1
+							]
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "ui behavior navigate default",
+							"description": "",
+							"isActiveOnStart": true,
 							"children": [
 								{
 									"eventType": "comment",
@@ -3274,7 +3315,7 @@
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 909471801326298,
+											"sid": 406538885545874,
 											"parameters": {
 												"variable": "uiChosenID",
 												"comparison": 0,
@@ -3285,10 +3326,10 @@
 									"actions": [
 										{
 											"callFunction": "uiNavigateDefault [INTERNAL]",
-											"sid": 121555635338119
+											"sid": 862151368655974
 										}
 									],
-									"sid": 125383155750413
+									"sid": 102530058175493
 								},
 								{
 									"eventType": "comment",
@@ -3312,19 +3353,19 @@
 										{
 											"id": "else",
 											"objectClass": "System",
-											"sid": 233766769320838
+											"sid": 325790981860761
 										},
 										{
 											"id": "is-boolean-instance-variable-set",
 											"objectClass": "ui",
-											"sid": 730068716930036,
+											"sid": 228765187809054,
 											"parameters": {
 												"instance-variable": "active"
 											}
 										}
 									],
 									"actions": [],
-									"sid": 622028310648162,
+									"sid": 762794070051074,
 									"children": [
 										{
 											"eventType": "comment",
@@ -3350,7 +3391,7 @@
 											"comment": "",
 											"isStatic": false,
 											"isConstant": false,
-											"sid": 112351524060100
+											"sid": 813170355921103
 										},
 										{
 											"eventType": "comment",
@@ -3374,7 +3415,7 @@
 												{
 													"id": "compare-instance-variable",
 													"objectClass": "ui",
-													"sid": 242351728561598,
+													"sid": 926753086248087,
 													"parameters": {
 														"instance-variable": "id",
 														"comparison": 0,
@@ -3386,14 +3427,14 @@
 												{
 													"id": "set-eventvar-value",
 													"objectClass": "System",
-													"sid": 418684570984272,
+													"sid": 276056739015563,
 													"parameters": {
 														"variable": "wrapOverride",
 														"value": "direction = \"up\" ? ui.overrideUp : (direction = \"down\" ? ui.overrideDown : (direction = \"left\" ? ui.overrideLeft : ui.overrideRight))"
 													}
 												}
 											],
-											"sid": 111059313066501
+											"sid": 424732168301307
 										},
 										{
 											"eventType": "comment",
@@ -3417,7 +3458,7 @@
 												{
 													"id": "compare-eventvar",
 													"objectClass": "System",
-													"sid": 108786019384298,
+													"sid": 154909509224499,
 													"parameters": {
 														"variable": "wrapOverride",
 														"comparison": 0,
@@ -3428,7 +3469,7 @@
 												{
 													"id": "pick-all",
 													"objectClass": "System",
-													"sid": 379099515081822,
+													"sid": 366596533144959,
 													"parameters": {
 														"object": "ui"
 													}
@@ -3436,7 +3477,7 @@
 												{
 													"id": "compare-instance-variable",
 													"objectClass": "ui",
-													"sid": 510372679042455,
+													"sid": 528530640116683,
 													"parameters": {
 														"instance-variable": "id",
 														"comparison": 0,
@@ -3446,7 +3487,7 @@
 												{
 													"id": "is-boolean-instance-variable-set",
 													"objectClass": "ui",
-													"sid": 926478347177587,
+													"sid": 659725899947700,
 													"parameters": {
 														"instance-variable": "active"
 													}
@@ -3456,7 +3497,7 @@
 												{
 													"id": "set-eventvar-value",
 													"objectClass": "System",
-													"sid": 827206944227771,
+													"sid": 930351062522139,
 													"parameters": {
 														"variable": "uiChosenID",
 														"value": "wrapOverride"
@@ -3464,10 +3505,10 @@
 												},
 												{
 													"callFunction": "uiUpdate [INTERNAL]",
-													"sid": 665287944506169
+													"sid": 925538220461522
 												}
 											],
-											"sid": 947041100176302
+											"sid": 806071115924621
 										},
 										{
 											"eventType": "comment",
@@ -3491,11 +3532,11 @@
 												{
 													"id": "else",
 													"objectClass": "System",
-													"sid": 442215471097052
+													"sid": 720507967139853
 												}
 											],
 											"actions": [],
-											"sid": 883243135976043,
+											"sid": 525231503319660,
 											"children": [
 												{
 													"eventType": "comment",
@@ -3521,7 +3562,7 @@
 													"comment": "",
 													"isStatic": false,
 													"isConstant": false,
-													"sid": 461888327416165
+													"sid": 241820115356938
 												},
 												{
 													"eventType": "variable",
@@ -3531,7 +3572,7 @@
 													"comment": "",
 													"isStatic": false,
 													"isConstant": false,
-													"sid": 489682919619747
+													"sid": 234703393724841
 												},
 												{
 													"eventType": "comment",
@@ -3555,7 +3596,7 @@
 														{
 															"id": "compare-instance-variable",
 															"objectClass": "ui",
-															"sid": 937949927655990,
+															"sid": 981911673635429,
 															"parameters": {
 																"instance-variable": "id",
 																"comparison": 0,
@@ -3567,7 +3608,7 @@
 														{
 															"id": "set-eventvar-value",
 															"objectClass": "System",
-															"sid": 250137976760910,
+															"sid": 141480722384372,
 															"parameters": {
 																"variable": "curX",
 																"value": "ui.BBoxMidX"
@@ -3576,14 +3617,14 @@
 														{
 															"id": "set-eventvar-value",
 															"objectClass": "System",
-															"sid": 822821077418350,
+															"sid": 651053637047561,
 															"parameters": {
 																"variable": "curY",
 																"value": "ui.BBoxMidY"
 															}
 														}
 													],
-													"sid": 797783058246956
+													"sid": 505391849934016
 												},
 												{
 													"eventType": "comment",
@@ -3609,7 +3650,7 @@
 													"comment": "",
 													"isStatic": false,
 													"isConstant": false,
-													"sid": 662167780040902
+													"sid": 465618419522404
 												},
 												{
 													"eventType": "comment",
@@ -3633,7 +3674,7 @@
 														{
 															"id": "compare-eventvar",
 															"objectClass": "System",
-															"sid": 558858503544292,
+															"sid": 571405517127912,
 															"parameters": {
 																"variable": "direction",
 																"comparison": 0,
@@ -3642,7 +3683,7 @@
 														}
 													],
 													"actions": [],
-													"sid": 726379402053246,
+													"sid": 344275017353019,
 													"children": [
 														{
 															"eventType": "comment",
@@ -3666,7 +3707,7 @@
 																{
 																	"id": "pick-by-comparison",
 																	"objectClass": "System",
-																	"sid": 391985846615055,
+																	"sid": 920196312775586,
 																	"parameters": {
 																		"object": "ui",
 																		"expression": "ui.Y",
@@ -3679,14 +3720,14 @@
 																{
 																	"customAction": "pickNearest [INTERNAL]",
 																	"objectClass": "ui",
-																	"sid": 593107239264496,
+																	"sid": 977153113382171,
 																	"parameters": [
 																		"curX",
 																		"curY"
 																	]
 																}
 															],
-															"sid": 735729789065847
+															"sid": 969666344646769
 														},
 														{
 															"eventType": "comment",
@@ -3710,12 +3751,12 @@
 																{
 																	"id": "else",
 																	"objectClass": "System",
-																	"sid": 781218248973933
+																	"sid": 216355662365612
 																},
 																{
 																	"id": "for-each-ordered",
 																	"objectClass": "System",
-																	"sid": 884131158522852,
+																	"sid": 396560805533066,
 																	"parameters": {
 																		"object": "ui",
 																		"expression": "ui.Y",
@@ -3727,19 +3768,19 @@
 																{
 																	"id": "stop-loop",
 																	"objectClass": "System",
-																	"sid": 839597594874054
+																	"sid": 542381729070724
 																},
 																{
 																	"id": "set-eventvar-value",
 																	"objectClass": "System",
-																	"sid": 185575802982783,
+																	"sid": 673364462668318,
 																	"parameters": {
 																		"variable": "wrapPos",
 																		"value": "ui.Y"
 																	}
 																}
 															],
-															"sid": 826800599428692,
+															"sid": 165169716388477,
 															"children": [
 																{
 																	"eventType": "block",
@@ -3747,7 +3788,7 @@
 																		{
 																			"id": "pick-all",
 																			"objectClass": "System",
-																			"sid": 106446747845792,
+																			"sid": 508630170106863,
 																			"parameters": {
 																				"object": "ui"
 																			}
@@ -3755,7 +3796,7 @@
 																		{
 																			"id": "pick-by-comparison",
 																			"objectClass": "System",
-																			"sid": 777128034733916,
+																			"sid": 786573357090887,
 																			"parameters": {
 																				"object": "ui",
 																				"expression": "ui.Y",
@@ -3768,14 +3809,14 @@
 																		{
 																			"customAction": "pickNearest [INTERNAL]",
 																			"objectClass": "ui",
-																			"sid": 145985545042263,
+																			"sid": 599935767613460,
 																			"parameters": [
 																				"curX",
 																				"curY"
 																			]
 																		}
 																	],
-																	"sid": 474552307671124
+																	"sid": 949776378652493
 																}
 															]
 														}
@@ -3787,7 +3828,7 @@
 														{
 															"id": "compare-eventvar",
 															"objectClass": "System",
-															"sid": 235244798757279,
+															"sid": 727204425640179,
 															"parameters": {
 																"variable": "direction",
 																"comparison": 0,
@@ -3796,7 +3837,7 @@
 														}
 													],
 													"actions": [],
-													"sid": 581418261114044,
+													"sid": 317812496963744,
 													"children": [
 														{
 															"eventType": "comment",
@@ -3820,7 +3861,7 @@
 																{
 																	"id": "pick-by-comparison",
 																	"objectClass": "System",
-																	"sid": 731889676781775,
+																	"sid": 984446079469200,
 																	"parameters": {
 																		"object": "ui",
 																		"expression": "ui.Y",
@@ -3833,14 +3874,14 @@
 																{
 																	"customAction": "pickNearest [INTERNAL]",
 																	"objectClass": "ui",
-																	"sid": 108926923618426,
+																	"sid": 836409790362224,
 																	"parameters": [
 																		"curX",
 																		"curY"
 																	]
 																}
 															],
-															"sid": 270498429900897
+															"sid": 432468942316399
 														},
 														{
 															"eventType": "comment",
@@ -3864,12 +3905,12 @@
 																{
 																	"id": "else",
 																	"objectClass": "System",
-																	"sid": 864431409406587
+																	"sid": 308995983471738
 																},
 																{
 																	"id": "for-each-ordered",
 																	"objectClass": "System",
-																	"sid": 143744569136153,
+																	"sid": 392416645919674,
 																	"parameters": {
 																		"object": "ui",
 																		"expression": "ui.Y",
@@ -3881,19 +3922,19 @@
 																{
 																	"id": "stop-loop",
 																	"objectClass": "System",
-																	"sid": 251477592952601
+																	"sid": 238254159974689
 																},
 																{
 																	"id": "set-eventvar-value",
 																	"objectClass": "System",
-																	"sid": 130530487833890,
+																	"sid": 426435671973880,
 																	"parameters": {
 																		"variable": "wrapPos",
 																		"value": "ui.Y"
 																	}
 																}
 															],
-															"sid": 197612212637984,
+															"sid": 360568302345868,
 															"children": [
 																{
 																	"eventType": "block",
@@ -3901,7 +3942,7 @@
 																		{
 																			"id": "pick-all",
 																			"objectClass": "System",
-																			"sid": 327904270653321,
+																			"sid": 559257421535862,
 																			"parameters": {
 																				"object": "ui"
 																			}
@@ -3909,7 +3950,7 @@
 																		{
 																			"id": "pick-by-comparison",
 																			"objectClass": "System",
-																			"sid": 308364200774272,
+																			"sid": 567067528961841,
 																			"parameters": {
 																				"object": "ui",
 																				"expression": "ui.Y",
@@ -3922,14 +3963,14 @@
 																		{
 																			"customAction": "pickNearest [INTERNAL]",
 																			"objectClass": "ui",
-																			"sid": 694819005768689,
+																			"sid": 317738494356787,
 																			"parameters": [
 																				"curX",
 																				"curY"
 																			]
 																		}
 																	],
-																	"sid": 229743643624374
+																	"sid": 403176460964896
 																}
 															]
 														}
@@ -3941,7 +3982,7 @@
 														{
 															"id": "compare-eventvar",
 															"objectClass": "System",
-															"sid": 937538602174152,
+															"sid": 397567446180851,
 															"parameters": {
 																"variable": "direction",
 																"comparison": 0,
@@ -3950,7 +3991,7 @@
 														}
 													],
 													"actions": [],
-													"sid": 808808053615776,
+													"sid": 187082610331780,
 													"children": [
 														{
 															"eventType": "comment",
@@ -3974,7 +4015,7 @@
 																{
 																	"id": "pick-by-comparison",
 																	"objectClass": "System",
-																	"sid": 453365819737750,
+																	"sid": 410320044730899,
 																	"parameters": {
 																		"object": "ui",
 																		"expression": "ui.X",
@@ -3987,14 +4028,14 @@
 																{
 																	"customAction": "pickNearest [INTERNAL]",
 																	"objectClass": "ui",
-																	"sid": 679246433410555,
+																	"sid": 157581123249097,
 																	"parameters": [
 																		"curX",
 																		"curY"
 																	]
 																}
 															],
-															"sid": 296153351828354
+															"sid": 232368007196638
 														},
 														{
 															"eventType": "comment",
@@ -4018,12 +4059,12 @@
 																{
 																	"id": "else",
 																	"objectClass": "System",
-																	"sid": 578493180122902
+																	"sid": 405986884381860
 																},
 																{
 																	"id": "for-each-ordered",
 																	"objectClass": "System",
-																	"sid": 231947549808851,
+																	"sid": 296259453046083,
 																	"parameters": {
 																		"object": "ui",
 																		"expression": "ui.X",
@@ -4035,19 +4076,19 @@
 																{
 																	"id": "stop-loop",
 																	"objectClass": "System",
-																	"sid": 403112920147263
+																	"sid": 259494029071524
 																},
 																{
 																	"id": "set-eventvar-value",
 																	"objectClass": "System",
-																	"sid": 809862222389651,
+																	"sid": 297394298498112,
 																	"parameters": {
 																		"variable": "wrapPos",
 																		"value": "ui.X"
 																	}
 																}
 															],
-															"sid": 640957912593814,
+															"sid": 397899694238036,
 															"children": [
 																{
 																	"eventType": "block",
@@ -4055,7 +4096,7 @@
 																		{
 																			"id": "pick-all",
 																			"objectClass": "System",
-																			"sid": 916504086379140,
+																			"sid": 255362307961337,
 																			"parameters": {
 																				"object": "ui"
 																			}
@@ -4063,7 +4104,7 @@
 																		{
 																			"id": "pick-by-comparison",
 																			"objectClass": "System",
-																			"sid": 488392979826129,
+																			"sid": 767929788659764,
 																			"parameters": {
 																				"object": "ui",
 																				"expression": "ui.X",
@@ -4076,14 +4117,14 @@
 																		{
 																			"customAction": "pickNearest [INTERNAL]",
 																			"objectClass": "ui",
-																			"sid": 937467634268284,
+																			"sid": 396448318953727,
 																			"parameters": [
 																				"curX",
 																				"curY"
 																			]
 																		}
 																	],
-																	"sid": 237660404845339
+																	"sid": 881439277257789
 																}
 															]
 														}
@@ -4095,7 +4136,7 @@
 														{
 															"id": "compare-eventvar",
 															"objectClass": "System",
-															"sid": 174324658399013,
+															"sid": 368595520274220,
 															"parameters": {
 																"variable": "direction",
 																"comparison": 0,
@@ -4104,7 +4145,7 @@
 														}
 													],
 													"actions": [],
-													"sid": 577269317273807,
+													"sid": 660729567755259,
 													"children": [
 														{
 															"eventType": "comment",
@@ -4128,7 +4169,7 @@
 																{
 																	"id": "pick-by-comparison",
 																	"objectClass": "System",
-																	"sid": 657850402148967,
+																	"sid": 579352202198674,
 																	"parameters": {
 																		"object": "ui",
 																		"expression": "ui.X",
@@ -4141,14 +4182,14 @@
 																{
 																	"customAction": "pickNearest [INTERNAL]",
 																	"objectClass": "ui",
-																	"sid": 677844030637781,
+																	"sid": 165734609995893,
 																	"parameters": [
 																		"curX",
 																		"curY"
 																	]
 																}
 															],
-															"sid": 401738636874286
+															"sid": 350178024656838
 														},
 														{
 															"eventType": "comment",
@@ -4172,12 +4213,12 @@
 																{
 																	"id": "else",
 																	"objectClass": "System",
-																	"sid": 454779719936247
+																	"sid": 519751552140651
 																},
 																{
 																	"id": "for-each-ordered",
 																	"objectClass": "System",
-																	"sid": 548068388101221,
+																	"sid": 484379681916510,
 																	"parameters": {
 																		"object": "ui",
 																		"expression": "ui.X",
@@ -4189,19 +4230,19 @@
 																{
 																	"id": "stop-loop",
 																	"objectClass": "System",
-																	"sid": 571288710317476
+																	"sid": 526458459517454
 																},
 																{
 																	"id": "set-eventvar-value",
 																	"objectClass": "System",
-																	"sid": 270877590843743,
+																	"sid": 158712660405151,
 																	"parameters": {
 																		"variable": "wrapPos",
 																		"value": "ui.X"
 																	}
 																}
 															],
-															"sid": 503539951728831,
+															"sid": 186060711598419,
 															"children": [
 																{
 																	"eventType": "block",
@@ -4209,7 +4250,7 @@
 																		{
 																			"id": "pick-all",
 																			"objectClass": "System",
-																			"sid": 292129469740014,
+																			"sid": 492116379400684,
 																			"parameters": {
 																				"object": "ui"
 																			}
@@ -4217,7 +4258,7 @@
 																		{
 																			"id": "pick-by-comparison",
 																			"objectClass": "System",
-																			"sid": 247821493121298,
+																			"sid": 128525387700351,
 																			"parameters": {
 																				"object": "ui",
 																				"expression": "ui.X",
@@ -4230,14 +4271,14 @@
 																		{
 																			"customAction": "pickNearest [INTERNAL]",
 																			"objectClass": "ui",
-																			"sid": 579859786797154,
+																			"sid": 778725587624306,
 																			"parameters": [
 																				"curX",
 																				"curY"
 																			]
 																		}
 																	],
-																	"sid": 381495965184244
+																	"sid": 183762692900255
 																}
 															]
 														}
@@ -4247,6 +4288,19 @@
 										}
 									]
 								}
+							],
+							"sid": 405077535408730,
+							"text-color": [
+								0,
+								0,
+								0,
+								0
+							],
+							"background-color": [
+								0.8392156862745098,
+								0.8392156862745098,
+								0.8392156862745098,
+								1
 							]
 						}
 					]
@@ -4691,6 +4745,32 @@
 					"sid": 962201239257947
 				},
 				{
+					"eventType": "comment",
+					"text": "gamepad deadzone for UI navigation",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6705882352941176,
+						0.8745098039215686,
+						0.6431372549019608,
+						1
+					]
+				},
+				{
+					"eventType": "variable",
+					"name": "uiGamepadDeadzone",
+					"type": "number",
+					"initialValue": "90",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 909191405378279
+				},
+				{
 					"eventType": "group",
 					"disabled": false,
 					"title": "ui interaction kbm",
@@ -4723,6 +4803,26 @@
 									"parameters": {
 										"gamepad": "0"
 									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 534867229939075,
+									"parameters": {
+										"first-value": "abs(Gamepad.Axis(0, 0))",
+										"comparison": 4,
+										"second-value": "uiGamepadDeadzone"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 608520310255163,
+									"parameters": {
+										"first-value": "abs(Gamepad.Axis(0, 1))",
+										"comparison": 4,
+										"second-value": "uiGamepadDeadzone"
+									}
 								}
 							],
 							"actions": [
@@ -4745,7 +4845,8 @@
 									}
 								}
 							],
-							"sid": 589164051561683
+							"sid": 589164051561683,
+							"isOrBlock": true
 						},
 						{
 							"eventType": "group",
@@ -5482,32 +5583,6 @@
 							],
 							"sid": 951770684975318,
 							"isOrBlock": true
-						},
-						{
-							"eventType": "comment",
-							"text": "gamepad deadzone for UI navigation",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.6705882352941176,
-								0.8745098039215686,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "variable",
-							"name": "uiGamepadDeadzone",
-							"type": "number",
-							"initialValue": "90",
-							"comment": "",
-							"isStatic": false,
-							"isConstant": true,
-							"sid": 137842533002046
 						},
 						{
 							"eventType": "comment",
