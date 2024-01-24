@@ -1401,7 +1401,7 @@
 								}
 							},
 							{
-								"uid": 36,
+								"uid": 16,
 								"flags": {
 									"x": true,
 									"y": true,
@@ -1416,7 +1416,37 @@
 								}
 							},
 							{
-								"uid": 16,
+								"uid": 50,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							},
+							{
+								"uid": 51,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							},
+							{
+								"uid": 36,
 								"flags": {
 									"x": true,
 									"y": true,
@@ -1960,6 +1990,546 @@
 					}
 				},
 				{
+					"type": "uiMainSettingsSliderBar",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 21,
+					"instanceVariables": {
+						"sliderMin": 5,
+						"sliderMax": 15,
+						"sliderStep": 1,
+						"sliderMarginsHorizontal": 2,
+						"sliderLeftX": 0,
+						"sliderLeftY": 0,
+						"sliderRightX": 0,
+						"sliderRightY": 0,
+						"sliderTickObjectName": "uiMainSettingsSliderTick",
+						"section": "mainSettings",
+						"id": "mainSettingsSfx",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": 30,
+						"uid": 21,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 214,
+						"y": -178,
+						"width": 122,
+						"height": 10,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsSliderHandleGlyph",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 45,
+					"instanceVariables": {},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"world": {
+						"x": -37,
+						"y": 32,
+						"width": 32,
+						"height": 8,
+						"originX": 0.5,
+						"originY": -1.75,
+						"color": [
+							1,
+							0.2,
+							0.2,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsSliderTick",
+					"properties": {
+						"left-margin": 0,
+						"right-margin": 0,
+						"top-margin": 0,
+						"bottom-margin": 0,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "overlap"
+					},
+					"uid": 37,
+					"instanceVariables": {
+						"sliderTickAttachedBar": "",
+						"section": "mainSettings",
+						"id": "mainSettingsSliderTick",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"world": {
+						"x": -17,
+						"y": 31,
+						"width": 1,
+						"height": 4,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsSliderFill",
+					"properties": {
+						"left-margin": 0,
+						"right-margin": 0,
+						"top-margin": 0,
+						"bottom-margin": 0,
+						"edges": "stretch",
+						"fill": "tile",
+						"initially-visible": true,
+						"origin": "left",
+						"seams": "overlap"
+					},
+					"uid": 23,
+					"instanceVariables": {
+						"sliderFillAttachedBar": "mainSettingsSfx",
+						"sliderFillStartID": "",
+						"sliderFillEndID": "mainSettingsSfxHandle",
+						"section": "mainSettings",
+						"id": "mainSettingsSfxFill",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"world": {
+						"x": 155,
+						"y": -178,
+						"width": 89,
+						"height": 6,
+						"originX": 0,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsSliderHandleSFX",
+					"properties": {
+						"left-margin": 3,
+						"right-margin": 3,
+						"top-margin": 3,
+						"bottom-margin": 3,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 46,
+					"instanceVariables": {
+						"sliderHandleAttachedBar": "mainSettingsSfx",
+						"sliderHandleValue": 10,
+						"sliderHandleValueLast": 0,
+						"sliderHandleProgress": 0,
+						"sliderHandleRuleLesser": "",
+						"sliderHandleRuleGreater": "",
+						"sliderHandleRuleAllowEqual": false,
+						"section": "mainSettings",
+						"id": "mainSettingsSfxHandle",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"world": {
+						"x": 244,
+						"y": -178,
+						"width": 8,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				}
+			],
+			"sid": 580782149726627,
+			"effectTypes": [],
+			"isInitiallyVisible": true,
+			"isInitiallyInteractive": true,
+			"color": [
+				1,
+				1,
+				1,
+				1
+			],
+			"backgroundColor": [
+				0.3686274509803922,
+				0.3686274509803922,
+				0.3686274509803922,
+				1
+			],
+			"isTransparent": true,
+			"parallaxX": 1,
+			"parallaxY": 1,
+			"scaleRate": 1,
+			"forceOwnTexture": false,
+			"renderingMode": "3d",
+			"drawOrder": "z-order",
+			"useRenderCells": false,
+			"blendMode": "normal",
+			"zElevation": 0,
+			"global": false
+		},
+		{
+			"name": "settings scroll view",
+			"overriden": 0,
+			"subLayers": [],
+			"instances": [
+				{
+					"type": "uiMainSettingsCanvas",
+					"properties": {
+						"resolution-mode": "auto",
+						"initially-visible": true,
+						"origin": "top-left",
+						"antialiasing": "off"
+					},
+					"uid": 50,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 30,
+						"uid": 50,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 147,
+						"y": -167,
+						"width": 135,
+						"height": 121,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsScrollBar",
+					"properties": {
+						"left-margin": 0,
+						"right-margin": 0,
+						"top-margin": 0,
+						"bottom-margin": 0,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 51,
+					"instanceVariables": {
+						"sliderMin": 0,
+						"sliderMax": 1,
+						"sliderStep": 0.02,
+						"sliderMarginsHorizontal": 0,
+						"sliderLeftX": 0,
+						"sliderLeftY": 0,
+						"sliderRightX": 0,
+						"sliderRightY": 0,
+						"sliderTickObjectName": "",
+						"section": "mainSettings",
+						"id": "mainSettingsScrollBar",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": 30,
+						"uid": 51,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 289,
+						"y": -106,
+						"width": 114,
+						"height": 1,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 1.5707963267948966,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsScrollHandle",
+					"properties": {
+						"left-margin": 1,
+						"right-margin": 1,
+						"top-margin": 1,
+						"bottom-margin": 1,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 52,
+					"instanceVariables": {
+						"sliderHandleAttachedBar": "mainSettingsScrollBar",
+						"sliderHandleValue": 0,
+						"sliderHandleValueLast": 0,
+						"sliderHandleProgress": 0,
+						"sliderHandleRuleLesser": "",
+						"sliderHandleRuleGreater": "",
+						"sliderHandleRuleAllowEqual": false,
+						"section": "mainSettings",
+						"id": "mainSettingsScrollHandle",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 1,
+						"mGrowHeight": 0
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"world": {
+						"x": 289,
+						"y": -163,
+						"width": 2,
+						"height": 10,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
 					"type": "txt",
 					"properties": {
 						"text": "MUSIC",
@@ -2044,129 +2614,6 @@
 						"origin": "center",
 						"seams": "exact"
 					},
-					"uid": 21,
-					"instanceVariables": {
-						"sliderMin": 5,
-						"sliderMax": 15,
-						"sliderStep": 1,
-						"sliderMarginsHorizontal": 2,
-						"sliderLeftX": 0,
-						"sliderLeftY": 0,
-						"sliderRightX": 0,
-						"sliderRightY": 0,
-						"sliderTickObjectName": "uiMainSettingsSliderTick",
-						"section": "mainSettings",
-						"id": "mainSettingsSfx",
-						"navigable": true,
-						"active": false,
-						"activeTrigger": false,
-						"chosenTrigger": false,
-						"overrideUp": "",
-						"overrideDown": "",
-						"overrideLeft": "",
-						"overrideRight": "",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mGrowWidth": 4,
-						"mGrowHeight": 4
-					},
-					"behaviors": {
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
-					"sceneGraphData": {
-						"parent-uid": 30,
-						"uid": 21,
-						"children": [
-							{
-								"uid": 46,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": false,
-									"h": false,
-									"a": true,
-									"o": false,
-									"v": false,
-									"d": true,
-									"sm": "normal"
-								}
-							},
-							{
-								"uid": 23,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": true,
-									"h": true,
-									"a": true,
-									"o": false,
-									"v": false,
-									"d": true,
-									"sm": "normal"
-								}
-							}
-						],
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"world": {
-						"x": 214,
-						"y": -178,
-						"width": 122,
-						"height": 10,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "uiMainSettingsSliderBar",
-					"properties": {
-						"left-margin": 2,
-						"right-margin": 2,
-						"top-margin": 2,
-						"bottom-margin": 2,
-						"edges": "stretch",
-						"fill": "stretch",
-						"initially-visible": true,
-						"origin": "center",
-						"seams": "exact"
-					},
 					"uid": 36,
 					"instanceVariables": {
 						"sliderMin": 0,
@@ -2205,51 +2652,6 @@
 						"uid": 36,
 						"children": [
 							{
-								"uid": 38,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": false,
-									"h": false,
-									"a": true,
-									"o": false,
-									"v": false,
-									"d": true,
-									"sm": "normal"
-								}
-							},
-							{
-								"uid": 40,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": false,
-									"h": false,
-									"a": true,
-									"o": false,
-									"v": false,
-									"d": true,
-									"sm": "normal"
-								}
-							},
-							{
-								"uid": 41,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": false,
-									"h": false,
-									"a": true,
-									"o": false,
-									"v": false,
-									"d": true,
-									"sm": "normal"
-								}
-							},
-							{
 								"uid": 17,
 								"flags": {
 									"x": true,
@@ -2257,36 +2659,6 @@
 									"z": true,
 									"w": false,
 									"h": false,
-									"a": true,
-									"o": false,
-									"v": false,
-									"d": true,
-									"sm": "normal"
-								}
-							},
-							{
-								"uid": 47,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": true,
-									"h": true,
-									"a": true,
-									"o": false,
-									"v": false,
-									"d": true,
-									"sm": "normal"
-								}
-							},
-							{
-								"uid": 48,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": true,
-									"h": true,
 									"a": true,
 									"o": false,
 									"v": false,
@@ -2465,7 +2837,7 @@
 						}
 					},
 					"world": {
-						"x": 191.29931495725268,
+						"x": 192.29931495725268,
 						"y": -148.95167405762277,
 						"width": 10,
 						"height": 8,
@@ -2554,267 +2926,6 @@
 					}
 				},
 				{
-					"type": "uiMainSettingsSliderHandleGlyph",
-					"properties": {
-						"initially-visible": true,
-						"initial-animation": "Animation 1",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 45,
-					"instanceVariables": {},
-					"behaviors": {
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
-					"world": {
-						"x": -37,
-						"y": 32,
-						"width": 32,
-						"height": 8,
-						"originX": 0.5,
-						"originY": -1.75,
-						"color": [
-							1,
-							0.2,
-							0.2,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "uiMainSettingsSliderTick",
-					"properties": {
-						"left-margin": 0,
-						"right-margin": 0,
-						"top-margin": 0,
-						"bottom-margin": 0,
-						"edges": "stretch",
-						"fill": "stretch",
-						"initially-visible": true,
-						"origin": "center",
-						"seams": "overlap"
-					},
-					"uid": 37,
-					"instanceVariables": {
-						"section": "mainSettings",
-						"id": "mainSettingsSliderTick",
-						"navigable": true,
-						"active": false,
-						"activeTrigger": false,
-						"chosenTrigger": false,
-						"overrideUp": "",
-						"overrideDown": "",
-						"overrideLeft": "",
-						"overrideRight": "",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mGrowWidth": 4,
-						"mGrowHeight": 4
-					},
-					"behaviors": {
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
-					"world": {
-						"x": -17,
-						"y": 31,
-						"width": 1,
-						"height": 4,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "uiMainSettingsSliderFill",
-					"properties": {
-						"left-margin": 0,
-						"right-margin": 0,
-						"top-margin": 0,
-						"bottom-margin": 0,
-						"edges": "stretch",
-						"fill": "tile",
-						"initially-visible": true,
-						"origin": "left",
-						"seams": "overlap"
-					},
-					"uid": 23,
-					"instanceVariables": {
-						"sliderFillStartID": "",
-						"sliderFillEndID": "mainSettingsSfxHandle",
-						"section": "mainSettings",
-						"id": "mainSettingsSfxFill",
-						"navigable": true,
-						"active": false,
-						"activeTrigger": false,
-						"chosenTrigger": false,
-						"overrideUp": "",
-						"overrideDown": "",
-						"overrideLeft": "",
-						"overrideRight": "",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mGrowWidth": 4,
-						"mGrowHeight": 4
-					},
-					"behaviors": {
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
-					"sceneGraphData": {
-						"parent-uid": 21,
-						"uid": 23,
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"world": {
-						"x": 155,
-						"y": -178,
-						"width": 89,
-						"height": 6,
-						"originX": 0,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "uiMainSettingsSliderHandleSFX",
-					"properties": {
-						"left-margin": 3,
-						"right-margin": 3,
-						"top-margin": 3,
-						"bottom-margin": 3,
-						"edges": "stretch",
-						"fill": "stretch",
-						"initially-visible": true,
-						"origin": "center",
-						"seams": "exact"
-					},
-					"uid": 46,
-					"instanceVariables": {
-						"sliderHandleValue": 10,
-						"sliderHandleValueLast": 0,
-						"sliderHandleProgress": 0,
-						"sliderHandleRuleLesser": "",
-						"sliderHandleRuleGreater": "",
-						"sliderHandleRuleAllowEqual": false,
-						"section": "mainSettings",
-						"id": "mainSettingsSfxHandle",
-						"navigable": true,
-						"active": false,
-						"activeTrigger": false,
-						"chosenTrigger": false,
-						"overrideUp": "",
-						"overrideDown": "",
-						"overrideLeft": "",
-						"overrideRight": "",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mGrowWidth": 2,
-						"mGrowHeight": 2
-					},
-					"behaviors": {
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
-					"sceneGraphData": {
-						"parent-uid": 21,
-						"uid": 46,
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": false,
-							"h": false,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"world": {
-						"x": 244,
-						"y": -178,
-						"width": 8,
-						"height": 16,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
 					"type": "uiMainSettingsSliderFillRed",
 					"properties": {
 						"left-margin": 0,
@@ -2829,6 +2940,7 @@
 					},
 					"uid": 47,
 					"instanceVariables": {
+						"sliderFillAttachedBar": "mainSettingsMus",
 						"sliderFillStartID": "mainSettingsMusLow",
 						"sliderFillEndID": "mainSettingsMusMid",
 						"section": "mainSettings",
@@ -2851,34 +2963,6 @@
 							"properties": {
 								"enabled": true
 							}
-						}
-					},
-					"sceneGraphData": {
-						"parent-uid": 36,
-						"uid": 47,
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
 						}
 					},
 					"world": {
@@ -2913,6 +2997,7 @@
 					},
 					"uid": 48,
 					"instanceVariables": {
+						"sliderFillAttachedBar": "mainSettingsMus",
 						"sliderFillStartID": "mainSettingsMusHigh",
 						"sliderFillEndID": "",
 						"section": "mainSettings",
@@ -2937,34 +3022,6 @@
 							}
 						}
 					},
-					"sceneGraphData": {
-						"parent-uid": 36,
-						"uid": 48,
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
 					"world": {
 						"x": 271,
 						"y": -127,
@@ -2978,7 +3035,7 @@
 							1,
 							1
 						],
-						"angle": 0.08726646259971647,
+						"angle": 3.2288591161895095,
 						"zElevation": 0
 					}
 				},
@@ -2997,6 +3054,7 @@
 					},
 					"uid": 38,
 					"instanceVariables": {
+						"sliderHandleAttachedBar": "mainSettingsMus",
 						"sliderHandleValue": 10,
 						"sliderHandleValueLast": 0,
 						"sliderHandleProgress": 0,
@@ -3026,7 +3084,7 @@
 						}
 					},
 					"sceneGraphData": {
-						"parent-uid": 36,
+						"parent-uid": null,
 						"uid": 38,
 						"children": [
 							{
@@ -3102,6 +3160,7 @@
 					},
 					"uid": 40,
 					"instanceVariables": {
+						"sliderHandleAttachedBar": "mainSettingsMus",
 						"sliderHandleValue": 1,
 						"sliderHandleValueLast": 0,
 						"sliderHandleProgress": 0,
@@ -3131,7 +3190,7 @@
 						}
 					},
 					"sceneGraphData": {
-						"parent-uid": 36,
+						"parent-uid": null,
 						"uid": 40,
 						"children": [
 							{
@@ -3207,6 +3266,7 @@
 					},
 					"uid": 41,
 					"instanceVariables": {
+						"sliderHandleAttachedBar": "mainSettingsMus",
 						"sliderHandleValue": 3,
 						"sliderHandleValueLast": 0,
 						"sliderHandleProgress": 0,
@@ -3236,7 +3296,7 @@
 						}
 					},
 					"sceneGraphData": {
-						"parent-uid": 36,
+						"parent-uid": null,
 						"uid": 41,
 						"children": [
 							{
@@ -3298,39 +3358,6 @@
 					}
 				}
 			],
-			"sid": 580782149726627,
-			"effectTypes": [],
-			"isInitiallyVisible": true,
-			"isInitiallyInteractive": true,
-			"color": [
-				1,
-				1,
-				1,
-				1
-			],
-			"backgroundColor": [
-				0.3686274509803922,
-				0.3686274509803922,
-				0.3686274509803922,
-				1
-			],
-			"isTransparent": true,
-			"parallaxX": 1,
-			"parallaxY": 1,
-			"scaleRate": 1,
-			"forceOwnTexture": false,
-			"renderingMode": "3d",
-			"drawOrder": "z-order",
-			"useRenderCells": false,
-			"blendMode": "normal",
-			"zElevation": 0,
-			"global": false
-		},
-		{
-			"name": "settings scroll",
-			"overriden": 0,
-			"subLayers": [],
-			"instances": [],
 			"sid": 453768695781794,
 			"effectTypes": [],
 			"isInitiallyVisible": true,

@@ -4,6 +4,13 @@
 	"sid": 407084313195358,
 	"instanceVariables": [
 		{
+			"name": "sliderHandleAttachedBar",
+			"type": "string",
+			"desc": "the ID of the slider bar",
+			"show": true,
+			"sid": 197241346562125
+		},
+		{
 			"name": "sliderHandleValue",
 			"type": "number",
 			"desc": "the value for this slider handle",
@@ -50,6 +57,7 @@
 	"effectTypes": [],
 	"members": [
 		"uiMainSettingsSliderHandleMus",
-		"uiMainSettingsSliderHandleSFX"
+		"uiMainSettingsSliderHandleSFX",
+		"uiMainSettingsScrollHandle"
 	]
 }

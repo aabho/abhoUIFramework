@@ -119,6 +119,8 @@
 		"uiMainSettingsSliderBar",
 		"uiMainSettingsSliderFill",
 		"uiMainSettingsSliderFillRed",
-		"uiMainSettingsSliderTick"
+		"uiMainSettingsSliderTick",
+		"uiMainSettingsScrollBar",
+		"uiMainSettingsScrollHandle"
 	]
 }

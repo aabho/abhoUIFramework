@@ -4,6 +4,13 @@
 	"sid": 250675947499645,
 	"instanceVariables": [
 		{
+			"name": "sliderFillAttachedBar",
+			"type": "string",
+			"desc": "the ID of the slider bar",
+			"show": true,
+			"sid": 868528058620120
+		},
+		{
 			"name": "sliderFillStartID",
 			"type": "string",
 			"desc": "name of ui handle id (not name), or leave empty to start at left side",

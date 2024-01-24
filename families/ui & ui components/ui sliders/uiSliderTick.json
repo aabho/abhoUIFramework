@@ -2,7 +2,15 @@
 	"name": "uiSliderTick",
 	"plugin-id": "NinePatch",
 	"sid": 128726547428423,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "sliderTickAttachedBar",
+			"type": "string",
+			"desc": "the slider bar this is attached to - hidden cause ticks are auto-generated",
+			"show": false,
+			"sid": 493651148601204
+		}
+	],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"members": [

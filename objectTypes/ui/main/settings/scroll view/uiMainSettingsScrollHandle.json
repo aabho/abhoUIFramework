@@ -1,0 +1,21 @@
+{
+	"name": "uiMainSettingsScrollHandle",
+	"plugin-id": "NinePatch",
+	"sid": 533760022041660,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"image": {
+		"width": 4,
+		"height": 4,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"imageSpriteId": 2005671,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

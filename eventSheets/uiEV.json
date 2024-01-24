@@ -196,6 +196,249 @@
 				},
 				{
 					"eventType": "comment",
+					"text": "when slider bar is created",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "uiSliderBar",
+							"sid": 727736509634917
+						},
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "ui",
+							"sid": 267146526491040,
+							"parameters": {
+								"unique-id": "uiSliderBar.UID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "disable the ability for this component to be chosen and selected, since it's just a slider bar",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "ui",
+							"sid": 475263977256495,
+							"parameters": {
+								"instance-variable": "navigable",
+								"value": "false"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "update the ticks",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"customAction": "uiSliderTicksUpdate [INTERNAL]",
+							"objectClass": "uiSliderBar",
+							"sid": 770916194569622
+						}
+					],
+					"sid": 700835344838623,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "pick attached slider handles",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "uiSliderHandle",
+									"sid": 828044229518930,
+									"parameters": {
+										"instance-variable": "sliderHandleAttachedBar",
+										"comparison": 0,
+										"value": "ui.id"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "add-child",
+									"objectClass": "uiSliderBar",
+									"sid": 236975677635388,
+									"parameters": {
+										"child": "uiSliderHandle",
+										"transform-x": true,
+										"transform-y": true,
+										"transform-w": false,
+										"transform-h": false,
+										"transform-a": true,
+										"transform-o": true,
+										"transform-z-elevation": true,
+										"transform-visibility": true,
+										"destroy-with-parent": true
+									}
+								}
+							],
+							"sid": 290267073654679
+						},
+						{
+							"eventType": "comment",
+							"text": "pick attached slider fills",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "uiSliderFill",
+									"sid": 641661930116595,
+									"parameters": {
+										"instance-variable": "sliderFillAttachedBar",
+										"comparison": 0,
+										"value": "ui.id"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "add-child",
+									"objectClass": "uiSliderBar",
+									"sid": 838875937425202,
+									"parameters": {
+										"child": "uiSliderFill",
+										"transform-x": true,
+										"transform-y": true,
+										"transform-w": false,
+										"transform-h": false,
+										"transform-a": true,
+										"transform-o": true,
+										"transform-z-elevation": true,
+										"transform-visibility": true,
+										"destroy-with-parent": true
+									}
+								}
+							],
+							"sid": 642734504859764
+						},
+						{
+							"eventType": "comment",
+							"text": "pick attached slider ticks",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "the slider ticks DO inherit size from the slider bar, FYI, unlike the other slider components",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8470588235294118,
+										0.6431372549019608,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"id": "add-child",
+									"objectClass": "uiSliderBar",
+									"sid": 455896624611280,
+									"parameters": {
+										"child": "uiSliderTick",
+										"transform-x": true,
+										"transform-y": true,
+										"transform-w": true,
+										"transform-h": true,
+										"transform-a": true,
+										"transform-o": true,
+										"transform-z-elevation": true,
+										"transform-visibility": true,
+										"destroy-with-parent": true
+									}
+								}
+							],
+							"sid": 476676582913790
+						}
+					]
+				},
+				{
+					"eventType": "comment",
 					"text": "when slider handle is created",
 					"text-color": [
 						0,
@@ -251,89 +494,6 @@
 						}
 					],
 					"sid": 300681801577732
-				},
-				{
-					"eventType": "comment",
-					"text": "when slider bar is created",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-created",
-							"objectClass": "uiSliderBar",
-							"sid": 474170108378934
-						},
-						{
-							"id": "pick-by-unique-id",
-							"objectClass": "ui",
-							"sid": 466084330965947,
-							"parameters": {
-								"unique-id": "uiSliderBar.UID"
-							}
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "disable the ability for this component to be chosen and selected, since it's just a slider bar",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"id": "set-boolean-instvar",
-							"objectClass": "ui",
-							"sid": 985410773819693,
-							"parameters": {
-								"instance-variable": "navigable",
-								"value": "false"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "update the ticks",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"customAction": "uiSliderTicksUpdate [INTERNAL]",
-							"objectClass": "uiSliderBar",
-							"sid": 634582786118718
-						}
-					],
-					"sid": 320600183027814
 				},
 				{
 					"eventType": "comment",
@@ -1501,12 +1661,11 @@
 									}
 								},
 								{
-									"id": "pick-parent",
-									"objectClass": "uiSliderHandle",
-									"sid": 139020184326019,
+									"id": "pick-by-unique-id",
+									"objectClass": "uiSliderBar",
+									"sid": 808595755857668,
 									"parameters": {
-										"parent": "uiSliderBar",
-										"which": "own"
+										"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
 									}
 								}
 							],
@@ -1657,15 +1816,6 @@
 									"customAction": "uiSliderFillUpdate",
 									"objectClass": "uiSliderFill",
 									"sid": 191655377447479
-								},
-								{
-									"id": "log",
-									"objectClass": "Browser",
-									"sid": 487262397679243,
-									"parameters": {
-										"type": "log",
-										"message": "ui.id"
-									}
 								}
 							],
 							"sid": 914726896820524
@@ -1692,6 +1842,79 @@
 					"description": "has stuff you probably shouldn't edit - consider looking at \"ui behavior custom actions\" instead to edit slider animations",
 					"isActiveOnStart": true,
 					"children": [
+						{
+							"eventType": "comment",
+							"text": "given a 'ui' id, retrieve a uid",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "uiGetUIDFromID",
+							"functionDescription": "given a 'ui' id, retrieve a 'uiSliderBar' uid",
+							"functionCategory": "ui",
+							"functionReturnType": "number",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [
+								{
+									"name": "id",
+									"type": "string",
+									"initialValue": "",
+									"comment": "id that you can find on the ui family",
+									"sid": 362387703433273
+								}
+							],
+							"eventType": "function-block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "ui",
+									"sid": 299974790711679,
+									"parameters": {
+										"instance-variable": "id",
+										"comparison": 0,
+										"value": "id"
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "the reason this function is important is due to the family overlap that exists throughout this framework - almost all UI components exist in the 'ui' family, but some exist in other ui-related families.\n\nof course, for example, you can't pick a 'uiSliderHandle' from a 'ui' id... but you can always pick it if you have the UID!",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8470588235294118,
+										0.6431372549019608,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"id": "set-function-return-value",
+									"objectClass": "Functions",
+									"sid": 630231005236293,
+									"parameters": {
+										"value": "ui.UID"
+									}
+								}
+							],
+							"sid": 423406964653753
+						},
 						{
 							"eventType": "group",
 							"disabled": false,
@@ -1736,12 +1959,11 @@
 									"eventType": "custom-ace-block",
 									"conditions": [
 										{
-											"id": "pick-parent",
-											"objectClass": "uiSliderHandle",
-											"sid": 983439861024554,
+											"id": "pick-by-unique-id",
+											"objectClass": "uiSliderBar",
+											"sid": 879307905287783,
 											"parameters": {
-												"parent": "uiSliderBar",
-												"which": "own"
+												"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
 											}
 										}
 									],
@@ -1796,12 +2018,11 @@
 									"eventType": "custom-ace-block",
 									"conditions": [
 										{
-											"id": "pick-parent",
-											"objectClass": "uiSliderHandle",
-											"sid": 847365471342681,
+											"id": "pick-by-unique-id",
+											"objectClass": "uiSliderBar",
+											"sid": 174146842532229,
 											"parameters": {
-												"parent": "uiSliderBar",
-												"which": "own"
+												"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
 											}
 										}
 									],
@@ -2533,7 +2754,16 @@
 										}
 									],
 									"eventType": "custom-ace-block",
-									"conditions": [],
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "ui",
+											"sid": 681110141665246,
+											"parameters": {
+												"unique-id": "uiSliderBar.UID"
+											}
+										}
+									],
 									"actions": [
 										{
 											"id": "set-instvar-value",
@@ -2590,12 +2820,13 @@
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "pick-children",
-													"objectClass": "uiSliderBar",
-													"sid": 416020209152954,
+													"id": "compare-instance-variable",
+													"objectClass": "uiSliderHandle",
+													"sid": 639684983306375,
 													"parameters": {
-														"child": "uiSliderHandle",
-														"which": "own"
+														"instance-variable": "sliderHandleAttachedBar",
+														"comparison": 0,
+														"value": "ui.id"
 													}
 												},
 												{
@@ -2645,7 +2876,16 @@
 									"functionIsAsync": false,
 									"functionParameters": [],
 									"eventType": "custom-ace-block",
-									"conditions": [],
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "ui",
+											"sid": 542486309061810,
+											"parameters": {
+												"unique-id": "uiSliderBar.UID"
+											}
+										}
+									],
 									"actions": [
 										{
 											"type": "comment",
@@ -2722,12 +2962,13 @@
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "pick-children",
-													"objectClass": "uiSliderBar",
-													"sid": 190149479579824,
+													"id": "compare-instance-variable",
+													"objectClass": "uiSliderTick",
+													"sid": 873757787151070,
 													"parameters": {
-														"child": "uiSliderTick",
-														"which": "own"
+														"instance-variable": "sliderTickAttachedBar",
+														"comparison": 0,
+														"value": "ui.id"
 													}
 												}
 											],
@@ -2907,6 +3148,15 @@
 															],
 															"actions": [
 																{
+																	"id": "set-instvar-value",
+																	"objectClass": "uiSliderTick",
+																	"sid": 609335957562607,
+																	"parameters": {
+																		"instance-variable": "sliderTickAttachedBar",
+																		"value": "ui.id"
+																	}
+																},
+																{
 																	"id": "move-to-object",
 																	"objectClass": "uiSliderTick",
 																	"sid": 415203836059644,
@@ -3000,12 +3250,11 @@
 									"eventType": "custom-ace-block",
 									"conditions": [
 										{
-											"id": "pick-parent",
-											"objectClass": "uiSliderFill",
-											"sid": 861094066644330,
+											"id": "pick-by-unique-id",
+											"objectClass": "uiSliderBar",
+											"sid": 617060822752487,
 											"parameters": {
-												"parent": "uiSliderBar",
-												"which": "own"
+												"unique-id": "Functions.uiGetUIDFromID(uiSliderFill.sliderFillAttachedBar)"
 											}
 										}
 									],
@@ -3306,12 +3555,11 @@
 									}
 								},
 								{
-									"id": "pick-parent",
-									"objectClass": "uiSliderHandle",
-									"sid": 707560259517962,
+									"id": "pick-by-unique-id",
+									"objectClass": "uiSliderBar",
+									"sid": 809175591417106,
 									"parameters": {
-										"parent": "uiSliderBar",
-										"which": "own"
+										"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
 									}
 								}
 							],
@@ -3927,12 +4175,11 @@
 									}
 								},
 								{
-									"id": "pick-parent",
-									"objectClass": "uiSliderHandle",
-									"sid": 638721636843171,
+									"id": "pick-by-unique-id",
+									"objectClass": "uiSliderBar",
+									"sid": 858289096883338,
 									"parameters": {
-										"parent": "uiSliderBar",
-										"which": "own"
+										"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
 									}
 								}
 							],
@@ -5406,12 +5653,11 @@
 											}
 										},
 										{
-											"id": "pick-parent",
-											"objectClass": "uiSliderHandle",
-											"sid": 617618056359572,
+											"id": "pick-by-unique-id",
+											"objectClass": "uiSliderBar",
+											"sid": 262869296526175,
 											"parameters": {
-												"parent": "uiSliderBar",
-												"which": "own"
+												"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
 											}
 										}
 									],
@@ -6461,12 +6707,11 @@
 															"sid": 525748338857072
 														},
 														{
-															"id": "pick-parent",
-															"objectClass": "uiSliderHandle",
-															"sid": 983631444754204,
+															"id": "pick-by-unique-id",
+															"objectClass": "uiSliderBar",
+															"sid": 502667165902116,
 															"parameters": {
-																"parent": "uiSliderBar",
-																"which": "own"
+																"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
 															}
 														}
 													],
