@@ -56,6 +56,7 @@
 					"instanceVariables": {
 						"section": "main",
 						"id": "mainPlayGame",
+						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,
@@ -226,6 +227,7 @@
 					"instanceVariables": {
 						"section": "main",
 						"id": "mainSettings",
+						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,
@@ -396,6 +398,7 @@
 					"instanceVariables": {
 						"section": "main",
 						"id": "mainDummy",
+						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,
@@ -566,6 +569,7 @@
 					"instanceVariables": {
 						"section": "main",
 						"id": "mainDummy2",
+						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,
@@ -736,6 +740,7 @@
 					"instanceVariables": {
 						"section": "mainWIP",
 						"id": "mainDummy4",
+						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,
@@ -906,6 +911,7 @@
 					"instanceVariables": {
 						"section": "main",
 						"id": "mainQuit",
+						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,
@@ -1071,8 +1077,8 @@
 						"italic": false,
 						"color": [
 							1,
-							0,
-							0,
+							0.25882352941176473,
+							0.25882352941176473,
 							1
 						],
 						"horizontal-alignment": "center",
@@ -1189,8 +1195,80 @@
 					"world": {
 						"x": 217,
 						"y": 32,
-						"width": 275,
-						"height": 38,
+						"width": 182,
+						"height": 28,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "^\nthis one is part of a group that isn't enabled ever, 'mainWIP'. as such, it is disabled.",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 5,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							1,
+							0.25882352941176473,
+							0.25882352941176473,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 49,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 49,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 354,
+						"y": 162,
+						"width": 100,
+						"height": 47,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -1484,6 +1562,7 @@
 					"instanceVariables": {
 						"section": "mainSettingsApply",
 						"id": "mainSettingsApply",
+						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,
@@ -1582,6 +1661,7 @@
 					"instanceVariables": {
 						"section": "mainSettings",
 						"id": "mainSettingsBack",
+						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,
@@ -1975,9 +2055,28 @@
 						"sliderRightX": 0,
 						"sliderRightY": 0,
 						"sliderTickObjectName": "uiMainSettingsSliderTick",
-						"id": "sfx"
+						"section": "mainSettings",
+						"id": "mainSettingsSfx",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
 					"sceneGraphData": {
 						"parent-uid": 30,
 						"uid": 21,
@@ -2079,9 +2178,28 @@
 						"sliderRightX": 0,
 						"sliderRightY": 0,
 						"sliderTickObjectName": "uiMainSettingsSliderTick",
-						"id": "mus"
+						"section": "mainSettings",
+						"id": "mainSettingsMus",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
 					"sceneGraphData": {
 						"parent-uid": 30,
 						"uid": 36,
@@ -2484,8 +2602,29 @@
 						"seams": "overlap"
 					},
 					"uid": 37,
-					"instanceVariables": {},
-					"behaviors": {},
+					"instanceVariables": {
+						"section": "mainSettings",
+						"id": "mainSettingsSliderTick",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
 					"world": {
 						"x": -17,
 						"y": 31,
@@ -2519,9 +2658,29 @@
 					"uid": 23,
 					"instanceVariables": {
 						"sliderFillStartID": "",
-						"sliderFillEndID": "mainSettingsSfx"
+						"sliderFillEndID": "mainSettingsSfxHandle",
+						"section": "mainSettings",
+						"id": "mainSettingsSfxFill",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
 					"sceneGraphData": {
 						"parent-uid": 21,
 						"uid": 23,
@@ -2589,7 +2748,8 @@
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
 						"section": "mainSettings",
-						"id": "mainSettingsSfx",
+						"id": "mainSettingsSfxHandle",
+						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,
@@ -2670,9 +2830,29 @@
 					"uid": 47,
 					"instanceVariables": {
 						"sliderFillStartID": "mainSettingsMusLow",
-						"sliderFillEndID": "mainSettingsMusMid"
+						"sliderFillEndID": "mainSettingsMusMid",
+						"section": "mainSettings",
+						"id": "mainSettingsMusFillMid",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
 					"sceneGraphData": {
 						"parent-uid": 36,
 						"uid": 47,
@@ -2734,9 +2914,29 @@
 					"uid": 48,
 					"instanceVariables": {
 						"sliderFillStartID": "mainSettingsMusHigh",
-						"sliderFillEndID": ""
+						"sliderFillEndID": "",
+						"section": "mainSettings",
+						"id": "mainSettingsMusFillEnd",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
 					"sceneGraphData": {
 						"parent-uid": 36,
 						"uid": 48,
@@ -2805,6 +3005,7 @@
 						"sliderHandleRuleAllowEqual": false,
 						"section": "mainSettings",
 						"id": "mainSettingsMusHigh",
+						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,
@@ -2909,6 +3110,7 @@
 						"sliderHandleRuleAllowEqual": false,
 						"section": "mainSettings",
 						"id": "mainSettingsMusLow",
+						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,
@@ -3013,6 +3215,7 @@
 						"sliderHandleRuleAllowEqual": false,
 						"section": "mainSettings",
 						"id": "mainSettingsMusMid",
+						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,
@@ -3096,6 +3299,39 @@
 				}
 			],
 			"sid": 580782149726627,
+			"effectTypes": [],
+			"isInitiallyVisible": true,
+			"isInitiallyInteractive": true,
+			"color": [
+				1,
+				1,
+				1,
+				1
+			],
+			"backgroundColor": [
+				0.3686274509803922,
+				0.3686274509803922,
+				0.3686274509803922,
+				1
+			],
+			"isTransparent": true,
+			"parallaxX": 1,
+			"parallaxY": 1,
+			"scaleRate": 1,
+			"forceOwnTexture": false,
+			"renderingMode": "3d",
+			"drawOrder": "z-order",
+			"useRenderCells": false,
+			"blendMode": "normal",
+			"zElevation": 0,
+			"global": false
+		},
+		{
+			"name": "settings scroll",
+			"overriden": 0,
+			"subLayers": [],
+			"instances": [],
+			"sid": 453768695781794,
 			"effectTypes": [],
 			"isInitiallyVisible": true,
 			"isInitiallyInteractive": true,
@@ -3330,6 +3566,7 @@
 					"instanceVariables": {
 						"section": "mainQuit",
 						"id": "mainQuitConfirm",
+						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,
@@ -3500,6 +3737,7 @@
 					"instanceVariables": {
 						"section": "mainQuit",
 						"id": "mainQuitCancel",
+						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,

@@ -18,6 +18,13 @@
 			"sid": 148285385236211
 		},
 		{
+			"name": "navigable",
+			"type": "boolean",
+			"desc": "if this component can be chosen - is hidden because this is intended to be disabled for objects in other UI families",
+			"show": false,
+			"sid": 726313592809007
+		},
+		{
 			"name": "active",
 			"type": "boolean",
 			"desc": "if this button is active or not (change via enable group functions)",
@@ -108,6 +115,10 @@
 		"uiMainQuitButton",
 		"uiMainSettingsButton",
 		"uiMainSettingsSliderHandleMus",
-		"uiMainSettingsSliderHandleSFX"
+		"uiMainSettingsSliderHandleSFX",
+		"uiMainSettingsSliderBar",
+		"uiMainSettingsSliderFill",
+		"uiMainSettingsSliderFillRed",
+		"uiMainSettingsSliderTick"
 	]
 }

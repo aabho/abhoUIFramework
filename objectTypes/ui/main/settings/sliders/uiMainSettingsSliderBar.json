@@ -3,15 +3,7 @@
 	"plugin-id": "NinePatch",
 	"sid": 680688437831815,
 	"isGlobal": false,
-	"instanceVariables": [
-		{
-			"name": "id",
-			"type": "string",
-			"desc": "not on the family, just a normal instance var",
-			"show": true,
-			"sid": 120444220051171
-		}
-	],
+	"instanceVariables": [],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"image": {

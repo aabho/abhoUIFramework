@@ -92,18 +92,37 @@
 						"items": [
 							"uiMainQuitBg",
 							"uiMainButton",
-							"uiMainQuitButton",
-							"uiMainSettingsBg",
-							"uiMainSettingsButton",
-							"uiMainSettingsSliderBar",
-							"uiMainSettingsSliderHandleMus",
-							"uiMainSettingsSliderHandleGlyph",
-							"uiMainSettingsSliderHandleSFX",
-							"uiMainSettingsSliderTick",
-							"uiMainSettingsSliderFill",
-							"uiMainSettingsSliderFillRed"
+							"uiMainQuitButton"
 						],
-						"subfolders": [],
+						"subfolders": [
+							{
+								"items": [
+									"uiMainSettingsBg",
+									"uiMainSettingsButton"
+								],
+								"subfolders": [
+									{
+										"items": [
+											"uiMainSettingsSliderBar",
+											"uiMainSettingsSliderFill",
+											"uiMainSettingsSliderFillRed",
+											"uiMainSettingsSliderHandleGlyph",
+											"uiMainSettingsSliderHandleMus",
+											"uiMainSettingsSliderHandleSFX",
+											"uiMainSettingsSliderTick"
+										],
+										"subfolders": [],
+										"name": "sliders"
+									},
+									{
+										"items": [],
+										"subfolders": [],
+										"name": "scroll view"
+									}
+								],
+								"name": "settings"
+							}
+						],
 						"name": "main"
 					}
 				],
