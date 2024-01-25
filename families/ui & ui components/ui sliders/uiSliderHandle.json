@@ -58,6 +58,20 @@
 			"desc": "if lesser/greater rules allows value to be equal to other handle",
 			"show": true,
 			"sid": 914364876419004
+		},
+		{
+			"name": "sliderHandleScroller",
+			"type": "boolean",
+			"desc": "enter a uiCanvas ID to get the bounds from it instead of defining them yourself",
+			"show": true,
+			"sid": 128675221874790
+		},
+		{
+			"name": "sliderHandleScrollUseCanvas",
+			"type": "string",
+			"desc": "enter a canvas ID to use it as the bounds of the scroll view",
+			"show": true,
+			"sid": 579740643150069
 		}
 	],
 	"behaviorTypes": [],

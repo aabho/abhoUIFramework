@@ -1459,6 +1459,21 @@
 									"d": true,
 									"sm": "normal"
 								}
+							},
+							{
+								"uid": 54,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
 							}
 						],
 						"flags": {
@@ -2017,7 +2032,7 @@
 						"scrollParentUID": -1,
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
-						"canvasMask": "",
+						"canvas": "",
 						"section": "mainSettings",
 						"ID": "mainSettingsSfx",
 						"navigable": true,
@@ -2141,7 +2156,7 @@
 					"uid": 37,
 					"instanceVariables": {
 						"sliderTickAttachedBar": "",
-						"canvasMask": "",
+						"canvas": "",
 						"section": "mainSettings",
 						"ID": "mainSettingsSliderTick",
 						"navigable": true,
@@ -2199,7 +2214,7 @@
 						"sliderFillAttachedBar": "mainSettingsSfx",
 						"sliderFillStartID": "",
 						"sliderFillEndID": "mainSettingsSfxHandle",
-						"canvasMask": "",
+						"canvas": "",
 						"section": "mainSettings",
 						"ID": "mainSettingsSfxFill",
 						"navigable": true,
@@ -2262,6 +2277,8 @@
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
+						"sliderHandleScroller": false,
+						"sliderHandleScrollUseCanvas": "",
 						"section": "mainSettings",
 						"ID": "mainSettingsSfxHandle",
 						"navigable": true,
@@ -2408,8 +2425,8 @@
 					"uid": 51,
 					"instanceVariables": {
 						"sliderMin": 0,
-						"sliderMax": -100,
-						"sliderStep": 5,
+						"sliderMax": -300,
+						"sliderStep": 10,
 						"sliderMarginsHorizontal": 0,
 						"sliderLeftX": 0,
 						"sliderLeftY": 0,
@@ -2506,6 +2523,8 @@
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
+						"sliderHandleScroller": true,
+						"sliderHandleScrollUseCanvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsScrollHandle",
 						"navigable": true,
@@ -2601,7 +2620,7 @@
 						}
 					},
 					"world": {
-						"x": 215,
+						"x": 214,
 						"y": -151,
 						"width": 54,
 						"height": 12,
@@ -2613,7 +2632,7 @@
 							1,
 							1
 						],
-						"angle": 0.08726646259971647,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
@@ -2645,7 +2664,7 @@
 						"scrollParentUID": -1,
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
-						"canvasMask": "mainSettings",
+						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsMus",
 						"navigable": true,
@@ -2719,8 +2738,8 @@
 						}
 					},
 					"world": {
-						"x": 214,
-						"y": -127,
+						"x": 213.82642091678906,
+						"y": -124.97561462597471,
 						"width": 122,
 						"height": 10,
 						"originX": 0.5,
@@ -2731,7 +2750,7 @@
 							1,
 							1
 						],
-						"angle": 0.08726646259971647,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
@@ -2791,8 +2810,8 @@
 						}
 					},
 					"world": {
-						"x": 261.3073361412149,
-						"y": -137.94292047137617,
+						"x": 260,
+						"y": -140,
 						"width": 10,
 						"height": 8,
 						"originX": 0.5,
@@ -2803,7 +2822,7 @@
 							1,
 							1
 						],
-						"angle": 0.08726646259971647,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
@@ -2863,8 +2882,8 @@
 						}
 					},
 					"world": {
-						"x": 193.31114144312312,
-						"y": -144.03007621412385,
+						"x": 192,
+						"y": -140,
 						"width": 10,
 						"height": 8,
 						"originX": 0.5,
@@ -2875,7 +2894,7 @@
 							1,
 							1
 						],
-						"angle": 0.08726646259971647,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
@@ -2935,8 +2954,8 @@
 						}
 					},
 					"world": {
-						"x": 164.30733614121488,
-						"y": -145.9429204713762,
+						"x": 163,
+						"y": -139,
 						"width": 10,
 						"height": 8,
 						"originX": 0.5,
@@ -2947,7 +2966,7 @@
 							1,
 							1
 						],
-						"angle": 0.08726646259971647,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
@@ -2969,7 +2988,7 @@
 						"sliderFillAttachedBar": "mainSettingsMus",
 						"sliderFillStartID": "mainSettingsMusLow",
 						"sliderFillEndID": "mainSettingsMusMid",
-						"canvasMask": "mainSettings",
+						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsMusFillMid",
 						"navigable": true,
@@ -2993,8 +3012,8 @@
 						}
 					},
 					"world": {
-						"x": 160,
-						"y": -132,
+						"x": 159.59612850609653,
+						"y": -125.25017800805989,
 						"width": 30,
 						"height": 6,
 						"originX": 0,
@@ -3005,7 +3024,7 @@
 							1,
 							1
 						],
-						"angle": 0.08726646259971647,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
@@ -3027,7 +3046,7 @@
 						"sliderFillAttachedBar": "mainSettingsMus",
 						"sliderFillStartID": "mainSettingsMusHigh",
 						"sliderFillEndID": "",
-						"canvasMask": "mainSettings",
+						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsMusFillEnd",
 						"navigable": true,
@@ -3051,8 +3070,8 @@
 						}
 					},
 					"world": {
-						"x": 273,
-						"y": -122,
+						"x": 273.03768681794037,
+						"y": -125.13682995762781,
 						"width": 13,
 						"height": 6,
 						"originX": 0,
@@ -3063,7 +3082,7 @@
 							1,
 							1
 						],
-						"angle": 3.2288591161895095,
+						"angle": 3.141592653589793,
 						"zElevation": 0
 					}
 				},
@@ -3090,7 +3109,9 @@
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "mainSettingsMusMid",
 						"sliderHandleRuleAllowEqual": false,
-						"canvasMask": "mainSettings",
+						"sliderHandleScroller": false,
+						"sliderHandleScrollUseCanvas": "",
+						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsMusHigh",
 						"navigable": true,
@@ -3160,7 +3181,7 @@
 					},
 					"world": {
 						"x": 260,
-						"y": -123,
+						"y": -125,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -3171,7 +3192,7 @@
 							1,
 							1
 						],
-						"angle": 0.08726646259971647,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
@@ -3198,7 +3219,9 @@
 						"sliderHandleRuleLesser": "mainSettingsMusMid",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
-						"canvasMask": "mainSettings",
+						"sliderHandleScroller": false,
+						"sliderHandleScrollUseCanvas": "",
+						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsMusLow",
 						"navigable": true,
@@ -3267,8 +3290,8 @@
 						}
 					},
 					"world": {
-						"x": 163,
-						"y": -131,
+						"x": 162.6718683431194,
+						"y": -124.51545053821113,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -3279,7 +3302,7 @@
 							1,
 							1
 						],
-						"angle": 0.08726646259971647,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
@@ -3306,7 +3329,9 @@
 						"sliderHandleRuleLesser": "mainSettingsMusHigh",
 						"sliderHandleRuleGreater": "mainSettingsMusLow",
 						"sliderHandleRuleAllowEqual": false,
-						"canvasMask": "mainSettings",
+						"sliderHandleScroller": false,
+						"sliderHandleScrollUseCanvas": "",
+						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsMusMid",
 						"navigable": true,
@@ -3375,8 +3400,8 @@
 						}
 					},
 					"world": {
-						"x": 192,
-						"y": -129,
+						"x": 191.73582607327535,
+						"y": -125.05057768170971,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -3387,7 +3412,348 @@
 							1,
 							1
 						],
-						"angle": 0.08726646259971647,
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "dummy1",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 8,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 53,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 54,
+						"uid": 53,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 214,
+						"y": -9,
+						"width": 49,
+						"height": 12,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsSliderBar",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "overlap"
+					},
+					"uid": 54,
+					"instanceVariables": {
+						"sliderMin": 5,
+						"sliderMax": 15,
+						"sliderStep": 1,
+						"sliderMarginsHorizontal": 2,
+						"sliderLeftX": 0,
+						"sliderLeftY": 0,
+						"sliderRightX": 0,
+						"sliderRightY": 0,
+						"sliderTickObjectName": "uiMainSettingsSliderTick",
+						"scrollSliderHandleID": "mainSettingsScrollHandle",
+						"scrollParentUID": -1,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
+						"canvas": "mainSettings",
+						"section": "mainSettings",
+						"ID": "mainSettingsDummy1",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
+					},
+					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": 30,
+						"uid": 54,
+						"children": [
+							{
+								"uid": 53,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 214,
+						"y": 11,
+						"width": 122,
+						"height": 10,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsSliderFill",
+					"properties": {
+						"left-margin": 0,
+						"right-margin": 0,
+						"top-margin": 0,
+						"bottom-margin": 0,
+						"edges": "stretch",
+						"fill": "tile",
+						"initially-visible": true,
+						"origin": "left",
+						"seams": "overlap"
+					},
+					"uid": 55,
+					"instanceVariables": {
+						"sliderFillAttachedBar": "mainSettingsDummy1",
+						"sliderFillStartID": "",
+						"sliderFillEndID": "mainSettingsDummy1Handle",
+						"canvas": "",
+						"section": "mainSettings",
+						"ID": "mainSettingsDummy1Fill",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"world": {
+						"x": 155,
+						"y": 11,
+						"width": 89,
+						"height": 6,
+						"originX": 0,
+						"originY": 0.5,
+						"color": [
+							0.3843137254901961,
+							0.996078431372549,
+							0.4549019607843137,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsSliderHandleMus",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 56,
+					"instanceVariables": {
+						"sliderHandleAttachedBar": "mainSettingsDummy1",
+						"sliderHandleValue": 10,
+						"sliderHandleValueLast": 0,
+						"sliderHandleValueLastTrigger": 0,
+						"sliderHandleProgress": 0,
+						"sliderHandleRuleLesser": "",
+						"sliderHandleRuleGreater": "",
+						"sliderHandleRuleAllowEqual": false,
+						"sliderHandleScroller": false,
+						"sliderHandleScrollUseCanvas": "",
+						"canvas": "mainSettings",
+						"section": "mainSettings",
+						"ID": "mainSettingsDummy1Handle",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 56,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 244,
+						"y": 11,
+						"width": 8,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
 						"zElevation": 0
 					}
 				}

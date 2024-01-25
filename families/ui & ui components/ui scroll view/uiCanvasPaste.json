@@ -4,7 +4,7 @@
 	"sid": 462450297167993,
 	"instanceVariables": [
 		{
-			"name": "canvasMask",
+			"name": "canvas",
 			"type": "string",
 			"desc": "enter canvasID to mask this object",
 			"show": true,
