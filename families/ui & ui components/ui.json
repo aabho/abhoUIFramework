@@ -11,7 +11,7 @@
 			"sid": 123641396199175
 		},
 		{
-			"name": "id",
+			"name": "ID",
 			"type": "string",
 			"desc": "apply a unique ID to every instance in your game",
 			"show": true,

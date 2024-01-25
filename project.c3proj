@@ -87,58 +87,10 @@
 	"uniqueId": "20y9z90w252",
 	"objectTypes": {
 		"items": [
-			"Camera"
+			"Camera",
+			"txt"
 		],
 		"subfolders": [
-			{
-				"items": [
-					"txt"
-				],
-				"subfolders": [
-					{
-						"items": [
-							"uiMainQuitBg",
-							"uiMainButton",
-							"uiMainQuitButton"
-						],
-						"subfolders": [
-							{
-								"items": [
-									"uiMainSettingsBg",
-									"uiMainSettingsButton"
-								],
-								"subfolders": [
-									{
-										"items": [
-											"uiMainSettingsSliderBar",
-											"uiMainSettingsSliderFill",
-											"uiMainSettingsSliderFillRed",
-											"uiMainSettingsSliderHandleGlyph",
-											"uiMainSettingsSliderHandleMus",
-											"uiMainSettingsSliderHandleSFX",
-											"uiMainSettingsSliderTick"
-										],
-										"subfolders": [],
-										"name": "sliders"
-									},
-									{
-										"items": [
-											"uiMainSettingsCanvas",
-											"uiMainSettingsScrollBar",
-											"uiMainSettingsScrollHandle"
-										],
-										"subfolders": [],
-										"name": "scroll view"
-									}
-								],
-								"name": "settings"
-							}
-						],
-						"name": "main"
-					}
-				],
-				"name": "ui"
-			},
 			{
 				"items": [
 					"Mouse",
@@ -147,7 +99,48 @@
 					"Gamepad"
 				],
 				"subfolders": [],
-				"name": "sys"
+				"name": "essentials"
+			},
+			{
+				"items": [
+					"uiMainQuitBg",
+					"uiMainButton",
+					"uiMainQuitButton"
+				],
+				"subfolders": [
+					{
+						"items": [
+							"uiMainSettingsBg",
+							"uiMainSettingsButton"
+						],
+						"subfolders": [
+							{
+								"items": [
+									"uiMainSettingsSliderBar",
+									"uiMainSettingsSliderFill",
+									"uiMainSettingsSliderFillRed",
+									"uiMainSettingsSliderHandleGlyph",
+									"uiMainSettingsSliderHandleMus",
+									"uiMainSettingsSliderHandleSFX",
+									"uiMainSettingsSliderTick"
+								],
+								"subfolders": [],
+								"name": "sliders"
+							},
+							{
+								"items": [
+									"uiMainSettingsCanvas",
+									"uiMainSettingsScrollBar",
+									"uiMainSettingsScrollHandle"
+								],
+								"subfolders": [],
+								"name": "scroll view"
+							}
+						],
+						"name": "settings"
+					}
+				],
+				"name": "main"
 			}
 		]
 	},
@@ -158,8 +151,7 @@
 		"subfolders": [
 			{
 				"items": [
-					"ui",
-					"uiCanvas"
+					"ui"
 				],
 				"subfolders": [
 					{
@@ -171,6 +163,15 @@
 						],
 						"subfolders": [],
 						"name": "ui sliders"
+					},
+					{
+						"items": [
+							"uiCanvas",
+							"uiScrollComponent",
+							"uiCanvasPaste"
+						],
+						"subfolders": [],
+						"name": "ui scroll view"
 					}
 				],
 				"name": "ui & ui components"
@@ -187,7 +188,8 @@
 		"items": [
 			"testEV",
 			"uiEV",
-			"formatting"
+			"formatting",
+			"utilsEV"
 		],
 		"subfolders": []
 	},

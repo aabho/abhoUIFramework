@@ -22,6 +22,13 @@
 			"type": "number",
 			"desc": "the last recorded slider value, for recording any changes",
 			"show": false,
+			"sid": 938888075183070
+		},
+		{
+			"name": "sliderHandleValueLastTrigger",
+			"type": "number",
+			"desc": "the last recorded slider value, for recording any changes",
+			"show": false,
 			"sid": 362613484672940
 		},
 		{

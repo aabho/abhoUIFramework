@@ -55,7 +55,7 @@
 					"uid": 4,
 					"instanceVariables": {
 						"section": "main",
-						"id": "mainPlayGame",
+						"ID": "mainPlayGame",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -226,7 +226,7 @@
 					"uid": 6,
 					"instanceVariables": {
 						"section": "main",
-						"id": "mainSettings",
+						"ID": "mainSettings",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -397,7 +397,7 @@
 					"uid": 11,
 					"instanceVariables": {
 						"section": "main",
-						"id": "mainDummy",
+						"ID": "mainDummy",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -568,7 +568,7 @@
 					"uid": 13,
 					"instanceVariables": {
 						"section": "main",
-						"id": "mainDummy2",
+						"ID": "mainDummy2",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -739,7 +739,7 @@
 					"uid": 18,
 					"instanceVariables": {
 						"section": "mainWIP",
-						"id": "mainDummy4",
+						"ID": "mainDummy4",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -910,7 +910,7 @@
 					"uid": 8,
 					"instanceVariables": {
 						"section": "main",
-						"id": "mainQuit",
+						"ID": "mainQuit",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -1591,7 +1591,7 @@
 					"uid": 32,
 					"instanceVariables": {
 						"section": "mainSettingsApply",
-						"id": "mainSettingsApply",
+						"ID": "mainSettingsApply",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -1690,7 +1690,7 @@
 					"uid": 33,
 					"instanceVariables": {
 						"section": "mainSettings",
-						"id": "mainSettingsBack",
+						"ID": "mainSettingsBack",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -2000,7 +2000,7 @@
 						"fill": "stretch",
 						"initially-visible": true,
 						"origin": "center",
-						"seams": "exact"
+						"seams": "overlap"
 					},
 					"uid": 21,
 					"instanceVariables": {
@@ -2013,8 +2013,13 @@
 						"sliderRightX": 0,
 						"sliderRightY": 0,
 						"sliderTickObjectName": "uiMainSettingsSliderTick",
+						"scrollSliderHandleID": "",
+						"scrollParentUID": -1,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
+						"canvasMask": "",
 						"section": "mainSettings",
-						"id": "mainSettingsSfx",
+						"ID": "mainSettingsSfx",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -2029,6 +2034,11 @@
 						"mGrowHeight": 4
 					},
 					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
 						"Tween": {
 							"properties": {
 								"enabled": true
@@ -2131,8 +2141,9 @@
 					"uid": 37,
 					"instanceVariables": {
 						"sliderTickAttachedBar": "",
+						"canvasMask": "",
 						"section": "mainSettings",
-						"id": "mainSettingsSliderTick",
+						"ID": "mainSettingsSliderTick",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -2188,8 +2199,9 @@
 						"sliderFillAttachedBar": "mainSettingsSfx",
 						"sliderFillStartID": "",
 						"sliderFillEndID": "mainSettingsSfxHandle",
+						"canvasMask": "",
 						"section": "mainSettings",
-						"id": "mainSettingsSfxFill",
+						"ID": "mainSettingsSfxFill",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -2245,12 +2257,13 @@
 						"sliderHandleAttachedBar": "mainSettingsSfx",
 						"sliderHandleValue": 10,
 						"sliderHandleValueLast": 0,
+						"sliderHandleValueLastTrigger": 0,
 						"sliderHandleProgress": 0,
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
 						"section": "mainSettings",
-						"id": "mainSettingsSfxHandle",
+						"ID": "mainSettingsSfxHandle",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -2331,7 +2344,9 @@
 						"antialiasing": "off"
 					},
 					"uid": 50,
-					"instanceVariables": {},
+					"instanceVariables": {
+						"canvasID": "mainSettings"
+					},
 					"behaviors": {},
 					"sceneGraphData": {
 						"parent-uid": 30,
@@ -2393,8 +2408,8 @@
 					"uid": 51,
 					"instanceVariables": {
 						"sliderMin": 0,
-						"sliderMax": 1,
-						"sliderStep": 0.02,
+						"sliderMax": -100,
+						"sliderStep": 5,
 						"sliderMarginsHorizontal": 0,
 						"sliderLeftX": 0,
 						"sliderLeftY": 0,
@@ -2402,7 +2417,7 @@
 						"sliderRightY": 0,
 						"sliderTickObjectName": "",
 						"section": "mainSettings",
-						"id": "mainSettingsScrollBar",
+						"ID": "mainSettingsScrollBar",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -2486,12 +2501,13 @@
 						"sliderHandleAttachedBar": "mainSettingsScrollBar",
 						"sliderHandleValue": 0,
 						"sliderHandleValueLast": 0,
+						"sliderHandleValueLastTrigger": 0,
 						"sliderHandleProgress": 0,
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
 						"section": "mainSettings",
-						"id": "mainSettingsScrollHandle",
+						"ID": "mainSettingsScrollHandle",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -2585,8 +2601,8 @@
 						}
 					},
 					"world": {
-						"x": 214,
-						"y": -156,
+						"x": 215,
+						"y": -151,
 						"width": 54,
 						"height": 12,
 						"originX": 0.5,
@@ -2612,7 +2628,7 @@
 						"fill": "stretch",
 						"initially-visible": true,
 						"origin": "center",
-						"seams": "exact"
+						"seams": "overlap"
 					},
 					"uid": 36,
 					"instanceVariables": {
@@ -2625,8 +2641,13 @@
 						"sliderRightX": 0,
 						"sliderRightY": 0,
 						"sliderTickObjectName": "uiMainSettingsSliderTick",
+						"scrollSliderHandleID": "mainSettingsScrollHandle",
+						"scrollParentUID": -1,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
+						"canvasMask": "mainSettings",
 						"section": "mainSettings",
-						"id": "mainSettingsMus",
+						"ID": "mainSettingsMus",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -2641,6 +2662,11 @@
 						"mGrowHeight": 4
 					},
 					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
 						"Tween": {
 							"properties": {
 								"enabled": true
@@ -2693,8 +2719,8 @@
 						}
 					},
 					"world": {
-						"x": 211.9082621740562,
-						"y": -132.0913272457981,
+						"x": 214,
+						"y": -127,
 						"width": 122,
 						"height": 10,
 						"originX": 0.5,
@@ -2765,8 +2791,8 @@
 						}
 					},
 					"world": {
-						"x": 260.0367491255831,
-						"y": -142.93792780803435,
+						"x": 261.3073361412149,
+						"y": -137.94292047137617,
 						"width": 10,
 						"height": 8,
 						"originX": 0.5,
@@ -2837,8 +2863,8 @@
 						}
 					},
 					"world": {
-						"x": 192.29931495725268,
-						"y": -148.95167405762277,
+						"x": 193.31114144312312,
+						"y": -144.03007621412385,
 						"width": 10,
 						"height": 8,
 						"originX": 0.5,
@@ -2909,8 +2935,8 @@
 						}
 					},
 					"world": {
-						"x": 163.4058634106838,
-						"y": -151.3920348545572,
+						"x": 164.30733614121488,
+						"y": -145.9429204713762,
 						"width": 10,
 						"height": 8,
 						"originX": 0.5,
@@ -2943,8 +2969,9 @@
 						"sliderFillAttachedBar": "mainSettingsMus",
 						"sliderFillStartID": "mainSettingsMusLow",
 						"sliderFillEndID": "mainSettingsMusMid",
+						"canvasMask": "mainSettings",
 						"section": "mainSettings",
-						"id": "mainSettingsMusFillMid",
+						"ID": "mainSettingsMusFillMid",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -2966,8 +2993,8 @@
 						}
 					},
 					"world": {
-						"x": 159,
-						"y": -137,
+						"x": 160,
+						"y": -132,
 						"width": 30,
 						"height": 6,
 						"originX": 0,
@@ -3000,8 +3027,9 @@
 						"sliderFillAttachedBar": "mainSettingsMus",
 						"sliderFillStartID": "mainSettingsMusHigh",
 						"sliderFillEndID": "",
+						"canvasMask": "mainSettings",
 						"section": "mainSettings",
-						"id": "mainSettingsMusFillEnd",
+						"ID": "mainSettingsMusFillEnd",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -3023,8 +3051,8 @@
 						}
 					},
 					"world": {
-						"x": 271,
-						"y": -127,
+						"x": 273,
+						"y": -122,
 						"width": 13,
 						"height": 6,
 						"originX": 0,
@@ -3057,12 +3085,14 @@
 						"sliderHandleAttachedBar": "mainSettingsMus",
 						"sliderHandleValue": 10,
 						"sliderHandleValueLast": 0,
+						"sliderHandleValueLastTrigger": 0,
 						"sliderHandleProgress": 0,
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "mainSettingsMusMid",
 						"sliderHandleRuleAllowEqual": false,
+						"canvasMask": "mainSettings",
 						"section": "mainSettings",
-						"id": "mainSettingsMusHigh",
+						"ID": "mainSettingsMusHigh",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -3129,8 +3159,8 @@
 						}
 					},
 					"world": {
-						"x": 258.72941298436825,
-						"y": -127.99500733665818,
+						"x": 260,
+						"y": -123,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -3163,12 +3193,14 @@
 						"sliderHandleAttachedBar": "mainSettingsMus",
 						"sliderHandleValue": 1,
 						"sliderHandleValueLast": 0,
+						"sliderHandleValueLastTrigger": 0,
 						"sliderHandleProgress": 0,
 						"sliderHandleRuleLesser": "mainSettingsMusMid",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
+						"canvasMask": "mainSettings",
 						"section": "mainSettings",
-						"id": "mainSettingsMusLow",
+						"ID": "mainSettingsMusLow",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -3235,8 +3267,8 @@
 						}
 					},
 					"world": {
-						"x": 162.09852726946892,
-						"y": -136.449114383181,
+						"x": 163,
+						"y": -131,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -3269,12 +3301,14 @@
 						"sliderHandleAttachedBar": "mainSettingsMus",
 						"sliderHandleValue": 3,
 						"sliderHandleValueLast": 0,
+						"sliderHandleValueLastTrigger": 0,
 						"sliderHandleProgress": 0,
 						"sliderHandleRuleLesser": "mainSettingsMusHigh",
 						"sliderHandleRuleGreater": "mainSettingsMusLow",
 						"sliderHandleRuleAllowEqual": false,
+						"canvasMask": "mainSettings",
 						"section": "mainSettings",
-						"id": "mainSettingsMusMid",
+						"ID": "mainSettingsMusMid",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -3341,8 +3375,8 @@
 						}
 					},
 					"world": {
-						"x": 190.98817351412956,
-						"y": -133.92159784349892,
+						"x": 192,
+						"y": -129,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -3592,7 +3626,7 @@
 					"uid": 26,
 					"instanceVariables": {
 						"section": "mainQuit",
-						"id": "mainQuitConfirm",
+						"ID": "mainQuitConfirm",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -3763,7 +3797,7 @@
 					"uid": 28,
 					"instanceVariables": {
 						"section": "mainQuit",
-						"id": "mainQuitCancel",
+						"ID": "mainQuitCancel",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,

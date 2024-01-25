@@ -1,0 +1,19 @@
+{
+	"name": "uiCanvas",
+	"plugin-id": "DrawingCanvas",
+	"sid": 753913782897115,
+	"instanceVariables": [
+		{
+			"name": "canvasID",
+			"type": "string",
+			"desc": "an id for this uiCanvas - put this into ui components' canvas variable to mask them",
+			"show": true,
+			"sid": 579006995712469
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"uiMainSettingsCanvas"
+	]
+}

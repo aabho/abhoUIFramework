@@ -1,0 +1,46 @@
+{
+	"name": "uiScrollComponent",
+	"plugin-id": "NinePatch",
+	"sid": 903651693019718,
+	"instanceVariables": [
+		{
+			"name": "scrollSliderHandleID",
+			"type": "string",
+			"desc": "the slider to use for this object",
+			"show": true,
+			"sid": 285822989813354
+		},
+		{
+			"name": "scrollParentUID",
+			"type": "number",
+			"desc": "the UID of the parent. recorded automatically",
+			"show": false,
+			"sid": 875481456303170
+		},
+		{
+			"name": "scrollOffsetX",
+			"type": "number",
+			"desc": "the offset between this object and the canvas",
+			"show": false,
+			"sid": 943809749570977
+		},
+		{
+			"name": "scrollOffsetY",
+			"type": "number",
+			"desc": "the offset between this object and the canvas",
+			"show": false,
+			"sid": 950266858613113
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "TweenScroll",
+			"sid": 360358289874756
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"uiMainSettingsSliderBar"
+	]
+}

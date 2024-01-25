@@ -1,0 +1,104 @@
+{
+	"name": "utilsEV",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "due to the nature of functions in construct, this event sheet doesn't necessarily even need to be included others for it to be useful",
+			"text-color": [
+				0,
+				0,
+				0,
+				1
+			],
+			"background-color": [
+				0.8470588235294118,
+				0.6431372549019608,
+				0.8745098039215686,
+				1
+			]
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "utils math",
+			"description": "functions that are set up to be used elsewhere",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "clamp that accounts for a being more than b",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"functionName": "utilClamp",
+					"functionDescription": "clamp that accounts for a being more than b",
+					"functionCategory": "util",
+					"functionReturnType": "number",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "number",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "the number to be clamped",
+							"sid": 250592647711534
+						},
+						{
+							"name": "a",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "range",
+							"sid": 562199646492205
+						},
+						{
+							"name": "b",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "range",
+							"sid": 304073420786022
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 858347975834944,
+							"parameters": {
+								"value": "(a > b) ? clamp(number, b, a) : clamp(number, a, b)"
+							}
+						}
+					],
+					"sid": 799525879401090
+				}
+			],
+			"sid": 155409090409319,
+			"text-color": [
+				0,
+				0,
+				0,
+				0
+			],
+			"background-color": [
+				0.8392156862745098,
+				0.8392156862745098,
+				0.8392156862745098,
+				1
+			]
+		}
+	],
+	"sid": 103117648830232
+}

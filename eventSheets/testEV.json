@@ -1083,7 +1083,7 @@
 													"objectClass": "uiMainSettingsSliderBar",
 													"sid": 604718498304775,
 													"parameters": {
-														"instance-variable": "id",
+														"instance-variable": "ID",
 														"comparison": 0,
 														"value": "\"mainSettingsMus\""
 													}
