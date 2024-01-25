@@ -18,6 +18,8 @@
 		"uiMainSettingsSliderHandleMus",
 		"uiMainSettingsSliderTick",
 		"uiMainSettingsSliderFillRed",
-		"uiMainSettingsSliderFill"
+		"uiMainSettingsSliderFill",
+		"uiMainSettingsSliderHandleSFX",
+		"uiMainButton"
 	]
 }

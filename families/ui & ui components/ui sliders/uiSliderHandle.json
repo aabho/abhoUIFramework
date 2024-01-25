@@ -72,6 +72,20 @@
 			"desc": "enter a canvas ID to use it as the bounds of the scroll view",
 			"show": true,
 			"sid": 579740643150069
+		},
+		{
+			"name": "sliderHandleScrollMargins",
+			"type": "number",
+			"desc": "margins to pad around scroll view bounds",
+			"show": true,
+			"sid": 202738154841132
+		},
+		{
+			"name": "sliderHandleScrollSpeed",
+			"type": "number",
+			"desc": "how many pixels to scroll per step",
+			"show": true,
+			"sid": 529782706169466
 		}
 	],
 	"behaviorTypes": [],

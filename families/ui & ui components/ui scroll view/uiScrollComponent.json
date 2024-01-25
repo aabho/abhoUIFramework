@@ -11,13 +11,6 @@
 			"sid": 285822989813354
 		},
 		{
-			"name": "scrollParentUID",
-			"type": "number",
-			"desc": "the UID of the parent. recorded automatically",
-			"show": false,
-			"sid": 875481456303170
-		},
-		{
 			"name": "scrollOffsetX",
 			"type": "number",
 			"desc": "the offset between this object and the canvas",
@@ -41,6 +34,7 @@
 	],
 	"effectTypes": [],
 	"members": [
-		"uiMainSettingsSliderBar"
+		"uiMainSettingsSliderBar",
+		"uiMainButton"
 	]
 }
