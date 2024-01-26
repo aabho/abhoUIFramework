@@ -1448,8 +1448,8 @@
 									"x": true,
 									"y": true,
 									"z": true,
-									"w": true,
-									"h": true,
+									"w": false,
+									"h": false,
 									"a": true,
 									"o": true,
 									"v": true,
@@ -1534,8 +1534,8 @@
 							"x": true,
 							"y": true,
 							"z": true,
-							"w": true,
-							"h": true,
+							"w": false,
+							"h": false,
 							"a": true,
 							"o": true,
 							"v": true,
@@ -1556,7 +1556,7 @@
 						}
 					},
 					"world": {
-						"x": 380.5,
+						"x": 380,
 						"y": -27,
 						"width": 50,
 						"height": 165,
@@ -1628,8 +1628,8 @@
 									"x": true,
 									"y": true,
 									"z": true,
-									"w": true,
-									"h": true,
+									"w": false,
+									"h": false,
 									"a": true,
 									"o": true,
 									"v": true,
@@ -1665,9 +1665,9 @@
 					},
 					"world": {
 						"x": 380,
-						"y": 78.5,
+						"y": 141,
 						"width": 55,
-						"height": 44,
+						"height": 169,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -1714,8 +1714,8 @@
 							"x": true,
 							"y": true,
 							"z": true,
-							"w": true,
-							"h": true,
+							"w": false,
+							"h": false,
 							"a": true,
 							"o": true,
 							"v": true,
@@ -1736,10 +1736,10 @@
 						}
 					},
 					"world": {
-						"x": 380.5,
-						"y": 80.5,
+						"x": 380,
+						"y": 140.5,
 						"width": 50,
-						"height": 44,
+						"height": 164,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -1918,6 +1918,21 @@
 							},
 							{
 								"uid": 54,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							},
+							{
+								"uid": 64,
 								"flags": {
 									"x": true,
 									"y": true,
@@ -2478,6 +2493,320 @@
 						"angle": 0,
 						"zElevation": 0
 					}
+				},
+				{
+					"type": "uiMainSettingsScrollBar",
+					"properties": {
+						"left-margin": 0,
+						"right-margin": 0,
+						"top-margin": 0,
+						"bottom-margin": 0,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 51,
+					"instanceVariables": {
+						"sliderMin": 0,
+						"sliderMax": -300,
+						"sliderStep": 10,
+						"sliderMarginsHorizontal": 0,
+						"sliderLeftX": 0,
+						"sliderLeftY": 0,
+						"sliderRightX": 0,
+						"sliderRightY": 0,
+						"sliderTickObjectName": "",
+						"section": "mainSettings",
+						"ID": "mainSettingsScrollBar",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": 30,
+						"uid": 51,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 287,
+						"y": -106,
+						"width": 114,
+						"height": 1,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 1.5707963267948966,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsScrollHandle",
+					"properties": {
+						"left-margin": 1,
+						"right-margin": 1,
+						"top-margin": 1,
+						"bottom-margin": 1,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 52,
+					"instanceVariables": {
+						"sliderHandleAttachedBar": "mainSettingsScrollBar",
+						"sliderHandleValue": 0,
+						"sliderHandleValueLast": 0,
+						"sliderHandleValueLastTrigger": 0,
+						"sliderHandleProgress": 0,
+						"sliderHandleRuleLesser": "",
+						"sliderHandleRuleGreater": "",
+						"sliderHandleRuleAllowEqual": false,
+						"sliderHandleScroller": true,
+						"sliderHandleScrollUseCanvas": "mainSettings",
+						"sliderHandleScrollMargins": 4,
+						"sliderHandleScrollSpeed": 20,
+						"section": "mainSettings",
+						"ID": "mainSettingsScrollHandle",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 1,
+						"mGrowHeight": 0
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"world": {
+						"x": 287,
+						"y": -163,
+						"width": 2,
+						"height": 10,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsScrollBar",
+					"properties": {
+						"left-margin": 0,
+						"right-margin": 0,
+						"top-margin": 0,
+						"bottom-margin": 0,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 64,
+					"instanceVariables": {
+						"sliderMin": 0,
+						"sliderMax": -300,
+						"sliderStep": 10,
+						"sliderMarginsHorizontal": 0,
+						"sliderLeftX": 0,
+						"sliderLeftY": 0,
+						"sliderRightX": 0,
+						"sliderRightY": 0,
+						"sliderTickObjectName": "",
+						"section": "mainSettings",
+						"ID": "mainSettingsScrollBarHoriz",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": 30,
+						"uid": 64,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 214,
+						"y": -42,
+						"width": 135,
+						"height": 1,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsScrollHandle",
+					"properties": {
+						"left-margin": 1,
+						"right-margin": 1,
+						"top-margin": 1,
+						"bottom-margin": 1,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 65,
+					"instanceVariables": {
+						"sliderHandleAttachedBar": "mainSettingsScrollBarHoriz",
+						"sliderHandleValue": 0,
+						"sliderHandleValueLast": 0,
+						"sliderHandleValueLastTrigger": 0,
+						"sliderHandleProgress": 0,
+						"sliderHandleRuleLesser": "",
+						"sliderHandleRuleGreater": "",
+						"sliderHandleRuleAllowEqual": false,
+						"sliderHandleScroller": true,
+						"sliderHandleScrollUseCanvas": "mainSettings",
+						"sliderHandleScrollMargins": 4,
+						"sliderHandleScrollSpeed": 20,
+						"section": "mainSettings",
+						"ID": "mainSettingsScrollHandleHoriz",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 0,
+						"mGrowHeight": 1
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"world": {
+						"x": 149,
+						"y": -42,
+						"width": 10,
+						"height": 2,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
 				}
 			],
 			"sid": 580782149726627,
@@ -2568,163 +2897,6 @@
 							1
 						],
 						"angle": 0
-					}
-				},
-				{
-					"type": "uiMainSettingsScrollBar",
-					"properties": {
-						"left-margin": 0,
-						"right-margin": 0,
-						"top-margin": 0,
-						"bottom-margin": 0,
-						"edges": "stretch",
-						"fill": "stretch",
-						"initially-visible": true,
-						"origin": "center",
-						"seams": "exact"
-					},
-					"uid": 51,
-					"instanceVariables": {
-						"sliderMin": 0,
-						"sliderMax": -300,
-						"sliderStep": 10,
-						"sliderMarginsHorizontal": 0,
-						"sliderLeftX": 0,
-						"sliderLeftY": 0,
-						"sliderRightX": 0,
-						"sliderRightY": 0,
-						"sliderTickObjectName": "",
-						"section": "mainSettings",
-						"ID": "mainSettingsScrollBar",
-						"navigable": true,
-						"active": false,
-						"activeTrigger": false,
-						"chosenTrigger": false,
-						"overrideUp": "",
-						"overrideDown": "",
-						"overrideLeft": "",
-						"overrideRight": "",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mGrowWidth": 4,
-						"mGrowHeight": 4
-					},
-					"behaviors": {
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
-					"sceneGraphData": {
-						"parent-uid": 30,
-						"uid": 51,
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"world": {
-						"x": 289,
-						"y": -106,
-						"width": 114,
-						"height": 1,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 1.5707963267948966,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "uiMainSettingsScrollHandle",
-					"properties": {
-						"left-margin": 1,
-						"right-margin": 1,
-						"top-margin": 1,
-						"bottom-margin": 1,
-						"edges": "stretch",
-						"fill": "stretch",
-						"initially-visible": true,
-						"origin": "center",
-						"seams": "exact"
-					},
-					"uid": 52,
-					"instanceVariables": {
-						"sliderHandleAttachedBar": "mainSettingsScrollBar",
-						"sliderHandleValue": 0,
-						"sliderHandleValueLast": 0,
-						"sliderHandleValueLastTrigger": 0,
-						"sliderHandleProgress": 0,
-						"sliderHandleRuleLesser": "",
-						"sliderHandleRuleGreater": "",
-						"sliderHandleRuleAllowEqual": false,
-						"sliderHandleScroller": true,
-						"sliderHandleScrollUseCanvas": "mainSettings",
-						"sliderHandleScrollMargins": 4,
-						"sliderHandleScrollSpeed": 20,
-						"section": "mainSettings",
-						"ID": "mainSettingsScrollHandle",
-						"navigable": true,
-						"active": false,
-						"activeTrigger": false,
-						"chosenTrigger": false,
-						"overrideUp": "",
-						"overrideDown": "",
-						"overrideLeft": "",
-						"overrideRight": "",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mGrowWidth": 1,
-						"mGrowHeight": 0
-					},
-					"behaviors": {
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
-					"world": {
-						"x": 289,
-						"y": -163,
-						"width": 2,
-						"height": 10,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
 					}
 				},
 				{
@@ -3671,8 +3843,8 @@
 					},
 					"uid": 54,
 					"instanceVariables": {
-						"sliderMin": 5,
-						"sliderMax": 15,
+						"sliderMin": 0,
+						"sliderMax": 30,
 						"sliderStep": 1,
 						"sliderMarginsHorizontal": 2,
 						"sliderLeftX": 0,
@@ -3759,7 +3931,7 @@
 					"world": {
 						"x": 214,
 						"y": 11,
-						"width": 122,
+						"width": 238,
 						"height": 10,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -3815,9 +3987,9 @@
 						}
 					},
 					"world": {
-						"x": 155,
+						"x": 97,
 						"y": 11,
-						"width": 89,
+						"width": 147,
 						"height": 6,
 						"originX": 0,
 						"originY": 0.5,
@@ -3984,7 +4156,7 @@
 					"world": {
 						"x": 214,
 						"y": -135,
-						"width": 159,
+						"width": 55,
 						"height": 12,
 						"originX": 0.5,
 						"originY": 0.5,

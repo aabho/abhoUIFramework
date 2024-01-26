@@ -4508,7 +4508,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "canvas masking behavior",
+							"text": "ya",
 							"text-color": [
 								0,
 								0,
@@ -4528,17 +4528,54 @@
 								{
 									"id": "is-on-screen",
 									"objectClass": "uiCanvas",
-									"sid": 816261723916564
+									"sid": 643198806721361
 								},
 								{
 									"id": "for-each",
 									"objectClass": "System",
-									"sid": 594926364105180,
+									"sid": 553585319032612,
 									"parameters": {
 										"object": "uiCanvas"
 									}
 								}
 							],
+							"actions": [
+								{
+									"customAction": "uiPaste [INTERNAL]",
+									"objectClass": "uiCanvas",
+									"sid": 588520028495546
+								}
+							],
+							"sid": 220145773853282
+						},
+						{
+							"eventType": "comment",
+							"text": "canvas masking behavior",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiPaste [INTERNAL]",
+							"objectClass": "uiCanvas",
+							"functionDescription": "paste all uiCanvasPaste objects onto this canvas",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
 							"actions": [
 								{
 									"type": "comment",
@@ -4559,13 +4596,13 @@
 								{
 									"id": "clear-canvas",
 									"objectClass": "uiCanvas",
-									"sid": 252679239722004,
+									"sid": 531342971899383,
 									"parameters": {
 										"color": "rgba(0, 0, 0, 0)"
 									}
 								}
 							],
-							"sid": 232832602924853,
+							"sid": 305795284212690,
 							"children": [
 								{
 									"eventType": "block",
@@ -4573,7 +4610,7 @@
 										{
 											"id": "compare-instance-variable",
 											"objectClass": "uiCanvasPaste",
-											"sid": 459295237651283,
+											"sid": 571723031443004,
 											"parameters": {
 												"instance-variable": "canvas",
 												"comparison": 0,
@@ -4619,7 +4656,7 @@
 											"script": "// get instances\nconst canvas = runtime.objects.uiCanvas.getFirstPickedInstance();\nconst pasteArr = Array.from(runtime.objects.uiCanvasPaste.getPickedInstances());\n\n// iterate through all objects to be pasted\nfor (const pasteObj of pasteArr)\n{\n\t// now go through children\n\tfor (const child of pasteObj.allChildren()) \n\t{\n\t\t// if this child isn't in the array already...\n\t\tif (!pasteArr.some(item => item === child))\n\t\t{\n\t\t\t// paste this child\n\t\t\tpasteArr.push(child);\n\t\t}\n\t}\n}\n\n// sort array by zIndex\npasteArr.sort((a, b) => a.zIndex - b.zIndex);\n\n// paste all objects\nfor (const pasteObj of pasteArr)\n{\n\t// paste this obj\n\tcanvas.pasteInstances([pasteObj]);\n}"
 										}
 									],
-									"sid": 753629068451703
+									"sid": 254168104122371
 								}
 							]
 						}
@@ -7576,6 +7613,32 @@
 											"sid": 942097870333824,
 											"children": [
 												{
+													"eventType": "variable",
+													"name": "pass",
+													"type": "boolean",
+													"initialValue": "false",
+													"comment": "was component successfully chosen?",
+													"isStatic": false,
+													"isConstant": false,
+													"sid": 967951227683705
+												},
+												{
+													"eventType": "comment",
+													"text": "iterate through all ui components that mouse is currently over, in order of zIndex\n(not all components are eligible in cases like being off their canvas)",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
 													"eventType": "block",
 													"conditions": [
 														{
@@ -7589,7 +7652,7 @@
 														{
 															"id": "is-boolean-instance-variable-set",
 															"objectClass": "ui",
-															"sid": 406062554429033,
+															"sid": 910392912536527,
 															"parameters": {
 																"instance-variable": "navigable"
 															}
@@ -7597,23 +7660,59 @@
 														{
 															"id": "is-boolean-instance-variable-set",
 															"objectClass": "ui",
-															"sid": 655687633785626,
+															"sid": 931022164326261,
 															"parameters": {
 																"instance-variable": "active"
 															}
 														},
 														{
-															"id": "pick-topbottom",
-															"objectClass": "ui",
-															"sid": 372783779861564,
+															"id": "for-each-ordered",
+															"objectClass": "System",
+															"sid": 694623393768930,
 															"parameters": {
-																"which": "top"
+																"object": "ui",
+																"expression": "ui.ZIndex",
+																"order": "descending"
 															}
 														}
 													],
 													"actions": [],
 													"sid": 838192395915096,
 													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "pick-by-unique-id",
+																	"objectClass": "uiCanvasPaste",
+																	"sid": 676532253961219,
+																	"parameters": {
+																		"unique-id": "ui.UID"
+																	}
+																},
+																{
+																	"id": "compare-instance-variable",
+																	"objectClass": "uiCanvas",
+																	"sid": 317679253634135,
+																	"parameters": {
+																		"instance-variable": "canvasID",
+																		"comparison": 0,
+																		"value": "uiCanvasPaste.canvas"
+																	}
+																},
+																{
+																	"id": "cursor-is-over-object",
+																	"objectClass": "Mouse",
+																	"sid": 452181257218749,
+																	"parameters": {
+																		"object": "uiCanvas"
+																	},
+																	"isInverted": true
+																}
+															],
+															"actions": [],
+															"sid": 633894850532709
+														},
 														{
 															"eventType": "comment",
 															"text": "choose this component, but only if it's not already chosen",
@@ -7634,33 +7733,62 @@
 															"eventType": "block",
 															"conditions": [
 																{
-																	"id": "compare-instance-variable",
-																	"objectClass": "ui",
-																	"sid": 133218763864826,
-																	"parameters": {
-																		"instance-variable": "ID",
-																		"comparison": 0,
-																		"value": "uiChosenID"
-																	},
-																	"isInverted": true
+																	"id": "else",
+																	"objectClass": "System",
+																	"sid": 976894903912149
 																}
 															],
 															"actions": [
 																{
-																	"id": "set-eventvar-value",
+																	"id": "stop-loop",
 																	"objectClass": "System",
-																	"sid": 784709900385634,
-																	"parameters": {
-																		"variable": "uiChosenID",
-																		"value": "ui.id"
-																	}
+																	"sid": 969115501095420
 																},
 																{
-																	"callFunction": "uiUpdate [INTERNAL]",
-																	"sid": 975455699868694
+																	"id": "set-boolean-eventvar",
+																	"objectClass": "System",
+																	"sid": 112166548260142,
+																	"parameters": {
+																		"variable": "pass",
+																		"value": "true"
+																	}
 																}
 															],
-															"sid": 684978855532792
+															"sid": 684978855532792,
+															"children": [
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "compare-instance-variable",
+																			"objectClass": "ui",
+																			"sid": 247996411725786,
+																			"parameters": {
+																				"instance-variable": "ID",
+																				"comparison": 0,
+																				"value": "uiChosenID"
+																			},
+																			"isInverted": true
+																		}
+																	],
+																	"actions": [
+																		{
+																			"id": "set-eventvar-value",
+																			"objectClass": "System",
+																			"sid": 720017252996761,
+																			"parameters": {
+																				"variable": "uiChosenID",
+																				"value": "ui.id"
+																			}
+																		},
+																		{
+																			"callFunction": "uiUpdate [INTERNAL]",
+																			"sid": 680956413147510
+																		}
+																	],
+																	"sid": 955045859132325
+																}
+															]
 														}
 													]
 												},
@@ -7684,9 +7812,13 @@
 													"eventType": "block",
 													"conditions": [
 														{
-															"id": "else",
+															"id": "compare-boolean-eventvar",
 															"objectClass": "System",
-															"sid": 434238287632517
+															"sid": 916528888807014,
+															"parameters": {
+																"variable": "pass"
+															},
+															"isInverted": true
 														}
 													],
 													"actions": [
