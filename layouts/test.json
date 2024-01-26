@@ -35,7 +35,7 @@
 			"global": false
 		},
 		{
-			"name": "content",
+			"name": "main",
 			"overriden": 0,
 			"subLayers": [],
 			"instances": [
@@ -54,7 +54,8 @@
 					},
 					"uid": 4,
 					"instanceVariables": {
-						"scrollSliderHandleID": "",
+						"scrollSliderHandleY": "",
+						"scrollSliderHandleX": "",
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
 						"canvas": "",
@@ -234,7 +235,8 @@
 					},
 					"uid": 6,
 					"instanceVariables": {
-						"scrollSliderHandleID": "",
+						"scrollSliderHandleY": "",
+						"scrollSliderHandleX": "",
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
 						"canvas": "",
@@ -414,7 +416,8 @@
 					},
 					"uid": 11,
 					"instanceVariables": {
-						"scrollSliderHandleID": "",
+						"scrollSliderHandleY": "",
+						"scrollSliderHandleX": "",
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
 						"canvas": "",
@@ -594,7 +597,8 @@
 					},
 					"uid": 13,
 					"instanceVariables": {
-						"scrollSliderHandleID": "",
+						"scrollSliderHandleY": "",
+						"scrollSliderHandleX": "",
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
 						"canvas": "",
@@ -774,7 +778,8 @@
 					},
 					"uid": 18,
 					"instanceVariables": {
-						"scrollSliderHandleID": "",
+						"scrollSliderHandleY": "",
+						"scrollSliderHandleX": "",
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
 						"canvas": "",
@@ -954,7 +959,8 @@
 					},
 					"uid": 8,
 					"instanceVariables": {
-						"scrollSliderHandleID": "",
+						"scrollSliderHandleY": "",
+						"scrollSliderHandleX": "",
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
 						"canvas": "",
@@ -1391,7 +1397,41 @@
 						],
 						"angle": 0
 					}
-				},
+				}
+			],
+			"sid": 770644799188388,
+			"effectTypes": [],
+			"isInitiallyVisible": true,
+			"isInitiallyInteractive": true,
+			"color": [
+				1,
+				1,
+				1,
+				1
+			],
+			"backgroundColor": [
+				0.3686274509803922,
+				0.3686274509803922,
+				0.3686274509803922,
+				1
+			],
+			"isTransparent": true,
+			"parallaxX": 1,
+			"parallaxY": 1,
+			"scaleRate": 1,
+			"forceOwnTexture": false,
+			"renderingMode": "3d",
+			"drawOrder": "z-order",
+			"useRenderCells": false,
+			"blendMode": "normal",
+			"zElevation": 0,
+			"global": false
+		},
+		{
+			"name": "main scroll view",
+			"overriden": 0,
+			"subLayers": [],
+			"instances": [
 				{
 					"type": "uiMainButton",
 					"properties": {
@@ -1407,7 +1447,8 @@
 					},
 					"uid": 61,
 					"instanceVariables": {
-						"scrollSliderHandleID": "mainScrollHandle",
+						"scrollSliderHandleY": "mainScrollHandle",
+						"scrollSliderHandleX": "",
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
 						"canvas": "main",
@@ -1587,7 +1628,8 @@
 					},
 					"uid": 62,
 					"instanceVariables": {
-						"scrollSliderHandleID": "mainScrollHandle",
+						"scrollSliderHandleY": "mainScrollHandle",
+						"scrollSliderHandleX": "",
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
 						"canvas": "main",
@@ -1665,9 +1707,9 @@
 					},
 					"world": {
 						"x": 380,
-						"y": 141,
+						"y": 169.5,
 						"width": 55,
-						"height": 169,
+						"height": 112,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -1737,9 +1779,371 @@
 					},
 					"world": {
 						"x": 380,
-						"y": 140.5,
+						"y": 169,
 						"width": 50,
-						"height": 164,
+						"height": 107,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainButton",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 66,
+					"instanceVariables": {
+						"scrollSliderHandleY": "mainScrollHandle",
+						"scrollSliderHandleX": "",
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
+						"canvas": "main",
+						"section": "main",
+						"ID": "mainScrollDummy4",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2
+					},
+					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 66,
+						"children": [
+							{
+								"uid": 67,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": false,
+									"h": false,
+									"a": true,
+									"o": true,
+									"v": true,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 364.5,
+						"y": 85,
+						"width": 24,
+						"height": 50,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "THIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\n",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 2.5,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 67,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 66,
+						"uid": 67,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": true,
+							"v": true,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 364.5,
+						"y": 84.5,
+						"width": 19,
+						"height": 45,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainButton",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 68,
+					"instanceVariables": {
+						"scrollSliderHandleY": "mainScrollHandle",
+						"scrollSliderHandleX": "",
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
+						"canvas": "main",
+						"section": "main",
+						"ID": "mainScrollDummy95",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2
+					},
+					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 68,
+						"children": [
+							{
+								"uid": 69,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": false,
+									"h": false,
+									"a": true,
+									"o": true,
+									"v": true,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 394,
+						"y": 85,
+						"width": 24,
+						"height": 50,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "THIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\n",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 2.5,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 69,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 68,
+						"uid": 69,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": true,
+							"v": true,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 394,
+						"y": 84.5,
+						"width": 19,
+						"height": 45,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -1753,7 +2157,7 @@
 					}
 				}
 			],
-			"sid": 770644799188388,
+			"sid": 521148992048095,
 			"effectTypes": [],
 			"isInitiallyVisible": true,
 			"isInitiallyInteractive": true,
@@ -2519,7 +2923,7 @@
 						"sliderRightY": 0,
 						"sliderTickObjectName": "",
 						"section": "mainSettings",
-						"ID": "mainSettingsScrollBar",
+						"ID": "mainSettingsScrollBarVert",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -2600,20 +3004,23 @@
 					},
 					"uid": 52,
 					"instanceVariables": {
-						"sliderHandleAttachedBar": "mainSettingsScrollBar",
+						"sliderHandleAttachedBar": "mainSettingsScrollBarVert",
 						"sliderHandleValue": 0,
 						"sliderHandleValueLast": 0,
-						"sliderHandleValueLastTrigger": 0,
 						"sliderHandleProgress": 0,
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
-						"sliderHandleScroller": true,
-						"sliderHandleScrollUseCanvas": "mainSettings",
-						"sliderHandleScrollMargins": 4,
-						"sliderHandleScrollSpeed": 20,
+						"scroller": true,
+						"scrollerUseCanvas": "mainSettings",
+						"scrollerMargins": 4,
+						"scrollerSpeed": 20,
+						"scrollerX1": 0,
+						"scrollerY1": 0,
+						"scrollerX2": 0,
+						"scrollerY2": 0,
 						"section": "mainSettings",
-						"ID": "mainSettingsScrollHandle",
+						"ID": "mainSettingsScrollHandleVert",
 						"navigable": true,
 						"active": false,
 						"activeTrigger": false,
@@ -2760,15 +3167,18 @@
 						"sliderHandleAttachedBar": "mainSettingsScrollBarHoriz",
 						"sliderHandleValue": 0,
 						"sliderHandleValueLast": 0,
-						"sliderHandleValueLastTrigger": 0,
 						"sliderHandleProgress": 0,
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
-						"sliderHandleScroller": true,
-						"sliderHandleScrollUseCanvas": "mainSettings",
-						"sliderHandleScrollMargins": 4,
-						"sliderHandleScrollSpeed": 20,
+						"scroller": true,
+						"scrollerUseCanvas": "mainSettings",
+						"scrollerMargins": 4,
+						"scrollerSpeed": 20,
+						"scrollerX1": 0,
+						"scrollerY1": 0,
+						"scrollerX2": 0,
+						"scrollerY2": 0,
 						"section": "mainSettings",
 						"ID": "mainSettingsScrollHandleHoriz",
 						"navigable": true,
@@ -2956,7 +3366,7 @@
 					},
 					"world": {
 						"x": 214,
-						"y": -268,
+						"y": -185,
 						"width": 54,
 						"height": 12,
 						"originX": 0.5,
@@ -2995,7 +3405,8 @@
 						"sliderRightX": 0,
 						"sliderRightY": 0,
 						"sliderTickObjectName": "uiMainSettingsSliderTick",
-						"scrollSliderHandleID": "mainSettingsScrollHandle",
+						"scrollSliderHandleY": "mainSettingsScrollHandleVert",
+						"scrollSliderHandleX": "mainSettingsScrollHandleHoriz",
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
 						"canvas": "mainSettings",
@@ -3073,7 +3484,7 @@
 					},
 					"world": {
 						"x": 214,
-						"y": -243,
+						"y": -160,
 						"width": 122,
 						"height": 10,
 						"originX": 0.5,
@@ -3145,7 +3556,7 @@
 					},
 					"world": {
 						"x": 260,
-						"y": -258,
+						"y": -175,
 						"width": 10,
 						"height": 8,
 						"originX": 0.5,
@@ -3217,7 +3628,7 @@
 					},
 					"world": {
 						"x": 192.26417392672465,
-						"y": -257.9494223182903,
+						"y": -174.94942231829032,
 						"width": 10,
 						"height": 8,
 						"originX": 0.5,
@@ -3289,7 +3700,7 @@
 					},
 					"world": {
 						"x": 163.3281316568806,
-						"y": -257.4845494617889,
+						"y": -174.4845494617889,
 						"width": 10,
 						"height": 8,
 						"originX": 0.5,
@@ -3347,7 +3758,7 @@
 					},
 					"world": {
 						"x": 160,
-						"y": -243,
+						"y": -160,
 						"width": 30,
 						"height": 6,
 						"originX": 0,
@@ -3405,7 +3816,7 @@
 					},
 					"world": {
 						"x": 273,
-						"y": -243,
+						"y": -160,
 						"width": 13,
 						"height": 6,
 						"originX": 0,
@@ -3438,15 +3849,18 @@
 						"sliderHandleAttachedBar": "mainSettingsMus",
 						"sliderHandleValue": 10,
 						"sliderHandleValueLast": 0,
-						"sliderHandleValueLastTrigger": 0,
 						"sliderHandleProgress": 0,
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "mainSettingsMusMid",
 						"sliderHandleRuleAllowEqual": false,
-						"sliderHandleScroller": false,
-						"sliderHandleScrollUseCanvas": "",
-						"sliderHandleScrollMargins": 0,
-						"sliderHandleScrollSpeed": 20,
+						"scroller": false,
+						"scrollerUseCanvas": "",
+						"scrollerMargins": 0,
+						"scrollerSpeed": 20,
+						"scrollerX1": 0,
+						"scrollerY1": 0,
+						"scrollerX2": 0,
+						"scrollerY2": 0,
 						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsMusHigh",
@@ -3455,9 +3869,9 @@
 						"activeTrigger": false,
 						"chosenTrigger": false,
 						"overrideUp": "",
-						"overrideDown": "",
-						"overrideLeft": "",
-						"overrideRight": "",
+						"overrideDown": "mainSettingsSfxHandle",
+						"overrideLeft": "mainSettingsMusMid",
+						"overrideRight": "mainSettingsScrollHandle",
 						"oWidth": 0,
 						"oHeight": 0,
 						"mGrowWidth": 2,
@@ -3517,7 +3931,7 @@
 					},
 					"world": {
 						"x": 260,
-						"y": -243,
+						"y": -160,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -3550,15 +3964,18 @@
 						"sliderHandleAttachedBar": "mainSettingsMus",
 						"sliderHandleValue": 1,
 						"sliderHandleValueLast": 0,
-						"sliderHandleValueLastTrigger": 0,
 						"sliderHandleProgress": 0,
 						"sliderHandleRuleLesser": "mainSettingsMusMid",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
-						"sliderHandleScroller": false,
-						"sliderHandleScrollUseCanvas": "",
-						"sliderHandleScrollMargins": 0,
-						"sliderHandleScrollSpeed": 20,
+						"scroller": false,
+						"scrollerUseCanvas": "",
+						"scrollerMargins": 0,
+						"scrollerSpeed": 20,
+						"scrollerX1": 0,
+						"scrollerY1": 0,
+						"scrollerX2": 0,
+						"scrollerY2": 0,
 						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsMusLow",
@@ -3567,9 +3984,9 @@
 						"activeTrigger": false,
 						"chosenTrigger": false,
 						"overrideUp": "",
-						"overrideDown": "",
+						"overrideDown": "mainSettingsSfxHandle",
 						"overrideLeft": "",
-						"overrideRight": "",
+						"overrideRight": "mainSettingsMusMid",
 						"oWidth": 0,
 						"oHeight": 0,
 						"mGrowWidth": 2,
@@ -3629,7 +4046,7 @@
 					},
 					"world": {
 						"x": 163,
-						"y": -243,
+						"y": -160,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -3662,15 +4079,18 @@
 						"sliderHandleAttachedBar": "mainSettingsMus",
 						"sliderHandleValue": 3,
 						"sliderHandleValueLast": 0,
-						"sliderHandleValueLastTrigger": 0,
 						"sliderHandleProgress": 0,
 						"sliderHandleRuleLesser": "mainSettingsMusHigh",
 						"sliderHandleRuleGreater": "mainSettingsMusLow",
 						"sliderHandleRuleAllowEqual": false,
-						"sliderHandleScroller": false,
-						"sliderHandleScrollUseCanvas": "",
-						"sliderHandleScrollMargins": 0,
-						"sliderHandleScrollSpeed": 20,
+						"scroller": false,
+						"scrollerUseCanvas": "",
+						"scrollerMargins": 0,
+						"scrollerSpeed": 20,
+						"scrollerX1": 0,
+						"scrollerY1": 0,
+						"scrollerX2": 0,
+						"scrollerY2": 0,
 						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsMusMid",
@@ -3679,9 +4099,9 @@
 						"activeTrigger": false,
 						"chosenTrigger": false,
 						"overrideUp": "",
-						"overrideDown": "",
-						"overrideLeft": "",
-						"overrideRight": "",
+						"overrideDown": "mainSettingsSfxHandle",
+						"overrideLeft": "mainSettingsMusLow",
+						"overrideRight": "mainSettingsMusHigh",
 						"oWidth": 0,
 						"oHeight": 0,
 						"mGrowWidth": 2,
@@ -3741,7 +4161,7 @@
 					},
 					"world": {
 						"x": 192,
-						"y": -243,
+						"y": -160,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -3813,7 +4233,7 @@
 					},
 					"world": {
 						"x": 214,
-						"y": -9,
+						"y": -50,
 						"width": 49,
 						"height": 12,
 						"originX": 0.5,
@@ -3824,7 +4244,7 @@
 							1,
 							1
 						],
-						"angle": 0,
+						"angle": 0.2617993877991494,
 						"zElevation": 0
 					}
 				},
@@ -3852,7 +4272,8 @@
 						"sliderRightX": 0,
 						"sliderRightY": 0,
 						"sliderTickObjectName": "uiMainSettingsSliderTick",
-						"scrollSliderHandleID": "mainSettingsScrollHandle",
+						"scrollSliderHandleY": "mainSettingsScrollHandleVert",
+						"scrollSliderHandleX": "mainSettingsScrollHandleHoriz",
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
 						"canvas": "mainSettings",
@@ -3930,8 +4351,8 @@
 					},
 					"world": {
 						"x": 214,
-						"y": 11,
-						"width": 238,
+						"y": -28,
+						"width": 336,
 						"height": 10,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -3941,7 +4362,7 @@
 							1,
 							1
 						],
-						"angle": 0,
+						"angle": 0.2617993877991494,
 						"zElevation": 0
 					}
 				},
@@ -3987,9 +4408,9 @@
 						}
 					},
 					"world": {
-						"x": 97,
-						"y": 11,
-						"width": 147,
+						"x": 54,
+						"y": -71,
+						"width": 196,
 						"height": 6,
 						"originX": 0,
 						"originY": 0.5,
@@ -3999,7 +4420,7 @@
 							0.4549019607843137,
 							1
 						],
-						"angle": 0,
+						"angle": 0.2617993877991494,
 						"zElevation": 0
 					}
 				},
@@ -4021,15 +4442,18 @@
 						"sliderHandleAttachedBar": "mainSettingsDummy1",
 						"sliderHandleValue": 10,
 						"sliderHandleValueLast": 0,
-						"sliderHandleValueLastTrigger": 0,
 						"sliderHandleProgress": 0,
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
-						"sliderHandleScroller": false,
-						"sliderHandleScrollUseCanvas": "",
-						"sliderHandleScrollMargins": 0,
-						"sliderHandleScrollSpeed": 20,
+						"scroller": false,
+						"scrollerUseCanvas": "",
+						"scrollerMargins": 0,
+						"scrollerSpeed": 20,
+						"scrollerX1": 0,
+						"scrollerY1": 0,
+						"scrollerX2": 0,
+						"scrollerY2": 0,
 						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsDummy1Handle",
@@ -4037,10 +4461,10 @@
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,
-						"overrideUp": "",
+						"overrideUp": "mainSettingsSfxHandle",
 						"overrideDown": "",
 						"overrideLeft": "",
-						"overrideRight": "",
+						"overrideRight": "mainSettingsScrollHandle",
 						"oWidth": 0,
 						"oHeight": 0,
 						"mGrowWidth": 2,
@@ -4082,8 +4506,8 @@
 						}
 					},
 					"world": {
-						"x": 244,
-						"y": 11,
+						"x": 243,
+						"y": -20,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -4094,7 +4518,7 @@
 							1,
 							1
 						],
-						"angle": 0,
+						"angle": 0.2617993877991494,
 						"zElevation": 0
 					}
 				},
@@ -4155,7 +4579,7 @@
 					},
 					"world": {
 						"x": 214,
-						"y": -135,
+						"y": -109,
 						"width": 55,
 						"height": 12,
 						"originX": 0.5,
@@ -4194,7 +4618,8 @@
 						"sliderRightX": 0,
 						"sliderRightY": 0,
 						"sliderTickObjectName": "uiMainSettingsSliderTick",
-						"scrollSliderHandleID": "mainSettingsScrollHandle",
+						"scrollSliderHandleY": "mainSettingsScrollHandleVert",
+						"scrollSliderHandleX": "mainSettingsScrollHandleHoriz",
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
 						"canvas": "mainSettings",
@@ -4272,7 +4697,7 @@
 					},
 					"world": {
 						"x": 214,
-						"y": -117,
+						"y": -91,
 						"width": 122,
 						"height": 10,
 						"originX": 0.5,
@@ -4330,7 +4755,7 @@
 					},
 					"world": {
 						"x": 155,
-						"y": -117,
+						"y": -91,
 						"width": 89,
 						"height": 6,
 						"originX": 0,
@@ -4363,15 +4788,18 @@
 						"sliderHandleAttachedBar": "mainSettingsSfx",
 						"sliderHandleValue": 10,
 						"sliderHandleValueLast": 0,
-						"sliderHandleValueLastTrigger": 0,
 						"sliderHandleProgress": 0,
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
-						"sliderHandleScroller": false,
-						"sliderHandleScrollUseCanvas": "",
-						"sliderHandleScrollMargins": 0,
-						"sliderHandleScrollSpeed": 20,
+						"scroller": false,
+						"scrollerUseCanvas": "",
+						"scrollerMargins": 0,
+						"scrollerSpeed": 20,
+						"scrollerX1": 0,
+						"scrollerY1": 0,
+						"scrollerX2": 0,
+						"scrollerY2": 0,
 						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsSfxHandle",
@@ -4379,10 +4807,10 @@
 						"active": false,
 						"activeTrigger": false,
 						"chosenTrigger": false,
-						"overrideUp": "",
-						"overrideDown": "",
+						"overrideUp": "mainSettingsMusMid",
+						"overrideDown": "mainSettingsDummy1Handle",
 						"overrideLeft": "",
-						"overrideRight": "",
+						"overrideRight": "mainSettingsScrollHandle",
 						"oWidth": 0,
 						"oHeight": 0,
 						"mGrowWidth": 2,
@@ -4397,7 +4825,7 @@
 					},
 					"world": {
 						"x": 244,
-						"y": -117,
+						"y": -91,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -4521,15 +4949,18 @@
 						"sliderHandleAttachedBar": "mainScrollBar",
 						"sliderHandleValue": 0,
 						"sliderHandleValueLast": 0,
-						"sliderHandleValueLastTrigger": 0,
 						"sliderHandleProgress": 0,
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
-						"sliderHandleScroller": true,
-						"sliderHandleScrollUseCanvas": "main",
-						"sliderHandleScrollMargins": 4,
-						"sliderHandleScrollSpeed": 10,
+						"scroller": true,
+						"scrollerUseCanvas": "main",
+						"scrollerMargins": 4,
+						"scrollerSpeed": 10,
+						"scrollerX1": 0,
+						"scrollerY1": 0,
+						"scrollerX2": 0,
+						"scrollerY2": 0,
 						"section": "main",
 						"ID": "mainScrollHandle",
 						"navigable": true,

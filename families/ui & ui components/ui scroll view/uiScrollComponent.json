@@ -4,11 +4,18 @@
 	"sid": 903651693019718,
 	"instanceVariables": [
 		{
-			"name": "scrollSliderHandleID",
+			"name": "scrollSliderHandleY",
 			"type": "string",
-			"desc": "the slider to use for this object",
+			"desc": "the ID of the slider to use",
 			"show": true,
 			"sid": 285822989813354
+		},
+		{
+			"name": "scrollSliderHandleX",
+			"type": "string",
+			"desc": "the ID of the slider to use",
+			"show": true,
+			"sid": 217647463175447
 		},
 		{
 			"name": "scrollOffsetX",

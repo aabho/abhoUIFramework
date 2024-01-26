@@ -503,7 +503,7 @@
 									"objectClass": "uiSliderHandle",
 									"sid": 429928029367033,
 									"parameters": {
-										"instance-variable": "sliderHandleScroller"
+										"instance-variable": "scroller"
 									}
 								}
 							],
@@ -830,7 +830,7 @@
 									"objectClass": "uiSliderHandle",
 									"sid": 736032317933827,
 									"parameters": {
-										"unique-id": "Functions.uiGetUIDFromID(uiScrollComponent.scrollSliderHandleID)"
+										"unique-id": "Functions.uiGetUIDFromID(uiScrollComponent.scrollSliderHandleY)"
 									}
 								},
 								{
@@ -840,32 +840,14 @@
 									"parameters": {
 										"instance-variable": "canvasID",
 										"comparison": 0,
-										"value": "uiSliderHandle.sliderHandleScrollUseCanvas"
+										"value": "uiSliderHandle.scrollerUseCanvas"
 									}
 								}
 							],
 							"actions": [
 								{
-									"id": "set-instvar-value",
-									"objectClass": "uiScrollComponent",
-									"sid": 718655648526511,
-									"parameters": {
-										"instance-variable": "scrollOffsetX",
-										"value": "Self.X"
-									}
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "uiScrollComponent",
-									"sid": 668669403206386,
-									"parameters": {
-										"instance-variable": "scrollOffsetY",
-										"value": "Self.Y"
-									}
-								},
-								{
 									"type": "comment",
-									"text": "get the offset between this object and its parent",
+									"text": "get the offset between this object and canvas",
 									"text-color": [
 										0,
 										0,
@@ -880,8 +862,42 @@
 									]
 								},
 								{
-									"type": "script",
-									"script": "// first, get this instance and its parent\nconst scrollComponent = runtime.objects.uiScrollComponent.getFirstPickedInstance();\nconst canvas = runtime.objects.uiCanvas.getFirstPickedInstance();\n\n// then set the offset variables based on position difference\nscrollComponent.instVars.scrollOffsetX -= canvas.x;\nscrollComponent.instVars.scrollOffsetY -= canvas.y;"
+									"id": "set-instvar-value",
+									"objectClass": "uiScrollComponent",
+									"sid": 637858337305957,
+									"disabled": true,
+									"parameters": {
+										"instance-variable": "scrollOffsetX",
+										"value": "Self.BBoxLeft - uiCanvas.X"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "uiScrollComponent",
+									"sid": 176341093803021,
+									"disabled": true,
+									"parameters": {
+										"instance-variable": "scrollOffsetY",
+										"value": "Self.BBoxTop - uiCanvas.Y"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "uiScrollComponent",
+									"sid": 912827746753843,
+									"parameters": {
+										"instance-variable": "scrollOffsetX",
+										"value": "Self.X - uiCanvas.X"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "uiScrollComponent",
+									"sid": 700146875470785,
+									"parameters": {
+										"instance-variable": "scrollOffsetY",
+										"value": "Self.Y - uiCanvas.Y"
+									}
 								}
 							],
 							"sid": 663146989960405
@@ -2900,1306 +2916,6 @@
 						{
 							"eventType": "group",
 							"disabled": false,
-							"title": "ui behavior slider handle",
-							"description": "",
-							"isActiveOnStart": true,
-							"children": [
-								{
-									"eventType": "comment",
-									"text": "navigate a slider using step increments",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6431372549019608,
-										0.8470588235294118,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"aceType": "action",
-									"aceName": "uiSliderIncrement [INTERNAL]",
-									"objectClass": "uiSliderHandle",
-									"functionDescription": "increments slider by a step",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [
-										{
-											"name": "steps",
-											"type": "number",
-											"initialValue": "1",
-											"comment": "usually -1 or 1",
-											"sid": 993044985477042
-										}
-									],
-									"eventType": "custom-ace-block",
-									"conditions": [
-										{
-											"id": "pick-by-unique-id",
-											"objectClass": "uiSliderBar",
-											"sid": 879307905287783,
-											"parameters": {
-												"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "add-to-instvar",
-											"objectClass": "uiSliderHandle",
-											"sid": 986298468552987,
-											"parameters": {
-												"instance-variable": "sliderHandleValue",
-												"value": "(uiSliderBar.sliderStep * steps) * \n((uiSliderBar.sliderMax > uiSliderBar.sliderMin) ? 1 : -1)"
-											}
-										},
-										{
-											"customAction": "uiSliderValueUpdate [INTERNAL]",
-											"objectClass": "uiSliderHandle",
-											"sid": 303924773923123
-										},
-										{
-											"callFunction": "uiUpdate [INTERNAL]",
-											"sid": 315186407905785
-										}
-									],
-									"sid": 368921690651200
-								},
-								{
-									"eventType": "comment",
-									"text": "call after adjusting slider value/min/max/steps to snap and clamp value",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6431372549019608,
-										0.8470588235294118,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"aceType": "action",
-									"aceName": "uiSliderValueUpdate [INTERNAL]",
-									"objectClass": "uiSliderHandle",
-									"functionDescription": "call after adjusting slider value/min/max/steps",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [
-										{
-											"id": "pick-by-unique-id",
-											"objectClass": "uiSliderBar",
-											"sid": 174146842532229,
-											"parameters": {
-												"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
-											}
-										}
-									],
-									"actions": [],
-									"sid": 747767653568641,
-									"children": [
-										{
-											"eventType": "comment",
-											"text": "hold the lesser and greater values if they exist",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.6705882352941176,
-												0.8745098039215686,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"eventType": "variable",
-											"name": "lesserValueExists",
-											"type": "boolean",
-											"initialValue": "false",
-											"comment": "hold var",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 251948594541990
-										},
-										{
-											"eventType": "variable",
-											"name": "lesserValue",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "hold var",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 771535434960418
-										},
-										{
-											"eventType": "variable",
-											"name": "greaterValueExists",
-											"type": "boolean",
-											"initialValue": "false",
-											"comment": "hold var",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 740968434773527
-										},
-										{
-											"eventType": "variable",
-											"name": "greaterValue",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "hold var",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 502349462010053
-										},
-										{
-											"eventType": "comment",
-											"text": "set up",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"eventType": "block",
-											"conditions": [],
-											"actions": [
-												{
-													"type": "comment",
-													"text": "snap to slider steps",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"id": "set-instvar-value",
-													"objectClass": "uiSliderHandle",
-													"sid": 393166437180570,
-													"parameters": {
-														"instance-variable": "sliderHandleValue",
-														"value": "round((Self.sliderHandleValue - uiSliderBar.sliderMin) / uiSliderBar.sliderStep) * uiSliderBar.sliderStep + uiSliderBar.sliderMin"
-													}
-												}
-											],
-											"sid": 524512255546456
-										},
-										{
-											"eventType": "comment",
-											"text": "if lesser rule handle exists, store lesser value",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "uiSliderHandle",
-													"sid": 412155748699677,
-													"parameters": {
-														"instance-variable": "sliderHandleRuleLesser",
-														"comparison": 0,
-														"value": "\"\""
-													},
-													"isInverted": true
-												},
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "ui",
-													"sid": 852025835738805,
-													"parameters": {
-														"instance-variable": "ID",
-														"comparison": 0,
-														"value": "uiSliderHandle.sliderHandleRuleLesser"
-													}
-												},
-												{
-													"id": "pick-all",
-													"objectClass": "System",
-													"sid": 487258837327981,
-													"parameters": {
-														"object": "uiSliderHandle"
-													}
-												},
-												{
-													"id": "pick-by-unique-id",
-													"objectClass": "uiSliderHandle",
-													"sid": 517659520550600,
-													"parameters": {
-														"unique-id": "ui.UID"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-boolean-eventvar",
-													"objectClass": "System",
-													"sid": 417890781420035,
-													"parameters": {
-														"variable": "lesserValueExists",
-														"value": "true"
-													}
-												},
-												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 130796313262940,
-													"parameters": {
-														"variable": "lesserValue",
-														"value": "uiSliderHandle.sliderHandleValue"
-													}
-												}
-											],
-											"sid": 502601414000267
-										},
-										{
-											"eventType": "comment",
-											"text": "if greater rule handle exists, store greater value",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "uiSliderHandle",
-													"sid": 653436123484466,
-													"parameters": {
-														"instance-variable": "sliderHandleRuleGreater",
-														"comparison": 0,
-														"value": "\"\""
-													},
-													"isInverted": true
-												},
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "ui",
-													"sid": 628398172311200,
-													"parameters": {
-														"instance-variable": "ID",
-														"comparison": 0,
-														"value": "uiSliderHandle.sliderHandleRuleGreater"
-													}
-												},
-												{
-													"id": "pick-all",
-													"objectClass": "System",
-													"sid": 997912213607756,
-													"parameters": {
-														"object": "uiSliderHandle"
-													}
-												},
-												{
-													"id": "pick-by-unique-id",
-													"objectClass": "uiSliderHandle",
-													"sid": 378141349567881,
-													"parameters": {
-														"unique-id": "ui.UID"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-boolean-eventvar",
-													"objectClass": "System",
-													"sid": 696231885534147,
-													"parameters": {
-														"variable": "greaterValueExists",
-														"value": "true"
-													}
-												},
-												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 183944585272784,
-													"parameters": {
-														"variable": "greaterValue",
-														"value": "uiSliderHandle.sliderHandleValue"
-													}
-												}
-											],
-											"sid": 272115401297752
-										},
-										{
-											"eventType": "comment",
-											"text": "modify this handle's value based on lesser and greater rules",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"eventType": "comment",
-											"text": "don't get confused! this value must be LESS THAN the 'lesserValue' but GREATER THAN the 'greaterValue'!",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8470588235294118,
-												0.6431372549019608,
-												0.8745098039215686,
-												1
-											]
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-boolean-eventvar",
-													"objectClass": "System",
-													"sid": 288782512764127,
-													"parameters": {
-														"variable": "lesserValueExists"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-instvar-value",
-													"objectClass": "uiSliderHandle",
-													"sid": 957262451961773,
-													"parameters": {
-														"instance-variable": "sliderHandleValue",
-														"value": "min(Self.sliderHandleValue, lesserValue)"
-													}
-												}
-											],
-											"sid": 205054279052660,
-											"children": [
-												{
-													"eventType": "comment",
-													"text": "if equal value isn't allowed, and values are equal, subtract a step",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "is-boolean-instance-variable-set",
-															"objectClass": "uiSliderHandle",
-															"sid": 731718885104741,
-															"parameters": {
-																"instance-variable": "sliderHandleRuleAllowEqual"
-															},
-															"isInverted": true
-														},
-														{
-															"id": "compare-instance-variable",
-															"objectClass": "uiSliderHandle",
-															"sid": 535632731496953,
-															"parameters": {
-																"instance-variable": "sliderHandleValue",
-																"comparison": 0,
-																"value": "lesserValue"
-															}
-														}
-													],
-													"actions": [
-														{
-															"id": "add-to-instvar",
-															"objectClass": "uiSliderHandle",
-															"sid": 973382615887467,
-															"parameters": {
-																"instance-variable": "sliderHandleValue",
-																"value": "-uiSliderBar.sliderStep"
-															}
-														}
-													],
-													"sid": 490629387294365
-												}
-											]
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-boolean-eventvar",
-													"objectClass": "System",
-													"sid": 325404766383169,
-													"parameters": {
-														"variable": "greaterValueExists"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-instvar-value",
-													"objectClass": "uiSliderHandle",
-													"sid": 543482097275629,
-													"parameters": {
-														"instance-variable": "sliderHandleValue",
-														"value": "max(Self.sliderHandleValue, greaterValue)"
-													}
-												}
-											],
-											"sid": 313909864156555,
-											"children": [
-												{
-													"eventType": "comment",
-													"text": "if equal value isn't allowed, and values are equal, add a step",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "is-boolean-instance-variable-set",
-															"objectClass": "uiSliderHandle",
-															"sid": 756087466002290,
-															"parameters": {
-																"instance-variable": "sliderHandleRuleAllowEqual"
-															},
-															"isInverted": true
-														},
-														{
-															"id": "compare-instance-variable",
-															"objectClass": "uiSliderHandle",
-															"sid": 487335020602338,
-															"parameters": {
-																"instance-variable": "sliderHandleValue",
-																"comparison": 0,
-																"value": "greaterValue"
-															}
-														}
-													],
-													"actions": [
-														{
-															"id": "add-to-instvar",
-															"objectClass": "uiSliderHandle",
-															"sid": 551599670979155,
-															"parameters": {
-																"instance-variable": "sliderHandleValue",
-																"value": "uiSliderBar.sliderStep"
-															}
-														}
-													],
-													"sid": 837793702112140
-												}
-											]
-										},
-										{
-											"eventType": "comment",
-											"text": "final adjustments to this value",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"eventType": "block",
-											"conditions": [],
-											"actions": [
-												{
-													"type": "comment",
-													"text": "clamp value to slider bar range",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"id": "set-instvar-value",
-													"objectClass": "uiSliderHandle",
-													"sid": 493256938114728,
-													"parameters": {
-														"instance-variable": "sliderHandleValue",
-														"value": "Functions.utilClamp(Self.sliderHandleValue, uiSliderBar.sliderMin, uiSliderBar.sliderMax)"
-													}
-												},
-												{
-													"type": "comment",
-													"text": "calculate a number from 0 to 1, based on the slider value relative to the slider min/max",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"id": "set-instvar-value",
-													"objectClass": "uiSliderHandle",
-													"sid": 242749613459925,
-													"parameters": {
-														"instance-variable": "sliderHandleProgress",
-														"value": "unlerp(uiSliderBar.sliderMin, uiSliderBar.sliderMax, Self.sliderHandleValue)"
-													}
-												}
-											],
-											"sid": 348001381718795
-										}
-									]
-								},
-								{
-									"eventType": "comment",
-									"text": "update any scrollables that depend on this slider handle",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6431372549019608,
-										0.8470588235294118,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"aceType": "action",
-									"aceName": "uiSliderScrollUpdate [INTERNAL]",
-									"objectClass": "uiSliderHandle",
-									"functionDescription": "update scroll components attached to this",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "uiCanvas",
-											"sid": 107905596916734,
-											"parameters": {
-												"instance-variable": "canvasID",
-												"comparison": 0,
-												"value": "uiSliderHandle.sliderHandleScrollUseCanvas"
-											}
-										},
-										{
-											"id": "pick-by-unique-id",
-											"objectClass": "ui",
-											"sid": 269658965397917,
-											"parameters": {
-												"unique-id": "uiSliderHandle.UID"
-											}
-										},
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "uiScrollComponent",
-											"sid": 802901172872251,
-											"parameters": {
-												"instance-variable": "scrollSliderHandleID",
-												"comparison": 0,
-												"value": "ui.ID"
-											}
-										},
-										{
-											"id": "for-each",
-											"objectClass": "System",
-											"sid": 946082839190582,
-											"parameters": {
-												"object": "uiScrollComponent"
-											}
-										}
-									],
-									"actions": [],
-									"sid": 161612943058912,
-									"children": [
-										{
-											"eventType": "variable",
-											"name": "sliderValue",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "hold for js",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 253195042760089
-										},
-										{
-											"eventType": "variable",
-											"name": "targetPos",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "position to tween to",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 172557196255770
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "pick-by-unique-id",
-													"objectClass": "uiSliderBar",
-													"sid": 787050114869147,
-													"parameters": {
-														"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 435606501406856,
-													"parameters": {
-														"variable": "sliderValue",
-														"value": "lerp(uiSliderHandle.sliderHandleValueLastTrigger, uiSliderHandle.sliderHandleValue, ui.Tween.Progress(\"uiSliderHandleMove\"))"
-													}
-												}
-											],
-											"sid": 256313815291924
-										},
-										{
-											"eventType": "block",
-											"conditions": [],
-											"actions": [
-												{
-													"type": "comment",
-													"text": "the reason this is in js is, well... the parent could be ANYTHING, it might not even be a UI component.",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8470588235294118,
-														0.6431372549019608,
-														0.8745098039215686,
-														1
-													]
-												},
-												{
-													"type": "script",
-													"script": "// first, get this instance and its parent\nconst scrollComponent = runtime.objects.uiScrollComponent.getFirstPickedInstance();\n//const parent = runtime.getInstanceByUid(scrollComponent.instVars.scrollParentUID);\nconst canvas = runtime.objects.uiCanvas.getFirstPickedInstance();\n\n// set position of scroll component\nlocalVars.targetPos = canvas.y + scrollComponent.instVars.scrollOffsetY + localVars.sliderValue;"
-												}
-											],
-											"sid": 147010776274888
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "else",
-													"objectClass": "System",
-													"sid": 572431968962153
-												}
-											],
-											"actions": [
-												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 875654684925198,
-													"parameters": {
-														"variable": "targetPos",
-														"value": "uiScrollComponent.scrollOffsetY + sliderValue"
-													}
-												}
-											],
-											"sid": 226695390798615
-										},
-										{
-											"eventType": "block",
-											"conditions": [],
-											"actions": [
-												{
-													"id": "stop-tweens",
-													"objectClass": "uiScrollComponent",
-													"sid": 533390446374431,
-													"behaviorType": "TweenScroll",
-													"parameters": {
-														"tags": "\"scroll\""
-													}
-												},
-												{
-													"id": "tween-one-property",
-													"objectClass": "uiScrollComponent",
-													"sid": 360912058239494,
-													"behaviorType": "TweenScroll",
-													"parameters": {
-														"tags": "\"scroll\"",
-														"property": "offsetY",
-														"end-value": "targetPos",
-														"time": "0.1",
-														"ease": "easeoutsine",
-														"destroy-on-complete": "no",
-														"loop": "no",
-														"ping-pong": "no",
-														"repeat-count": "1"
-													}
-												}
-											],
-											"sid": 379522655780276
-										}
-									]
-								},
-								{
-									"eventType": "comment",
-									"text": "recalculate scroll handle and bar based on scroll components",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6431372549019608,
-										0.8470588235294118,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"aceType": "action",
-									"aceName": "uiSliderScrollRecalculate [INTERNAL]",
-									"objectClass": "uiSliderHandle",
-									"functionDescription": "recalculate scroll handle and bar based on scroll components",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [
-										{
-											"id": "is-boolean-instance-variable-set",
-											"objectClass": "uiSliderHandle",
-											"sid": 949539810022668,
-											"parameters": {
-												"instance-variable": "sliderHandleScroller"
-											}
-										}
-									],
-									"actions": [],
-									"sid": 693645389666585,
-									"children": [
-										{
-											"eventType": "comment",
-											"text": "bounds",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.6705882352941176,
-												0.8745098039215686,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"eventType": "variable",
-											"name": "x1",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "bounds",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 602994814766595
-										},
-										{
-											"eventType": "variable",
-											"name": "y1",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "bounds",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 114117726739830
-										},
-										{
-											"eventType": "variable",
-											"name": "x2",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "bounds",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 462655713619148
-										},
-										{
-											"eventType": "variable",
-											"name": "y2",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "bounds",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 459935365518409
-										},
-										{
-											"eventType": "comment",
-											"text": "offset of bounds from canvas",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.6705882352941176,
-												0.8745098039215686,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"eventType": "variable",
-											"name": "offX",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "offset from canvas",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 320913344878058
-										},
-										{
-											"eventType": "variable",
-											"name": "offY",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "offset from canvas",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 930021729309501
-										},
-										{
-											"eventType": "comment",
-											"text": "calculate bounds by iterating through every uiScrollComponent (and its children!)",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "uiCanvas",
-													"sid": 801408785869055,
-													"parameters": {
-														"instance-variable": "canvasID",
-														"comparison": 0,
-														"value": "uiSliderHandle.sliderHandleScrollUseCanvas"
-													}
-												},
-												{
-													"id": "pick-by-unique-id",
-													"objectClass": "ui",
-													"sid": 163936729084186,
-													"parameters": {
-														"unique-id": "uiSliderHandle.UID"
-													}
-												},
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "uiScrollComponent",
-													"sid": 460553997684325,
-													"parameters": {
-														"instance-variable": "scrollSliderHandleID",
-														"comparison": 0,
-														"value": "ui.ID"
-													}
-												},
-												{
-													"id": "pick-by-unique-id",
-													"objectClass": "uiSliderBar",
-													"sid": 737342823438663,
-													"parameters": {
-														"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
-													}
-												}
-											],
-											"actions": [
-												{
-													"type": "comment",
-													"text": "set bounds to infinity",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 923246410709375,
-													"parameters": {
-														"variable": "x1",
-														"value": "Infinity"
-													}
-												},
-												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 815632303239616,
-													"parameters": {
-														"variable": "y1",
-														"value": "Infinity"
-													}
-												},
-												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 884111145919932,
-													"parameters": {
-														"variable": "x2",
-														"value": "-Infinity"
-													}
-												},
-												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 616330065869044,
-													"parameters": {
-														"variable": "y2",
-														"value": "-Infinity"
-													}
-												},
-												{
-													"type": "comment",
-													"text": "encapsulate bounds based on all relevant objects",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"type": "script",
-													"script": "// get instances\nconst components = runtime.objects.uiScrollComponent.pickedInstances();\n\n// go through every component\nfor (const component of components)\n{\n\t// get children\n\tconst children = component.allChildren();\n\t\n\t// create an array that contains the component AND its children\n\tconst objects = Array.from(children);\n\tobjects.push(component);\n\t\n\tfor (const obj of objects)\n\t{\t\n\t\t// get bounding box as DOMRect\n\t\tconst rect = obj.getBoundingBox();\n\t\t\n\t\t// bounds\n\t\tif (localVars.x1 > rect.left) { localVars.x1 = rect.left; }\n\t\tif (localVars.y1 > rect.top) { localVars.y1 = rect.top; }\n\t\tif (localVars.x2 < rect.right) { localVars.x2 = rect.right; }\n\t\tif (localVars.y2 < rect.bottom) { localVars.y2 = rect.bottom; }\n\t}\n}"
-												},
-												{
-													"type": "comment",
-													"text": "add margins to bounds",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"id": "add-to-eventvar",
-													"objectClass": "System",
-													"sid": 224878135020446,
-													"parameters": {
-														"variable": "x1",
-														"value": "-uiSliderHandle.sliderHandleScrollMargins"
-													}
-												},
-												{
-													"id": "add-to-eventvar",
-													"objectClass": "System",
-													"sid": 179336741929425,
-													"parameters": {
-														"variable": "y1",
-														"value": "-uiSliderHandle.sliderHandleScrollMargins"
-													}
-												},
-												{
-													"id": "add-to-eventvar",
-													"objectClass": "System",
-													"sid": 944687565017230,
-													"parameters": {
-														"variable": "x2",
-														"value": "uiSliderHandle.sliderHandleScrollMargins"
-													}
-												},
-												{
-													"id": "add-to-eventvar",
-													"objectClass": "System",
-													"sid": 637799477963641,
-													"parameters": {
-														"variable": "y2",
-														"value": "uiSliderHandle.sliderHandleScrollMargins"
-													}
-												},
-												{
-													"type": "comment",
-													"text": "offset from canvas",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"id": "add-to-eventvar",
-													"objectClass": "System",
-													"sid": 747196123408925,
-													"parameters": {
-														"variable": "x1",
-														"value": "-uiCanvas.X"
-													}
-												},
-												{
-													"id": "add-to-eventvar",
-													"objectClass": "System",
-													"sid": 484794479714146,
-													"parameters": {
-														"variable": "y1",
-														"value": "-uiCanvas.Y"
-													}
-												},
-												{
-													"id": "add-to-eventvar",
-													"objectClass": "System",
-													"sid": 461700747846272,
-													"parameters": {
-														"variable": "x2",
-														"value": "-uiCanvas.X"
-													}
-												},
-												{
-													"id": "add-to-eventvar",
-													"objectClass": "System",
-													"sid": 666193850843213,
-													"parameters": {
-														"variable": "y2",
-														"value": "-uiCanvas.Y"
-													}
-												},
-												{
-													"type": "comment",
-													"text": "set slider properties",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"id": "set-instvar-value",
-													"objectClass": "uiSliderBar",
-													"sid": 196991965014123,
-													"parameters": {
-														"instance-variable": "sliderMin",
-														"value": "-y1"
-													}
-												},
-												{
-													"id": "set-instvar-value",
-													"objectClass": "uiSliderBar",
-													"sid": 947425161023859,
-													"parameters": {
-														"instance-variable": "sliderMax",
-														"value": "-y2 + uiCanvas.Height"
-													}
-												},
-												{
-													"id": "set-instvar-value",
-													"objectClass": "uiSliderBar",
-													"sid": 336624450754042,
-													"parameters": {
-														"instance-variable": "sliderStep",
-														"value": "uiSliderHandle.sliderHandleScrollSpeed + \n(abs(Self.sliderMax - Self.sliderMin) % uiSliderHandle.sliderHandleScrollSpeed) / floor(abs(Self.sliderMax - Self.sliderMin) / uiSliderHandle.sliderHandleScrollSpeed)"
-													}
-												},
-												{
-													"type": "comment",
-													"text": "update handle",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"id": "set-instvar-value",
-													"objectClass": "uiSliderHandle",
-													"sid": 331947480256544,
-													"parameters": {
-														"instance-variable": "sliderHandleValue",
-														"value": "uiSliderBar.sliderMin"
-													}
-												},
-												{
-													"customAction": "uiSliderValueUpdate [INTERNAL]",
-													"objectClass": "uiSliderHandle",
-													"sid": 501273649216623
-												},
-												{
-													"callFunction": "uiUpdate [INTERNAL]",
-													"sid": 188355052219323
-												}
-											],
-											"sid": 583952721582877
-										}
-									]
-								}
-							],
-							"sid": 543247630740328,
-							"text-color": [
-								0,
-								0,
-								0,
-								0
-							],
-							"background-color": [
-								0.8392156862745098,
-								0.8392156862745098,
-								0.8392156862745098,
-								1
-							]
-						},
-						{
-							"eventType": "group",
-							"disabled": false,
 							"title": "ui behavior slider fill",
 							"description": "",
 							"isActiveOnStart": true,
@@ -4434,6 +3150,1281 @@
 							]
 						},
 						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "ui behavior slider handle",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "navigate a slider using step increments",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiSliderIncrement [INTERNAL]",
+									"objectClass": "uiSliderHandle",
+									"functionDescription": "increments slider by a step",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [
+										{
+											"name": "steps",
+											"type": "number",
+											"initialValue": "1",
+											"comment": "usually -1 or 1",
+											"sid": 993044985477042
+										}
+									],
+									"eventType": "custom-ace-block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "uiSliderBar",
+											"sid": 226431568934822,
+											"parameters": {
+												"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "add-to-instvar",
+											"objectClass": "uiSliderHandle",
+											"sid": 602447245376413,
+											"parameters": {
+												"instance-variable": "sliderHandleValue",
+												"value": "(uiSliderBar.sliderStep * steps) * \n((uiSliderBar.sliderMax > uiSliderBar.sliderMin) ? 1 : -1)"
+											}
+										},
+										{
+											"customAction": "uiSliderValueUpdate [INTERNAL]",
+											"objectClass": "uiSliderHandle",
+											"sid": 183817975543084
+										},
+										{
+											"callFunction": "uiUpdate [INTERNAL]",
+											"sid": 972317521518195
+										}
+									],
+									"sid": 326292279543897
+								},
+								{
+									"eventType": "comment",
+									"text": "call after adjusting slider value/min/max/steps to snap and clamp value",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiSliderValueUpdate [INTERNAL]",
+									"objectClass": "uiSliderHandle",
+									"functionDescription": "call after adjusting slider value/min/max/steps",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "uiSliderBar",
+											"sid": 860355827374666,
+											"parameters": {
+												"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 105391036638212,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "hold the lesser and greater values if they exist",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.6705882352941176,
+												0.8745098039215686,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "variable",
+											"name": "lesserValueExists",
+											"type": "boolean",
+											"initialValue": "false",
+											"comment": "hold var",
+											"isStatic": false,
+											"isConstant": false,
+											"sid": 793163869184082
+										},
+										{
+											"eventType": "variable",
+											"name": "lesserValue",
+											"type": "number",
+											"initialValue": "0",
+											"comment": "hold var",
+											"isStatic": false,
+											"isConstant": false,
+											"sid": 805329448993979
+										},
+										{
+											"eventType": "variable",
+											"name": "greaterValueExists",
+											"type": "boolean",
+											"initialValue": "false",
+											"comment": "hold var",
+											"isStatic": false,
+											"isConstant": false,
+											"sid": 395899269261981
+										},
+										{
+											"eventType": "variable",
+											"name": "greaterValue",
+											"type": "number",
+											"initialValue": "0",
+											"comment": "hold var",
+											"isStatic": false,
+											"isConstant": false,
+											"sid": 706113736030181
+										},
+										{
+											"eventType": "comment",
+											"text": "set up",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "snap to slider steps",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 372501821601624,
+													"parameters": {
+														"instance-variable": "sliderHandleValue",
+														"value": "round((Self.sliderHandleValue - uiSliderBar.sliderMin) / uiSliderBar.sliderStep) * uiSliderBar.sliderStep + uiSliderBar.sliderMin"
+													}
+												}
+											],
+											"sid": 541869825832193
+										},
+										{
+											"eventType": "comment",
+											"text": "if lesser rule handle exists, store lesser value",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiSliderHandle",
+													"sid": 654367835142020,
+													"parameters": {
+														"instance-variable": "sliderHandleRuleLesser",
+														"comparison": 0,
+														"value": "\"\""
+													},
+													"isInverted": true
+												},
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "ui",
+													"sid": 658708571805200,
+													"parameters": {
+														"instance-variable": "ID",
+														"comparison": 0,
+														"value": "uiSliderHandle.sliderHandleRuleLesser"
+													}
+												},
+												{
+													"id": "pick-all",
+													"objectClass": "System",
+													"sid": 650520625771606,
+													"parameters": {
+														"object": "uiSliderHandle"
+													}
+												},
+												{
+													"id": "pick-by-unique-id",
+													"objectClass": "uiSliderHandle",
+													"sid": 445445369389666,
+													"parameters": {
+														"unique-id": "ui.UID"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 196834667744698,
+													"parameters": {
+														"variable": "lesserValueExists",
+														"value": "true"
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 212114135392889,
+													"parameters": {
+														"variable": "lesserValue",
+														"value": "uiSliderHandle.sliderHandleValue"
+													}
+												}
+											],
+											"sid": 894408668852454
+										},
+										{
+											"eventType": "comment",
+											"text": "if greater rule handle exists, store greater value",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiSliderHandle",
+													"sid": 174291182494319,
+													"parameters": {
+														"instance-variable": "sliderHandleRuleGreater",
+														"comparison": 0,
+														"value": "\"\""
+													},
+													"isInverted": true
+												},
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "ui",
+													"sid": 757976647499279,
+													"parameters": {
+														"instance-variable": "ID",
+														"comparison": 0,
+														"value": "uiSliderHandle.sliderHandleRuleGreater"
+													}
+												},
+												{
+													"id": "pick-all",
+													"objectClass": "System",
+													"sid": 778240400353498,
+													"parameters": {
+														"object": "uiSliderHandle"
+													}
+												},
+												{
+													"id": "pick-by-unique-id",
+													"objectClass": "uiSliderHandle",
+													"sid": 125851039226402,
+													"parameters": {
+														"unique-id": "ui.UID"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 291394071569445,
+													"parameters": {
+														"variable": "greaterValueExists",
+														"value": "true"
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 530190148602003,
+													"parameters": {
+														"variable": "greaterValue",
+														"value": "uiSliderHandle.sliderHandleValue"
+													}
+												}
+											],
+											"sid": 217891894656252
+										},
+										{
+											"eventType": "comment",
+											"text": "modify this handle's value based on lesser and greater rules",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "comment",
+											"text": "don't get confused! this value must be LESS THAN the 'lesserValue' but GREATER THAN the 'greaterValue'!",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8470588235294118,
+												0.6431372549019608,
+												0.8745098039215686,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 536486075248511,
+													"parameters": {
+														"variable": "lesserValueExists"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 345132232525701,
+													"parameters": {
+														"instance-variable": "sliderHandleValue",
+														"value": "min(Self.sliderHandleValue, lesserValue)"
+													}
+												}
+											],
+											"sid": 809427534825003,
+											"children": [
+												{
+													"eventType": "comment",
+													"text": "if equal value isn't allowed, and values are equal, subtract a step",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "is-boolean-instance-variable-set",
+															"objectClass": "uiSliderHandle",
+															"sid": 351723374899308,
+															"parameters": {
+																"instance-variable": "sliderHandleRuleAllowEqual"
+															},
+															"isInverted": true
+														},
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "uiSliderHandle",
+															"sid": 611205417956231,
+															"parameters": {
+																"instance-variable": "sliderHandleValue",
+																"comparison": 0,
+																"value": "lesserValue"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "add-to-instvar",
+															"objectClass": "uiSliderHandle",
+															"sid": 828362843362043,
+															"parameters": {
+																"instance-variable": "sliderHandleValue",
+																"value": "-uiSliderBar.sliderStep"
+															}
+														}
+													],
+													"sid": 273087693444557
+												}
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 969089522950894,
+													"parameters": {
+														"variable": "greaterValueExists"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 842212682762691,
+													"parameters": {
+														"instance-variable": "sliderHandleValue",
+														"value": "max(Self.sliderHandleValue, greaterValue)"
+													}
+												}
+											],
+											"sid": 374567037861549,
+											"children": [
+												{
+													"eventType": "comment",
+													"text": "if equal value isn't allowed, and values are equal, add a step",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "is-boolean-instance-variable-set",
+															"objectClass": "uiSliderHandle",
+															"sid": 363876694549866,
+															"parameters": {
+																"instance-variable": "sliderHandleRuleAllowEqual"
+															},
+															"isInverted": true
+														},
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "uiSliderHandle",
+															"sid": 413586197092371,
+															"parameters": {
+																"instance-variable": "sliderHandleValue",
+																"comparison": 0,
+																"value": "greaterValue"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "add-to-instvar",
+															"objectClass": "uiSliderHandle",
+															"sid": 533109180836271,
+															"parameters": {
+																"instance-variable": "sliderHandleValue",
+																"value": "uiSliderBar.sliderStep"
+															}
+														}
+													],
+													"sid": 549006080863847
+												}
+											]
+										},
+										{
+											"eventType": "comment",
+											"text": "final adjustments to this value",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "clamp value to slider bar range",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 611077572351655,
+													"parameters": {
+														"instance-variable": "sliderHandleValue",
+														"value": "Functions.utilClamp(Self.sliderHandleValue, uiSliderBar.sliderMin, uiSliderBar.sliderMax)"
+													}
+												},
+												{
+													"type": "comment",
+													"text": "calculate a number from 0 to 1, based on the slider value relative to the slider min/max",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 604950177470982,
+													"parameters": {
+														"instance-variable": "sliderHandleProgress",
+														"value": "unlerp(uiSliderBar.sliderMin, uiSliderBar.sliderMax, Self.sliderHandleValue)"
+													}
+												}
+											],
+											"sid": 446561170221421
+										}
+									]
+								},
+								{
+									"eventType": "comment",
+									"text": "update any scrollables that depend on this slider handle",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiSliderScrollUpdate [INTERNAL]",
+									"objectClass": "uiSliderHandle",
+									"functionDescription": "update scroll components attached to this",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "uiCanvas",
+											"sid": 867214617229584,
+											"parameters": {
+												"instance-variable": "canvasID",
+												"comparison": 0,
+												"value": "uiSliderHandle.scrollerUseCanvas"
+											}
+										},
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "uiSliderBar",
+											"sid": 180297652018580,
+											"parameters": {
+												"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
+											}
+										},
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "ui",
+											"sid": 585552107450498,
+											"parameters": {
+												"unique-id": "uiSliderHandle.UID"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 973238873593135,
+									"children": [
+										{
+											"eventType": "variable",
+											"name": "targetPos",
+											"type": "number",
+											"initialValue": "0",
+											"comment": "position to tween to",
+											"isStatic": false,
+											"isConstant": false,
+											"sid": 528013756211475
+										},
+										{
+											"eventType": "comment",
+											"text": "vertical",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiScrollComponent",
+													"sid": 598522141179095,
+													"parameters": {
+														"instance-variable": "scrollSliderHandleY",
+														"comparison": 0,
+														"value": "ui.ID"
+													}
+												},
+												{
+													"id": "for-each",
+													"objectClass": "System",
+													"sid": 186687201925177,
+													"parameters": {
+														"object": "uiScrollComponent"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 173008677341695,
+													"parameters": {
+														"variable": "targetPos",
+														"value": "uiCanvas.Y + uiScrollComponent.scrollOffsetY + uiSliderHandle.sliderHandleValue"
+													}
+												},
+												{
+													"id": "stop-tweens",
+													"objectClass": "uiScrollComponent",
+													"sid": 151056740141250,
+													"behaviorType": "TweenScroll",
+													"parameters": {
+														"tags": "\"scroll\""
+													}
+												},
+												{
+													"id": "tween-one-property",
+													"objectClass": "uiScrollComponent",
+													"sid": 673345085623883,
+													"behaviorType": "TweenScroll",
+													"parameters": {
+														"tags": "\"scroll\"",
+														"property": "offsetY",
+														"end-value": "targetPos",
+														"time": "0.1",
+														"ease": "easeoutsine",
+														"destroy-on-complete": "no",
+														"loop": "no",
+														"ping-pong": "no",
+														"repeat-count": "1"
+													}
+												}
+											],
+											"sid": 577155143551157
+										},
+										{
+											"eventType": "comment",
+											"text": "horizontal",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiScrollComponent",
+													"sid": 896929902765385,
+													"parameters": {
+														"instance-variable": "scrollSliderHandleX",
+														"comparison": 0,
+														"value": "ui.ID"
+													}
+												},
+												{
+													"id": "for-each",
+													"objectClass": "System",
+													"sid": 253589735152611,
+													"parameters": {
+														"object": "uiScrollComponent"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 771625990774591,
+													"parameters": {
+														"variable": "targetPos",
+														"value": "uiCanvas.X + uiScrollComponent.scrollOffsetX + uiSliderHandle.sliderHandleValue"
+													}
+												},
+												{
+													"id": "stop-tweens",
+													"objectClass": "uiScrollComponent",
+													"sid": 727190308829950,
+													"behaviorType": "TweenScroll",
+													"parameters": {
+														"tags": "\"scroll\""
+													}
+												},
+												{
+													"id": "tween-one-property",
+													"objectClass": "uiScrollComponent",
+													"sid": 473702371489971,
+													"behaviorType": "TweenScroll",
+													"parameters": {
+														"tags": "\"scroll\"",
+														"property": "offsetX",
+														"end-value": "targetPos",
+														"time": "0.1",
+														"ease": "easeoutsine",
+														"destroy-on-complete": "no",
+														"loop": "no",
+														"ping-pong": "no",
+														"repeat-count": "1"
+													}
+												}
+											],
+											"sid": 266800008046214
+										}
+									]
+								},
+								{
+									"eventType": "comment",
+									"text": "recalculate scroll handle and bar based on scroll components",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiSliderScrollRecalculate [INTERNAL]",
+									"objectClass": "uiSliderHandle",
+									"functionDescription": "recalculate scroll handle and bar based on scroll components",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "uiSliderHandle",
+											"sid": 555969436615426,
+											"parameters": {
+												"instance-variable": "scroller"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "uiCanvas",
+											"sid": 246256761546229,
+											"parameters": {
+												"instance-variable": "canvasID",
+												"comparison": 0,
+												"value": "uiSliderHandle.scrollerUseCanvas"
+											}
+										},
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "ui",
+											"sid": 899288545502970,
+											"parameters": {
+												"unique-id": "uiSliderHandle.UID"
+											}
+										},
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "uiSliderBar",
+											"sid": 596644728580363,
+											"parameters": {
+												"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 584975341421870,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "calculate bounds by iterating through every uiScrollComponent (and its children!) regardless of axis",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-by-evaluate",
+													"objectClass": "System",
+													"sid": 619255553582020,
+													"parameters": {
+														"object": "uiScrollComponent",
+														"expression": "uiScrollComponent.scrollSliderHandleX = ui.ID | uiScrollComponent.scrollSliderHandleY = ui.ID"
+													}
+												}
+											],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "set bounds to infinity",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 845387116735643,
+													"parameters": {
+														"instance-variable": "scrollerX1",
+														"value": "uiCanvas.BBoxLeft"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 593336609862332,
+													"parameters": {
+														"instance-variable": "scrollerY1",
+														"value": "uiCanvas.BBoxTop"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 876103725077033,
+													"parameters": {
+														"instance-variable": "scrollerX2",
+														"value": "uiCanvas.BBoxRight"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 868974859655123,
+													"parameters": {
+														"instance-variable": "scrollerY2",
+														"value": "uiCanvas.BBoxBottom\n"
+													}
+												},
+												{
+													"type": "comment",
+													"text": "encapsulate bounds based on all relevant objects",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"type": "script",
+													"script": "// get instances\nconst components = runtime.objects.uiScrollComponent.pickedInstances();\nconst scroller = runtime.objects.uiSliderHandle.getFirstPickedInstance().instVars;\n\n// go through every component\nfor (const component of components)\n{\n\t// get children\n\tconst children = component.allChildren();\n\t\n\t// create an array that contains the component AND its children\n\tconst objects = Array.from(children);\n\tobjects.push(component);\n\t\n\tfor (const obj of objects)\n\t{\t\n\t\t// get bounding box as DOMRect\n\t\tconst rect = obj.getBoundingBox();\n\t\t\n\t\t// bounds\n\t\tscroller.scrollerX1 = Math.min(scroller.scrollerX1, rect.left);\n\t\tscroller.scrollerY1 = Math.min(scroller.scrollerY1, rect.top);\n\t\tscroller.scrollerX2 = Math.max(scroller.scrollerX2, rect.right);\n\t\tscroller.scrollerY2 = Math.max(scroller.scrollerY2, rect.bottom);\n\t}\n}"
+												},
+												{
+													"type": "comment",
+													"text": "add margins to bounds and offset from canvas",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "add-to-instvar",
+													"objectClass": "uiSliderHandle",
+													"sid": 549275859957865,
+													"parameters": {
+														"instance-variable": "scrollerX1",
+														"value": "-Self.scrollerMargins - uiCanvas.X"
+													}
+												},
+												{
+													"id": "add-to-instvar",
+													"objectClass": "uiSliderHandle",
+													"sid": 276074267077436,
+													"parameters": {
+														"instance-variable": "scrollerY1",
+														"value": "-Self.scrollerMargins - uiCanvas.Y"
+													}
+												},
+												{
+													"id": "add-to-instvar",
+													"objectClass": "uiSliderHandle",
+													"sid": 531781477813609,
+													"parameters": {
+														"instance-variable": "scrollerX2",
+														"value": "Self.scrollerMargins - uiCanvas.X"
+													}
+												},
+												{
+													"id": "add-to-instvar",
+													"objectClass": "uiSliderHandle",
+													"sid": 562468219295615,
+													"parameters": {
+														"instance-variable": "scrollerY2",
+														"value": "Self.scrollerMargins - uiCanvas.Y"
+													}
+												}
+											],
+											"sid": 884423649944999
+										},
+										{
+											"eventType": "comment",
+											"text": "now set slider properties, dependent on what axis this controls",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiScrollComponent",
+													"sid": 276066412596386,
+													"parameters": {
+														"instance-variable": "scrollSliderHandleY",
+														"comparison": 0,
+														"value": "ui.ID"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderBar",
+													"sid": 749835051298206,
+													"parameters": {
+														"instance-variable": "sliderMin",
+														"value": "-uiSliderHandle.scrollerY1"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderBar",
+													"sid": 448430328033791,
+													"parameters": {
+														"instance-variable": "sliderMax",
+														"value": "-uiSliderHandle.scrollerY2 + uiCanvas.Height"
+													}
+												}
+											],
+											"sid": 647990330080641
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiScrollComponent",
+													"sid": 346040503621000,
+													"parameters": {
+														"instance-variable": "scrollSliderHandleX",
+														"comparison": 0,
+														"value": "ui.ID"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderBar",
+													"sid": 278214386166231,
+													"parameters": {
+														"instance-variable": "sliderMin",
+														"value": "-uiSliderHandle.scrollerX1"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderBar",
+													"sid": 132869918574910,
+													"parameters": {
+														"instance-variable": "sliderMax",
+														"value": "-uiSliderHandle.scrollerX2 + uiCanvas.Width"
+													}
+												}
+											],
+											"sid": 248352813376549
+										},
+										{
+											"eventType": "comment",
+											"text": "lastly...",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "set the slider steps based on the scrollerSpeed, but adjusted to have no remainder when divided by range",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderBar",
+													"sid": 719424770539479,
+													"parameters": {
+														"instance-variable": "sliderStep",
+														"value": "uiSliderHandle.scrollerSpeed + \n(abs(Self.sliderMax - Self.sliderMin) % uiSliderHandle.scrollerSpeed) / floor(abs(Self.sliderMax - Self.sliderMin) / uiSliderHandle.scrollerSpeed)"
+													}
+												},
+												{
+													"type": "comment",
+													"text": "update handle and ui",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 678926135911185,
+													"parameters": {
+														"instance-variable": "sliderHandleValue",
+														"value": "uiSliderBar.sliderMin"
+													}
+												},
+												{
+													"customAction": "uiSliderValueUpdate [INTERNAL]",
+													"objectClass": "uiSliderHandle",
+													"sid": 690043104179700
+												},
+												{
+													"callFunction": "uiUpdate [INTERNAL]",
+													"sid": 636383711171260
+												}
+											],
+											"sid": 349810249885086
+										}
+									]
+								}
+							],
+							"sid": 420865237535418,
+							"text-color": [
+								0,
+								0,
+								0,
+								0
+							],
+							"background-color": [
+								0.8392156862745098,
+								0.8392156862745098,
+								0.8392156862745098,
+								1
+							]
+						},
+						{
 							"eventType": "comment",
 							"text": "given a 'ui' id, retrieve a uid",
 							"text-color": [
@@ -4508,7 +4499,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "ya",
+							"text": "paste canvas every tick if on screen",
 							"text-color": [
 								0,
 								0,
@@ -4519,6 +4510,22 @@
 								0.6431372549019608,
 								0.8470588235294118,
 								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "could lead to bad performance issues... may be best to leave canvas updates up to the developer",
+							"text-color": [
+								0,
+								0,
+								0,
+								0
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.6431372549019608,
+								0.6431372549019608,
 								1
 							]
 						},
@@ -4579,7 +4586,7 @@
 							"actions": [
 								{
 									"type": "comment",
-									"text": "clear canvas every tick",
+									"text": "clear canvas before pasting instances",
 									"text-color": [
 										0,
 										0,
@@ -4786,7 +4793,7 @@
 											"parameters": {
 												"instance-variable": "sliderHandleValue",
 												"comparison": 0,
-												"value": "Self.sliderHandleValueLastTrigger"
+												"value": "Self.sliderHandleValueLast"
 											},
 											"isInverted": true
 										}
@@ -4813,7 +4820,7 @@
 											"objectClass": "uiSliderHandle",
 											"sid": 166675786726673,
 											"parameters": {
-												"instance-variable": "sliderHandleValueLastTrigger",
+												"instance-variable": "sliderHandleValueLast",
 												"value": "Self.sliderHandleValue"
 											}
 										},
@@ -6034,17 +6041,11 @@
 											],
 											"actions": [
 												{
-													"id": "set-eventvar-value",
-													"objectClass": "System",
-													"sid": 930351062522139,
-													"parameters": {
-														"variable": "uiChosenID",
-														"value": "wrapOverride"
-													}
-												},
-												{
-													"callFunction": "uiUpdate [INTERNAL]",
-													"sid": 925538220461522
+													"callFunction": "uiRegisterChosen [INTERNAL]",
+													"sid": 274553805335338,
+													"parameters": [
+														"wrapOverride"
+													]
 												}
 											],
 											"sid": 806071115924621
@@ -6993,6 +6994,33 @@
 												}
 											],
 											"sid": 403146603722408
+										},
+										{
+											"eventType": "comment",
+											"text": "center slider handle if scrollable",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"callFunction": "uiScrollCenterChosen [INTERNAL]",
+													"sid": 876971042198916
+												}
+											],
+											"sid": 812504028432003
 										}
 									]
 								}
@@ -7083,20 +7111,391 @@
 					],
 					"actions": [
 						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 740621366881797,
-							"parameters": {
-								"variable": "uiChosenID",
-								"value": "ui.id"
-							}
-						},
-						{
-							"callFunction": "uiUpdate [INTERNAL]",
-							"sid": 643143497868843
+							"callFunction": "uiRegisterChosen [INTERNAL]",
+							"sid": 556637104896898,
+							"parameters": [
+								"ui.ID"
+							]
 						}
 					],
 					"sid": 914100209109551
+				},
+				{
+					"eventType": "comment",
+					"text": "use this to register what component is chosen",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"functionName": "uiRegisterChosen [INTERNAL]",
+					"functionDescription": "use this to register what component is chosen",
+					"functionCategory": "ui",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "chosenID",
+							"type": "string",
+							"initialValue": "",
+							"comment": "enter chosen ID (usually ui.ID)",
+							"sid": 471429782694689
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "ui",
+							"sid": 330556638496607,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "chosenID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 687268184519372,
+							"parameters": {
+								"variable": "uiChosenID",
+								"value": "chosenID"
+							}
+						},
+						{
+							"callFunction": "uiScrollCenterChosen [INTERNAL]",
+							"sid": 320757017115996
+						},
+						{
+							"callFunction": "uiUpdate [INTERNAL]",
+							"sid": 452823869653349
+						}
+					],
+					"sid": 845940810412908
+				},
+				{
+					"eventType": "comment",
+					"text": "if component that got chosen is part of a scroll view, adjust the scroll to center this object",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "it just DONT WORK LOL",
+					"text-color": [
+						0,
+						0,
+						0,
+						0
+					],
+					"background-color": [
+						0.8745098039215686,
+						0.6431372549019608,
+						0.6431372549019608,
+						1
+					]
+				},
+				{
+					"functionName": "uiScrollCenterChosen [INTERNAL]",
+					"functionDescription": "if component that got chosen is part of a scroll view, adjust the scroll to center this object",
+					"functionCategory": "ui",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "ui",
+							"sid": 741024691442398,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "uiChosenID"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 542789925440445,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "scroll component info",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6705882352941176,
+								0.8745098039215686,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "variable",
+							"name": "scrollComponentUID",
+							"type": "number",
+							"initialValue": "-1",
+							"comment": "hold",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 976545752873776
+						},
+						{
+							"eventType": "comment",
+							"text": "get scroll offset, whether it's this component or one of its parents",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "uiScrollComponent",
+									"sid": 982891998646333,
+									"parameters": {
+										"unique-id": "ui.UID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 149030732095398,
+									"parameters": {
+										"variable": "scrollComponentUID",
+										"value": "uiScrollComponent.UID"
+									}
+								}
+							],
+							"sid": 461870363072879
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 857192485350271
+								},
+								{
+									"id": "pick-parent",
+									"objectClass": "ui",
+									"sid": 830613285820198,
+									"parameters": {
+										"parent": "uiScrollComponent",
+										"which": "all"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 781759340135607,
+									"parameters": {
+										"variable": "scrollComponentUID",
+										"value": "uiScrollComponent.UID"
+									}
+								}
+							],
+							"sid": 733975746338298
+						},
+						{
+							"eventType": "comment",
+							"text": "if this object is in a canvas scroll view, then automatically set the scroll to show this component",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 835012475068520,
+									"parameters": {
+										"variable": "scrollComponentUID",
+										"comparison": 1,
+										"value": "-1"
+									}
+								},
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "uiScrollComponent",
+									"sid": 540176276380890,
+									"parameters": {
+										"unique-id": "scrollComponentUID"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 346943578922227,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "y scroller",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "uiSliderHandle",
+											"sid": 779996571383523,
+											"parameters": {
+												"unique-id": "Functions.uiGetUIDFromID(uiScrollComponent.scrollSliderHandleY)"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "uiCanvas",
+											"sid": 965539686736930,
+											"parameters": {
+												"instance-variable": "canvasID",
+												"comparison": 0,
+												"value": "uiSliderHandle.scrollerUseCanvas"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "uiSliderHandle",
+											"sid": 231992216036880,
+											"parameters": {
+												"instance-variable": "sliderHandleValue",
+												"value": "(uiScrollComponent.Y - ui.Y) - uiScrollComponent.scrollOffsetY + uiCanvas.Height / 2"
+											}
+										},
+										{
+											"customAction": "uiSliderValueUpdate [INTERNAL]",
+											"objectClass": "uiSliderHandle",
+											"sid": 608868559760349
+										}
+									],
+									"sid": 968170532325312
+								},
+								{
+									"eventType": "comment",
+									"text": "x scroller",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "uiSliderHandle",
+											"sid": 475244035432699,
+											"parameters": {
+												"unique-id": "Functions.uiGetUIDFromID(uiScrollComponent.scrollSliderHandleX)"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "uiCanvas",
+											"sid": 502224270628263,
+											"parameters": {
+												"instance-variable": "canvasID",
+												"comparison": 0,
+												"value": "uiSliderHandle.scrollerUseCanvas"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "uiSliderHandle",
+											"sid": 698850683949603,
+											"parameters": {
+												"instance-variable": "sliderHandleValue",
+												"value": "(uiScrollComponent.X - ui.X) - uiScrollComponent.scrollOffsetX + uiCanvas.Width / 2"
+											}
+										},
+										{
+											"customAction": "uiSliderValueUpdate [INTERNAL]",
+											"objectClass": "uiSliderHandle",
+											"sid": 438705188556177
+										}
+									],
+									"sid": 636067074668280
+								}
+							]
+						}
+					]
 				},
 				{
 					"eventType": "comment",
@@ -7313,17 +7712,11 @@
 							"conditions": [],
 							"actions": [
 								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 727815773247714,
-									"parameters": {
-										"variable": "uiChosenID",
-										"value": "lastID"
-									}
-								},
-								{
-									"callFunction": "uiUpdate [INTERNAL]",
-									"sid": 484093258561691
+									"callFunction": "uiRegisterChosen [INTERNAL]",
+									"sid": 582757944382521,
+									"parameters": [
+										"lastID"
+									]
 								}
 							],
 							"sid": 594202503493976

@@ -22,13 +22,6 @@
 			"type": "number",
 			"desc": "the last recorded slider value, for recording any changes",
 			"show": false,
-			"sid": 938888075183070
-		},
-		{
-			"name": "sliderHandleValueLastTrigger",
-			"type": "number",
-			"desc": "the last recorded slider value, for recording any changes",
-			"show": false,
 			"sid": 362613484672940
 		},
 		{
@@ -60,32 +53,60 @@
 			"sid": 914364876419004
 		},
 		{
-			"name": "sliderHandleScroller",
+			"name": "scroller",
 			"type": "boolean",
-			"desc": "enter a uiCanvas ID to get the bounds from it instead of defining them yourself",
+			"desc": "is this a scroller (used for a scroll view, with a uiCanvas and uiScrollComponents)",
 			"show": true,
 			"sid": 128675221874790
 		},
 		{
-			"name": "sliderHandleScrollUseCanvas",
+			"name": "scrollerUseCanvas",
 			"type": "string",
 			"desc": "enter a canvas ID to use it as the bounds of the scroll view",
 			"show": true,
 			"sid": 579740643150069
 		},
 		{
-			"name": "sliderHandleScrollMargins",
+			"name": "scrollerMargins",
 			"type": "number",
 			"desc": "margins to pad around scroll view bounds",
 			"show": true,
 			"sid": 202738154841132
 		},
 		{
-			"name": "sliderHandleScrollSpeed",
+			"name": "scrollerSpeed",
 			"type": "number",
 			"desc": "how many pixels to scroll per step",
 			"show": true,
 			"sid": 529782706169466
+		},
+		{
+			"name": "scrollerX1",
+			"type": "number",
+			"desc": "scroll content bounds",
+			"show": false,
+			"sid": 474093362916250
+		},
+		{
+			"name": "scrollerY1",
+			"type": "number",
+			"desc": "scroll content bounds",
+			"show": false,
+			"sid": 263101821325243
+		},
+		{
+			"name": "scrollerX2",
+			"type": "number",
+			"desc": "scroll content bounds",
+			"show": false,
+			"sid": 884759025487270
+		},
+		{
+			"name": "scrollerY2",
+			"type": "number",
+			"desc": "scroll content bounds",
+			"show": false,
+			"sid": 642348239861535
 		}
 	],
 	"behaviorTypes": [],
