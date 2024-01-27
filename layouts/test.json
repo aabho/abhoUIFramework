@@ -54,11 +54,14 @@
 					},
 					"uid": 4,
 					"instanceVariables": {
-						"scrollSliderHandleY": "",
-						"scrollSliderHandleX": "",
+						"scrollCanvasID": "",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": false,
+						"scrollCenterOnMouseover": false,
+						"scrollCenteringMargins": 10,
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
-						"canvas": "",
 						"section": "main",
 						"ID": "mainPlayGame",
 						"navigable": true,
@@ -235,11 +238,14 @@
 					},
 					"uid": 6,
 					"instanceVariables": {
-						"scrollSliderHandleY": "",
-						"scrollSliderHandleX": "",
+						"scrollCanvasID": "",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": false,
+						"scrollCenterOnMouseover": false,
+						"scrollCenteringMargins": 10,
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
-						"canvas": "",
 						"section": "main",
 						"ID": "mainSettings",
 						"navigable": true,
@@ -416,11 +422,14 @@
 					},
 					"uid": 11,
 					"instanceVariables": {
-						"scrollSliderHandleY": "",
-						"scrollSliderHandleX": "",
+						"scrollCanvasID": "",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": false,
+						"scrollCenterOnMouseover": false,
+						"scrollCenteringMargins": 10,
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
-						"canvas": "",
 						"section": "main",
 						"ID": "mainDummy",
 						"navigable": true,
@@ -597,11 +606,14 @@
 					},
 					"uid": 13,
 					"instanceVariables": {
-						"scrollSliderHandleY": "",
-						"scrollSliderHandleX": "",
+						"scrollCanvasID": "",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": false,
+						"scrollCenterOnMouseover": false,
+						"scrollCenteringMargins": 10,
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
-						"canvas": "",
 						"section": "main",
 						"ID": "mainDummy2",
 						"navigable": true,
@@ -778,11 +790,14 @@
 					},
 					"uid": 18,
 					"instanceVariables": {
-						"scrollSliderHandleY": "",
-						"scrollSliderHandleX": "",
+						"scrollCanvasID": "",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": false,
+						"scrollCenterOnMouseover": false,
+						"scrollCenteringMargins": 10,
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
-						"canvas": "",
 						"section": "mainWIP",
 						"ID": "mainDummy4",
 						"navigable": true,
@@ -959,11 +974,14 @@
 					},
 					"uid": 8,
 					"instanceVariables": {
-						"scrollSliderHandleY": "",
-						"scrollSliderHandleX": "",
+						"scrollCanvasID": "",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": false,
+						"scrollCenterOnMouseover": false,
+						"scrollCenteringMargins": 10,
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
-						"canvas": "",
 						"section": "main",
 						"ID": "mainQuit",
 						"navigable": true,
@@ -1351,7 +1369,14 @@
 					},
 					"uid": 59,
 					"instanceVariables": {
-						"canvasID": "main"
+						"canvasID": "mainCanvas",
+						"scrollXHandleID": "mainScrollHandleX",
+						"scrollYHandleID": "mainScrollHandle",
+						"scrollerMargins": 4,
+						"scrollerX1": 0,
+						"scrollerY1": 0,
+						"scrollerX2": 0,
+						"scrollerY2": 0
 					},
 					"behaviors": {},
 					"sceneGraphData": {
@@ -1383,9 +1408,9 @@
 						}
 					},
 					"world": {
-						"x": 349,
+						"x": 338,
 						"y": 11,
-						"width": 62,
+						"width": 73,
 						"height": 83,
 						"originX": 0,
 						"originY": 0,
@@ -1396,6 +1421,314 @@
 							1
 						],
 						"angle": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsScrollBar",
+					"properties": {
+						"left-margin": 0,
+						"right-margin": 0,
+						"top-margin": 0,
+						"bottom-margin": 0,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 57,
+					"instanceVariables": {
+						"sliderMin": 0,
+						"sliderMax": -300,
+						"sliderStep": 10,
+						"sliderMarginsHorizontal": 0,
+						"sliderLeftX": 0,
+						"sliderLeftY": 0,
+						"sliderRightX": 0,
+						"sliderRightY": 0,
+						"sliderTickObjectName": "",
+						"section": "main",
+						"ID": "mainScrollBar",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 57,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 416,
+						"y": 53,
+						"width": 82,
+						"height": 1,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 1.5707963267948966,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsScrollHandle",
+					"properties": {
+						"left-margin": 1,
+						"right-margin": 1,
+						"top-margin": 1,
+						"bottom-margin": 1,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 58,
+					"instanceVariables": {
+						"sliderHandleAttachedBar": "mainScrollBar",
+						"sliderHandleValue": 0,
+						"sliderHandleValueLast": 0,
+						"sliderHandleProgress": 0,
+						"sliderHandleRuleLesser": "",
+						"sliderHandleRuleGreater": "",
+						"sliderHandleRuleAllowEqual": false,
+						"scroller": true,
+						"scrollerSpeed": 10,
+						"section": "main",
+						"ID": "mainScrollHandle",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 1,
+						"mGrowHeight": 0
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"world": {
+						"x": 416,
+						"y": 12,
+						"width": 2,
+						"height": 10,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsScrollBar",
+					"properties": {
+						"left-margin": 0,
+						"right-margin": 0,
+						"top-margin": 0,
+						"bottom-margin": 0,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 60,
+					"instanceVariables": {
+						"sliderMin": 0,
+						"sliderMax": -300,
+						"sliderStep": 10,
+						"sliderMarginsHorizontal": 0,
+						"sliderLeftX": 0,
+						"sliderLeftY": 0,
+						"sliderRightX": 0,
+						"sliderRightY": 0,
+						"sliderTickObjectName": "",
+						"section": "main",
+						"ID": "mainScrollBarX",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 4,
+						"mGrowHeight": 4
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 60,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 380,
+						"y": 100,
+						"width": 60,
+						"height": 1,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsScrollHandle",
+					"properties": {
+						"left-margin": 1,
+						"right-margin": 1,
+						"top-margin": 1,
+						"bottom-margin": 1,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 61,
+					"instanceVariables": {
+						"sliderHandleAttachedBar": "mainScrollBarX",
+						"sliderHandleValue": 0,
+						"sliderHandleValueLast": 0,
+						"sliderHandleProgress": 0,
+						"sliderHandleRuleLesser": "",
+						"sliderHandleRuleGreater": "",
+						"sliderHandleRuleAllowEqual": false,
+						"scroller": true,
+						"scrollerSpeed": 10,
+						"section": "main",
+						"ID": "mainScrollHandleX",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 0,
+						"mGrowHeight": 1
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"world": {
+						"x": 351,
+						"y": 100,
+						"width": 10,
+						"height": 2,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
 					}
 				}
 			],
@@ -1445,375 +1778,16 @@
 						"origin": "center",
 						"seams": "exact"
 					},
-					"uid": 61,
-					"instanceVariables": {
-						"scrollSliderHandleY": "mainScrollHandle",
-						"scrollSliderHandleX": "",
-						"scrollOffsetX": 0,
-						"scrollOffsetY": 0,
-						"canvas": "main",
-						"section": "main",
-						"ID": "mainScrollDummy",
-						"navigable": true,
-						"active": false,
-						"activeTrigger": false,
-						"chosenTrigger": false,
-						"overrideUp": "",
-						"overrideDown": "",
-						"overrideLeft": "",
-						"overrideRight": "",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mGrowWidth": 2,
-						"mGrowHeight": 2
-					},
-					"behaviors": {
-						"TweenScroll": {
-							"properties": {
-								"enabled": true
-							}
-						},
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
-					"sceneGraphData": {
-						"parent-uid": null,
-						"uid": 61,
-						"children": [
-							{
-								"uid": 60,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": false,
-									"h": false,
-									"a": true,
-									"o": true,
-									"v": true,
-									"d": true,
-									"sm": "normal"
-								}
-							}
-						],
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"world": {
-						"x": 380,
-						"y": -29,
-						"width": 55,
-						"height": 165,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "txt",
-					"properties": {
-						"text": "THIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\n",
-						"enable-bbcode": true,
-						"font": "system-ui",
-						"size": 2.5,
-						"line-height": -4,
-						"bold": false,
-						"italic": false,
-						"color": [
-							0,
-							0,
-							0,
-							1
-						],
-						"horizontal-alignment": "left",
-						"vertical-alignment": "top",
-						"wrapping": "word",
-						"icon-set": -1,
-						"initially-visible": true,
-						"origin": "center",
-						"read-aloud": false
-					},
-					"uid": 60,
-					"instanceVariables": {},
-					"behaviors": {},
-					"sceneGraphData": {
-						"parent-uid": 61,
-						"uid": 60,
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": false,
-							"h": false,
-							"a": true,
-							"o": true,
-							"v": true,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"world": {
-						"x": 380,
-						"y": -27,
-						"width": 50,
-						"height": 165,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "uiMainButton",
-					"properties": {
-						"left-margin": 2,
-						"right-margin": 2,
-						"top-margin": 2,
-						"bottom-margin": 2,
-						"edges": "stretch",
-						"fill": "stretch",
-						"initially-visible": true,
-						"origin": "center",
-						"seams": "exact"
-					},
-					"uid": 62,
-					"instanceVariables": {
-						"scrollSliderHandleY": "mainScrollHandle",
-						"scrollSliderHandleX": "",
-						"scrollOffsetX": 0,
-						"scrollOffsetY": 0,
-						"canvas": "main",
-						"section": "main",
-						"ID": "mainScrollDummy1",
-						"navigable": true,
-						"active": false,
-						"activeTrigger": false,
-						"chosenTrigger": false,
-						"overrideUp": "",
-						"overrideDown": "",
-						"overrideLeft": "",
-						"overrideRight": "",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mGrowWidth": 2,
-						"mGrowHeight": 2
-					},
-					"behaviors": {
-						"TweenScroll": {
-							"properties": {
-								"enabled": true
-							}
-						},
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
-					"sceneGraphData": {
-						"parent-uid": null,
-						"uid": 62,
-						"children": [
-							{
-								"uid": 63,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": false,
-									"h": false,
-									"a": true,
-									"o": true,
-									"v": true,
-									"d": true,
-									"sm": "normal"
-								}
-							}
-						],
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"world": {
-						"x": 380,
-						"y": 169.5,
-						"width": 55,
-						"height": 112,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "txt",
-					"properties": {
-						"text": "THIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\n",
-						"enable-bbcode": true,
-						"font": "system-ui",
-						"size": 2.5,
-						"line-height": -4,
-						"bold": false,
-						"italic": false,
-						"color": [
-							0,
-							0,
-							0,
-							1
-						],
-						"horizontal-alignment": "left",
-						"vertical-alignment": "top",
-						"wrapping": "word",
-						"icon-set": -1,
-						"initially-visible": true,
-						"origin": "center",
-						"read-aloud": false
-					},
-					"uid": 63,
-					"instanceVariables": {},
-					"behaviors": {},
-					"sceneGraphData": {
-						"parent-uid": 62,
-						"uid": 63,
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": false,
-							"h": false,
-							"a": true,
-							"o": true,
-							"v": true,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"world": {
-						"x": 380,
-						"y": 169,
-						"width": 50,
-						"height": 107,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "uiMainButton",
-					"properties": {
-						"left-margin": 2,
-						"right-margin": 2,
-						"top-margin": 2,
-						"bottom-margin": 2,
-						"edges": "stretch",
-						"fill": "stretch",
-						"initially-visible": true,
-						"origin": "center",
-						"seams": "exact"
-					},
 					"uid": 66,
 					"instanceVariables": {
-						"scrollSliderHandleY": "mainScrollHandle",
-						"scrollSliderHandleX": "",
+						"scrollCanvasID": "mainCanvas",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": true,
+						"scrollCenterOnMouseover": true,
+						"scrollCenteringMargins": 10,
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
-						"canvas": "main",
 						"section": "main",
 						"ID": "mainScrollDummy4",
 						"navigable": true,
@@ -1887,8 +1861,8 @@
 						}
 					},
 					"world": {
-						"x": 364.5,
-						"y": 85,
+						"x": 363,
+						"y": 62,
 						"width": 24,
 						"height": 50,
 						"originX": 0.5,
@@ -1959,8 +1933,8 @@
 						}
 					},
 					"world": {
-						"x": 364.5,
-						"y": 84.5,
+						"x": 363,
+						"y": 61.5,
 						"width": 19,
 						"height": 45,
 						"originX": 0.5,
@@ -1990,11 +1964,14 @@
 					},
 					"uid": 68,
 					"instanceVariables": {
-						"scrollSliderHandleY": "mainScrollHandle",
-						"scrollSliderHandleX": "",
+						"scrollCanvasID": "mainCanvas",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": true,
+						"scrollCenterOnMouseover": true,
+						"scrollCenteringMargins": 10,
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
-						"canvas": "main",
 						"section": "main",
 						"ID": "mainScrollDummy95",
 						"navigable": true,
@@ -2069,7 +2046,7 @@
 					},
 					"world": {
 						"x": 394,
-						"y": 85,
+						"y": 40,
 						"width": 24,
 						"height": 50,
 						"originX": 0.5,
@@ -2141,9 +2118,1481 @@
 					},
 					"world": {
 						"x": 394,
-						"y": 84.5,
+						"y": 39.5,
 						"width": 19,
 						"height": 45,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainButton",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 62,
+					"instanceVariables": {
+						"scrollCanvasID": "mainCanvas",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": true,
+						"scrollCenterOnMouseover": true,
+						"scrollCenteringMargins": 10,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
+						"section": "main",
+						"ID": "mainScrollDummy96",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2
+					},
+					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 62,
+						"children": [
+							{
+								"uid": 63,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": false,
+									"h": false,
+									"a": true,
+									"o": true,
+									"v": true,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 390,
+						"y": 80,
+						"width": 24,
+						"height": 21,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "THIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\n",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 2.5,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 63,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 62,
+						"uid": 63,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": true,
+							"v": true,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 390,
+						"y": 79.5,
+						"width": 19,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainButton",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 71,
+					"instanceVariables": {
+						"scrollCanvasID": "mainCanvas",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": true,
+						"scrollCenterOnMouseover": true,
+						"scrollCenteringMargins": 10,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
+						"section": "main",
+						"ID": "mainScrollDummy9646",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2
+					},
+					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 71,
+						"children": [
+							{
+								"uid": 72,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": false,
+									"h": false,
+									"a": true,
+									"o": true,
+									"v": true,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 420,
+						"y": 80,
+						"width": 24,
+						"height": 21,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "THIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\n",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 2.5,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 72,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 71,
+						"uid": 72,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": true,
+							"v": true,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 420,
+						"y": 79.5,
+						"width": 19,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainButton",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 73,
+					"instanceVariables": {
+						"scrollCanvasID": "mainCanvas",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": true,
+						"scrollCenterOnMouseover": true,
+						"scrollCenteringMargins": 10,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
+						"section": "main",
+						"ID": "mainScrollDummy2345",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2
+					},
+					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 73,
+						"children": [
+							{
+								"uid": 74,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": false,
+									"h": false,
+									"a": true,
+									"o": true,
+									"v": true,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 420,
+						"y": 39,
+						"width": 24,
+						"height": 21,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "THIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\n",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 2.5,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 74,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 73,
+						"uid": 74,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": true,
+							"v": true,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 420,
+						"y": 38.5,
+						"width": 19,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainButton",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 75,
+					"instanceVariables": {
+						"scrollCanvasID": "mainCanvas",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": true,
+						"scrollCenterOnMouseover": true,
+						"scrollCenteringMargins": 10,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
+						"section": "main",
+						"ID": "mainScrollDummy78",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2
+					},
+					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 75,
+						"children": [
+							{
+								"uid": 76,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": false,
+									"h": false,
+									"a": true,
+									"o": true,
+									"v": true,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 359,
+						"y": 12,
+						"width": 24,
+						"height": 21,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "THIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\n",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 2.5,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 76,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 75,
+						"uid": 76,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": true,
+							"v": true,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 359,
+						"y": 11.5,
+						"width": 19,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainButton",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 77,
+					"instanceVariables": {
+						"scrollCanvasID": "mainCanvas",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": true,
+						"scrollCenterOnMouseover": true,
+						"scrollCenteringMargins": 10,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
+						"section": "main",
+						"ID": "mainScrollDummy967",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2
+					},
+					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 77,
+						"children": [
+							{
+								"uid": 78,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": false,
+									"h": false,
+									"a": true,
+									"o": true,
+									"v": true,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 446,
+						"y": 48,
+						"width": 24,
+						"height": 21,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "THIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\n",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 2.5,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 78,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 77,
+						"uid": 78,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": true,
+							"v": true,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 446,
+						"y": 47.5,
+						"width": 19,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainButton",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 79,
+					"instanceVariables": {
+						"scrollCanvasID": "mainCanvas",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": true,
+						"scrollCenterOnMouseover": true,
+						"scrollCenteringMargins": 10,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
+						"section": "main",
+						"ID": "mainScrollDummy87",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2
+					},
+					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 79,
+						"children": [
+							{
+								"uid": 80,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": false,
+									"h": false,
+									"a": true,
+									"o": true,
+									"v": true,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 446,
+						"y": 90,
+						"width": 24,
+						"height": 21,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "THIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\n",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 2.5,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 80,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 79,
+						"uid": 80,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": true,
+							"v": true,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 446,
+						"y": 89.5,
+						"width": 19,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainButton",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 81,
+					"instanceVariables": {
+						"scrollCanvasID": "mainCanvas",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": true,
+						"scrollCenterOnMouseover": true,
+						"scrollCenteringMargins": 10,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
+						"section": "main",
+						"ID": "mainScrollDummy96Dummy",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2
+					},
+					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 81,
+						"children": [
+							{
+								"uid": 82,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": false,
+									"h": false,
+									"a": true,
+									"o": true,
+									"v": true,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 472,
+						"y": 95,
+						"width": 24,
+						"height": 21,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "THIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\n",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 2.5,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 82,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 81,
+						"uid": 82,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": true,
+							"v": true,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 472,
+						"y": 94.5,
+						"width": 19,
+						"height": 16,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainButton",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 83,
+					"instanceVariables": {
+						"scrollCanvasID": "mainCanvas",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": true,
+						"scrollCenterOnMouseover": true,
+						"scrollCenteringMargins": 10,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
+						"section": "main",
+						"ID": "mainScrollDummy96Yes",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2
+					},
+					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 83,
+						"children": [
+							{
+								"uid": 84,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": false,
+									"h": false,
+									"a": true,
+									"o": true,
+									"v": true,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 497,
+						"y": 111,
+						"width": 24,
+						"height": 21,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "THIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\nTHIS IS A BUNCH OF FILLER TEXT\n",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 2.5,
+						"line-height": -4,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 84,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 83,
+						"uid": 84,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": true,
+							"v": true,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 497,
+						"y": 110.5,
+						"width": 19,
+						"height": 16,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -2858,7 +4307,6 @@
 					"uid": 37,
 					"instanceVariables": {
 						"sliderTickAttachedBar": "",
-						"canvas": "",
 						"section": "mainSettings",
 						"ID": "mainSettingsSliderTick",
 						"navigable": true,
@@ -3012,13 +4460,7 @@
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
 						"scroller": true,
-						"scrollerUseCanvas": "mainSettings",
-						"scrollerMargins": 4,
 						"scrollerSpeed": 20,
-						"scrollerX1": 0,
-						"scrollerY1": 0,
-						"scrollerX2": 0,
-						"scrollerY2": 0,
 						"section": "mainSettings",
 						"ID": "mainSettingsScrollHandleVert",
 						"navigable": true,
@@ -3172,13 +4614,7 @@
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
 						"scroller": true,
-						"scrollerUseCanvas": "mainSettings",
-						"scrollerMargins": 4,
 						"scrollerSpeed": 20,
-						"scrollerX1": 0,
-						"scrollerY1": 0,
-						"scrollerX2": 0,
-						"scrollerY2": 0,
 						"section": "mainSettings",
 						"ID": "mainSettingsScrollHandleHoriz",
 						"navigable": true,
@@ -3262,7 +4698,14 @@
 					},
 					"uid": 50,
 					"instanceVariables": {
-						"canvasID": "mainSettings"
+						"canvasID": "mainSettings",
+						"scrollXHandleID": "mainSettingsScrollHandleHoriz",
+						"scrollYHandleID": "mainSettingsScrollHandleVert",
+						"scrollerMargins": 4,
+						"scrollerX1": 0,
+						"scrollerY1": 0,
+						"scrollerX2": 0,
+						"scrollerY2": 0
 					},
 					"behaviors": {},
 					"sceneGraphData": {
@@ -3405,11 +4848,14 @@
 						"sliderRightX": 0,
 						"sliderRightY": 0,
 						"sliderTickObjectName": "uiMainSettingsSliderTick",
-						"scrollSliderHandleY": "mainSettingsScrollHandleVert",
-						"scrollSliderHandleX": "mainSettingsScrollHandleHoriz",
+						"scrollCanvasID": "mainSettings",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": false,
+						"scrollCenterOnMouseover": false,
+						"scrollCenteringMargins": 20,
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
-						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsMus",
 						"navigable": true,
@@ -3733,7 +5179,6 @@
 						"sliderFillAttachedBar": "mainSettingsMus",
 						"sliderFillStartID": "mainSettingsMusLow",
 						"sliderFillEndID": "mainSettingsMusMid",
-						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsMusFillMid",
 						"navigable": true,
@@ -3791,7 +5236,6 @@
 						"sliderFillAttachedBar": "mainSettingsMus",
 						"sliderFillStartID": "mainSettingsMusHigh",
 						"sliderFillEndID": "",
-						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsMusFillEnd",
 						"navigable": true,
@@ -3854,14 +5298,15 @@
 						"sliderHandleRuleGreater": "mainSettingsMusMid",
 						"sliderHandleRuleAllowEqual": false,
 						"scroller": false,
-						"scrollerUseCanvas": "",
-						"scrollerMargins": 0,
 						"scrollerSpeed": 20,
-						"scrollerX1": 0,
-						"scrollerY1": 0,
-						"scrollerX2": 0,
-						"scrollerY2": 0,
-						"canvas": "mainSettings",
+						"scrollCanvasID": "mainSettings",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": false,
+						"scrollCenterOnChosen": true,
+						"scrollCenterOnMouseover": false,
+						"scrollCenteringMargins": 20,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
 						"section": "mainSettings",
 						"ID": "mainSettingsMusHigh",
 						"navigable": true,
@@ -3878,6 +5323,11 @@
 						"mGrowHeight": 2
 					},
 					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
 						"Tween": {
 							"properties": {
 								"enabled": true
@@ -3969,14 +5419,15 @@
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
 						"scroller": false,
-						"scrollerUseCanvas": "",
-						"scrollerMargins": 0,
 						"scrollerSpeed": 20,
-						"scrollerX1": 0,
-						"scrollerY1": 0,
-						"scrollerX2": 0,
-						"scrollerY2": 0,
-						"canvas": "mainSettings",
+						"scrollCanvasID": "mainSettings",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": false,
+						"scrollCenterOnChosen": true,
+						"scrollCenterOnMouseover": false,
+						"scrollCenteringMargins": 20,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
 						"section": "mainSettings",
 						"ID": "mainSettingsMusLow",
 						"navigable": true,
@@ -3993,6 +5444,11 @@
 						"mGrowHeight": 2
 					},
 					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
 						"Tween": {
 							"properties": {
 								"enabled": true
@@ -4084,14 +5540,15 @@
 						"sliderHandleRuleGreater": "mainSettingsMusLow",
 						"sliderHandleRuleAllowEqual": false,
 						"scroller": false,
-						"scrollerUseCanvas": "",
-						"scrollerMargins": 0,
 						"scrollerSpeed": 20,
-						"scrollerX1": 0,
-						"scrollerY1": 0,
-						"scrollerX2": 0,
-						"scrollerY2": 0,
-						"canvas": "mainSettings",
+						"scrollCanvasID": "mainSettings",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": false,
+						"scrollCenterOnChosen": true,
+						"scrollCenterOnMouseover": false,
+						"scrollCenteringMargins": 20,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
 						"section": "mainSettings",
 						"ID": "mainSettingsMusMid",
 						"navigable": true,
@@ -4108,6 +5565,11 @@
 						"mGrowHeight": 2
 					},
 					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
 						"Tween": {
 							"properties": {
 								"enabled": true
@@ -4232,8 +5694,8 @@
 						}
 					},
 					"world": {
-						"x": 214,
-						"y": -50,
+						"x": 283,
+						"y": -74,
 						"width": 49,
 						"height": 12,
 						"originX": 0.5,
@@ -4244,7 +5706,7 @@
 							1,
 							1
 						],
-						"angle": 0.2617993877991494,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
@@ -4272,11 +5734,14 @@
 						"sliderRightX": 0,
 						"sliderRightY": 0,
 						"sliderTickObjectName": "uiMainSettingsSliderTick",
-						"scrollSliderHandleY": "mainSettingsScrollHandleVert",
-						"scrollSliderHandleX": "mainSettingsScrollHandleHoriz",
+						"scrollCanvasID": "mainSettings",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": false,
+						"scrollCenterOnMouseover": false,
+						"scrollCenteringMargins": 20,
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
-						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsDummy1",
 						"navigable": true,
@@ -4350,9 +5815,9 @@
 						}
 					},
 					"world": {
-						"x": 214,
-						"y": -28,
-						"width": 336,
+						"x": 368,
+						"y": -53,
+						"width": 267,
 						"height": 10,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -4362,7 +5827,7 @@
 							1,
 							1
 						],
-						"angle": 0.2617993877991494,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
@@ -4384,7 +5849,6 @@
 						"sliderFillAttachedBar": "mainSettingsDummy1",
 						"sliderFillStartID": "",
 						"sliderFillEndID": "mainSettingsDummy1Handle",
-						"canvas": "",
 						"section": "mainSettings",
 						"ID": "mainSettingsDummy1Fill",
 						"navigable": true,
@@ -4408,9 +5872,9 @@
 						}
 					},
 					"world": {
-						"x": 54,
-						"y": -71,
-						"width": 196,
+						"x": 236,
+						"y": -53,
+						"width": 31,
 						"height": 6,
 						"originX": 0,
 						"originY": 0.5,
@@ -4420,7 +5884,7 @@
 							0.4549019607843137,
 							1
 						],
-						"angle": 0.2617993877991494,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
@@ -4447,14 +5911,15 @@
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
 						"scroller": false,
-						"scrollerUseCanvas": "",
-						"scrollerMargins": 0,
 						"scrollerSpeed": 20,
-						"scrollerX1": 0,
-						"scrollerY1": 0,
-						"scrollerX2": 0,
-						"scrollerY2": 0,
-						"canvas": "mainSettings",
+						"scrollCanvasID": "mainSettings",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": false,
+						"scrollCenterOnChosen": true,
+						"scrollCenterOnMouseover": false,
+						"scrollCenteringMargins": 20,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
 						"section": "mainSettings",
 						"ID": "mainSettingsDummy1Handle",
 						"navigable": true,
@@ -4471,6 +5936,11 @@
 						"mGrowHeight": 2
 					},
 					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
 						"Tween": {
 							"properties": {
 								"enabled": true
@@ -4506,8 +5976,8 @@
 						}
 					},
 					"world": {
-						"x": 243,
-						"y": -20,
+						"x": 268,
+						"y": -53,
 						"width": 8,
 						"height": 16,
 						"originX": 0.5,
@@ -4518,7 +5988,7 @@
 							1,
 							1
 						],
-						"angle": 0.2617993877991494,
+						"angle": 0,
 						"zElevation": 0
 					}
 				},
@@ -4618,11 +6088,14 @@
 						"sliderRightX": 0,
 						"sliderRightY": 0,
 						"sliderTickObjectName": "uiMainSettingsSliderTick",
-						"scrollSliderHandleY": "mainSettingsScrollHandleVert",
-						"scrollSliderHandleX": "mainSettingsScrollHandleHoriz",
+						"scrollCanvasID": "mainSettings",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": true,
+						"scrollCenterOnChosen": false,
+						"scrollCenterOnMouseover": false,
+						"scrollCenteringMargins": 20,
 						"scrollOffsetX": 0,
 						"scrollOffsetY": 0,
-						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsSfx",
 						"navigable": true,
@@ -4730,7 +6203,6 @@
 						"sliderFillAttachedBar": "mainSettingsSfx",
 						"sliderFillStartID": "",
 						"sliderFillEndID": "mainSettingsSfxHandle",
-						"canvas": "mainSettings",
 						"section": "mainSettings",
 						"ID": "mainSettingsSfxFill",
 						"navigable": true,
@@ -4793,14 +6265,15 @@
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
 						"scroller": false,
-						"scrollerUseCanvas": "",
-						"scrollerMargins": 0,
 						"scrollerSpeed": 20,
-						"scrollerX1": 0,
-						"scrollerY1": 0,
-						"scrollerX2": 0,
-						"scrollerY2": 0,
-						"canvas": "mainSettings",
+						"scrollCanvasID": "mainSettings",
+						"scrollCanvasMask": true,
+						"scrollAffectPosition": false,
+						"scrollCenterOnChosen": true,
+						"scrollCenterOnMouseover": false,
+						"scrollCenteringMargins": 20,
+						"scrollOffsetX": 0,
+						"scrollOffsetY": 0,
 						"section": "mainSettings",
 						"ID": "mainSettingsSfxHandle",
 						"navigable": true,
@@ -4817,6 +6290,11 @@
 						"mGrowHeight": 2
 					},
 					"behaviors": {
+						"TweenScroll": {
+							"properties": {
+								"enabled": true
+							}
+						},
 						"Tween": {
 							"properties": {
 								"enabled": true
@@ -4828,166 +6306,6 @@
 						"y": -91,
 						"width": 8,
 						"height": 16,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "uiMainSettingsScrollBar",
-					"properties": {
-						"left-margin": 0,
-						"right-margin": 0,
-						"top-margin": 0,
-						"bottom-margin": 0,
-						"edges": "stretch",
-						"fill": "stretch",
-						"initially-visible": true,
-						"origin": "center",
-						"seams": "exact"
-					},
-					"uid": 57,
-					"instanceVariables": {
-						"sliderMin": 0,
-						"sliderMax": -300,
-						"sliderStep": 10,
-						"sliderMarginsHorizontal": 0,
-						"sliderLeftX": 0,
-						"sliderLeftY": 0,
-						"sliderRightX": 0,
-						"sliderRightY": 0,
-						"sliderTickObjectName": "",
-						"section": "main",
-						"ID": "mainScrollBar",
-						"navigable": true,
-						"active": false,
-						"activeTrigger": false,
-						"chosenTrigger": false,
-						"overrideUp": "",
-						"overrideDown": "",
-						"overrideLeft": "",
-						"overrideRight": "",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mGrowWidth": 4,
-						"mGrowHeight": 4
-					},
-					"behaviors": {
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
-					"sceneGraphData": {
-						"parent-uid": null,
-						"uid": 57,
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"world": {
-						"x": 416,
-						"y": 53,
-						"width": 82,
-						"height": 1,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 1.5707963267948966,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "uiMainSettingsScrollHandle",
-					"properties": {
-						"left-margin": 1,
-						"right-margin": 1,
-						"top-margin": 1,
-						"bottom-margin": 1,
-						"edges": "stretch",
-						"fill": "stretch",
-						"initially-visible": true,
-						"origin": "center",
-						"seams": "exact"
-					},
-					"uid": 58,
-					"instanceVariables": {
-						"sliderHandleAttachedBar": "mainScrollBar",
-						"sliderHandleValue": 0,
-						"sliderHandleValueLast": 0,
-						"sliderHandleProgress": 0,
-						"sliderHandleRuleLesser": "",
-						"sliderHandleRuleGreater": "",
-						"sliderHandleRuleAllowEqual": false,
-						"scroller": true,
-						"scrollerUseCanvas": "main",
-						"scrollerMargins": 4,
-						"scrollerSpeed": 10,
-						"scrollerX1": 0,
-						"scrollerY1": 0,
-						"scrollerX2": 0,
-						"scrollerY2": 0,
-						"section": "main",
-						"ID": "mainScrollHandle",
-						"navigable": true,
-						"active": false,
-						"activeTrigger": false,
-						"chosenTrigger": false,
-						"overrideUp": "",
-						"overrideDown": "",
-						"overrideLeft": "",
-						"overrideRight": "",
-						"oWidth": 0,
-						"oHeight": 0,
-						"mGrowWidth": 1,
-						"mGrowHeight": 0
-					},
-					"behaviors": {
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						}
-					},
-					"world": {
-						"x": 416,
-						"y": 12,
-						"width": 2,
-						"height": 10,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -5642,6 +6960,33 @@
 						],
 						"angle": 0,
 						"zElevation": 0
+					}
+				},
+				{
+					"type": "debugCanvas",
+					"properties": {
+						"resolution-mode": "auto",
+						"initially-visible": true,
+						"origin": "top-left",
+						"antialiasing": "off"
+					},
+					"uid": 70,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 0,
+						"y": 0,
+						"width": 427,
+						"height": 240,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0
 					}
 				}
 			],

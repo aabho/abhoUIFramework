@@ -9,6 +9,55 @@
 			"desc": "an id for this uiCanvas - put this into ui components' canvas variable to mask them",
 			"show": true,
 			"sid": 579006995712469
+		},
+		{
+			"name": "scrollXHandleID",
+			"type": "string",
+			"desc": "the ID of the slider handle to use",
+			"show": true,
+			"sid": 372596239533842
+		},
+		{
+			"name": "scrollYHandleID",
+			"type": "string",
+			"desc": "the ID of the slider handle to use",
+			"show": true,
+			"sid": 750841821371470
+		},
+		{
+			"name": "scrollerMargins",
+			"type": "number",
+			"desc": "margins to pad around scroll view bounds",
+			"show": true,
+			"sid": 533425007374732
+		},
+		{
+			"name": "scrollerX1",
+			"type": "number",
+			"desc": "scroll content bounds",
+			"show": false,
+			"sid": 474093362916251
+		},
+		{
+			"name": "scrollerY1",
+			"type": "number",
+			"desc": "scroll content bounds",
+			"show": false,
+			"sid": 263101821325244
+		},
+		{
+			"name": "scrollerX2",
+			"type": "number",
+			"desc": "scroll content bounds",
+			"show": false,
+			"sid": 884759025487271
+		},
+		{
+			"name": "scrollerY2",
+			"type": "number",
+			"desc": "scroll content bounds",
+			"show": false,
+			"sid": 642348239861536
 		}
 	],
 	"behaviorTypes": [],

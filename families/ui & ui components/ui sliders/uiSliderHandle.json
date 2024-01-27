@@ -60,53 +60,11 @@
 			"sid": 128675221874790
 		},
 		{
-			"name": "scrollerUseCanvas",
-			"type": "string",
-			"desc": "enter a canvas ID to use it as the bounds of the scroll view",
-			"show": true,
-			"sid": 579740643150069
-		},
-		{
-			"name": "scrollerMargins",
-			"type": "number",
-			"desc": "margins to pad around scroll view bounds",
-			"show": true,
-			"sid": 202738154841132
-		},
-		{
 			"name": "scrollerSpeed",
 			"type": "number",
 			"desc": "how many pixels to scroll per step",
 			"show": true,
 			"sid": 529782706169466
-		},
-		{
-			"name": "scrollerX1",
-			"type": "number",
-			"desc": "scroll content bounds",
-			"show": false,
-			"sid": 474093362916250
-		},
-		{
-			"name": "scrollerY1",
-			"type": "number",
-			"desc": "scroll content bounds",
-			"show": false,
-			"sid": 263101821325243
-		},
-		{
-			"name": "scrollerX2",
-			"type": "number",
-			"desc": "scroll content bounds",
-			"show": false,
-			"sid": 884759025487270
-		},
-		{
-			"name": "scrollerY2",
-			"type": "number",
-			"desc": "scroll content bounds",
-			"show": false,
-			"sid": 642348239861535
 		}
 	],
 	"behaviorTypes": [],

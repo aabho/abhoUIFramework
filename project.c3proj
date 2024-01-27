@@ -88,7 +88,8 @@
 	"objectTypes": {
 		"items": [
 			"Camera",
-			"txt"
+			"txt",
+			"debugCanvas"
 		],
 		"subfolders": [
 			{
@@ -167,8 +168,7 @@
 					{
 						"items": [
 							"uiCanvas",
-							"uiScrollComponent",
-							"uiCanvasPaste"
+							"uiScrollComponent"
 						],
 						"subfolders": [],
 						"name": "ui scroll view"

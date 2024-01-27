@@ -4,18 +4,46 @@
 	"sid": 903651693019718,
 	"instanceVariables": [
 		{
-			"name": "scrollSliderHandleY",
+			"name": "scrollCanvasID",
 			"type": "string",
-			"desc": "the ID of the slider to use",
+			"desc": "enter canvasID - you need to enter one, but you don't need to enable masking",
 			"show": true,
-			"sid": 285822989813354
+			"sid": 643333100229853
 		},
 		{
-			"name": "scrollSliderHandleX",
-			"type": "string",
-			"desc": "the ID of the slider to use",
+			"name": "scrollCanvasMask",
+			"type": "boolean",
+			"desc": "mask this object (and children) behind canvas",
 			"show": true,
-			"sid": 217647463175447
+			"sid": 586735953288504
+		},
+		{
+			"name": "scrollAffectPosition",
+			"type": "boolean",
+			"desc": "usually true but in some cases you may want this to be false, for example when this is a child of another uiScrollComponent, like a slider handle",
+			"show": true,
+			"sid": 471172869018867
+		},
+		{
+			"name": "scrollCenterOnChosen",
+			"type": "boolean",
+			"desc": "center this component when it gets chosen in the scroll view",
+			"show": true,
+			"sid": 837904343690289
+		},
+		{
+			"name": "scrollCenterOnMouseover",
+			"type": "boolean",
+			"desc": "same thing as onChosen, but works for mouse too",
+			"show": true,
+			"sid": 397536224416823
+		},
+		{
+			"name": "scrollCenteringMargins",
+			"type": "number",
+			"desc": "margins around centering this component, if set to center on chosen",
+			"show": true,
+			"sid": 533784902375650
 		},
 		{
 			"name": "scrollOffsetX",
@@ -42,6 +70,8 @@
 	"effectTypes": [],
 	"members": [
 		"uiMainSettingsSliderBar",
-		"uiMainButton"
+		"uiMainButton",
+		"uiMainSettingsSliderHandleMus",
+		"uiMainSettingsSliderHandleSFX"
 	]
 }
