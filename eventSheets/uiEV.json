@@ -7407,7 +7407,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "how long you need to hold down an input in order to start the auto-scroll behavior",
+					"text": "how long you need to hold down an input in order to start the auto-choosing behavior",
 					"text-color": [
 						0,
 						0,
@@ -7443,7 +7443,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "how often the input repeats when auto-scrolling",
+					"text": "how often the input repeats when auto-choosing",
 					"text-color": [
 						0,
 						0,
@@ -7501,7 +7501,43 @@
 					"comment": "non-static input check",
 					"isStatic": false,
 					"isConstant": false,
-					"sid": 962201239257947
+					"sid": 367301827254052
+				},
+				{
+					"eventType": "comment",
+					"text": "how often the input repeats when using gamepad to scroll",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6705882352941176,
+						0.8745098039215686,
+						0.6431372549019608,
+						1
+					]
+				},
+				{
+					"eventType": "variable",
+					"name": "uiInputGamepadScrollDuration",
+					"type": "number",
+					"initialValue": "0.1",
+					"comment": "scroll timer",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 949244714984500
+				},
+				{
+					"eventType": "variable",
+					"name": "uiInputGamepadScrollTimer",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "scroll timer",
+					"isStatic": true,
+					"isConstant": false,
+					"sid": 320722648705332
 				},
 				{
 					"eventType": "comment",
@@ -7523,11 +7559,37 @@
 					"eventType": "variable",
 					"name": "uiGamepadDeadzone",
 					"type": "number",
-					"initialValue": "90",
+					"initialValue": "50",
 					"comment": "",
 					"isStatic": false,
 					"isConstant": true,
 					"sid": 909191405378279
+				},
+				{
+					"eventType": "comment",
+					"text": "what fraction of a step does the gamepad scroll per timer fire",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6705882352941176,
+						0.8745098039215686,
+						0.6431372549019608,
+						1
+					]
+				},
+				{
+					"eventType": "variable",
+					"name": "uiGamepadStepFraction",
+					"type": "number",
+					"initialValue": "0.1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 996914944348439
 				},
 				{
 					"eventType": "group",
@@ -8201,6 +8263,193 @@
 										0.8392156862745098,
 										1
 									]
+								},
+								{
+									"eventType": "comment",
+									"text": "mouse scrolling ",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "cursor-is-over-object",
+											"objectClass": "Mouse",
+											"sid": 392680438377004,
+											"parameters": {
+												"object": "uiCanvas"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 837391120586484,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-mouse-wheel",
+													"objectClass": "Mouse",
+													"sid": 731964624055731,
+													"parameters": {
+														"direction": "any"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 876082546666982,
+											"children": [
+												{
+													"eventType": "variable",
+													"name": "swap",
+													"type": "boolean",
+													"initialValue": "false",
+													"comment": "if true swap axes",
+													"isStatic": false,
+													"isConstant": false,
+													"sid": 450968846494335
+												},
+												{
+													"eventType": "comment",
+													"text": "if shift is down, invert mouse wheel controls",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "key-is-down",
+															"objectClass": "Keyboard",
+															"sid": 958397219993657,
+															"parameters": {
+																"key": 16
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-boolean-eventvar",
+															"objectClass": "System",
+															"sid": 949958428975326,
+															"parameters": {
+																"variable": "swap",
+																"value": "true"
+															}
+														}
+													],
+													"sid": 711482009179011
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 771059021383280
+														}
+													],
+													"actions": [
+														{
+															"id": "set-boolean-eventvar",
+															"objectClass": "System",
+															"sid": 732672069198684,
+															"parameters": {
+																"variable": "swap",
+																"value": "false"
+															}
+														}
+													],
+													"sid": 971517589167193
+												},
+												{
+													"eventType": "comment",
+													"text": "apply mouse wheel effects to scroller handles",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "pick-by-unique-id",
+															"objectClass": "uiSliderHandle",
+															"sid": 204796258685143,
+															"parameters": {
+																"unique-id": "Functions.uiGetUIDFromID(uiCanvas.scrollXHandleID)"
+															}
+														}
+													],
+													"actions": [
+														{
+															"customAction": "uiSliderIncrement [INTERNAL]",
+															"objectClass": "uiSliderHandle",
+															"sid": 735836133082841,
+															"parameters": [
+																"swap ? sign(Mouse.WheelDeltaY) : sign(Mouse.WheelDeltaX)"
+															]
+														}
+													],
+													"sid": 559446025445955
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "pick-by-unique-id",
+															"objectClass": "uiSliderHandle",
+															"sid": 727429939227285,
+															"parameters": {
+																"unique-id": "Functions.uiGetUIDFromID(uiCanvas.scrollYHandleID)"
+															}
+														}
+													],
+													"actions": [
+														{
+															"customAction": "uiSliderIncrement [INTERNAL]",
+															"objectClass": "uiSliderHandle",
+															"sid": 595923750333254,
+															"parameters": [
+																"swap ? sign(Mouse.WheelDeltaX) : sign(Mouse.WheelDeltaY)"
+															]
+														}
+													],
+													"sid": 816997761306246
+												}
+											]
+										}
+									]
 								}
 							],
 							"sid": 337367277458422,
@@ -8633,6 +8882,247 @@
 								}
 							],
 							"sid": 285318130675332
+						},
+						{
+							"eventType": "comment",
+							"text": "scroll using right stick",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 862445690477506,
+									"parameters": {
+										"first-value": "abs(Gamepad.Axis(0, 2))",
+										"comparison": 4,
+										"second-value": "uiGamepadDeadzone"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 561848697190685,
+									"parameters": {
+										"first-value": "abs(Gamepad.Axis(0, 3))",
+										"comparison": 4,
+										"second-value": "uiGamepadDeadzone"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 127596127071664,
+									"parameters": {
+										"variable": "uiInputGamepadScrollTimer",
+										"value": "clamp(uiInputGamepadScrollTimer + dt, 0, uiInputGamepadScrollDuration)"
+									}
+								}
+							],
+							"sid": 488741045413558,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "wait for scroll timer to bypass duration",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 187968605297356,
+											"parameters": {
+												"first-value": "uiInputGamepadScrollTimer",
+												"comparison": 5,
+												"second-value": "uiInputGamepadScrollDuration"
+											}
+										},
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "uiScrollComponent",
+											"sid": 855009285016307,
+											"parameters": {
+												"unique-id": "Functions.uiGetUIDFromID(uiChosenID)"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "uiCanvas",
+											"sid": 647341755563432,
+											"parameters": {
+												"instance-variable": "canvasID",
+												"comparison": 0,
+												"value": "uiScrollComponent.scrollCanvasID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 160888312414733,
+											"parameters": {
+												"variable": "uiInputGamepadScrollTimer",
+												"value": "0"
+											}
+										}
+									],
+									"sid": 349110973999262,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "set x axis scroller",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 801749919561501,
+													"parameters": {
+														"first-value": "abs(Gamepad.Axis(0, 2))",
+														"comparison": 4,
+														"second-value": "uiGamepadDeadzone"
+													}
+												},
+												{
+													"id": "pick-by-unique-id",
+													"objectClass": "uiSliderHandle",
+													"sid": 894802919050639,
+													"parameters": {
+														"unique-id": "Functions.uiGetUIDFromID(uiCanvas.scrollXHandleID)"
+													}
+												}
+											],
+											"actions": [
+												{
+													"customAction": "uiSliderIncrement [INTERNAL]",
+													"objectClass": "uiSliderHandle",
+													"sid": 203736266681296,
+													"parameters": [
+														"sign(Gamepad.Axis(0, 2))"
+													]
+												}
+											],
+											"sid": 307292406593222
+										},
+										{
+											"eventType": "comment",
+											"text": "set y axis scroller",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 307613781775367,
+													"parameters": {
+														"first-value": "abs(Gamepad.Axis(0, 3))",
+														"comparison": 4,
+														"second-value": "uiGamepadDeadzone"
+													}
+												},
+												{
+													"id": "pick-by-unique-id",
+													"objectClass": "uiSliderHandle",
+													"sid": 252945755866645,
+													"parameters": {
+														"unique-id": "Functions.uiGetUIDFromID(uiCanvas.scrollYHandleID)"
+													}
+												}
+											],
+											"actions": [
+												{
+													"customAction": "uiSliderIncrement [INTERNAL]",
+													"objectClass": "uiSliderHandle",
+													"sid": 732364332112656,
+													"parameters": [
+														"sign(Gamepad.Axis(0, 3))"
+													]
+												}
+											],
+											"sid": 437313511649433
+										}
+									]
+								}
+							],
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 906500395005948
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 375089387705062,
+									"parameters": {
+										"variable": "uiInputGamepadScrollTimer",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 814879547074325
 						}
 					],
 					"sid": 756578098296452,
@@ -8651,7 +9141,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "arrow key auto scroll timer",
+					"text": "arrow key auto choosing timer",
 					"text-color": [
 						0,
 						0,
