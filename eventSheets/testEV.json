@@ -942,90 +942,6 @@
 							"children": [
 								{
 									"eventType": "comment",
-									"text": "function for slider being moved",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6431372549019608,
-										0.8470588235294118,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"functionName": "slider mainSettingsSfxHandle",
-									"functionDescription": "automatically called",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": true,
-									"functionIsAsync": false,
-									"functionParameters": [
-										{
-											"name": "value",
-											"type": "number",
-											"initialValue": "0",
-											"comment": "value to be passed",
-											"sid": 399790027772016
-										}
-									],
-									"eventType": "function-block",
-									"conditions": [],
-									"actions": [],
-									"sid": 193260644819535,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "uiMainSettingsSliderBar",
-													"sid": 744446008186620,
-													"parameters": {
-														"instance-variable": "ID",
-														"comparison": 0,
-														"value": "\"mainSettingsMus\""
-													}
-												}
-											],
-											"actions": [
-												{
-													"type": "comment",
-													"text": "here, I use this action to set properties instead of setting the instance variables directly.\nthis is recommended since it handles all relevant updates for you.",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8470588235294118,
-														0.6431372549019608,
-														0.8745098039215686,
-														1
-													]
-												},
-												{
-													"customAction": "uiSliderChangeProperties [INTERNAL]",
-													"objectClass": "uiMainSettingsSliderBar",
-													"customActionObjectClass": "uiSliderBar",
-													"sid": 664628324488317,
-													"parameters": [
-														"0",
-														"value",
-														"1"
-													]
-												}
-											],
-											"sid": 817458711100687
-										}
-									]
-								},
-								{
-									"eventType": "comment",
 									"text": "set color based on value",
 									"text-color": [
 										0,
@@ -1141,7 +1057,70 @@
 											"sid": 774476231700416
 										}
 									],
-									"sid": 416290841604446
+									"sid": 416290841604446,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "adjust the music slider based on the sfx slider value",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiMainSettingsSliderBar",
+													"sid": 604718498304775,
+													"parameters": {
+														"instance-variable": "ID",
+														"comparison": 0,
+														"value": "\"mainSettingsMus\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "here, I use this action to set properties instead of setting the instance variables directly.\nthis is recommended since it handles all relevant updates for you.",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8470588235294118,
+														0.6431372549019608,
+														0.8745098039215686,
+														1
+													]
+												},
+												{
+													"customAction": "uiSliderChangeProperties [INTERNAL]",
+													"objectClass": "uiMainSettingsSliderBar",
+													"customActionObjectClass": "uiSliderBar",
+													"sid": 830572122052189,
+													"parameters": [
+														"0",
+														"uiMainSettingsSliderHandleSFX.sliderHandleValue",
+														"1"
+													]
+												}
+											],
+											"sid": 173114302552439
+										}
+									]
 								},
 								{
 									"eventType": "comment",

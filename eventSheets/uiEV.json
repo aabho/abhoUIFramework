@@ -2121,12 +2121,11 @@
 									"eventType": "custom-ace-block",
 									"conditions": [
 										{
-											"id": "pick-by-evaluate",
-											"objectClass": "System",
-											"sid": 930894993138718,
+											"id": "pick-by-unique-id",
+											"objectClass": "ui",
+											"sid": 690350774471995,
 											"parameters": {
-												"object": "uiSliderHandle",
-												"expression": "Functions.uiGetIDFromUID(uiSliderBar.UID) = uiSliderHandle.sliderHandleAttachedBar"
+												"unique-id": "uiSliderBar.UID"
 											}
 										}
 									],
@@ -2168,7 +2167,7 @@
 									"children": [
 										{
 											"eventType": "comment",
-											"text": "update position of slider handles by passing off ID to a register slider function",
+											"text": "update position of slider handles",
 											"text-color": [
 												0,
 												0,
@@ -2186,6 +2185,16 @@
 											"eventType": "block",
 											"conditions": [
 												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiSliderHandle",
+													"sid": 488971024364231,
+													"parameters": {
+														"instance-variable": "sliderHandleAttachedBar",
+														"comparison": 0,
+														"value": "ui.id"
+													}
+												},
+												{
 													"id": "for-each",
 													"objectClass": "System",
 													"sid": 362879798102012,
@@ -2196,12 +2205,9 @@
 											],
 											"actions": [
 												{
-													"callFunction": "uiSlider [INTERNAL]",
-													"sid": 963003830454762,
-													"parameters": [
-														"Functions.uiGetIDFromUID(uiSliderHandle.UID)",
-														true
-													]
+													"customAction": "uiSliderHandleUpdatePosition",
+													"objectClass": "uiSliderHandle",
+													"sid": 631992426281546
 												}
 											],
 											"sid": 618009238014391
@@ -4007,14 +4013,14 @@
 						},
 						{
 							"functionName": "uiGetUIDFromID",
-							"functionDescription": "given a 'ui' id, retrieve a uid",
+							"functionDescription": "given a 'ui' id, retrieve a 'uiSliderBar' uid",
 							"functionCategory": "ui",
 							"functionReturnType": "number",
 							"functionCopyPicked": false,
 							"functionIsAsync": false,
 							"functionParameters": [
 								{
-									"name": "ID",
+									"name": "id",
 									"type": "string",
 									"initialValue": "",
 									"comment": "id that you can find on the ui family",
@@ -4026,18 +4032,18 @@
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "ui",
-									"sid": 859082285017327,
+									"sid": 306836369860656,
 									"parameters": {
 										"instance-variable": "ID",
 										"comparison": 0,
-										"value": "ID"
+										"value": "id"
 									}
 								}
 							],
 							"actions": [
 								{
 									"type": "comment",
-									"text": "the reason these functions are important is due to the family overlap that exists throughout this framework - almost all UI components exist in the 'ui' family, but some exist in other ui-related families.\n\nof course, for example, you can't pick a 'uiSliderHandle' from a 'ui' id... but you can always pick it if you have the UID!",
+									"text": "the reason this function is important is due to the family overlap that exists throughout this framework - almost all UI components exist in the 'ui' family, but some exist in other ui-related families.\n\nof course, for example, you can't pick a 'uiSliderHandle' from a 'ui' id... but you can always pick it if you have the UID!",
 									"text-color": [
 										0,
 										0,
@@ -4061,61 +4067,6 @@
 								}
 							],
 							"sid": 251030967192322
-						},
-						{
-							"eventType": "comment",
-							"text": "given any ui component UID, retrieve an ID",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.6431372549019608,
-								0.8470588235294118,
-								0.8745098039215686,
-								1
-							]
-						},
-						{
-							"functionName": "uiGetIDFromUID",
-							"functionDescription": "given any ui component UID, retrieve an ID",
-							"functionCategory": "ui",
-							"functionReturnType": "string",
-							"functionCopyPicked": false,
-							"functionIsAsync": false,
-							"functionParameters": [
-								{
-									"name": "UID",
-									"type": "number",
-									"initialValue": "0",
-									"comment": "must be UID of object in the UI family",
-									"sid": 713880129949664
-								}
-							],
-							"eventType": "function-block",
-							"conditions": [
-								{
-									"id": "pick-by-unique-id",
-									"objectClass": "ui",
-									"sid": 526193593031839,
-									"parameters": {
-										"unique-id": "UID"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-function-return-value",
-									"objectClass": "Functions",
-									"sid": 600837927945131,
-									"parameters": {
-										"value": "ui.ID"
-									}
-								}
-							],
-							"sid": 439277134485783
 						},
 						{
 							"eventType": "comment",
@@ -4398,35 +4349,160 @@
 									"parameters": {
 										"unique-id": "ui.UID"
 									}
-								}
-							],
-							"actions": [
-								{
-									"type": "comment",
-									"text": "hand off the slider updates to a function",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
 								},
 								{
-									"callFunction": "uiSlider [INTERNAL]",
-									"sid": 837537341120485,
-									"parameters": [
-										"ui.ID",
-										false
-									]
+									"id": "pick-by-unique-id",
+									"objectClass": "uiSliderBar",
+									"sid": 809175591417106,
+									"parameters": {
+										"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
+									}
 								}
 							],
-							"sid": 551346774199741
+							"actions": [],
+							"sid": 551346774199741,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "uiSliderHandle",
+											"sid": 846835594526618,
+											"parameters": {
+												"instance-variable": "sliderHandleValue",
+												"comparison": 0,
+												"value": "Self.sliderHandleValueLast"
+											},
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "reset slider last value, which is used to test if the slider value changes, and prevent updates if not",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "uiSliderHandle",
+											"sid": 166675786726673,
+											"parameters": {
+												"instance-variable": "sliderHandleValueLast",
+												"value": "Self.sliderHandleValue"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "calculate the bounds of the slider area, it gets stored as instance variables in uiSliderBar",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"customAction": "uiSliderCalculateMargins [INTERNAL]",
+											"objectClass": "uiSliderBar",
+											"sid": 917990889128825
+										}
+									],
+									"sid": 712814764859323,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "ui",
+													"sid": 923592132430407,
+													"parameters": {
+														"instance-variable": "ID",
+														"comparison": 0,
+														"value": "uiChosenID"
+													}
+												}
+											],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "custom action for player dragging the handle + update handle's position later on",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"customAction": "uiSliderHandleMove",
+													"objectClass": "uiSliderHandle",
+													"sid": 533328764301292
+												}
+											],
+											"sid": 640888546055493
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 635293481529080
+												}
+											],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "just update the handle's position",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"customAction": "uiSliderHandleUpdatePosition",
+													"objectClass": "uiSliderHandle",
+													"sid": 480568086978255
+												}
+											],
+											"sid": 617346400762806
+										}
+									]
+								}
+							]
 						},
 						{
 							"eventType": "comment",
@@ -5023,7 +5099,7 @@
 							"actions": [
 								{
 									"type": "comment",
-									"text": "will call a function with the syntax (\"select \" & ui.ID)\nex: Function \"select mainPlay\"\nadd this function to any event sheet to register when a button is selected\n\nkeep in mind that if you change a button's ID, you'll have to change the name of its function, too",
+									"text": "will call a function with the syntax (\"select \" & uiButton.id)\nex: Function \"select mainPlay\"\nadd this function to any event sheet to register when a button is selected\n\nkeep in mind that if you change a button's ID, you'll have to change the name of its function, too",
 									"text-color": [
 										0,
 										0,
@@ -5048,276 +5124,6 @@
 								}
 							],
 							"sid": 364808941281007
-						}
-					]
-				},
-				{
-					"eventType": "comment",
-					"text": "scrub a slider handle",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"functionName": "uiSlider [INTERNAL]",
-					"functionDescription": "update ui slider handle",
-					"functionCategory": "ui",
-					"functionReturnType": "none",
-					"functionCopyPicked": false,
-					"functionIsAsync": false,
-					"functionParameters": [
-						{
-							"name": "sliderHandleID",
-							"type": "string",
-							"initialValue": "",
-							"comment": "pass slider handle ID",
-							"sid": 109421494605399
-						},
-						{
-							"name": "forceUpdate",
-							"type": "boolean",
-							"initialValue": "false",
-							"comment": "update regardless of value not changing",
-							"sid": 160086575652127
-						}
-					],
-					"eventType": "function-block",
-					"conditions": [
-						{
-							"id": "pick-by-unique-id",
-							"objectClass": "uiSliderHandle",
-							"sid": 335507878694972,
-							"parameters": {
-								"unique-id": "Functions.uiGetUIDFromID(sliderHandleID)"
-							}
-						},
-						{
-							"id": "pick-by-unique-id",
-							"objectClass": "uiSliderBar",
-							"sid": 168964522938318,
-							"parameters": {
-								"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "ui",
-							"sid": 602876894363931,
-							"parameters": {
-								"instance-variable": "ID",
-								"comparison": 0,
-								"value": "sliderHandleID"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "log",
-							"objectClass": "Browser",
-							"sid": 528235263564350,
-							"parameters": {
-								"type": "log",
-								"message": "newline & sliderHandleID"
-							}
-						}
-					],
-					"sid": 796360502238773,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-boolean-eventvar",
-									"objectClass": "System",
-									"sid": 736169559550082,
-									"parameters": {
-										"variable": "forceUpdate"
-									}
-								},
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "uiSliderHandle",
-									"sid": 564312256954294,
-									"parameters": {
-										"instance-variable": "sliderHandleValue",
-										"comparison": 0,
-										"value": "Self.sliderHandleValueLast"
-									},
-									"isInverted": true
-								}
-							],
-							"actions": [
-								{
-									"type": "comment",
-									"text": "reset slider last value, which is used to test if the slider value changes, and prevent updates if not",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "uiSliderHandle",
-									"sid": 729829137534549,
-									"parameters": {
-										"instance-variable": "sliderHandleValueLast",
-										"value": "Self.sliderHandleValue"
-									}
-								},
-								{
-									"type": "comment",
-									"text": "calculate the bounds of the slider area, it gets stored as instance variables in uiSliderBar",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"customAction": "uiSliderCalculateMargins [INTERNAL]",
-									"objectClass": "uiSliderBar",
-									"sid": 847695028030326
-								}
-							],
-							"sid": 984789122368966,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "ui",
-											"sid": 810557400474700,
-											"parameters": {
-												"instance-variable": "ID",
-												"comparison": 0,
-												"value": "uiChosenID"
-											}
-										}
-									],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "will call a function with the syntax (\"slider \" & ui.ID)\nex: Function \"slider mainSettingsMus\" (remember this is the HANDLE ID, not the slider bar\nadd this function to any event sheet to register when a button is selected\n\nkeep in mind that if you change a button's ID, you'll have to change the name of its function, too",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8470588235294118,
-												0.6431372549019608,
-												0.8745098039215686,
-												1
-											]
-										},
-										{
-											"type": "script",
-											"script": "const handleVars = runtime.objects.uiSliderHandle.getFirstPickedInstance().instVars;\n\nruntime.callFunction(\"slider \" + handleVars.ID, \nhandleVars.sliderHandleValue);"
-										},
-										{
-											"type": "comment",
-											"text": "custom action for player dragging the handle + update handle's position later on",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"customAction": "uiSliderHandleMove",
-											"objectClass": "uiSliderHandle",
-											"sid": 599327658471888
-										},
-										{
-											"id": "log",
-											"objectClass": "Browser",
-											"sid": 589973316526923,
-											"parameters": {
-												"type": "log",
-												"message": "\"b\""
-											}
-										}
-									],
-									"sid": 463765022444650
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "else",
-											"objectClass": "System",
-											"sid": 488878231966218
-										}
-									],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "just update the handle's position directly",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"customAction": "uiSliderHandleUpdatePosition",
-											"objectClass": "uiSliderHandle",
-											"sid": 685102002659983
-										},
-										{
-											"id": "log",
-											"objectClass": "Browser",
-											"sid": 265642653679781,
-											"parameters": {
-												"type": "log",
-												"message": "\"c\""
-											}
-										}
-									],
-									"sid": 465470622352066
-								}
-							],
-							"isOrBlock": true
 						}
 					]
 				},
@@ -8399,12 +8205,8 @@
 															]
 														},
 														{
-															"callFunction": "uiSlider [INTERNAL]",
-															"sid": 600725072033783,
-															"parameters": [
-																"ui.ID",
-																false
-															]
+															"callFunction": "uiUpdate [INTERNAL]",
+															"sid": 824931437936369
 														}
 													],
 													"sid": 917795547053660
