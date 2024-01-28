@@ -203,7 +203,7 @@
 						{
 							"functionName": "select mainQuit",
 							"functionDescription": "",
-							"functionCategory": "select",
+							"functionCategory": "main",
 							"functionReturnType": "none",
 							"functionCopyPicked": true,
 							"functionIsAsync": false,
@@ -322,7 +322,7 @@
 						{
 							"functionName": "select mainSettings",
 							"functionDescription": "",
-							"functionCategory": "select",
+							"functionCategory": "main",
 							"functionReturnType": "none",
 							"functionCopyPicked": true,
 							"functionIsAsync": false,
@@ -542,7 +542,7 @@
 						{
 							"functionName": "select mainQuitConfirm",
 							"functionDescription": "",
-							"functionCategory": "select",
+							"functionCategory": "main",
 							"functionReturnType": "none",
 							"functionCopyPicked": true,
 							"functionIsAsync": false,
@@ -619,7 +619,7 @@
 						{
 							"functionName": "select mainQuitCancel",
 							"functionDescription": "",
-							"functionCategory": "select",
+							"functionCategory": "main",
 							"functionReturnType": "none",
 							"functionCopyPicked": true,
 							"functionIsAsync": false,
@@ -844,7 +844,7 @@
 						{
 							"functionName": "select mainSettingsBack",
 							"functionDescription": "",
-							"functionCategory": "select",
+							"functionCategory": "main",
 							"functionReturnType": "none",
 							"functionCopyPicked": true,
 							"functionIsAsync": false,
@@ -941,6 +941,51 @@
 							"isActiveOnStart": true,
 							"children": [
 								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "on-created",
+											"objectClass": "uiMainSettingsSliderHandleSFX",
+											"sid": 554207725601567
+										}
+									],
+									"actions": [
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 108695534156551,
+											"parameters": {
+												"seconds": "0"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "restore color",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-default-color",
+											"objectClass": "uiMainSettingsSliderHandleSFX",
+											"sid": 521251135996910,
+											"parameters": {
+												"color": "rgbEx(100, 100, 100)"
+											}
+										}
+									],
+									"sid": 219201107062366
+								},
+								{
 									"eventType": "comment",
 									"text": "set color based on value",
 									"text-color": [
@@ -1033,31 +1078,31 @@
 									]
 								},
 								{
-									"aceType": "action",
-									"aceName": "uiSliderHandleMove",
-									"objectClass": "uiMainSettingsSliderHandleSFX",
-									"functionDescription": "",
-									"functionCategory": "ui",
+									"functionName": "slider mainSettingsSfxHandle",
+									"functionDescription": "when slider value changed",
+									"functionCategory": "main",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
 									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
+									"functionParameters": [
+										{
+											"name": "value",
+											"type": "number",
+											"initialValue": "0",
+											"comment": "value of handle",
+											"sid": 376826319650112
+										}
+									],
+									"eventType": "function-block",
 									"conditions": [],
 									"actions": [
 										{
-											"customAction": "uiSliderHandleMove",
-											"objectClass": "uiMainSettingsSliderHandleSFX",
-											"customActionObjectClass": "uiSliderHandle",
-											"sid": 728139057547194
-										},
-										{
 											"customAction": "specialColor",
 											"objectClass": "uiMainSettingsSliderHandleSFX",
-											"sid": 774476231700416
+											"sid": 840356991553897
 										}
 									],
-									"sid": 416290841604446,
+									"sid": 323019225516732,
 									"children": [
 										{
 											"eventType": "comment",
@@ -1081,7 +1126,7 @@
 												{
 													"id": "compare-instance-variable",
 													"objectClass": "uiMainSettingsSliderBar",
-													"sid": 604718498304775,
+													"sid": 288531902583029,
 													"parameters": {
 														"instance-variable": "ID",
 														"comparison": 0,
@@ -1110,15 +1155,15 @@
 													"customAction": "uiSliderChangeProperties [INTERNAL]",
 													"objectClass": "uiMainSettingsSliderBar",
 													"customActionObjectClass": "uiSliderBar",
-													"sid": 830572122052189,
+													"sid": 797254752543129,
 													"parameters": [
 														"0",
-														"uiMainSettingsSliderHandleSFX.sliderHandleValue",
+														"value",
 														"1"
 													]
 												}
 											],
-											"sid": 173114302552439
+											"sid": 176200850978855
 										}
 									]
 								},

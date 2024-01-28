@@ -4829,6 +4829,26 @@
 											"customAction": "uiSliderCalculateMargins [INTERNAL]",
 											"objectClass": "uiSliderBar",
 											"sid": 519896176654751
+										},
+										{
+											"type": "comment",
+											"text": "will call a function with the syntax (\"slider \" & ui.ID) WITH one parameter, value.\n\nex: Function \"slider mainSettingsMusicHandle\", params: value\n\nadd this function to any event sheet to register when the slider value has changed, and to pass the slider value.",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8470588235294118,
+												0.6431372549019608,
+												0.8745098039215686,
+												1
+											]
+										},
+										{
+											"type": "script",
+											"script": "const handleVars = runtime.objects.uiSliderHandle.getFirstPickedInstance().instVars;\n\ntry {\n\truntime.callFunction(\"slider \" + handleVars.ID, handleVars.sliderHandleValue);\n} \ncatch(error) {/* nothing, just ignore it*/}"
 										}
 									],
 									"sid": 547797821132610,
@@ -5128,7 +5148,7 @@
 									"actions": [
 										{
 											"type": "comment",
-											"text": "will call a function with the syntax (\"select \" & uiButton.id)\nex: Function \"select mainPlay\"\nadd this function to any event sheet to register when a button is selected\n\nkeep in mind that if you change a button's ID, you'll have to change the name of its function, too",
+											"text": "will call a function with the syntax (\"select \" & ui.ID)\nex: Function \"select mainPlay\"\nadd this function to any event sheet to register when a button is selected",
 											"text-color": [
 												0,
 												0,
