@@ -807,6 +807,10 @@
 								{
 									"callFunction": "uiUpdate [INTERNAL]",
 									"sid": 169054072239082
+								},
+								{
+									"callFunction": "uiSliderUpdate [INTERNAL]",
+									"sid": 744070620117528
 								}
 							],
 							"sid": 629899058959210
@@ -892,6 +896,10 @@
 								{
 									"callFunction": "uiUpdate [INTERNAL]",
 									"sid": 270976488533736
+								},
+								{
+									"callFunction": "uiSliderUpdate [INTERNAL]",
+									"sid": 933783275261762
 								}
 							],
 							"sid": 511871459049544
@@ -966,6 +974,10 @@
 								{
 									"callFunction": "uiUpdate [INTERNAL]",
 									"sid": 382276741515945
+								},
+								{
+									"callFunction": "uiSliderUpdate [INTERNAL]",
+									"sid": 767756598994997
 								}
 							],
 							"sid": 280542622003160
@@ -994,6 +1006,22 @@
 			"description": "has custom actions you may edit, but functions you shouldn't call",
 			"isActiveOnStart": true,
 			"children": [
+				{
+					"eventType": "comment",
+					"text": "some functions here are marked with [INTERNAL], meaning that you shouldn't be using them when making your game unless it's for a specific niche case where you know what you're doing",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.8470588235294118,
+						0.6431372549019608,
+						0.8745098039215686,
+						1
+					]
+				},
 				{
 					"eventType": "group",
 					"disabled": false,
@@ -1726,6 +1754,11 @@
 									"sid": 146952642218735
 								},
 								{
+									"customAction": "uiSliderScrollUpdate [INTERNAL]",
+									"objectClass": "uiSliderHandle",
+									"sid": 467698946830422
+								},
+								{
 									"type": "comment",
 									"text": "tween the slider bar towards its new position",
 									"text-color": [
@@ -1874,43 +1907,6 @@
 										}
 									],
 									"sid": 786379995144163
-								},
-								{
-									"eventType": "comment",
-									"text": "when a slider handle is performing a tween, use the opportunity to perform a slider fill update",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "pick-by-unique-id",
-											"objectClass": "uiSliderHandle",
-											"sid": 427329562405820,
-											"parameters": {
-												"unique-id": "ui.UID"
-											}
-										}
-									],
-									"actions": [
-										{
-											"customAction": "uiSliderScrollUpdate [INTERNAL]",
-											"objectClass": "uiSliderHandle",
-											"sid": 223100228524681
-										}
-									],
-									"sid": 322421327985022
 								}
 							]
 						}
@@ -1933,7 +1929,7 @@
 					"eventType": "group",
 					"disabled": false,
 					"title": "ui behavior components internal",
-					"description": "has stuff you probably shouldn't edit - consider looking at \"ui behavior custom actions\" instead to edit slider animations",
+					"description": "has stuff you probably shouldn't edit - consider looking at \"ui behavior custom actions\" instead to edit animations",
 					"isActiveOnStart": true,
 					"children": [
 						{
@@ -2985,8 +2981,8 @@
 											"sid": 183817975543084
 										},
 										{
-											"callFunction": "uiUpdate [INTERNAL]",
-											"sid": 972317521518195
+											"callFunction": "uiSliderUpdate [INTERNAL]",
+											"sid": 516699310818064
 										}
 									],
 									"sid": 326292279543897
@@ -3997,7 +3993,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "given a 'ui' id, retrieve a uid",
+							"text": "given an ID, retrieve a UID",
 							"text-color": [
 								0,
 								0,
@@ -4013,14 +4009,14 @@
 						},
 						{
 							"functionName": "uiGetUIDFromID",
-							"functionDescription": "given a 'ui' id, retrieve a 'uiSliderBar' uid",
+							"functionDescription": "given an ID, retrieve a UID",
 							"functionCategory": "ui",
 							"functionReturnType": "number",
 							"functionCopyPicked": false,
 							"functionIsAsync": false,
 							"functionParameters": [
 								{
-									"name": "id",
+									"name": "ID",
 									"type": "string",
 									"initialValue": "",
 									"comment": "id that you can find on the ui family",
@@ -4032,11 +4028,11 @@
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "ui",
-									"sid": 306836369860656,
+									"sid": 775025953003041,
 									"parameters": {
 										"instance-variable": "ID",
 										"comparison": 0,
-										"value": "id"
+										"value": "ID"
 									}
 								}
 							],
@@ -4067,6 +4063,61 @@
 								}
 							],
 							"sid": 251030967192322
+						},
+						{
+							"eventType": "comment",
+							"text": "given a UID, retrieve an ID",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "uiGetIDFromUID",
+							"functionDescription": "given a UID, retrieve an ID",
+							"functionCategory": "ui",
+							"functionReturnType": "string",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [
+								{
+									"name": "UID",
+									"type": "number",
+									"initialValue": "-1",
+									"comment": "UID, object must be part of UI family",
+									"sid": 234302180839500
+								}
+							],
+							"eventType": "function-block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "ui",
+									"sid": 963036648709793,
+									"parameters": {
+										"unique-id": "UID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-function-return-value",
+									"objectClass": "Functions",
+									"sid": 862536216391338,
+									"parameters": {
+										"value": "ui.ID"
+									}
+								}
+							],
+							"sid": 600356975659573
 						},
 						{
 							"eventType": "comment",
@@ -4262,70 +4313,15 @@
 					]
 				},
 				{
-					"eventType": "comment",
-					"text": "some functions here are marked with [INTERNAL], meaning that you shouldn't be using them when making your game unless it's for a specific niche case where you know what you're doing",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.8470588235294118,
-						0.6431372549019608,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"eventType": "comment",
-					"text": "run a general UI update (not all things will be magically updated with this function, there may be other functions or actions used for updates as well)",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"functionName": "uiUpdate [INTERNAL]",
-					"functionDescription": "update UI elements",
-					"functionCategory": "ui",
-					"functionReturnType": "none",
-					"functionCopyPicked": false,
-					"functionIsAsync": false,
-					"functionParameters": [],
-					"eventType": "function-block",
-					"conditions": [
-						{
-							"id": "pick-all",
-							"objectClass": "System",
-							"sid": 849635044123203,
-							"parameters": {
-								"object": "ui"
-							}
-						},
-						{
-							"id": "for-each",
-							"objectClass": "System",
-							"sid": 123770364526943,
-							"parameters": {
-								"object": "ui"
-							}
-						}
-					],
-					"actions": [],
-					"sid": 287374994808595,
+					"eventType": "group",
+					"disabled": false,
+					"title": "ui behavior updates",
+					"description": "shouldn't edit these",
+					"isActiveOnStart": true,
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "if this component is a slider handle",
+							"text": "run a general UI update (only affects navigable objects (not all components are navigable, like slider bars and fills))",
 							"text-color": [
 								0,
 								0,
@@ -4333,207 +4329,33 @@
 								1
 							],
 							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
 								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "pick-by-unique-id",
-									"objectClass": "uiSliderHandle",
-									"sid": 912568709650992,
-									"parameters": {
-										"unique-id": "ui.UID"
-									}
-								},
-								{
-									"id": "pick-by-unique-id",
-									"objectClass": "uiSliderBar",
-									"sid": 809175591417106,
-									"parameters": {
-										"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
-									}
-								}
-							],
-							"actions": [],
-							"sid": 551346774199741,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "uiSliderHandle",
-											"sid": 846835594526618,
-											"parameters": {
-												"instance-variable": "sliderHandleValue",
-												"comparison": 0,
-												"value": "Self.sliderHandleValueLast"
-											},
-											"isInverted": true
-										}
-									],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "reset slider last value, which is used to test if the slider value changes, and prevent updates if not",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "set-instvar-value",
-											"objectClass": "uiSliderHandle",
-											"sid": 166675786726673,
-											"parameters": {
-												"instance-variable": "sliderHandleValueLast",
-												"value": "Self.sliderHandleValue"
-											}
-										},
-										{
-											"type": "comment",
-											"text": "calculate the bounds of the slider area, it gets stored as instance variables in uiSliderBar",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"customAction": "uiSliderCalculateMargins [INTERNAL]",
-											"objectClass": "uiSliderBar",
-											"sid": 917990889128825
-										}
-									],
-									"sid": 712814764859323,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "ui",
-													"sid": 923592132430407,
-													"parameters": {
-														"instance-variable": "ID",
-														"comparison": 0,
-														"value": "uiChosenID"
-													}
-												}
-											],
-											"actions": [
-												{
-													"type": "comment",
-													"text": "custom action for player dragging the handle + update handle's position later on",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"customAction": "uiSliderHandleMove",
-													"objectClass": "uiSliderHandle",
-													"sid": 533328764301292
-												}
-											],
-											"sid": 640888546055493
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "else",
-													"objectClass": "System",
-													"sid": 635293481529080
-												}
-											],
-											"actions": [
-												{
-													"type": "comment",
-													"text": "just update the handle's position",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.8745098039215686,
-														0.8352941176470589,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"customAction": "uiSliderHandleUpdatePosition",
-													"objectClass": "uiSliderHandle",
-													"sid": 480568086978255
-												}
-											],
-											"sid": 617346400762806
-										}
-									]
-								}
-							]
-						},
-						{
-							"eventType": "comment",
-							"text": "for components that are navigable (not all of them are, like slider bars and slider fills)",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
+								0.8470588235294118,
 								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
 								1
 							]
 						},
 						{
-							"eventType": "block",
+							"functionName": "uiUpdate [INTERNAL]",
+							"functionDescription": "update UI elements",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
 							"conditions": [
 								{
 									"id": "is-boolean-instance-variable-set",
 									"objectClass": "ui",
-									"sid": 524980918945665,
+									"sid": 357739489281039,
 									"parameters": {
 										"instance-variable": "navigable"
 									}
 								}
 							],
 							"actions": [],
-							"sid": 107363963629244,
+							"sid": 820023274463393,
 							"children": [
 								{
 									"eventType": "comment",
@@ -4557,14 +4379,14 @@
 										{
 											"id": "is-boolean-instance-variable-set",
 											"objectClass": "ui",
-											"sid": 506741445352296,
+											"sid": 958325612271432,
 											"parameters": {
 												"instance-variable": "active"
 											}
 										}
 									],
 									"actions": [],
-									"sid": 546643784079172,
+									"sid": 332759306614736,
 									"children": [
 										{
 											"eventType": "comment",
@@ -4588,7 +4410,7 @@
 												{
 													"id": "is-boolean-instance-variable-set",
 													"objectClass": "ui",
-													"sid": 683509361819301,
+													"sid": 766169133103073,
 													"parameters": {
 														"instance-variable": "activeTrigger"
 													},
@@ -4599,7 +4421,7 @@
 												{
 													"id": "set-boolean-instvar",
 													"objectClass": "ui",
-													"sid": 400122519695074,
+													"sid": 622990653849789,
 													"parameters": {
 														"instance-variable": "activeTrigger",
 														"value": "true"
@@ -4608,10 +4430,10 @@
 												{
 													"customAction": "uiActivate",
 													"objectClass": "ui",
-													"sid": 637814550015668
+													"sid": 861019103857455
 												}
 											],
-											"sid": 504135464783833
+											"sid": 289355360714070
 										},
 										{
 											"eventType": "comment",
@@ -4635,7 +4457,7 @@
 												{
 													"id": "compare-instance-variable",
 													"objectClass": "ui",
-													"sid": 102107314923235,
+													"sid": 372742823022096,
 													"parameters": {
 														"instance-variable": "ID",
 														"comparison": 0,
@@ -4646,7 +4468,7 @@
 												{
 													"id": "is-boolean-instance-variable-set",
 													"objectClass": "ui",
-													"sid": 716848162064544,
+													"sid": 941715075179840,
 													"parameters": {
 														"instance-variable": "chosenTrigger"
 													}
@@ -4656,7 +4478,7 @@
 												{
 													"id": "set-boolean-instvar",
 													"objectClass": "ui",
-													"sid": 559770427079079,
+													"sid": 222310931906157,
 													"parameters": {
 														"instance-variable": "chosenTrigger",
 														"value": "false"
@@ -4665,10 +4487,10 @@
 												{
 													"customAction": "uiUnchoose",
 													"objectClass": "ui",
-													"sid": 788083586620828
+													"sid": 815634896617559
 												}
 											],
-											"sid": 830640608364789
+											"sid": 124260816473726
 										},
 										{
 											"eventType": "comment",
@@ -4692,7 +4514,7 @@
 												{
 													"id": "compare-instance-variable",
 													"objectClass": "ui",
-													"sid": 213010596525086,
+													"sid": 551221200902310,
 													"parameters": {
 														"instance-variable": "ID",
 														"comparison": 0,
@@ -4702,7 +4524,7 @@
 												{
 													"id": "is-boolean-instance-variable-set",
 													"objectClass": "ui",
-													"sid": 675175140222708,
+													"sid": 605158188155344,
 													"parameters": {
 														"instance-variable": "chosenTrigger"
 													},
@@ -4713,7 +4535,7 @@
 												{
 													"id": "set-boolean-instvar",
 													"objectClass": "ui",
-													"sid": 116855433821704,
+													"sid": 136002043141137,
 													"parameters": {
 														"instance-variable": "chosenTrigger",
 														"value": "true"
@@ -4738,7 +4560,7 @@
 												{
 													"id": "wait",
 													"objectClass": "System",
-													"sid": 549608364761523,
+													"sid": 314829291246586,
 													"parameters": {
 														"seconds": "0"
 													}
@@ -4746,10 +4568,10 @@
 												{
 													"customAction": "uiChoose",
 													"objectClass": "ui",
-													"sid": 683887218814119
+													"sid": 560886569036977
 												}
 											],
-											"sid": 325716223966200
+											"sid": 262012304706366
 										}
 									]
 								},
@@ -4775,11 +4597,11 @@
 										{
 											"id": "else",
 											"objectClass": "System",
-											"sid": 248191717028166
+											"sid": 801163528310623
 										}
 									],
 									"actions": [],
-									"sid": 649965730944011,
+									"sid": 482096078610893,
 									"children": [
 										{
 											"eventType": "comment",
@@ -4803,7 +4625,7 @@
 												{
 													"id": "is-boolean-instance-variable-set",
 													"objectClass": "ui",
-													"sid": 976784552100907,
+													"sid": 218538313301056,
 													"parameters": {
 														"instance-variable": "activeTrigger"
 													}
@@ -4813,7 +4635,7 @@
 												{
 													"id": "set-boolean-instvar",
 													"objectClass": "ui",
-													"sid": 649498552920047,
+													"sid": 396923928183122,
 													"parameters": {
 														"instance-variable": "activeTrigger",
 														"value": "false"
@@ -4822,10 +4644,10 @@
 												{
 													"customAction": "uiDeactivate",
 													"objectClass": "ui",
-													"sid": 183221170432272
+													"sid": 153678026649709
 												}
 											],
-											"sid": 737130405065625
+											"sid": 153570254344573
 										},
 										{
 											"eventType": "comment",
@@ -4849,7 +4671,7 @@
 												{
 													"id": "is-boolean-instance-variable-set",
 													"objectClass": "ui",
-													"sid": 154103065135956,
+													"sid": 121281530148753,
 													"parameters": {
 														"instance-variable": "chosenTrigger"
 													}
@@ -4859,7 +4681,7 @@
 												{
 													"id": "set-boolean-instvar",
 													"objectClass": "ui",
-													"sid": 772091625908553,
+													"sid": 777749278435565,
 													"parameters": {
 														"instance-variable": "chosenTrigger",
 														"value": "false"
@@ -4884,7 +4706,7 @@
 												{
 													"id": "wait",
 													"objectClass": "System",
-													"sid": 970797906953574,
+													"sid": 857693440301602,
 													"parameters": {
 														"seconds": "0"
 													}
@@ -4892,60 +4714,18 @@
 												{
 													"customAction": "uiUnchoose",
 													"objectClass": "ui",
-													"sid": 943182627298877
+													"sid": 124445098727053
 												}
 											],
-											"sid": 114520294593479
+											"sid": 411442054244322
 										}
 									]
 								}
 							]
-						}
-					]
-				},
-				{
-					"eventType": "comment",
-					"text": "selects the currently chosen UI component",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"functionName": "uiSelect [INTERNAL]",
-					"functionDescription": "selects the currently chosen UI component",
-					"functionCategory": "ui",
-					"functionReturnType": "none",
-					"functionCopyPicked": false,
-					"functionIsAsync": false,
-					"functionParameters": [],
-					"eventType": "function-block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "ui",
-							"sid": 290159773353537,
-							"parameters": {
-								"instance-variable": "ID",
-								"comparison": 0,
-								"value": "uiChosenID"
-							}
-						}
-					],
-					"actions": [],
-					"sid": 997360392938089,
-					"children": [
+						},
 						{
 							"eventType": "comment",
-							"text": "if this is a slider handle",
+							"text": "UI update for slider related components",
 							"text-color": [
 								0,
 								0,
@@ -4953,790 +4733,60 @@
 								1
 							],
 							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
 								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "pick-by-unique-id",
-									"objectClass": "uiSliderHandle",
-									"sid": 530183444450114,
-									"parameters": {
-										"unique-id": "ui.UID"
-									}
-								},
-								{
-									"id": "pick-by-unique-id",
-									"objectClass": "uiSliderBar",
-									"sid": 858289096883338,
-									"parameters": {
-										"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
-									}
-								}
-							],
-							"actions": [],
-							"sid": 578889860351711,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-eventvar",
-											"objectClass": "System",
-											"sid": 740377458825903,
-											"parameters": {
-												"variable": "uiInputMode",
-												"comparison": 0,
-												"value": "\"default\""
-											}
-										}
-									],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "enter a state where all navigation only affects the slider value, and then call custom action, signifies handle being 'picked up' rather than being selected once",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"callFunction": "uiSetNavigationMode [INTERNAL]",
-											"sid": 494917912857153,
-											"parameters": [
-												"\"slider\""
-											]
-										},
-										{
-											"customAction": "uiSliderHandleSelect",
-											"objectClass": "uiSliderHandle",
-											"sid": 440157380190572
-										}
-									],
-									"sid": 989311956665173
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "else",
-											"objectClass": "System",
-											"sid": 561058476439114
-										}
-									],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "go back to normal navigation, and then call custom action, signifies handle being 'put down'",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"callFunction": "uiSetNavigationMode [INTERNAL]",
-											"sid": 204163812024437,
-											"parameters": [
-												"\"default\""
-											]
-										},
-										{
-											"customAction": "uiSliderHandleDeselect",
-											"objectClass": "uiSliderHandle",
-											"sid": 283178149921826
-										}
-									],
-									"sid": 835461318027177
-								}
-							]
-						},
-						{
-							"eventType": "comment",
-							"text": "else, treat it as a normal button",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
+								0.8470588235294118,
 								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
 								1
 							]
 						},
 						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "else",
-									"objectClass": "System",
-									"sid": 166588794431580
-								}
-							],
-							"actions": [
-								{
-									"type": "comment",
-									"text": "will call a function with the syntax (\"select \" & uiButton.id)\nex: Function \"select mainPlay\"\nadd this function to any event sheet to register when a button is selected\n\nkeep in mind that if you change a button's ID, you'll have to change the name of its function, too",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8470588235294118,
-										0.6431372549019608,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"type": "script",
-									"script": "try {\n\truntime.callFunction(\"select \" + \n\t\truntime.objects.ui.getFirstPickedInstance().instVars.ID);\n} \ncatch(error) {/* nothing, just ignore it*/}"
-								},
-								{
-									"customAction": "uiSelect",
-									"objectClass": "ui",
-									"sid": 920336686766115
-								}
-							],
-							"sid": 364808941281007
-						}
-					]
-				},
-				{
-					"eventType": "comment",
-					"text": "selects the currently chosen UI component",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"functionName": "uiSlider [INTERNAL]",
-					"functionDescription": "triggers a slider value function",
-					"functionCategory": "ui",
-					"functionReturnType": "none",
-					"functionCopyPicked": false,
-					"functionIsAsync": false,
-					"functionParameters": [],
-					"eventType": "function-block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "ui",
-							"sid": 841572995483017,
-							"parameters": {
-								"instance-variable": "ID",
-								"comparison": 0,
-								"value": "uiChosenID"
-							}
-						}
-					],
-					"actions": [],
-					"sid": 424065582354073,
-					"children": [
-						{
-							"eventType": "comment",
-							"text": "if this is a slider handle",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "pick-by-unique-id",
-									"objectClass": "uiSliderHandle",
-									"sid": 250009200158602,
-									"parameters": {
-										"unique-id": "ui.UID"
-									}
-								},
-								{
-									"id": "pick-by-unique-id",
-									"objectClass": "uiSliderBar",
-									"sid": 235206380317443,
-									"parameters": {
-										"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
-									}
-								}
-							],
-							"actions": [],
-							"sid": 324000164785788,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-eventvar",
-											"objectClass": "System",
-											"sid": 137959901556854,
-											"parameters": {
-												"variable": "uiInputMode",
-												"comparison": 0,
-												"value": "\"default\""
-											}
-										}
-									],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "enter a state where all navigation only affects the slider value, and then call custom action, signifies handle being 'picked up' rather than being selected once",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"callFunction": "uiSetNavigationMode [INTERNAL]",
-											"sid": 136409375277108,
-											"parameters": [
-												"\"slider\""
-											]
-										},
-										{
-											"customAction": "uiSliderHandleSelect",
-											"objectClass": "uiSliderHandle",
-											"sid": 819263202760455
-										}
-									],
-									"sid": 684823587686374
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "else",
-											"objectClass": "System",
-											"sid": 351629236708961
-										}
-									],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "go back to normal navigation, and then call custom action, signifies handle being 'put down'",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"callFunction": "uiSetNavigationMode [INTERNAL]",
-											"sid": 446444025946192,
-											"parameters": [
-												"\"default\""
-											]
-										},
-										{
-											"customAction": "uiSliderHandleDeselect",
-											"objectClass": "uiSliderHandle",
-											"sid": 764786276119983
-										}
-									],
-									"sid": 331280099864943
-								}
-							]
-						},
-						{
-							"eventType": "comment",
-							"text": "else, treat it as a normal button",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "else",
-									"objectClass": "System",
-									"sid": 399927778487132
-								}
-							],
-							"actions": [
-								{
-									"type": "comment",
-									"text": "will call a function with the syntax (\"select \" & uiButton.id)\nex: Function \"select mainPlay\"\nadd this function to any event sheet to register when a button is selected\n\nkeep in mind that if you change a button's ID, you'll have to change the name of its function, too",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8470588235294118,
-										0.6431372549019608,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"type": "script",
-									"script": "runtime.callFunction(\"slider \" + runtime.objects.ui.getFirstPickedInstance().instVars.ID);"
-								},
-								{
-									"customAction": "uiSelect",
-									"objectClass": "ui",
-									"sid": 128486299763696
-								}
-							],
-							"sid": 955414893863279
-						}
-					]
-				},
-				{
-					"eventType": "comment",
-					"text": "activates various groups in this EV depending on what type of navigation is being used",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"functionName": "uiSetNavigationMode [INTERNAL]",
-					"functionDescription": "activates various groups in this EV depending on what type of navigation is being used",
-					"functionCategory": "ui",
-					"functionReturnType": "none",
-					"functionCopyPicked": false,
-					"functionIsAsync": false,
-					"functionParameters": [
-						{
-							"name": "mode",
-							"type": "string",
-							"initialValue": "",
-							"comment": "leave blank for default (or \"default\" works too)",
-							"sid": 858688050648940
-						}
-					],
-					"eventType": "function-block",
-					"conditions": [],
-					"actions": [],
-					"sid": 171085995816638,
-					"children": [
-						{
-							"eventType": "block",
+							"functionName": "uiSliderUpdate [INTERNAL]",
+							"functionDescription": "update UI slider elements",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
 							"conditions": [],
-							"actions": [
-								{
-									"type": "comment",
-									"text": "these groups are specifically to do with navigation, whether that be directional, or with a mouse.\ndisable all of them and enable the relevant ones later",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 478822077329888,
-									"parameters": {
-										"group-name": "\"ui behavior navigate default\"",
-										"state": "deactivated"
-									}
-								},
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 308708665112842,
-									"parameters": {
-										"group-name": "\"ui behavior navigate slider\"",
-										"state": "deactivated"
-									}
-								},
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 133501564467042,
-									"parameters": {
-										"group-name": "\"ui interaction mouse default\"",
-										"state": "deactivated"
-									}
-								},
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 965809374720992,
-									"parameters": {
-										"group-name": "\"ui interaction mouse slider\"",
-										"state": "deactivated"
-									}
-								}
-							],
-							"sid": 292999432413494
-						},
-						{
-							"eventType": "comment",
-							"text": "default (proximity navigation)",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-eventvar",
-									"objectClass": "System",
-									"sid": 848454358415248,
-									"parameters": {
-										"variable": "mode",
-										"comparison": 0,
-										"value": "\"\""
-									}
-								},
-								{
-									"id": "compare-eventvar",
-									"objectClass": "System",
-									"sid": 328355180123702,
-									"parameters": {
-										"variable": "mode",
-										"comparison": 0,
-										"value": "\"default\""
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 668863277048147,
-									"parameters": {
-										"variable": "uiInputMode",
-										"value": "\"default\""
-									}
-								},
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 754675248824049,
-									"parameters": {
-										"group-name": "\"ui behavior navigate default\"",
-										"state": "activated"
-									}
-								},
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 406881117738576,
-									"parameters": {
-										"group-name": "\"ui interaction mouse default\"",
-										"state": "activated"
-									}
-								}
-							],
-							"sid": 439555918142501,
-							"isOrBlock": true
-						},
-						{
-							"eventType": "comment",
-							"text": "slider (directional controls move the slider value)",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-eventvar",
-									"objectClass": "System",
-									"sid": 614934288570873,
-									"parameters": {
-										"variable": "mode",
-										"comparison": 0,
-										"value": "\"slider\""
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 433444951380291,
-									"parameters": {
-										"variable": "uiInputMode",
-										"value": "\"slider\""
-									}
-								},
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 846523223836990,
-									"parameters": {
-										"group-name": "\"ui behavior navigate slider\"",
-										"state": "activated"
-									}
-								},
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 739388341040310,
-									"parameters": {
-										"group-name": "\"ui interaction mouse slider\"",
-										"state": "activated"
-									}
-								}
-							],
-							"sid": 517947918070617
-						}
-					]
-				},
-				{
-					"eventType": "comment",
-					"text": "ui navigation, such as pressing right to move to the right option",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"functionName": "uiNavigate [INTERNAL]",
-					"functionDescription": "navigate UI components",
-					"functionCategory": "ui",
-					"functionReturnType": "none",
-					"functionCopyPicked": false,
-					"functionIsAsync": false,
-					"functionParameters": [
-						{
-							"name": "direction",
-							"type": "string",
-							"initialValue": "down",
-							"comment": "either left, right, up, or down",
-							"sid": 469774634205869
-						}
-					],
-					"eventType": "function-block",
-					"conditions": [],
-					"actions": [],
-					"sid": 987147102605127,
-					"children": [
-						{
-							"eventType": "group",
-							"disabled": false,
-							"title": "ui behavior navigate default",
-							"description": "controlled by uiSetNavigationMode",
-							"isActiveOnStart": true,
+							"actions": [],
+							"sid": 180186427388331,
 							"children": [
-								{
-									"eventType": "comment",
-									"text": "if no UI component is currently chosen, then pick a default one",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
 								{
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "compare-eventvar",
+											"id": "for-each",
 											"objectClass": "System",
-											"sid": 406538885545874,
+											"sid": 802402885817944,
 											"parameters": {
-												"variable": "uiChosenID",
+												"object": "uiSliderHandle"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "uiSliderHandle",
+											"sid": 768021513552274,
+											"parameters": {
+												"instance-variable": "sliderHandleValue",
 												"comparison": 0,
-												"value": "\"\""
+												"value": "Self.sliderHandleValueLast"
+											},
+											"isInverted": true
+										},
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "uiSliderBar",
+											"sid": 500992291642149,
+											"parameters": {
+												"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
 											}
 										}
 									],
 									"actions": [
 										{
-											"callFunction": "uiNavigateDefault [INTERNAL]",
-											"sid": 862151368655974
-										}
-									],
-									"sid": 102530058175493
-								},
-								{
-									"eventType": "comment",
-									"text": "else, perform the navigation",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "else",
-											"objectClass": "System",
-											"sid": 325790981860761
-										},
-										{
-											"id": "is-boolean-instance-variable-set",
-											"objectClass": "ui",
-											"sid": 703596446273887,
-											"parameters": {
-												"instance-variable": "navigable"
-											}
-										},
-										{
-											"id": "is-boolean-instance-variable-set",
-											"objectClass": "ui",
-											"sid": 228765187809054,
-											"parameters": {
-												"instance-variable": "active"
-											}
-										}
-									],
-									"actions": [],
-									"sid": 762794070051074,
-									"children": [
-										{
-											"eventType": "comment",
-											"text": "in case an override is present, skip all else and perform the override",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.6705882352941176,
-												0.8745098039215686,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"eventType": "variable",
-											"name": "wrapOverride",
-											"type": "string",
-											"initialValue": "",
-											"comment": "",
-											"isStatic": false,
-											"isConstant": false,
-											"sid": 813170355921103
-										},
-										{
-											"eventType": "comment",
-											"text": "find relevant override string from instance variables",
+											"type": "comment",
+											"text": "reset slider last value, which is used to test if the slider value changes, and prevent updates if not",
 											"text-color": [
 												0,
 												0,
@@ -5750,36 +4800,640 @@
 												1
 											]
 										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "uiSliderHandle",
+											"sid": 232703192678587,
+											"parameters": {
+												"instance-variable": "sliderHandleValueLast",
+												"value": "Self.sliderHandleValue"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "calculate the bounds of the slider area, it gets stored as instance variables in uiSliderBar",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"customAction": "uiSliderCalculateMargins [INTERNAL]",
+											"objectClass": "uiSliderBar",
+											"sid": 519896176654751
+										}
+									],
+									"sid": 547797821132610,
+									"children": [
 										{
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "compare-instance-variable",
-													"objectClass": "ui",
-													"sid": 926753086248087,
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 780191416322069,
 													"parameters": {
-														"instance-variable": "ID",
+														"first-value": "Functions.uiGetIDFromUID(uiSliderHandle.UID)",
 														"comparison": 0,
-														"value": "uiChosenID"
+														"second-value": "uiChosenID"
 													}
 												}
 											],
 											"actions": [
 												{
-													"id": "set-eventvar-value",
+													"type": "comment",
+													"text": "custom action for player dragging the handle + update handle's position later on",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"customAction": "uiSliderHandleMove",
+													"objectClass": "uiSliderHandle",
+													"sid": 602650030266520
+												}
+											],
+											"sid": 903764173362737
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
 													"objectClass": "System",
-													"sid": 276056739015563,
+													"sid": 190295855413158
+												}
+											],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "just update the handle's position",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"customAction": "uiSliderHandleUpdatePosition",
+													"objectClass": "uiSliderHandle",
+													"sid": 446953408744997
+												}
+											],
+											"sid": 842926447532956
+										}
+									]
+								}
+							]
+						}
+					],
+					"sid": 399640662910796,
+					"text-color": [
+						0,
+						0,
+						0,
+						0
+					],
+					"background-color": [
+						0.8392156862745098,
+						0.8392156862745098,
+						0.8392156862745098,
+						1
+					]
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "ui behavior navigation",
+					"description": "shouldn't edit these",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "selects the currently chosen UI component",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "uiSelect [INTERNAL]",
+							"functionDescription": "selects the currently chosen UI component",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "ui",
+									"sid": 904487009282461,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "uiChosenID"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 494928819346490,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "if this is a slider handle",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "uiSliderHandle",
+											"sid": 314394889615605,
+											"parameters": {
+												"unique-id": "ui.UID"
+											}
+										},
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "uiSliderBar",
+											"sid": 812786805555018,
+											"parameters": {
+												"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 680762815869706,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 371959002747479,
 													"parameters": {
-														"variable": "wrapOverride",
-														"value": "direction = \"up\" ? ui.overrideUp : (direction = \"down\" ? ui.overrideDown : (direction = \"left\" ? ui.overrideLeft : ui.overrideRight))"
+														"variable": "uiInputMode",
+														"comparison": 0,
+														"value": "\"default\""
 													}
 												}
 											],
-											"sid": 424732168301307
+											"actions": [
+												{
+													"type": "comment",
+													"text": "enter a state where all navigation only affects the slider value, and then call custom action, signifies handle being 'picked up' rather than being selected once",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"callFunction": "uiSetNavigationMode [INTERNAL]",
+													"sid": 197132650680801,
+													"parameters": [
+														"\"slider\""
+													]
+												},
+												{
+													"customAction": "uiSliderHandleSelect",
+													"objectClass": "uiSliderHandle",
+													"sid": 286144011650839
+												}
+											],
+											"sid": 771109426939138
 										},
 										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 809202475629519
+												}
+											],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "go back to normal navigation, and then call custom action, signifies handle being 'put down'",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"callFunction": "uiSetNavigationMode [INTERNAL]",
+													"sid": 804125770255220,
+													"parameters": [
+														"\"default\""
+													]
+												},
+												{
+													"customAction": "uiSliderHandleDeselect",
+													"objectClass": "uiSliderHandle",
+													"sid": 381319169706099
+												}
+											],
+											"sid": 991166522146286
+										}
+									]
+								},
+								{
+									"eventType": "comment",
+									"text": "else, treat it as a normal button",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 124963754379415
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "will call a function with the syntax (\"select \" & uiButton.id)\nex: Function \"select mainPlay\"\nadd this function to any event sheet to register when a button is selected\n\nkeep in mind that if you change a button's ID, you'll have to change the name of its function, too",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8470588235294118,
+												0.6431372549019608,
+												0.8745098039215686,
+												1
+											]
+										},
+										{
+											"type": "script",
+											"script": "try {\n\truntime.callFunction(\"select \" + \n\t\truntime.objects.ui.getFirstPickedInstance().instVars.ID);\n} \ncatch(error) {/* nothing, just ignore it*/}"
+										},
+										{
+											"customAction": "uiSelect",
+											"objectClass": "ui",
+											"sid": 781901419010197
+										}
+									],
+									"sid": 657490703095716
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "activates various groups in this EV depending on what type of navigation is being used",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "uiSetNavigationMode [INTERNAL]",
+							"functionDescription": "activates various groups in this EV depending on what type of navigation is being used",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [
+								{
+									"name": "mode",
+									"type": "string",
+									"initialValue": "",
+									"comment": "leave blank for default (or \"default\" works too)",
+									"sid": 858688050648940
+								}
+							],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [],
+							"sid": 944912082511364,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "these groups are specifically to do with navigation, whether that be directional, or with a mouse.\ndisable all of them and enable the relevant ones later",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 531690150112672,
+											"parameters": {
+												"group-name": "\"ui behavior navigate default\"",
+												"state": "deactivated"
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 837650766048370,
+											"parameters": {
+												"group-name": "\"ui behavior navigate slider\"",
+												"state": "deactivated"
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 990912214687743,
+											"parameters": {
+												"group-name": "\"ui interaction mouse default\"",
+												"state": "deactivated"
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 282635683612894,
+											"parameters": {
+												"group-name": "\"ui interaction mouse slider\"",
+												"state": "deactivated"
+											}
+										}
+									],
+									"sid": 722431452132645
+								},
+								{
+									"eventType": "comment",
+									"text": "default (proximity navigation)",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 585653442000229,
+											"parameters": {
+												"variable": "mode",
+												"comparison": 0,
+												"value": "\"\""
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 132358033505908,
+											"parameters": {
+												"variable": "mode",
+												"comparison": 0,
+												"value": "\"default\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 767501582080893,
+											"parameters": {
+												"variable": "uiInputMode",
+												"value": "\"default\""
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 841882567416383,
+											"parameters": {
+												"group-name": "\"ui behavior navigate default\"",
+												"state": "activated"
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 556369410797560,
+											"parameters": {
+												"group-name": "\"ui interaction mouse default\"",
+												"state": "activated"
+											}
+										}
+									],
+									"sid": 658195677140637,
+									"isOrBlock": true
+								},
+								{
+									"eventType": "comment",
+									"text": "slider (directional controls move the slider value)",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 176659480431244,
+											"parameters": {
+												"variable": "mode",
+												"comparison": 0,
+												"value": "\"slider\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 148517179429987,
+											"parameters": {
+												"variable": "uiInputMode",
+												"value": "\"slider\""
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 838341185920987,
+											"parameters": {
+												"group-name": "\"ui behavior navigate slider\"",
+												"state": "activated"
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 536151872584754,
+											"parameters": {
+												"group-name": "\"ui interaction mouse slider\"",
+												"state": "activated"
+											}
+										}
+									],
+									"sid": 875590933632534
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "ui navigation, such as pressing right to move to the right option",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "uiNavigate [INTERNAL]",
+							"functionDescription": "navigate UI components",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [
+								{
+									"name": "direction",
+									"type": "string",
+									"initialValue": "down",
+									"comment": "either left, right, up, or down",
+									"sid": 469774634205869
+								}
+							],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [],
+							"sid": 747413853217218,
+							"children": [
+								{
+									"eventType": "group",
+									"disabled": false,
+									"title": "ui behavior navigate default",
+									"description": "controlled by uiSetNavigationMode",
+									"isActiveOnStart": true,
+									"children": [
+										{
 											"eventType": "comment",
-											"text": "if override is present, perform it",
+											"text": "if no UI component is currently chosen, then pick a default one",
 											"text-color": [
 												0,
 												0,
@@ -5799,63 +5453,25 @@
 												{
 													"id": "compare-eventvar",
 													"objectClass": "System",
-													"sid": 154909509224499,
+													"sid": 970800558118039,
 													"parameters": {
-														"variable": "wrapOverride",
+														"variable": "uiChosenID",
 														"comparison": 0,
 														"value": "\"\""
-													},
-													"isInverted": true
-												},
-												{
-													"id": "pick-all",
-													"objectClass": "System",
-													"sid": 366596533144959,
-													"parameters": {
-														"object": "ui"
-													}
-												},
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "ui",
-													"sid": 528530640116683,
-													"parameters": {
-														"instance-variable": "ID",
-														"comparison": 0,
-														"value": "wrapOverride"
-													}
-												},
-												{
-													"id": "is-boolean-instance-variable-set",
-													"objectClass": "ui",
-													"sid": 510292621732875,
-													"parameters": {
-														"instance-variable": "navigable"
-													}
-												},
-												{
-													"id": "is-boolean-instance-variable-set",
-													"objectClass": "ui",
-													"sid": 659725899947700,
-													"parameters": {
-														"instance-variable": "active"
 													}
 												}
 											],
 											"actions": [
 												{
-													"callFunction": "uiRegisterChosen [INTERNAL]",
-													"sid": 274553805335338,
-													"parameters": [
-														"wrapOverride"
-													]
+													"callFunction": "uiNavigatePickDefault [INTERNAL]",
+													"sid": 679316325747699
 												}
 											],
-											"sid": 806071115924621
+											"sid": 151576997584730
 										},
 										{
 											"eventType": "comment",
-											"text": "else, perform normal navigation",
+											"text": "else, perform the navigation",
 											"text-color": [
 												0,
 												0,
@@ -5875,15 +5491,31 @@
 												{
 													"id": "else",
 													"objectClass": "System",
-													"sid": 720507967139853
+													"sid": 811484302698729
+												},
+												{
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "ui",
+													"sid": 458804792462898,
+													"parameters": {
+														"instance-variable": "navigable"
+													}
+												},
+												{
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "ui",
+													"sid": 383364625950967,
+													"parameters": {
+														"instance-variable": "active"
+													}
 												}
 											],
 											"actions": [],
-											"sid": 525231503319660,
+											"sid": 763132693176691,
 											"children": [
 												{
 													"eventType": "comment",
-													"text": "these vars track the position of the UI component that was chosen prior to navigating",
+													"text": "in case an override is present, skip all else and perform the override",
 													"text-color": [
 														0,
 														0,
@@ -5899,27 +5531,17 @@
 												},
 												{
 													"eventType": "variable",
-													"name": "curX",
-													"type": "number",
-													"initialValue": "0",
+													"name": "wrapOverride",
+													"type": "string",
+													"initialValue": "",
 													"comment": "",
 													"isStatic": false,
 													"isConstant": false,
-													"sid": 241820115356938
-												},
-												{
-													"eventType": "variable",
-													"name": "curY",
-													"type": "number",
-													"initialValue": "0",
-													"comment": "",
-													"isStatic": false,
-													"isConstant": false,
-													"sid": 234703393724841
+													"sid": 650668223076798
 												},
 												{
 													"eventType": "comment",
-													"text": "record last chosen component position",
+													"text": "find relevant override string from instance variables",
 													"text-color": [
 														0,
 														0,
@@ -5939,7 +5561,7 @@
 														{
 															"id": "compare-instance-variable",
 															"objectClass": "ui",
-															"sid": 981911673635429,
+															"sid": 248299994742983,
 															"parameters": {
 																"instance-variable": "ID",
 																"comparison": 0,
@@ -5951,53 +5573,18 @@
 														{
 															"id": "set-eventvar-value",
 															"objectClass": "System",
-															"sid": 141480722384372,
+															"sid": 868993692417910,
 															"parameters": {
-																"variable": "curX",
-																"value": "ui.BBoxMidX"
-															}
-														},
-														{
-															"id": "set-eventvar-value",
-															"objectClass": "System",
-															"sid": 651053637047561,
-															"parameters": {
-																"variable": "curY",
-																"value": "ui.BBoxMidY"
+																"variable": "wrapOverride",
+																"value": "direction = \"up\" ? ui.overrideUp : (direction = \"down\" ? ui.overrideDown : (direction = \"left\" ? ui.overrideLeft : ui.overrideRight))"
 															}
 														}
 													],
-													"sid": 505391849934016
+													"sid": 191860221002828
 												},
 												{
 													"eventType": "comment",
-													"text": "find the lowest or highest x/y value to wrap around to, and use this var to find all instances on the same pos",
-													"text-color": [
-														0,
-														0,
-														0,
-														1
-													],
-													"background-color": [
-														0.6705882352941176,
-														0.8745098039215686,
-														0.6431372549019608,
-														1
-													]
-												},
-												{
-													"eventType": "variable",
-													"name": "wrapPos",
-													"type": "number",
-													"initialValue": "0",
-													"comment": "",
-													"isStatic": false,
-													"isConstant": false,
-													"sid": 465618419522404
-												},
-												{
-													"eventType": "comment",
-													"text": "next, find the new option to choose depending on the direction",
+													"text": "if override is present, perform it",
 													"text-color": [
 														0,
 														0,
@@ -6017,7 +5604,908 @@
 														{
 															"id": "compare-eventvar",
 															"objectClass": "System",
-															"sid": 571405517127912,
+															"sid": 770286811583899,
+															"parameters": {
+																"variable": "wrapOverride",
+																"comparison": 0,
+																"value": "\"\""
+															},
+															"isInverted": true
+														},
+														{
+															"id": "pick-all",
+															"objectClass": "System",
+															"sid": 295796500979796,
+															"parameters": {
+																"object": "ui"
+															}
+														},
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "ui",
+															"sid": 839084354027520,
+															"parameters": {
+																"instance-variable": "ID",
+																"comparison": 0,
+																"value": "wrapOverride"
+															}
+														},
+														{
+															"id": "is-boolean-instance-variable-set",
+															"objectClass": "ui",
+															"sid": 671763014065263,
+															"parameters": {
+																"instance-variable": "navigable"
+															}
+														},
+														{
+															"id": "is-boolean-instance-variable-set",
+															"objectClass": "ui",
+															"sid": 568888713142170,
+															"parameters": {
+																"instance-variable": "active"
+															}
+														}
+													],
+													"actions": [
+														{
+															"callFunction": "uiRegisterChosen [INTERNAL]",
+															"sid": 287663886874675,
+															"parameters": [
+																"wrapOverride"
+															]
+														}
+													],
+													"sid": 992430073588451
+												},
+												{
+													"eventType": "comment",
+													"text": "else, perform normal navigation",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 919680121745360
+														}
+													],
+													"actions": [],
+													"sid": 605604060223203,
+													"children": [
+														{
+															"eventType": "comment",
+															"text": "these vars track the position of the UI component that was chosen prior to navigating",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.6705882352941176,
+																0.8745098039215686,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "variable",
+															"name": "curX",
+															"type": "number",
+															"initialValue": "0",
+															"comment": "",
+															"isStatic": false,
+															"isConstant": false,
+															"sid": 260367490924099
+														},
+														{
+															"eventType": "variable",
+															"name": "curY",
+															"type": "number",
+															"initialValue": "0",
+															"comment": "",
+															"isStatic": false,
+															"isConstant": false,
+															"sid": 284389227428370
+														},
+														{
+															"eventType": "comment",
+															"text": "record last chosen component position",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-instance-variable",
+																	"objectClass": "ui",
+																	"sid": 355840561594979,
+																	"parameters": {
+																		"instance-variable": "ID",
+																		"comparison": 0,
+																		"value": "uiChosenID"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-eventvar-value",
+																	"objectClass": "System",
+																	"sid": 958231895568391,
+																	"parameters": {
+																		"variable": "curX",
+																		"value": "ui.BBoxMidX"
+																	}
+																},
+																{
+																	"id": "set-eventvar-value",
+																	"objectClass": "System",
+																	"sid": 844483219663297,
+																	"parameters": {
+																		"variable": "curY",
+																		"value": "ui.BBoxMidY"
+																	}
+																}
+															],
+															"sid": 999192394156205
+														},
+														{
+															"eventType": "comment",
+															"text": "find the lowest or highest x/y value to wrap around to, and use this var to find all instances on the same pos",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.6705882352941176,
+																0.8745098039215686,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "variable",
+															"name": "wrapPos",
+															"type": "number",
+															"initialValue": "0",
+															"comment": "",
+															"isStatic": false,
+															"isConstant": false,
+															"sid": 980551845034871
+														},
+														{
+															"eventType": "comment",
+															"text": "next, find the new option to choose depending on the direction",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-eventvar",
+																	"objectClass": "System",
+																	"sid": 575614158725873,
+																	"parameters": {
+																		"variable": "direction",
+																		"comparison": 0,
+																		"value": "\"up\""
+																	}
+																}
+															],
+															"actions": [],
+															"sid": 229385135432616,
+															"children": [
+																{
+																	"eventType": "comment",
+																	"text": "if components exist in this direction, pick the closest of them",
+																	"text-color": [
+																		0,
+																		0,
+																		0,
+																		1
+																	],
+																	"background-color": [
+																		0.8745098039215686,
+																		0.8352941176470589,
+																		0.6431372549019608,
+																		1
+																	]
+																},
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "pick-by-comparison",
+																			"objectClass": "System",
+																			"sid": 458358492478207,
+																			"parameters": {
+																				"object": "ui",
+																				"expression": "ui.Y",
+																				"comparison": 2,
+																				"value": "curY"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"callFunction": "uiNavigatePickNearest [INTERNAL]",
+																			"sid": 271055195846377,
+																			"parameters": [
+																				"curX",
+																				"curY"
+																			]
+																		}
+																	],
+																	"sid": 620954786963168
+																},
+																{
+																	"eventType": "comment",
+																	"text": "if none found, wrap around to UI on the other side of the screen",
+																	"text-color": [
+																		0,
+																		0,
+																		0,
+																		1
+																	],
+																	"background-color": [
+																		0.8745098039215686,
+																		0.8352941176470589,
+																		0.6431372549019608,
+																		1
+																	]
+																},
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "else",
+																			"objectClass": "System",
+																			"sid": 510791761520651
+																		},
+																		{
+																			"id": "for-each-ordered",
+																			"objectClass": "System",
+																			"sid": 443084570968261,
+																			"parameters": {
+																				"object": "ui",
+																				"expression": "ui.Y",
+																				"order": "descending"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"id": "stop-loop",
+																			"objectClass": "System",
+																			"sid": 266649484645825
+																		},
+																		{
+																			"id": "set-eventvar-value",
+																			"objectClass": "System",
+																			"sid": 430074164827820,
+																			"parameters": {
+																				"variable": "wrapPos",
+																				"value": "ui.Y"
+																			}
+																		}
+																	],
+																	"sid": 175875523441809,
+																	"children": [
+																		{
+																			"eventType": "block",
+																			"conditions": [
+																				{
+																					"id": "pick-all",
+																					"objectClass": "System",
+																					"sid": 194556677277130,
+																					"parameters": {
+																						"object": "ui"
+																					}
+																				},
+																				{
+																					"id": "pick-by-comparison",
+																					"objectClass": "System",
+																					"sid": 599234456439568,
+																					"parameters": {
+																						"object": "ui",
+																						"expression": "ui.Y",
+																						"comparison": 0,
+																						"value": "wrapPos"
+																					}
+																				}
+																			],
+																			"actions": [
+																				{
+																					"callFunction": "uiNavigatePickNearest [INTERNAL]",
+																					"sid": 575350194627826,
+																					"parameters": [
+																						"curX",
+																						"curY"
+																					]
+																				}
+																			],
+																			"sid": 755096130188500
+																		}
+																	]
+																}
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-eventvar",
+																	"objectClass": "System",
+																	"sid": 120762780722818,
+																	"parameters": {
+																		"variable": "direction",
+																		"comparison": 0,
+																		"value": "\"down\""
+																	}
+																}
+															],
+															"actions": [],
+															"sid": 888316620257737,
+															"children": [
+																{
+																	"eventType": "comment",
+																	"text": "if components exist in this direction, pick the closest of them",
+																	"text-color": [
+																		0,
+																		0,
+																		0,
+																		1
+																	],
+																	"background-color": [
+																		0.8745098039215686,
+																		0.8352941176470589,
+																		0.6431372549019608,
+																		1
+																	]
+																},
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "pick-by-comparison",
+																			"objectClass": "System",
+																			"sid": 110666138589599,
+																			"parameters": {
+																				"object": "ui",
+																				"expression": "ui.Y",
+																				"comparison": 4,
+																				"value": "curY"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"callFunction": "uiNavigatePickNearest [INTERNAL]",
+																			"sid": 579073617595677,
+																			"parameters": [
+																				"curX",
+																				"curY"
+																			]
+																		}
+																	],
+																	"sid": 846968780031508
+																},
+																{
+																	"eventType": "comment",
+																	"text": "if none found, wrap around to UI on the other side of the screen",
+																	"text-color": [
+																		0,
+																		0,
+																		0,
+																		1
+																	],
+																	"background-color": [
+																		0.8745098039215686,
+																		0.8352941176470589,
+																		0.6431372549019608,
+																		1
+																	]
+																},
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "else",
+																			"objectClass": "System",
+																			"sid": 312154651503023
+																		},
+																		{
+																			"id": "for-each-ordered",
+																			"objectClass": "System",
+																			"sid": 344228732922615,
+																			"parameters": {
+																				"object": "ui",
+																				"expression": "ui.Y",
+																				"order": "ascending"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"id": "stop-loop",
+																			"objectClass": "System",
+																			"sid": 437211906151101
+																		},
+																		{
+																			"id": "set-eventvar-value",
+																			"objectClass": "System",
+																			"sid": 231055138333380,
+																			"parameters": {
+																				"variable": "wrapPos",
+																				"value": "ui.Y"
+																			}
+																		}
+																	],
+																	"sid": 925363575878015,
+																	"children": [
+																		{
+																			"eventType": "block",
+																			"conditions": [
+																				{
+																					"id": "pick-all",
+																					"objectClass": "System",
+																					"sid": 904313402524601,
+																					"parameters": {
+																						"object": "ui"
+																					}
+																				},
+																				{
+																					"id": "pick-by-comparison",
+																					"objectClass": "System",
+																					"sid": 275793045889103,
+																					"parameters": {
+																						"object": "ui",
+																						"expression": "ui.Y",
+																						"comparison": 0,
+																						"value": "wrapPos"
+																					}
+																				}
+																			],
+																			"actions": [
+																				{
+																					"callFunction": "uiNavigatePickNearest [INTERNAL]",
+																					"sid": 599066891527502,
+																					"parameters": [
+																						"curX",
+																						"curY"
+																					]
+																				}
+																			],
+																			"sid": 921692081082232
+																		}
+																	]
+																}
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-eventvar",
+																	"objectClass": "System",
+																	"sid": 740640886176697,
+																	"parameters": {
+																		"variable": "direction",
+																		"comparison": 0,
+																		"value": "\"left\""
+																	}
+																}
+															],
+															"actions": [],
+															"sid": 230537584681116,
+															"children": [
+																{
+																	"eventType": "comment",
+																	"text": "if components exist in this direction, pick the closest of them",
+																	"text-color": [
+																		0,
+																		0,
+																		0,
+																		1
+																	],
+																	"background-color": [
+																		0.8745098039215686,
+																		0.8352941176470589,
+																		0.6431372549019608,
+																		1
+																	]
+																},
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "pick-by-comparison",
+																			"objectClass": "System",
+																			"sid": 778076181766302,
+																			"parameters": {
+																				"object": "ui",
+																				"expression": "ui.X",
+																				"comparison": 2,
+																				"value": "curX"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"callFunction": "uiNavigatePickNearest [INTERNAL]",
+																			"sid": 179245176818123,
+																			"parameters": [
+																				"curX",
+																				"curY"
+																			]
+																		}
+																	],
+																	"sid": 655028578251764
+																},
+																{
+																	"eventType": "comment",
+																	"text": "if none found, wrap around to UI on the other side of the screen",
+																	"text-color": [
+																		0,
+																		0,
+																		0,
+																		1
+																	],
+																	"background-color": [
+																		0.8745098039215686,
+																		0.8352941176470589,
+																		0.6431372549019608,
+																		1
+																	]
+																},
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "else",
+																			"objectClass": "System",
+																			"sid": 788951834769995
+																		},
+																		{
+																			"id": "for-each-ordered",
+																			"objectClass": "System",
+																			"sid": 317660850839383,
+																			"parameters": {
+																				"object": "ui",
+																				"expression": "ui.X",
+																				"order": "descending"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"id": "stop-loop",
+																			"objectClass": "System",
+																			"sid": 692032286900144
+																		},
+																		{
+																			"id": "set-eventvar-value",
+																			"objectClass": "System",
+																			"sid": 430274023632684,
+																			"parameters": {
+																				"variable": "wrapPos",
+																				"value": "ui.X"
+																			}
+																		}
+																	],
+																	"sid": 348861197356902,
+																	"children": [
+																		{
+																			"eventType": "block",
+																			"conditions": [
+																				{
+																					"id": "pick-all",
+																					"objectClass": "System",
+																					"sid": 388720527634880,
+																					"parameters": {
+																						"object": "ui"
+																					}
+																				},
+																				{
+																					"id": "pick-by-comparison",
+																					"objectClass": "System",
+																					"sid": 953126845638235,
+																					"parameters": {
+																						"object": "ui",
+																						"expression": "ui.X",
+																						"comparison": 0,
+																						"value": "wrapPos"
+																					}
+																				}
+																			],
+																			"actions": [
+																				{
+																					"callFunction": "uiNavigatePickNearest [INTERNAL]",
+																					"sid": 544024115086930,
+																					"parameters": [
+																						"curX",
+																						"curY"
+																					]
+																				}
+																			],
+																			"sid": 940273630868282
+																		}
+																	]
+																}
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-eventvar",
+																	"objectClass": "System",
+																	"sid": 550244675897242,
+																	"parameters": {
+																		"variable": "direction",
+																		"comparison": 0,
+																		"value": "\"right\""
+																	}
+																}
+															],
+															"actions": [],
+															"sid": 973873922720674,
+															"children": [
+																{
+																	"eventType": "comment",
+																	"text": "if components exist in this direction, pick the closest of them",
+																	"text-color": [
+																		0,
+																		0,
+																		0,
+																		1
+																	],
+																	"background-color": [
+																		0.8745098039215686,
+																		0.8352941176470589,
+																		0.6431372549019608,
+																		1
+																	]
+																},
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "pick-by-comparison",
+																			"objectClass": "System",
+																			"sid": 143058450229289,
+																			"parameters": {
+																				"object": "ui",
+																				"expression": "ui.X",
+																				"comparison": 4,
+																				"value": "curX"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"callFunction": "uiNavigatePickNearest [INTERNAL]",
+																			"sid": 254568922071503,
+																			"parameters": [
+																				"curX",
+																				"curY"
+																			]
+																		}
+																	],
+																	"sid": 537876187352231
+																},
+																{
+																	"eventType": "comment",
+																	"text": "if none found, wrap around to UI on the other side of the screen",
+																	"text-color": [
+																		0,
+																		0,
+																		0,
+																		1
+																	],
+																	"background-color": [
+																		0.8745098039215686,
+																		0.8352941176470589,
+																		0.6431372549019608,
+																		1
+																	]
+																},
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "else",
+																			"objectClass": "System",
+																			"sid": 358615958867343
+																		},
+																		{
+																			"id": "for-each-ordered",
+																			"objectClass": "System",
+																			"sid": 328532188879036,
+																			"parameters": {
+																				"object": "ui",
+																				"expression": "ui.X",
+																				"order": "ascending"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"id": "stop-loop",
+																			"objectClass": "System",
+																			"sid": 260920923740614
+																		},
+																		{
+																			"id": "set-eventvar-value",
+																			"objectClass": "System",
+																			"sid": 848212803673133,
+																			"parameters": {
+																				"variable": "wrapPos",
+																				"value": "ui.X"
+																			}
+																		}
+																	],
+																	"sid": 130351919220754,
+																	"children": [
+																		{
+																			"eventType": "block",
+																			"conditions": [
+																				{
+																					"id": "pick-all",
+																					"objectClass": "System",
+																					"sid": 877883415857783,
+																					"parameters": {
+																						"object": "ui"
+																					}
+																				},
+																				{
+																					"id": "pick-by-comparison",
+																					"objectClass": "System",
+																					"sid": 806218508757490,
+																					"parameters": {
+																						"object": "ui",
+																						"expression": "ui.X",
+																						"comparison": 0,
+																						"value": "wrapPos"
+																					}
+																				}
+																			],
+																			"actions": [
+																				{
+																					"callFunction": "uiNavigatePickNearest [INTERNAL]",
+																					"sid": 167641490025758,
+																					"parameters": [
+																						"curX",
+																						"curY"
+																					]
+																				}
+																			],
+																			"sid": 310654507360606
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									],
+									"sid": 713753501483906,
+									"text-color": [
+										0,
+										0,
+										0,
+										0
+									],
+									"background-color": [
+										0.8392156862745098,
+										0.8392156862745098,
+										0.8392156862745098,
+										1
+									]
+								},
+								{
+									"eventType": "group",
+									"disabled": false,
+									"title": "ui behavior navigate slider",
+									"description": "controlled by uiSetNavigationMode",
+									"isActiveOnStart": false,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "ui",
+													"sid": 170240504716560,
+													"parameters": {
+														"instance-variable": "ID",
+														"comparison": 0,
+														"value": "uiChosenID"
+													}
+												},
+												{
+													"id": "pick-by-unique-id",
+													"objectClass": "uiSliderHandle",
+													"sid": 488599455335767,
+													"parameters": {
+														"unique-id": "ui.UID"
+													}
+												},
+												{
+													"id": "pick-by-unique-id",
+													"objectClass": "uiSliderBar",
+													"sid": 208119776693702,
+													"parameters": {
+														"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 873955302146089,
+											"children": [
+												{
+													"eventType": "comment",
+													"text": "the math here is very specific\nwe take the sin() or cos() of the angle of the slider bar\nthen we take the sign() of it, which provides either -1, 0, or 1\nfinally depending on if its an increment or decrement we make it negative or positive\n\nthis allows increments to work even with irregular slider bar angles",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-eventvar",
+															"objectClass": "System",
+															"sid": 785280584902555,
 															"parameters": {
 																"variable": "direction",
 																"comparison": 0,
@@ -6025,143 +6513,17 @@
 															}
 														}
 													],
-													"actions": [],
-													"sid": 344275017353019,
-													"children": [
+													"actions": [
 														{
-															"eventType": "comment",
-															"text": "if components exist in this direction, pick the closest of them",
-															"text-color": [
-																0,
-																0,
-																0,
-																1
-															],
-															"background-color": [
-																0.8745098039215686,
-																0.8352941176470589,
-																0.6431372549019608,
-																1
-															]
-														},
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "pick-by-comparison",
-																	"objectClass": "System",
-																	"sid": 920196312775586,
-																	"parameters": {
-																		"object": "ui",
-																		"expression": "ui.Y",
-																		"comparison": 2,
-																		"value": "curY"
-																	}
-																}
-															],
-															"actions": [
-																{
-																	"callFunction": "uiNavigatePickNearest [INTERNAL]",
-																	"sid": 227353929355914,
-																	"parameters": [
-																		"curX",
-																		"curY"
-																	]
-																}
-															],
-															"sid": 969666344646769
-														},
-														{
-															"eventType": "comment",
-															"text": "if none found, wrap around to UI on the other side of the screen",
-															"text-color": [
-																0,
-																0,
-																0,
-																1
-															],
-															"background-color": [
-																0.8745098039215686,
-																0.8352941176470589,
-																0.6431372549019608,
-																1
-															]
-														},
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "else",
-																	"objectClass": "System",
-																	"sid": 216355662365612
-																},
-																{
-																	"id": "for-each-ordered",
-																	"objectClass": "System",
-																	"sid": 396560805533066,
-																	"parameters": {
-																		"object": "ui",
-																		"expression": "ui.Y",
-																		"order": "descending"
-																	}
-																}
-															],
-															"actions": [
-																{
-																	"id": "stop-loop",
-																	"objectClass": "System",
-																	"sid": 542381729070724
-																},
-																{
-																	"id": "set-eventvar-value",
-																	"objectClass": "System",
-																	"sid": 673364462668318,
-																	"parameters": {
-																		"variable": "wrapPos",
-																		"value": "ui.Y"
-																	}
-																}
-															],
-															"sid": 165169716388477,
-															"children": [
-																{
-																	"eventType": "block",
-																	"conditions": [
-																		{
-																			"id": "pick-all",
-																			"objectClass": "System",
-																			"sid": 508630170106863,
-																			"parameters": {
-																				"object": "ui"
-																			}
-																		},
-																		{
-																			"id": "pick-by-comparison",
-																			"objectClass": "System",
-																			"sid": 786573357090887,
-																			"parameters": {
-																				"object": "ui",
-																				"expression": "ui.Y",
-																				"comparison": 0,
-																				"value": "wrapPos"
-																			}
-																		}
-																	],
-																	"actions": [
-																		{
-																			"callFunction": "uiNavigatePickNearest [INTERNAL]",
-																			"sid": 848732133986680,
-																			"parameters": [
-																				"curX",
-																				"curY"
-																			]
-																		}
-																	],
-																	"sid": 949776378652493
-																}
+															"customAction": "uiSliderIncrement [INTERNAL]",
+															"objectClass": "uiSliderHandle",
+															"sid": 857356685703228,
+															"parameters": [
+																"-sign(sin(uiSliderBar.Angle))"
 															]
 														}
-													]
+													],
+													"sid": 435638427951625
 												},
 												{
 													"eventType": "block",
@@ -6169,7 +6531,7 @@
 														{
 															"id": "compare-eventvar",
 															"objectClass": "System",
-															"sid": 727204425640179,
+															"sid": 695650794465953,
 															"parameters": {
 																"variable": "direction",
 																"comparison": 0,
@@ -6177,143 +6539,17 @@
 															}
 														}
 													],
-													"actions": [],
-													"sid": 317812496963744,
-													"children": [
+													"actions": [
 														{
-															"eventType": "comment",
-															"text": "if components exist in this direction, pick the closest of them",
-															"text-color": [
-																0,
-																0,
-																0,
-																1
-															],
-															"background-color": [
-																0.8745098039215686,
-																0.8352941176470589,
-																0.6431372549019608,
-																1
-															]
-														},
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "pick-by-comparison",
-																	"objectClass": "System",
-																	"sid": 984446079469200,
-																	"parameters": {
-																		"object": "ui",
-																		"expression": "ui.Y",
-																		"comparison": 4,
-																		"value": "curY"
-																	}
-																}
-															],
-															"actions": [
-																{
-																	"callFunction": "uiNavigatePickNearest [INTERNAL]",
-																	"sid": 363887794500075,
-																	"parameters": [
-																		"curX",
-																		"curY"
-																	]
-																}
-															],
-															"sid": 432468942316399
-														},
-														{
-															"eventType": "comment",
-															"text": "if none found, wrap around to UI on the other side of the screen",
-															"text-color": [
-																0,
-																0,
-																0,
-																1
-															],
-															"background-color": [
-																0.8745098039215686,
-																0.8352941176470589,
-																0.6431372549019608,
-																1
-															]
-														},
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "else",
-																	"objectClass": "System",
-																	"sid": 308995983471738
-																},
-																{
-																	"id": "for-each-ordered",
-																	"objectClass": "System",
-																	"sid": 392416645919674,
-																	"parameters": {
-																		"object": "ui",
-																		"expression": "ui.Y",
-																		"order": "ascending"
-																	}
-																}
-															],
-															"actions": [
-																{
-																	"id": "stop-loop",
-																	"objectClass": "System",
-																	"sid": 238254159974689
-																},
-																{
-																	"id": "set-eventvar-value",
-																	"objectClass": "System",
-																	"sid": 426435671973880,
-																	"parameters": {
-																		"variable": "wrapPos",
-																		"value": "ui.Y"
-																	}
-																}
-															],
-															"sid": 360568302345868,
-															"children": [
-																{
-																	"eventType": "block",
-																	"conditions": [
-																		{
-																			"id": "pick-all",
-																			"objectClass": "System",
-																			"sid": 559257421535862,
-																			"parameters": {
-																				"object": "ui"
-																			}
-																		},
-																		{
-																			"id": "pick-by-comparison",
-																			"objectClass": "System",
-																			"sid": 567067528961841,
-																			"parameters": {
-																				"object": "ui",
-																				"expression": "ui.Y",
-																				"comparison": 0,
-																				"value": "wrapPos"
-																			}
-																		}
-																	],
-																	"actions": [
-																		{
-																			"callFunction": "uiNavigatePickNearest [INTERNAL]",
-																			"sid": 187518111215887,
-																			"parameters": [
-																				"curX",
-																				"curY"
-																			]
-																		}
-																	],
-																	"sid": 403176460964896
-																}
+															"customAction": "uiSliderIncrement [INTERNAL]",
+															"objectClass": "uiSliderHandle",
+															"sid": 241880055581529,
+															"parameters": [
+																"sign(sin(uiSliderBar.Angle))"
 															]
 														}
-													]
+													],
+													"sid": 213171614250675
 												},
 												{
 													"eventType": "block",
@@ -6321,7 +6557,7 @@
 														{
 															"id": "compare-eventvar",
 															"objectClass": "System",
-															"sid": 397567446180851,
+															"sid": 992391010461094,
 															"parameters": {
 																"variable": "direction",
 																"comparison": 0,
@@ -6329,143 +6565,17 @@
 															}
 														}
 													],
-													"actions": [],
-													"sid": 187082610331780,
-													"children": [
+													"actions": [
 														{
-															"eventType": "comment",
-															"text": "if components exist in this direction, pick the closest of them",
-															"text-color": [
-																0,
-																0,
-																0,
-																1
-															],
-															"background-color": [
-																0.8745098039215686,
-																0.8352941176470589,
-																0.6431372549019608,
-																1
-															]
-														},
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "pick-by-comparison",
-																	"objectClass": "System",
-																	"sid": 410320044730899,
-																	"parameters": {
-																		"object": "ui",
-																		"expression": "ui.X",
-																		"comparison": 2,
-																		"value": "curX"
-																	}
-																}
-															],
-															"actions": [
-																{
-																	"callFunction": "uiNavigatePickNearest [INTERNAL]",
-																	"sid": 334604797058183,
-																	"parameters": [
-																		"curX",
-																		"curY"
-																	]
-																}
-															],
-															"sid": 232368007196638
-														},
-														{
-															"eventType": "comment",
-															"text": "if none found, wrap around to UI on the other side of the screen",
-															"text-color": [
-																0,
-																0,
-																0,
-																1
-															],
-															"background-color": [
-																0.8745098039215686,
-																0.8352941176470589,
-																0.6431372549019608,
-																1
-															]
-														},
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "else",
-																	"objectClass": "System",
-																	"sid": 405986884381860
-																},
-																{
-																	"id": "for-each-ordered",
-																	"objectClass": "System",
-																	"sid": 296259453046083,
-																	"parameters": {
-																		"object": "ui",
-																		"expression": "ui.X",
-																		"order": "descending"
-																	}
-																}
-															],
-															"actions": [
-																{
-																	"id": "stop-loop",
-																	"objectClass": "System",
-																	"sid": 259494029071524
-																},
-																{
-																	"id": "set-eventvar-value",
-																	"objectClass": "System",
-																	"sid": 297394298498112,
-																	"parameters": {
-																		"variable": "wrapPos",
-																		"value": "ui.X"
-																	}
-																}
-															],
-															"sid": 397899694238036,
-															"children": [
-																{
-																	"eventType": "block",
-																	"conditions": [
-																		{
-																			"id": "pick-all",
-																			"objectClass": "System",
-																			"sid": 255362307961337,
-																			"parameters": {
-																				"object": "ui"
-																			}
-																		},
-																		{
-																			"id": "pick-by-comparison",
-																			"objectClass": "System",
-																			"sid": 767929788659764,
-																			"parameters": {
-																				"object": "ui",
-																				"expression": "ui.X",
-																				"comparison": 0,
-																				"value": "wrapPos"
-																			}
-																		}
-																	],
-																	"actions": [
-																		{
-																			"callFunction": "uiNavigatePickNearest [INTERNAL]",
-																			"sid": 174669908849830,
-																			"parameters": [
-																				"curX",
-																				"curY"
-																			]
-																		}
-																	],
-																	"sid": 881439277257789
-																}
+															"customAction": "uiSliderIncrement [INTERNAL]",
+															"objectClass": "uiSliderHandle",
+															"sid": 620067715132540,
+															"parameters": [
+																"-sign(cos(uiSliderBar.Angle))"
 															]
 														}
-													]
+													],
+													"sid": 887080106521510
 												},
 												{
 													"eventType": "block",
@@ -6473,7 +6583,7 @@
 														{
 															"id": "compare-eventvar",
 															"objectClass": "System",
-															"sid": 368595520274220,
+															"sid": 584806239457185,
 															"parameters": {
 																"variable": "direction",
 																"comparison": 0,
@@ -6481,713 +6591,788 @@
 															}
 														}
 													],
-													"actions": [],
-													"sid": 660729567755259,
-													"children": [
+													"actions": [
 														{
-															"eventType": "comment",
-															"text": "if components exist in this direction, pick the closest of them",
-															"text-color": [
-																0,
-																0,
-																0,
-																1
-															],
-															"background-color": [
-																0.8745098039215686,
-																0.8352941176470589,
-																0.6431372549019608,
-																1
-															]
-														},
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "pick-by-comparison",
-																	"objectClass": "System",
-																	"sid": 579352202198674,
-																	"parameters": {
-																		"object": "ui",
-																		"expression": "ui.X",
-																		"comparison": 4,
-																		"value": "curX"
-																	}
-																}
-															],
-															"actions": [
-																{
-																	"callFunction": "uiNavigatePickNearest [INTERNAL]",
-																	"sid": 944867900606674,
-																	"parameters": [
-																		"curX",
-																		"curY"
-																	]
-																}
-															],
-															"sid": 350178024656838
-														},
-														{
-															"eventType": "comment",
-															"text": "if none found, wrap around to UI on the other side of the screen",
-															"text-color": [
-																0,
-																0,
-																0,
-																1
-															],
-															"background-color": [
-																0.8745098039215686,
-																0.8352941176470589,
-																0.6431372549019608,
-																1
-															]
-														},
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "else",
-																	"objectClass": "System",
-																	"sid": 519751552140651
-																},
-																{
-																	"id": "for-each-ordered",
-																	"objectClass": "System",
-																	"sid": 484379681916510,
-																	"parameters": {
-																		"object": "ui",
-																		"expression": "ui.X",
-																		"order": "ascending"
-																	}
-																}
-															],
-															"actions": [
-																{
-																	"id": "stop-loop",
-																	"objectClass": "System",
-																	"sid": 526458459517454
-																},
-																{
-																	"id": "set-eventvar-value",
-																	"objectClass": "System",
-																	"sid": 158712660405151,
-																	"parameters": {
-																		"variable": "wrapPos",
-																		"value": "ui.X"
-																	}
-																}
-															],
-															"sid": 186060711598419,
-															"children": [
-																{
-																	"eventType": "block",
-																	"conditions": [
-																		{
-																			"id": "pick-all",
-																			"objectClass": "System",
-																			"sid": 492116379400684,
-																			"parameters": {
-																				"object": "ui"
-																			}
-																		},
-																		{
-																			"id": "pick-by-comparison",
-																			"objectClass": "System",
-																			"sid": 128525387700351,
-																			"parameters": {
-																				"object": "ui",
-																				"expression": "ui.X",
-																				"comparison": 0,
-																				"value": "wrapPos"
-																			}
-																		}
-																	],
-																	"actions": [
-																		{
-																			"callFunction": "uiNavigatePickNearest [INTERNAL]",
-																			"sid": 385479940708410,
-																			"parameters": [
-																				"curX",
-																				"curY"
-																			]
-																		}
-																	],
-																	"sid": 183762692900255
-																}
+															"customAction": "uiSliderIncrement [INTERNAL]",
+															"objectClass": "uiSliderHandle",
+															"sid": 294726795428963,
+															"parameters": [
+																"sign(cos(uiSliderBar.Angle))"
 															]
 														}
+													],
+													"sid": 788656453311808
+												},
+												{
+													"eventType": "comment",
+													"text": "center slider handle if scrollable",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
 													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [],
+													"actions": [
+														{
+															"callFunction": "uiScrollCenterChosen [INTERNAL]",
+															"sid": 279486746318102
+														}
+													],
+													"sid": 919416808744376
 												}
 											]
 										}
+									],
+									"sid": 432763485185588,
+									"text-color": [
+										0,
+										0,
+										0,
+										0
+									],
+									"background-color": [
+										0.8392156862745098,
+										0.8392156862745098,
+										0.8392156862745098,
+										1
 									]
 								}
-							],
-							"sid": 405077535408730,
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "pick nearest button to position",
 							"text-color": [
 								0,
 								0,
 								0,
-								0
+								1
 							],
 							"background-color": [
-								0.8392156862745098,
-								0.8392156862745098,
-								0.8392156862745098,
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
 								1
 							]
 						},
 						{
-							"eventType": "group",
-							"disabled": false,
-							"title": "ui behavior navigate slider",
-							"description": "controlled by uiSetNavigationMode",
-							"isActiveOnStart": false,
+							"functionName": "uiNavigatePickNearest [INTERNAL]",
+							"functionDescription": "pick the nearest UI to a point",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": true,
+							"functionIsAsync": false,
+							"functionParameters": [
+								{
+									"name": "x",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "point to compare nearest to",
+									"sid": 992394707988208
+								},
+								{
+									"name": "y",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "point to compare nearest to",
+									"sid": 955646520523629
+								}
+							],
+							"eventType": "function-block",
+							"conditions": [
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "ui",
+									"sid": 383204330794527,
+									"parameters": {
+										"instance-variable": "navigable"
+									}
+								},
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "ui",
+									"sid": 164261329725970,
+									"parameters": {
+										"instance-variable": "active"
+									}
+								},
+								{
+									"id": "pick-nearestfurthest",
+									"objectClass": "ui",
+									"sid": 113414107482460,
+									"parameters": {
+										"which": "nearest",
+										"x": "x",
+										"y": "y"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "uiRegisterChosen [INTERNAL]",
+									"sid": 458546814274737,
+									"parameters": [
+										"ui.ID"
+									]
+								}
+							],
+							"sid": 897391667948409
+						},
+						{
+							"eventType": "comment",
+							"text": "use this to register what component is chosen",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "uiRegisterChosen [INTERNAL]",
+							"functionDescription": "use this to register what component is chosen",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [
+								{
+									"name": "chosenID",
+									"type": "string",
+									"initialValue": "",
+									"comment": "enter chosen ID (usually ui.ID)",
+									"sid": 471429782694689
+								}
+							],
+							"eventType": "function-block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "ui",
+									"sid": 800348973152029,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "chosenID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 862306339866525,
+									"parameters": {
+										"variable": "uiChosenID",
+										"value": "chosenID"
+									}
+								},
+								{
+									"callFunction": "uiScrollCenterChosen [INTERNAL]",
+									"sid": 217409229444189
+								},
+								{
+									"callFunction": "uiUpdate [INTERNAL]",
+									"sid": 918344262363521
+								}
+							],
+							"sid": 161730870520453
+						},
+						{
+							"eventType": "comment",
+							"text": "find a default option to choose - it always chooses the top left most option",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "uiNavigatePickDefault [INTERNAL]",
+							"functionDescription": "find a default option to choose",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
+							"conditions": [
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "ui",
+									"sid": 788444944411750,
+									"parameters": {
+										"instance-variable": "navigable"
+									}
+								},
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "ui",
+									"sid": 241352511002799,
+									"parameters": {
+										"instance-variable": "active"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 621218097617005,
 							"children": [
+								{
+									"eventType": "comment",
+									"text": "record the position of the last object, to compare with next",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6705882352941176,
+										0.8745098039215686,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "variable",
+									"name": "lastX",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 926200201338562
+								},
+								{
+									"eventType": "variable",
+									"name": "lastY",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 492924414124214
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 736909349401919,
+											"parameters": {
+												"variable": "lastX",
+												"value": "Infinity"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 387529854488319,
+											"parameters": {
+												"variable": "lastY",
+												"value": "Infinity"
+											}
+										}
+									],
+									"sid": 353355508030695
+								},
+								{
+									"eventType": "comment",
+									"text": "the ID of the last object, to use after this loop",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6705882352941176,
+										0.8745098039215686,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "variable",
+									"name": "lastID",
+									"type": "string",
+									"initialValue": "",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 390719850671412
+								},
+								{
+									"eventType": "comment",
+									"text": "loop through every UI component and find which has the lowest coordinates",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
 								{
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "compare-instance-variable",
-											"objectClass": "ui",
-											"sid": 393284042424225,
+											"id": "for-each",
+											"objectClass": "System",
+											"sid": 303011417131924,
 											"parameters": {
-												"instance-variable": "ID",
-												"comparison": 0,
-												"value": "uiChosenID"
+												"object": "ui"
 											}
 										},
+										{
+											"id": "compare-x",
+											"objectClass": "ui",
+											"sid": 321466504977661,
+											"parameters": {
+												"comparison": 3,
+												"x-co-ordinate": "lastX"
+											}
+										},
+										{
+											"id": "compare-y",
+											"objectClass": "ui",
+											"sid": 255198580645030,
+											"parameters": {
+												"comparison": 3,
+												"y-co-ordinate": "lastY"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 198710878615112,
+											"parameters": {
+												"variable": "lastX",
+												"value": "ui.X"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 928142895357763,
+											"parameters": {
+												"variable": "lastY",
+												"value": "ui.Y"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 437910750080684,
+											"parameters": {
+												"variable": "lastID",
+												"value": "ui.id"
+											}
+										}
+									],
+									"sid": 910575851366247
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"callFunction": "uiRegisterChosen [INTERNAL]",
+											"sid": 213393197349216,
+											"parameters": [
+												"lastID"
+											]
+										}
+									],
+									"sid": 148064979325956
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "if component that got chosen is part of a scroll view, adjust the scroll to center this object",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"functionName": "uiScrollCenterChosen [INTERNAL]",
+							"functionDescription": "if component that got chosen is part of a scroll view, adjust the scroll to center this object",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "ui",
+									"sid": 505338869108961,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "uiChosenID"
+									}
+								},
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "uiScrollComponent",
+									"sid": 313533093260956,
+									"parameters": {
+										"unique-id": "ui.UID"
+									}
+								},
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "uiScrollComponent",
+									"sid": 646262312629197,
+									"parameters": {
+										"instance-variable": "scrollCenterOnChosen"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "uiCanvas",
+									"sid": 508596502679093,
+									"parameters": {
+										"instance-variable": "canvasID",
+										"comparison": 0,
+										"value": "uiScrollComponent.scrollCanvasID"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 499347463980125,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "only perform ui update if a slider handle value is modified",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6705882352941176,
+										0.8745098039215686,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "variable",
+									"name": "actionTaken",
+									"type": "boolean",
+									"initialValue": "false",
+									"comment": "if value was adjusted",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 792228069730905
+								},
+								{
+									"eventType": "comment",
+									"text": "y scroller",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
 										{
 											"id": "pick-by-unique-id",
 											"objectClass": "uiSliderHandle",
-											"sid": 194921501469292,
+											"sid": 475127664354867,
 											"parameters": {
-												"unique-id": "ui.UID"
-											}
-										},
-										{
-											"id": "pick-by-unique-id",
-											"objectClass": "uiSliderBar",
-											"sid": 262869296526175,
-											"parameters": {
-												"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
+												"unique-id": "Functions.uiGetUIDFromID(uiCanvas.scrollYHandleID)"
 											}
 										}
 									],
 									"actions": [],
-									"sid": 543968997351816,
+									"sid": 250470066916594,
 									"children": [
 										{
-											"eventType": "comment",
-											"text": "the math here is very specific\nwe take the sin() or cos() of the angle of the slider bar\nthen we take the sign() of it, which provides either -1, 0, or 1\nfinally depending on if its an increment or decrement we make it negative or positive\n\nthis allows increments to work even with irregular slider bar angles",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "compare-eventvar",
+													"id": "compare-two-values",
 													"objectClass": "System",
-													"sid": 260544081253424,
+													"sid": 766873582331824,
 													"parameters": {
-														"variable": "direction",
-														"comparison": 0,
-														"value": "\"up\""
+														"first-value": "uiScrollComponent.BBoxTop - uiScrollComponent.scrollCenteringMargins",
+														"comparison": 2,
+														"second-value": "uiCanvas.BBoxTop"
 													}
 												}
 											],
 											"actions": [
 												{
-													"customAction": "uiSliderIncrement [INTERNAL]",
+													"id": "set-instvar-value",
 													"objectClass": "uiSliderHandle",
-													"sid": 570409787639847,
-													"parameters": [
-														"-sign(sin(uiSliderBar.Angle))"
-													]
+													"sid": 262401004717996,
+													"parameters": {
+														"instance-variable": "sliderHandleValue",
+														"value": "uiSliderHandle.sliderHandleValue + (uiCanvas.BBoxTop - uiScrollComponent.BBoxTop) + uiScrollComponent.scrollCenteringMargins"
+													}
+												},
+												{
+													"id": "set-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 876879452851750,
+													"parameters": {
+														"variable": "actionTaken",
+														"value": "true"
+													}
 												}
 											],
-											"sid": 900592074407132
+											"sid": 272077206731296
 										},
 										{
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "compare-eventvar",
+													"id": "else",
 													"objectClass": "System",
-													"sid": 440925564807226,
+													"sid": 555447843519356
+												},
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 947512622612146,
 													"parameters": {
-														"variable": "direction",
-														"comparison": 0,
-														"value": "\"down\""
+														"first-value": "uiScrollComponent.BBoxBottom + uiScrollComponent.scrollCenteringMargins",
+														"comparison": 4,
+														"second-value": "uiCanvas.BBoxBottom"
 													}
 												}
 											],
 											"actions": [
 												{
-													"customAction": "uiSliderIncrement [INTERNAL]",
+													"id": "set-instvar-value",
 													"objectClass": "uiSliderHandle",
-													"sid": 614521217635818,
-													"parameters": [
-														"sign(sin(uiSliderBar.Angle))"
-													]
+													"sid": 319500071983484,
+													"parameters": {
+														"instance-variable": "sliderHandleValue",
+														"value": "uiSliderHandle.sliderHandleValue - (uiScrollComponent.BBoxBottom - uiCanvas.BBoxBottom) - uiScrollComponent.scrollCenteringMargins"
+													}
+												},
+												{
+													"id": "set-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 815369771714526,
+													"parameters": {
+														"variable": "actionTaken",
+														"value": "true"
+													}
 												}
 											],
-											"sid": 455847783555550
+											"sid": 770492770948180
 										},
 										{
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "compare-eventvar",
+													"id": "compare-boolean-eventvar",
 													"objectClass": "System",
-													"sid": 441704684288761,
+													"sid": 994266495720578,
 													"parameters": {
-														"variable": "direction",
-														"comparison": 0,
-														"value": "\"left\""
+														"variable": "actionTaken"
 													}
 												}
 											],
 											"actions": [
 												{
-													"customAction": "uiSliderIncrement [INTERNAL]",
+													"customAction": "uiSliderValueUpdate [INTERNAL]",
 													"objectClass": "uiSliderHandle",
-													"sid": 847544328609573,
-													"parameters": [
-														"-sign(cos(uiSliderBar.Angle))"
-													]
+													"sid": 890868494708657
 												}
 											],
-											"sid": 748219089238456
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-eventvar",
-													"objectClass": "System",
-													"sid": 618955760372778,
-													"parameters": {
-														"variable": "direction",
-														"comparison": 0,
-														"value": "\"right\""
-													}
-												}
-											],
-											"actions": [
-												{
-													"customAction": "uiSliderIncrement [INTERNAL]",
-													"objectClass": "uiSliderHandle",
-													"sid": 461001594764860,
-													"parameters": [
-														"sign(cos(uiSliderBar.Angle))"
-													]
-												}
-											],
-											"sid": 403146603722408
-										},
-										{
-											"eventType": "comment",
-											"text": "center slider handle if scrollable",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"eventType": "block",
-											"conditions": [],
-											"actions": [
-												{
-													"callFunction": "uiScrollCenterChosen [INTERNAL]",
-													"sid": 876971042198916
-												}
-											],
-											"sid": 812504028432003
+											"sid": 552819432489251
 										}
 									]
-								}
-							],
-							"sid": 455613702140005,
-							"text-color": [
-								0,
-								0,
-								0,
-								0
-							],
-							"background-color": [
-								0.8392156862745098,
-								0.8392156862745098,
-								0.8392156862745098,
-								1
-							]
-						}
-					]
-				},
-				{
-					"eventType": "comment",
-					"text": "pick nearest button to position",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"functionName": "uiNavigatePickNearest [INTERNAL]",
-					"functionDescription": "pick the nearest UI to a point",
-					"functionCategory": "ui",
-					"functionReturnType": "none",
-					"functionCopyPicked": true,
-					"functionIsAsync": false,
-					"functionParameters": [
-						{
-							"name": "x",
-							"type": "number",
-							"initialValue": "0",
-							"comment": "point to compare nearest to",
-							"sid": 992394707988208
-						},
-						{
-							"name": "y",
-							"type": "number",
-							"initialValue": "0",
-							"comment": "point to compare nearest to",
-							"sid": 955646520523629
-						}
-					],
-					"eventType": "function-block",
-					"conditions": [
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "ui",
-							"sid": 658835889826635,
-							"parameters": {
-								"instance-variable": "navigable"
-							}
-						},
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "ui",
-							"sid": 927313183174620,
-							"parameters": {
-								"instance-variable": "active"
-							}
-						},
-						{
-							"id": "pick-nearestfurthest",
-							"objectClass": "ui",
-							"sid": 602468502249296,
-							"parameters": {
-								"which": "nearest",
-								"x": "x",
-								"y": "y"
-							}
-						}
-					],
-					"actions": [
-						{
-							"callFunction": "uiRegisterChosen [INTERNAL]",
-							"sid": 556637104896898,
-							"parameters": [
-								"ui.ID"
-							]
-						}
-					],
-					"sid": 914100209109551
-				},
-				{
-					"eventType": "comment",
-					"text": "use this to register what component is chosen",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"functionName": "uiRegisterChosen [INTERNAL]",
-					"functionDescription": "use this to register what component is chosen",
-					"functionCategory": "ui",
-					"functionReturnType": "none",
-					"functionCopyPicked": false,
-					"functionIsAsync": false,
-					"functionParameters": [
-						{
-							"name": "chosenID",
-							"type": "string",
-							"initialValue": "",
-							"comment": "enter chosen ID (usually ui.ID)",
-							"sid": 471429782694689
-						}
-					],
-					"eventType": "function-block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "ui",
-							"sid": 330556638496607,
-							"parameters": {
-								"instance-variable": "ID",
-								"comparison": 0,
-								"value": "chosenID"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 687268184519372,
-							"parameters": {
-								"variable": "uiChosenID",
-								"value": "chosenID"
-							}
-						},
-						{
-							"callFunction": "uiScrollCenterChosen [INTERNAL]",
-							"sid": 320757017115996
-						},
-						{
-							"callFunction": "uiUpdate [INTERNAL]",
-							"sid": 452823869653349
-						}
-					],
-					"sid": 845940810412908
-				},
-				{
-					"eventType": "comment",
-					"text": "if component that got chosen is part of a scroll view, adjust the scroll to center this object",
-					"text-color": [
-						0,
-						0,
-						0,
-						1
-					],
-					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
-						1
-					]
-				},
-				{
-					"functionName": "uiScrollCenterChosen [INTERNAL]",
-					"functionDescription": "if component that got chosen is part of a scroll view, adjust the scroll to center this object",
-					"functionCategory": "ui",
-					"functionReturnType": "none",
-					"functionCopyPicked": false,
-					"functionIsAsync": false,
-					"functionParameters": [],
-					"eventType": "function-block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "ui",
-							"sid": 741024691442398,
-							"parameters": {
-								"instance-variable": "ID",
-								"comparison": 0,
-								"value": "uiChosenID"
-							}
-						},
-						{
-							"id": "pick-by-unique-id",
-							"objectClass": "uiScrollComponent",
-							"sid": 294505208999363,
-							"parameters": {
-								"unique-id": "ui.UID"
-							}
-						},
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "uiScrollComponent",
-							"sid": 592445530264717,
-							"parameters": {
-								"instance-variable": "scrollCenterOnChosen"
-							}
-						},
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "uiCanvas",
-							"sid": 449211602462886,
-							"parameters": {
-								"instance-variable": "canvasID",
-								"comparison": 0,
-								"value": "uiScrollComponent.scrollCanvasID"
-							}
-						}
-					],
-					"actions": [],
-					"sid": 542789925440445,
-					"children": [
-						{
-							"eventType": "comment",
-							"text": "only perform ui update if a slider handle value is modified",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.6705882352941176,
-								0.8745098039215686,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "variable",
-							"name": "actionTaken",
-							"type": "boolean",
-							"initialValue": "false",
-							"comment": "if value was adjusted",
-							"isStatic": false,
-							"isConstant": false,
-							"sid": 299142086314746
-						},
-						{
-							"eventType": "comment",
-							"text": "y scroller",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
+								},
 								{
-									"id": "pick-by-unique-id",
-									"objectClass": "uiSliderHandle",
-									"sid": 176198913105075,
-									"parameters": {
-										"unique-id": "Functions.uiGetUIDFromID(uiCanvas.scrollYHandleID)"
-									}
-								}
-							],
-							"actions": [],
-							"sid": 846064450811445,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 218112140020676,
-											"parameters": {
-												"first-value": "uiScrollComponent.BBoxTop - uiScrollComponent.scrollCenteringMargins",
-												"comparison": 2,
-												"second-value": "uiCanvas.BBoxTop"
-											}
-										}
+									"eventType": "comment",
+									"text": "x scroller",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
 									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "uiSliderHandle",
-											"sid": 201054045988874,
-											"parameters": {
-												"instance-variable": "sliderHandleValue",
-												"value": "uiSliderHandle.sliderHandleValue + (uiCanvas.BBoxTop - uiScrollComponent.BBoxTop) + uiScrollComponent.scrollCenteringMargins"
-											}
-										},
-										{
-											"id": "set-boolean-eventvar",
-											"objectClass": "System",
-											"sid": 257032497511518,
-											"parameters": {
-												"variable": "actionTaken",
-												"value": "true"
-											}
-										}
-									],
-									"sid": 422526295568223
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
 								},
 								{
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "else",
-											"objectClass": "System",
-											"sid": 404212187824813
-										},
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 800463991210923,
-											"parameters": {
-												"first-value": "uiScrollComponent.BBoxBottom + uiScrollComponent.scrollCenteringMargins",
-												"comparison": 4,
-												"second-value": "uiCanvas.BBoxBottom"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
+											"id": "pick-by-unique-id",
 											"objectClass": "uiSliderHandle",
-											"sid": 101172468182371,
+											"sid": 218857217743783,
 											"parameters": {
-												"instance-variable": "sliderHandleValue",
-												"value": "uiSliderHandle.sliderHandleValue - (uiScrollComponent.BBoxBottom - uiCanvas.BBoxBottom) - uiScrollComponent.scrollCenteringMargins"
-											}
-										},
-										{
-											"id": "set-boolean-eventvar",
-											"objectClass": "System",
-											"sid": 859868500879998,
-											"parameters": {
-												"variable": "actionTaken",
-												"value": "true"
+												"unique-id": "Functions.uiGetUIDFromID(uiCanvas.scrollXHandleID)"
 											}
 										}
 									],
-									"sid": 112314629477259
+									"actions": [],
+									"sid": 803983285943158,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 385455582950303,
+													"parameters": {
+														"first-value": "uiScrollComponent.BBoxLeft - uiScrollComponent.scrollCenteringMargins",
+														"comparison": 2,
+														"second-value": "uiCanvas.BBoxLeft"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 154925202447833,
+													"parameters": {
+														"instance-variable": "sliderHandleValue",
+														"value": "uiSliderHandle.sliderHandleValue + (uiCanvas.BBoxLeft - uiScrollComponent.BBoxLeft) + uiScrollComponent.scrollCenteringMargins"
+													}
+												},
+												{
+													"id": "set-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 609130144196128,
+													"parameters": {
+														"variable": "actionTaken",
+														"value": "true"
+													}
+												}
+											],
+											"sid": 317150126072021
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 102959534798152
+												},
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 118217847983042,
+													"parameters": {
+														"first-value": "uiScrollComponent.BBoxRight + uiScrollComponent.scrollCenteringMargins",
+														"comparison": 4,
+														"second-value": "uiCanvas.BBoxRight"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiSliderHandle",
+													"sid": 268095316781962,
+													"parameters": {
+														"instance-variable": "sliderHandleValue",
+														"value": "uiSliderHandle.sliderHandleValue - (uiScrollComponent.BBoxRight - uiCanvas.BBoxRight) - uiScrollComponent.scrollCenteringMargins"
+													}
+												},
+												{
+													"id": "set-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 931080512056118,
+													"parameters": {
+														"variable": "actionTaken",
+														"value": "true"
+													}
+												}
+											],
+											"sid": 218017438017696
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 695202994866578,
+													"parameters": {
+														"variable": "actionTaken"
+													}
+												}
+											],
+											"actions": [
+												{
+													"customAction": "uiSliderValueUpdate [INTERNAL]",
+													"objectClass": "uiSliderHandle",
+													"sid": 717209068948395
+												}
+											],
+											"sid": 397186161522173
+										}
+									]
 								},
 								{
 									"eventType": "block",
@@ -7195,7 +7380,7 @@
 										{
 											"id": "compare-boolean-eventvar",
 											"objectClass": "System",
-											"sid": 331900820124566,
+											"sid": 380514629114758,
 											"parameters": {
 												"variable": "actionTaken"
 											}
@@ -7203,392 +7388,27 @@
 									],
 									"actions": [
 										{
-											"customAction": "uiSliderValueUpdate [INTERNAL]",
-											"objectClass": "uiSliderHandle",
-											"sid": 636791032158830
+											"callFunction": "uiSliderUpdate [INTERNAL]",
+											"sid": 991350385018033
 										}
 									],
-									"sid": 732964349423540
+									"sid": 430058928839613
 								}
 							]
-						},
-						{
-							"eventType": "comment",
-							"text": "x scroller",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "pick-by-unique-id",
-									"objectClass": "uiSliderHandle",
-									"sid": 515906307689912,
-									"parameters": {
-										"unique-id": "Functions.uiGetUIDFromID(uiCanvas.scrollXHandleID)"
-									}
-								}
-							],
-							"actions": [],
-							"sid": 274211995868294,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 830130247327935,
-											"parameters": {
-												"first-value": "uiScrollComponent.BBoxLeft - uiScrollComponent.scrollCenteringMargins",
-												"comparison": 2,
-												"second-value": "uiCanvas.BBoxLeft"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "uiSliderHandle",
-											"sid": 351703183339335,
-											"parameters": {
-												"instance-variable": "sliderHandleValue",
-												"value": "uiSliderHandle.sliderHandleValue + (uiCanvas.BBoxLeft - uiScrollComponent.BBoxLeft) + uiScrollComponent.scrollCenteringMargins"
-											}
-										},
-										{
-											"id": "set-boolean-eventvar",
-											"objectClass": "System",
-											"sid": 332121440035856,
-											"parameters": {
-												"variable": "actionTaken",
-												"value": "true"
-											}
-										}
-									],
-									"sid": 744370609091295
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "else",
-											"objectClass": "System",
-											"sid": 248234615804230
-										},
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 340300505508243,
-											"parameters": {
-												"first-value": "uiScrollComponent.BBoxRight + uiScrollComponent.scrollCenteringMargins",
-												"comparison": 4,
-												"second-value": "uiCanvas.BBoxRight"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "uiSliderHandle",
-											"sid": 177649184289197,
-											"parameters": {
-												"instance-variable": "sliderHandleValue",
-												"value": "uiSliderHandle.sliderHandleValue - (uiScrollComponent.BBoxRight - uiCanvas.BBoxRight) - uiScrollComponent.scrollCenteringMargins"
-											}
-										},
-										{
-											"id": "set-boolean-eventvar",
-											"objectClass": "System",
-											"sid": 191888265215251,
-											"parameters": {
-												"variable": "actionTaken",
-												"value": "true"
-											}
-										}
-									],
-									"sid": 710233468612358
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-boolean-eventvar",
-											"objectClass": "System",
-											"sid": 787712699781039,
-											"parameters": {
-												"variable": "actionTaken"
-											}
-										}
-									],
-									"actions": [
-										{
-											"customAction": "uiSliderValueUpdate [INTERNAL]",
-											"objectClass": "uiSliderHandle",
-											"sid": 429117701302560
-										}
-									],
-									"sid": 475142661936256
-								}
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-boolean-eventvar",
-									"objectClass": "System",
-									"sid": 368391162175029,
-									"parameters": {
-										"variable": "actionTaken"
-									}
-								}
-							],
-							"actions": [
-								{
-									"callFunction": "uiUpdate [INTERNAL]",
-									"sid": 152274811161949
-								}
-							],
-							"sid": 892479779387977
 						}
-					]
-				},
-				{
-					"eventType": "comment",
-					"text": "find a default option to choose - it always chooses the top left most option",
+					],
+					"sid": 344819785489251,
 					"text-color": [
 						0,
 						0,
 						0,
-						1
+						0
 					],
 					"background-color": [
-						0.6431372549019608,
-						0.8470588235294118,
-						0.8745098039215686,
+						0.8392156862745098,
+						0.8392156862745098,
+						0.8392156862745098,
 						1
-					]
-				},
-				{
-					"functionName": "uiNavigateDefault [INTERNAL]",
-					"functionDescription": "find a default option to choose",
-					"functionCategory": "ui",
-					"functionReturnType": "none",
-					"functionCopyPicked": false,
-					"functionIsAsync": false,
-					"functionParameters": [],
-					"eventType": "function-block",
-					"conditions": [
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "ui",
-							"sid": 316621498480604,
-							"parameters": {
-								"instance-variable": "navigable"
-							}
-						},
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "ui",
-							"sid": 950134269510545,
-							"parameters": {
-								"instance-variable": "active"
-							}
-						}
-					],
-					"actions": [],
-					"sid": 354687514125026,
-					"children": [
-						{
-							"eventType": "comment",
-							"text": "record the position of the last object, to compare with next",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.6705882352941176,
-								0.8745098039215686,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "variable",
-							"name": "lastX",
-							"type": "number",
-							"initialValue": "0",
-							"comment": "",
-							"isStatic": false,
-							"isConstant": false,
-							"sid": 355646758502732
-						},
-						{
-							"eventType": "variable",
-							"name": "lastY",
-							"type": "number",
-							"initialValue": "0",
-							"comment": "",
-							"isStatic": false,
-							"isConstant": false,
-							"sid": 835810560732681
-						},
-						{
-							"eventType": "block",
-							"conditions": [],
-							"actions": [
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 222726512999877,
-									"parameters": {
-										"variable": "lastX",
-										"value": "Infinity"
-									}
-								},
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 105157898950239,
-									"parameters": {
-										"variable": "lastY",
-										"value": "Infinity"
-									}
-								}
-							],
-							"sid": 587526129948929
-						},
-						{
-							"eventType": "comment",
-							"text": "the ID of the last object, to use after this loop",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.6705882352941176,
-								0.8745098039215686,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "variable",
-							"name": "lastID",
-							"type": "string",
-							"initialValue": "",
-							"comment": "",
-							"isStatic": false,
-							"isConstant": false,
-							"sid": 598558359485785
-						},
-						{
-							"eventType": "comment",
-							"text": "loop through every UI component and find which has the lowest coordinates",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "for-each",
-									"objectClass": "System",
-									"sid": 621024131492146,
-									"parameters": {
-										"object": "ui"
-									}
-								},
-								{
-									"id": "compare-x",
-									"objectClass": "ui",
-									"sid": 631509866801638,
-									"parameters": {
-										"comparison": 3,
-										"x-co-ordinate": "lastX"
-									}
-								},
-								{
-									"id": "compare-y",
-									"objectClass": "ui",
-									"sid": 355531241233383,
-									"parameters": {
-										"comparison": 3,
-										"y-co-ordinate": "lastY"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 660417586199479,
-									"parameters": {
-										"variable": "lastX",
-										"value": "ui.X"
-									}
-								},
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 477067806126479,
-									"parameters": {
-										"variable": "lastY",
-										"value": "ui.Y"
-									}
-								},
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 801906543980576,
-									"parameters": {
-										"variable": "lastID",
-										"value": "ui.id"
-									}
-								}
-							],
-							"sid": 330218668164502
-						},
-						{
-							"eventType": "block",
-							"conditions": [],
-							"actions": [
-								{
-									"callFunction": "uiRegisterChosen [INTERNAL]",
-									"sid": 582757944382521,
-									"parameters": [
-										"lastID"
-									]
-								}
-							],
-							"sid": 594202503493976
-						}
 					]
 				}
 			],
@@ -8211,6 +8031,16 @@
 																"variable": "pass"
 															},
 															"isInverted": true
+														},
+														{
+															"id": "compare-eventvar",
+															"objectClass": "System",
+															"sid": 324372040662808,
+															"parameters": {
+																"variable": "uiChosenID",
+																"comparison": 1,
+																"value": "\"\""
+															}
 														}
 													],
 													"actions": [
@@ -8262,6 +8092,16 @@
 													}
 												},
 												{
+													"id": "compare-instance-variable",
+													"objectClass": "ui",
+													"sid": 868684915492501,
+													"parameters": {
+														"instance-variable": "ID",
+														"comparison": 0,
+														"value": "uiChosenID"
+													}
+												},
+												{
 													"id": "is-boolean-instance-variable-set",
 													"objectClass": "ui",
 													"sid": 855033158961171,
@@ -8275,16 +8115,6 @@
 													"sid": 276855271312044,
 													"parameters": {
 														"instance-variable": "active"
-													}
-												},
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "ui",
-													"sid": 628698250443344,
-													"parameters": {
-														"instance-variable": "ID",
-														"comparison": 0,
-														"value": "uiChosenID"
 													}
 												}
 											],
@@ -8401,7 +8231,7 @@
 														{
 															"id": "on-movement",
 															"objectClass": "Mouse",
-															"sid": 525748338857072
+															"sid": 358019711988751
 														},
 														{
 															"id": "pick-by-unique-id",
@@ -8494,8 +8324,8 @@
 															]
 														},
 														{
-															"callFunction": "uiUpdate [INTERNAL]",
-															"sid": 824931437936369
+															"callFunction": "uiSliderUpdate [INTERNAL]",
+															"sid": 516699310818064
 														}
 													],
 													"sid": 917795547053660

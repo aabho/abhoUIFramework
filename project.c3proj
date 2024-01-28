@@ -88,8 +88,7 @@
 	"objectTypes": {
 		"items": [
 			"Camera",
-			"txt",
-			"debugCanvas"
+			"txt"
 		],
 		"subfolders": [
 			{
