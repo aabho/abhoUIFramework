@@ -4460,7 +4460,7 @@
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
 						"scroller": true,
-						"scrollerSpeed": 20,
+						"scrollerSpeed": 10,
 						"section": "mainSettings",
 						"ID": "mainSettingsScrollHandleVert",
 						"navigable": true,

@@ -5115,7 +5115,7 @@
 								},
 								{
 									"type": "script",
-									"script": "runtime.callFunction(\"select \" + runtime.objects.ui.getFirstPickedInstance().instVars.ID);"
+									"script": "try {\n\truntime.callFunction(\"select \" + \n\t\truntime.objects.ui.getFirstPickedInstance().instVars.ID);\n} \ncatch(error) {/* nothing, just ignore it*/}"
 								},
 								{
 									"customAction": "uiSelect",
@@ -5124,6 +5124,230 @@
 								}
 							],
 							"sid": 364808941281007
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "selects the currently chosen UI component",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"functionName": "uiSlider [INTERNAL]",
+					"functionDescription": "triggers a slider value function",
+					"functionCategory": "ui",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "ui",
+							"sid": 841572995483017,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "uiChosenID"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 424065582354073,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "if this is a slider handle",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "uiSliderHandle",
+									"sid": 250009200158602,
+									"parameters": {
+										"unique-id": "ui.UID"
+									}
+								},
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "uiSliderBar",
+									"sid": 235206380317443,
+									"parameters": {
+										"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 324000164785788,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 137959901556854,
+											"parameters": {
+												"variable": "uiInputMode",
+												"comparison": 0,
+												"value": "\"default\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "enter a state where all navigation only affects the slider value, and then call custom action, signifies handle being 'picked up' rather than being selected once",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"callFunction": "uiSetNavigationMode [INTERNAL]",
+											"sid": 136409375277108,
+											"parameters": [
+												"\"slider\""
+											]
+										},
+										{
+											"customAction": "uiSliderHandleSelect",
+											"objectClass": "uiSliderHandle",
+											"sid": 819263202760455
+										}
+									],
+									"sid": 684823587686374
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 351629236708961
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "go back to normal navigation, and then call custom action, signifies handle being 'put down'",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"callFunction": "uiSetNavigationMode [INTERNAL]",
+											"sid": 446444025946192,
+											"parameters": [
+												"\"default\""
+											]
+										},
+										{
+											"customAction": "uiSliderHandleDeselect",
+											"objectClass": "uiSliderHandle",
+											"sid": 764786276119983
+										}
+									],
+									"sid": 331280099864943
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "else, treat it as a normal button",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 399927778487132
+								}
+							],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "will call a function with the syntax (\"select \" & uiButton.id)\nex: Function \"select mainPlay\"\nadd this function to any event sheet to register when a button is selected\n\nkeep in mind that if you change a button's ID, you'll have to change the name of its function, too",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8470588235294118,
+										0.6431372549019608,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"type": "script",
+									"script": "runtime.callFunction(\"slider \" + runtime.objects.ui.getFirstPickedInstance().instVars.ID);"
+								},
+								{
+									"customAction": "uiSelect",
+									"objectClass": "ui",
+									"sid": 128486299763696
+								}
+							],
+							"sid": 955414893863279
 						}
 					]
 				},
@@ -7879,17 +8103,82 @@
 																				"variable": "uiChosenID",
 																				"value": "ui.id"
 																			}
-																		},
-																		{
-																			"callFunction": "uiScrollCenterChosen [INTERNAL]",
-																			"sid": 849600874264263
-																		},
-																		{
-																			"callFunction": "uiUpdate [INTERNAL]",
-																			"sid": 680956413147510
 																		}
 																	],
-																	"sid": 955045859132325
+																	"sid": 955045859132325,
+																	"children": [
+																		{
+																			"eventType": "comment",
+																			"text": "if set to center on mouseover, call the centering function",
+																			"text-color": [
+																				0,
+																				0,
+																				0,
+																				1
+																			],
+																			"background-color": [
+																				0.8745098039215686,
+																				0.8352941176470589,
+																				0.6431372549019608,
+																				1
+																			]
+																		},
+																		{
+																			"eventType": "block",
+																			"conditions": [
+																				{
+																					"id": "pick-by-unique-id",
+																					"objectClass": "uiScrollComponent",
+																					"sid": 579407363062464,
+																					"parameters": {
+																						"unique-id": "ui.UID"
+																					}
+																				},
+																				{
+																					"id": "is-boolean-instance-variable-set",
+																					"objectClass": "uiScrollComponent",
+																					"sid": 932634668898033,
+																					"parameters": {
+																						"instance-variable": "scrollCenterOnMouseover"
+																					}
+																				}
+																			],
+																			"actions": [
+																				{
+																					"callFunction": "uiScrollCenterChosen [INTERNAL]",
+																					"sid": 485660289617019
+																				}
+																			],
+																			"sid": 151530040098313
+																		},
+																		{
+																			"eventType": "comment",
+																			"text": "run a generic update",
+																			"text-color": [
+																				0,
+																				0,
+																				0,
+																				1
+																			],
+																			"background-color": [
+																				0.8745098039215686,
+																				0.8352941176470589,
+																				0.6431372549019608,
+																				1
+																			]
+																		},
+																		{
+																			"eventType": "block",
+																			"conditions": [],
+																			"actions": [
+																				{
+																					"callFunction": "uiUpdate [INTERNAL]",
+																					"sid": 274044696317142
+																				}
+																			],
+																			"sid": 725144141637469
+																		}
+																	]
 																}
 															]
 														}
