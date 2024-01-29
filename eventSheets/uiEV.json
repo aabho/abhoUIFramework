@@ -1844,14 +1844,6 @@
 											"parameters": {
 												"unique-id": "uiSliderHandle.UID"
 											}
-										},
-										{
-											"id": "pick-by-unique-id",
-											"objectClass": "uiSliderBar",
-											"sid": 995487625328921,
-											"parameters": {
-												"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
-											}
 										}
 									],
 									"actions": [
@@ -1925,13 +1917,13 @@
 										{
 											"id": "tween-two-properties",
 											"objectClass": "ui",
-											"sid": 403389607486577,
+											"sid": 201409689887855,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"uiSliderHandleMove\"",
 												"property": "position",
-												"end-x": "lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, uiSliderHandle.sliderHandleProgress)",
-												"end-y": "lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, uiSliderHandle.sliderHandleProgress)",
+												"end-x": "Functions.uiSliderHandleGetRealX(ui.ID)",
+												"end-y": "Functions.uiSliderHandleGetRealY(ui.ID)",
 												"time": "0.1",
 												"ease": "easeoutcubic",
 												"destroy-on-complete": "no",
@@ -1941,49 +1933,7 @@
 											}
 										}
 									],
-									"sid": 969842379607499
-								},
-								{
-									"eventType": "comment",
-									"text": "I added another event here, this one isn't a custom action, but I figured this was the most appropriate place to put it.",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8470588235294118,
-										0.6431372549019608,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "pick-by-comparison",
-											"objectClass": "System",
-											"sid": 240621346960638,
-											"parameters": {
-												"object": "ui",
-												"expression": "ui.Tween.Progress(\"uiSliderHandleMove\")",
-												"comparison": 1,
-												"value": "0"
-											}
-										},
-										{
-											"id": "for-each",
-											"objectClass": "System",
-											"sid": 551550749352242,
-											"parameters": {
-												"object": "ui"
-											}
-										}
-									],
-									"actions": [],
-									"sid": 675903551873501,
+									"sid": 969842379607499,
 									"children": [
 										{
 											"eventType": "comment",
@@ -2007,7 +1957,7 @@
 												{
 													"id": "pick-by-evaluate",
 													"objectClass": "System",
-													"sid": 333689793803215,
+													"sid": 936981792355588,
 													"parameters": {
 														"object": "uiSliderFill",
 														"expression": "(uiSliderFill.sliderFillStartID = ui.id) | (uiSliderFill.sliderFillEndID = ui.id)"
@@ -2016,7 +1966,7 @@
 												{
 													"id": "for-each",
 													"objectClass": "System",
-													"sid": 821941046030413,
+													"sid": 859813526314662,
 													"parameters": {
 														"object": "uiSliderFill"
 													}
@@ -2026,10 +1976,10 @@
 												{
 													"customAction": "uiSliderFillUpdate",
 													"objectClass": "uiSliderFill",
-													"sid": 750930419466632
+													"sid": 601757442087566
 												}
 											],
-											"sid": 311411169598943
+											"sid": 798463561250551
 										}
 									]
 								}
@@ -3127,6 +3077,14 @@
 											"conditions": [
 												{
 													"id": "pick-by-unique-id",
+													"objectClass": "ui",
+													"sid": 817107657582525,
+													"parameters": {
+														"unique-id": "uiSliderFill.UID"
+													}
+												},
+												{
+													"id": "pick-by-unique-id",
 													"objectClass": "uiSliderBar",
 													"sid": 811712787753319,
 													"parameters": {
@@ -3143,6 +3101,78 @@
 											],
 											"sid": 523594762965297,
 											"children": [
+												{
+													"eventType": "comment",
+													"text": "store the start position of the fill. it isn't the x and y, it's the tween result",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.6705882352941176,
+														0.8745098039215686,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "variable",
+													"name": "startPosX",
+													"type": "number",
+													"initialValue": "0",
+													"comment": "hold",
+													"isStatic": false,
+													"isConstant": false,
+													"sid": 712773274809041
+												},
+												{
+													"eventType": "variable",
+													"name": "startPosY",
+													"type": "number",
+													"initialValue": "0",
+													"comment": "hold",
+													"isStatic": false,
+													"isConstant": false,
+													"sid": 488793870677025
+												},
+												{
+													"eventType": "comment",
+													"text": "store the end position",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.6705882352941176,
+														0.8745098039215686,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "variable",
+													"name": "endPosX",
+													"type": "number",
+													"initialValue": "0",
+													"comment": "hold",
+													"isStatic": false,
+													"isConstant": false,
+													"sid": 917465019883433
+												},
+												{
+													"eventType": "variable",
+													"name": "endPosY",
+													"type": "number",
+													"initialValue": "0",
+													"comment": "hold",
+													"isStatic": false,
+													"isConstant": false,
+													"sid": 294038574617761
+												},
 												{
 													"eventType": "comment",
 													"text": "start point - set position to this",
@@ -3175,12 +3205,21 @@
 													],
 													"actions": [
 														{
-															"id": "set-position",
-															"objectClass": "uiSliderFill",
-															"sid": 196136096376576,
+															"id": "set-eventvar-value",
+															"objectClass": "System",
+															"sid": 578049969105411,
 															"parameters": {
-																"x": "uiSliderBar.sliderLeftX",
-																"y": "uiSliderBar.sliderLeftY"
+																"variable": "startPosX",
+																"value": "uiSliderBar.sliderLeftX"
+															}
+														},
+														{
+															"id": "set-eventvar-value",
+															"objectClass": "System",
+															"sid": 148623429987218,
+															"parameters": {
+																"variable": "startPosY",
+																"value": "uiSliderBar.sliderLeftY"
 															}
 														}
 													],
@@ -3195,28 +3234,85 @@
 															"sid": 877281574834550
 														},
 														{
-															"id": "compare-instance-variable",
-															"objectClass": "ui",
-															"sid": 913494060203126,
+															"id": "pick-by-unique-id",
+															"objectClass": "uiSliderHandle",
+															"sid": 650695994175213,
 															"parameters": {
-																"instance-variable": "ID",
-																"comparison": 0,
-																"value": "uiSliderFill.sliderFillStartID"
+																"unique-id": "Functions.uiGetUIDFromID(uiSliderFill.sliderFillStartID)"
 															}
 														}
 													],
 													"actions": [
 														{
-															"id": "set-position",
-															"objectClass": "uiSliderFill",
-															"sid": 856636692492113,
+															"id": "set-eventvar-value",
+															"objectClass": "System",
+															"sid": 917453601854115,
 															"parameters": {
-																"x": "ui.X",
-																"y": "ui.Y"
+																"variable": "startPosX",
+																"value": "Functions.uiSliderHandleGetRealX(uiSliderFill.sliderFillStartID)"
+															}
+														},
+														{
+															"id": "set-eventvar-value",
+															"objectClass": "System",
+															"sid": 277216643568037,
+															"parameters": {
+																"variable": "startPosY",
+																"value": "Functions.uiSliderHandleGetRealY(uiSliderFill.sliderFillStartID)"
 															}
 														}
 													],
 													"sid": 608842876685183
+												},
+												{
+													"eventType": "comment",
+													"text": "start point tweens",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [],
+													"actions": [
+														{
+															"id": "stop-tweens",
+															"objectClass": "ui",
+															"sid": 713279221440795,
+															"behaviorType": "Tween",
+															"parameters": {
+																"tags": "\"readjust\""
+															}
+														},
+														{
+															"id": "tween-two-properties",
+															"objectClass": "ui",
+															"sid": 298967749964697,
+															"behaviorType": "Tween",
+															"parameters": {
+																"tags": "\"readjust\"",
+																"property": "position",
+																"end-x": "startPosX",
+																"end-y": "startPosY",
+																"time": "0.1",
+																"ease": "easeoutcubic",
+																"destroy-on-complete": "no",
+																"loop": "no",
+																"ping-pong": "no",
+																"repeat-count": "1"
+															}
+														}
+													],
+													"sid": 611225253660401
 												},
 												{
 													"eventType": "comment",
@@ -3250,20 +3346,21 @@
 													],
 													"actions": [
 														{
-															"id": "set-angle-toward-position",
-															"objectClass": "uiSliderFill",
-															"sid": 928445190167571,
+															"id": "set-eventvar-value",
+															"objectClass": "System",
+															"sid": 947742800267914,
 															"parameters": {
-																"x": "uiSliderBar.sliderRightX",
-																"y": "uiSliderBar.sliderRightY"
+																"variable": "endPosX",
+																"value": "uiSliderBar.sliderRightX"
 															}
 														},
 														{
-															"id": "set-width",
-															"objectClass": "uiSliderFill",
-															"sid": 284579959720065,
+															"id": "set-eventvar-value",
+															"objectClass": "System",
+															"sid": 706976588899530,
 															"parameters": {
-																"width": "distance(Self.X, Self.Y, uiSliderBar.sliderRightX, uiSliderBar.sliderRightY)"
+																"variable": "endPosY",
+																"value": "uiSliderBar.sliderRightY"
 															}
 														}
 													],
@@ -3278,36 +3375,144 @@
 															"sid": 600219006537573
 														},
 														{
-															"id": "compare-instance-variable",
-															"objectClass": "ui",
-															"sid": 301793065948129,
+															"id": "pick-by-unique-id",
+															"objectClass": "uiSliderHandle",
+															"sid": 213242033575100,
 															"parameters": {
-																"instance-variable": "ID",
-																"comparison": 0,
-																"value": "uiSliderFill.sliderFillEndID"
+																"unique-id": "Functions.uiGetUIDFromID(uiSliderFill.sliderFillEndID)"
 															}
 														}
 													],
 													"actions": [
 														{
-															"id": "set-angle-toward-position",
-															"objectClass": "uiSliderFill",
-															"sid": 669671712128234,
+															"id": "set-eventvar-value",
+															"objectClass": "System",
+															"sid": 654241472919249,
 															"parameters": {
-																"x": "ui.X",
-																"y": "ui.Y"
+																"variable": "endPosX",
+																"value": "Functions.uiSliderHandleGetRealX(uiSliderFill.sliderFillEndID)"
 															}
 														},
 														{
-															"id": "set-width",
-															"objectClass": "uiSliderFill",
-															"sid": 644114613321498,
+															"id": "set-eventvar-value",
+															"objectClass": "System",
+															"sid": 679428682980598,
 															"parameters": {
-																"width": "distance(Self.X, Self.Y, ui.X, ui.Y)"
+																"variable": "endPosY",
+																"value": "Functions.uiSliderHandleGetRealY(uiSliderFill.sliderFillEndID)"
 															}
 														}
 													],
 													"sid": 760369424648122
+												},
+												{
+													"eventType": "comment",
+													"text": "end point tweens",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-two-values",
+															"objectClass": "System",
+															"sid": 352957395124962,
+															"parameters": {
+																"first-value": "ui.Angle",
+																"comparison": 1,
+																"second-value": "angle(startPosX, startPosY, endPosX, endPosY)"
+															}
+														}
+													],
+													"actions": [
+														{
+															"type": "comment",
+															"text": "the angle tween is rarely used, so I check if the angle actually changed before doing any tween",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8470588235294118,
+																0.6431372549019608,
+																0.8745098039215686,
+																1
+															]
+														},
+														{
+															"id": "stop-tweens",
+															"objectClass": "ui",
+															"sid": 440409715272644,
+															"behaviorType": "Tween",
+															"parameters": {
+																"tags": "\"rotate\""
+															}
+														},
+														{
+															"id": "tween-one-property",
+															"objectClass": "ui",
+															"sid": 739044435394077,
+															"behaviorType": "Tween",
+															"parameters": {
+																"tags": "\"rotate\"",
+																"property": "offsetAngle",
+																"end-value": "angle(startPosX, startPosY, endPosX, endPosY)",
+																"time": "0.1",
+																"ease": "easeoutcubic",
+																"destroy-on-complete": "no",
+																"loop": "no",
+																"ping-pong": "no",
+																"repeat-count": "1"
+															}
+														}
+													],
+													"sid": 618764499283430
+												},
+												{
+													"eventType": "block",
+													"conditions": [],
+													"actions": [
+														{
+															"id": "stop-tweens",
+															"objectClass": "ui",
+															"sid": 612608393623214,
+															"behaviorType": "Tween",
+															"parameters": {
+																"tags": "\"extend\""
+															}
+														},
+														{
+															"id": "tween-one-property",
+															"objectClass": "ui",
+															"sid": 386219045228517,
+															"behaviorType": "Tween",
+															"parameters": {
+																"tags": "\"extend\"",
+																"property": "offsetWidth",
+																"end-value": "distance(startPosX, startPosY, endPosX, endPosY)",
+																"time": "0.1",
+																"ease": "easeoutcubic",
+																"destroy-on-complete": "no",
+																"loop": "no",
+																"ping-pong": "no",
+																"repeat-count": "1"
+															}
+														}
+													],
+													"sid": 743992322759687
 												}
 											]
 										}
@@ -3333,6 +3538,132 @@
 									"description": "this can get complicated, so just remember that the handle is different from the bar. you can only have one bar, but you can have multiple handles. as such, the value is stored in the handle itself and this is the part that can be navigated. also, slider handles can be designated as scroll handles, which can be used in a scroll view.",
 									"isActiveOnStart": true,
 									"children": [
+										{
+											"eventType": "comment",
+											"text": "get the position of this handle, according to its value",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.6431372549019608,
+												0.8470588235294118,
+												0.8745098039215686,
+												1
+											]
+										},
+										{
+											"eventType": "comment",
+											"text": "these are more reliable than trying to get uiSliderHandle.X and .Y, since the position may be tweening",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8470588235294118,
+												0.6431372549019608,
+												0.8745098039215686,
+												1
+											]
+										},
+										{
+											"functionName": "uiSliderHandleGetRealX",
+											"functionDescription": "get the position of this handle, according to its value",
+											"functionCategory": "ui",
+											"functionReturnType": "number",
+											"functionCopyPicked": false,
+											"functionIsAsync": false,
+											"functionParameters": [
+												{
+													"name": "ID",
+													"type": "string",
+													"initialValue": "",
+													"comment": "ID of slider handle",
+													"sid": 502727730975440
+												}
+											],
+											"eventType": "function-block",
+											"conditions": [
+												{
+													"id": "pick-by-unique-id",
+													"objectClass": "uiSliderHandle",
+													"sid": 711271295257550,
+													"parameters": {
+														"unique-id": "Functions.uiGetUIDFromID(ID)"
+													}
+												},
+												{
+													"id": "pick-by-unique-id",
+													"objectClass": "uiSliderBar",
+													"sid": 995487625328921,
+													"parameters": {
+														"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-function-return-value",
+													"objectClass": "Functions",
+													"sid": 991158105015198,
+													"parameters": {
+														"value": "lerp(uiSliderBar.sliderLeftX, uiSliderBar.sliderRightX, uiSliderHandle.sliderHandleProgress)"
+													}
+												}
+											],
+											"sid": 336093102891065
+										},
+										{
+											"functionName": "uiSliderHandleGetRealY",
+											"functionDescription": "get the position of this handle, according to its value",
+											"functionCategory": "ui",
+											"functionReturnType": "number",
+											"functionCopyPicked": false,
+											"functionIsAsync": false,
+											"functionParameters": [
+												{
+													"name": "ID",
+													"type": "string",
+													"initialValue": "",
+													"comment": "ID of slider handle",
+													"sid": 159264903340229
+												}
+											],
+											"eventType": "function-block",
+											"conditions": [
+												{
+													"id": "pick-by-unique-id",
+													"objectClass": "uiSliderHandle",
+													"sid": 599554863182513,
+													"parameters": {
+														"unique-id": "Functions.uiGetUIDFromID(ID)"
+													}
+												},
+												{
+													"id": "pick-by-unique-id",
+													"objectClass": "uiSliderBar",
+													"sid": 435405527357661,
+													"parameters": {
+														"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-function-return-value",
+													"objectClass": "Functions",
+													"sid": 259682641654252,
+													"parameters": {
+														"value": "lerp(uiSliderBar.sliderLeftY, uiSliderBar.sliderRightY, uiSliderHandle.sliderHandleProgress)"
+													}
+												}
+											],
+											"sid": 513627490291273
+										},
 										{
 											"eventType": "comment",
 											"text": "navigate a slider using step increments",
