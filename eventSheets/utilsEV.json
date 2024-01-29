@@ -20,7 +20,7 @@
 		{
 			"eventType": "group",
 			"disabled": false,
-			"title": "utils math",
+			"title": "util / math",
 			"description": "functions that are set up to be used elsewhere",
 			"isActiveOnStart": true,
 			"children": [

@@ -79,7 +79,48 @@
 							"sid": 469587087697181
 						}
 					],
-					"actions": [],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 172854793507126,
+							"parameters": {
+								"seconds": "0"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 260740295351653,
+							"parameters": {
+								"seconds": "0"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 539238584183756,
+							"parameters": {
+								"seconds": "0"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 402338553226118,
+							"parameters": {
+								"seconds": "0"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 930913691727845,
+							"parameters": {
+								"seconds": "0"
+							}
+						}
+					],
 					"sid": 957305225824796,
 					"children": [
 						{

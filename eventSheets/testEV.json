@@ -91,7 +91,7 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "when ANY button that has the section \"main\" is selected...",
+							"text": "checkboxes",
 							"text-color": [
 								0,
 								0,
@@ -107,9 +107,9 @@
 						},
 						{
 							"aceType": "action",
-							"aceName": "uiSelect",
-							"objectClass": "uiMainButton",
-							"functionDescription": "overwrite the default behavior",
+							"aceName": "uiCheckboxEnabled",
+							"objectClass": "uiMainCheckbox",
+							"functionDescription": "override",
 							"functionCategory": "ui",
 							"functionReturnType": "none",
 							"functionCopyPicked": false,
@@ -119,70 +119,278 @@
 							"conditions": [],
 							"actions": [
 								{
-									"type": "comment",
-									"text": "call the default custom action (click this action to see that it's the one that belongs to the family)\nthis way, it'll do the default action of growing but ALSO whatever else we say",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"customAction": "uiSelect",
-									"objectClass": "uiMainButton",
-									"customActionObjectClass": "ui",
-									"sid": 838225332291321
-								},
-								{
-									"type": "comment",
-									"text": "a little tilt effect",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"id": "set-angle",
-									"objectClass": "uiMainButton",
-									"sid": 387248684839931,
-									"parameters": {
-										"angle": "choose(-5, 5)"
-									}
-								},
-								{
-									"id": "tween-one-property",
-									"objectClass": "uiMainButton",
-									"sid": 643298064233486,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"tilt\"",
-										"property": "offsetAngle",
-										"end-value": "0",
-										"time": "0.1",
-										"ease": "easeoutsine",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
-									}
+									"customAction": "uiCheckboxEnabled",
+									"objectClass": "uiMainCheckbox",
+									"customActionObjectClass": "uiCheckbox",
+									"sid": 904701531582829
 								}
 							],
-							"sid": 316115156235065
+							"sid": 653610275568500,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "uiMainCheckbox",
+											"sid": 133461640029156,
+											"parameters": {
+												"child": "uiMainCheckboxCheck",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiMainCheckboxCheck",
+											"sid": 291805059260533,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"grow\""
+											}
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "uiMainCheckboxCheck",
+											"sid": 717052364436715,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"grow\"",
+												"property": "size",
+												"end-x": "6",
+												"end-y": "6",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 733425348749147
+								}
+							]
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiCheckboxDisabled",
+							"objectClass": "uiMainCheckbox",
+							"functionDescription": "override",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"customAction": "uiCheckboxDisabled",
+									"objectClass": "uiMainCheckbox",
+									"customActionObjectClass": "uiCheckbox",
+									"sid": 267859909843944
+								}
+							],
+							"sid": 315194629476692,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "uiMainCheckbox",
+											"sid": 427499448923838,
+											"parameters": {
+												"child": "uiMainCheckboxCheck",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiMainCheckboxCheck",
+											"sid": 512396595040875,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"shrink\""
+											}
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "uiMainCheckboxCheck",
+											"sid": 419229149905902,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"shrink\"",
+												"property": "size",
+												"end-x": "0",
+												"end-y": "0",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 419376868438588
+								}
+							]
+						},
+						{
+							"functionName": "checkbox mainDummyCheck1",
+							"functionDescription": "",
+							"functionCategory": "main",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [
+								{
+									"name": "enabled",
+									"type": "boolean",
+									"initialValue": "false",
+									"comment": "",
+									"sid": 933216090410594
+								}
+							],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [],
+							"sid": 367231149348086,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-boolean-eventvar",
+											"objectClass": "System",
+											"sid": 750519157986628,
+											"parameters": {
+												"variable": "enabled"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "stop-all-tweens",
+											"objectClass": "uiMainDummyCheck2Anchor",
+											"sid": 802876877561676,
+											"behaviorType": "Tween"
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainDummyCheck2Anchor",
+											"sid": 479835079333685,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fadein\"",
+												"property": "offsetOpacity",
+												"end-value": "100",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainDummyCheck2Anchor",
+											"sid": 809788806685924,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"slidein\"",
+												"property": "offsetX",
+												"end-value": "0",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 825901840786010
+										},
+										{
+											"callFunction": "uiEnableSection",
+											"sid": 304656083166620,
+											"parameters": [
+												"\"mainDummyCheck2\""
+											]
+										}
+									],
+									"sid": 777150025608858
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 985118394812193
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "uiDisableSection",
+											"sid": 602140908451156,
+											"parameters": [
+												"\"mainDummyCheck2\""
+											]
+										},
+										{
+											"id": "stop-all-tweens",
+											"objectClass": "uiMainDummyCheck2Anchor",
+											"sid": 180266810822440,
+											"behaviorType": "Tween"
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainDummyCheck2Anchor",
+											"sid": 882919680050530,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fadeout\"",
+												"property": "offsetOpacity",
+												"end-value": "0",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainDummyCheck2Anchor",
+											"sid": 299576189706302,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"slideout\"",
+												"property": "offsetX",
+												"end-value": "-10",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 107138564560111
+								}
+							]
 						},
 						{
 							"eventType": "comment",
@@ -430,101 +638,6 @@
 					"children": [
 						{
 							"eventType": "comment",
-							"text": "when ANY button that has the section \"mainQuit\" is selected...",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.6431372549019608,
-								0.8470588235294118,
-								0.8745098039215686,
-								1
-							]
-						},
-						{
-							"aceType": "action",
-							"aceName": "uiSelect",
-							"objectClass": "uiMainQuitButton",
-							"functionDescription": "overwrite the default behavior",
-							"functionCategory": "ui",
-							"functionReturnType": "none",
-							"functionCopyPicked": false,
-							"functionIsAsync": false,
-							"functionParameters": [],
-							"eventType": "custom-ace-block",
-							"conditions": [],
-							"actions": [
-								{
-									"type": "comment",
-									"text": "call the default custom action so that it'll do the default action of growing but ALSO whatever else we say",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"customAction": "uiSelect",
-									"objectClass": "uiMainQuitButton",
-									"customActionObjectClass": "ui",
-									"sid": 391430290362098
-								},
-								{
-									"type": "comment",
-									"text": "a little tilt effect",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"id": "set-angle",
-									"objectClass": "uiMainQuitButton",
-									"sid": 426679167873826,
-									"parameters": {
-										"angle": "choose(-5, 5)"
-									}
-								},
-								{
-									"id": "tween-one-property",
-									"objectClass": "uiMainQuitButton",
-									"sid": 568137049276687,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"tilt\"",
-										"property": "offsetAngle",
-										"end-value": "0",
-										"time": "0.1",
-										"ease": "easeoutsine",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
-									}
-								}
-							],
-							"sid": 786158550210756
-						},
-						{
-							"eventType": "comment",
 							"text": "quit confirmed",
 							"text-color": [
 								0,
@@ -730,101 +843,6 @@
 					"description": "",
 					"isActiveOnStart": true,
 					"children": [
-						{
-							"eventType": "comment",
-							"text": "when ANY button that has the section \"mainSettings\" is selected...",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.6431372549019608,
-								0.8470588235294118,
-								0.8745098039215686,
-								1
-							]
-						},
-						{
-							"aceType": "action",
-							"aceName": "uiSelect",
-							"objectClass": "uiMainSettingsButton",
-							"functionDescription": "overwrite the default behavior",
-							"functionCategory": "ui",
-							"functionReturnType": "none",
-							"functionCopyPicked": false,
-							"functionIsAsync": false,
-							"functionParameters": [],
-							"eventType": "custom-ace-block",
-							"conditions": [],
-							"actions": [
-								{
-									"type": "comment",
-									"text": "call the default custom action so that it'll do the default action of growing but ALSO whatever else we say",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"customAction": "uiSelect",
-									"objectClass": "uiMainSettingsButton",
-									"customActionObjectClass": "ui",
-									"sid": 195218284513436
-								},
-								{
-									"type": "comment",
-									"text": "a little tilt effect",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"id": "set-angle",
-									"objectClass": "uiMainSettingsButton",
-									"sid": 685526579461280,
-									"parameters": {
-										"angle": "choose(-5, 5)"
-									}
-								},
-								{
-									"id": "tween-one-property",
-									"objectClass": "uiMainSettingsButton",
-									"sid": 685918888768615,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"tilt\"",
-										"property": "offsetAngle",
-										"end-value": "0",
-										"time": "0.1",
-										"ease": "easeoutsine",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
-									}
-								}
-							],
-							"sid": 839400395796596
-						},
 						{
 							"eventType": "comment",
 							"text": "back",

@@ -121,6 +121,7 @@
 		"uiMainSettingsSliderFillRed",
 		"uiMainSettingsSliderTick",
 		"uiMainSettingsScrollBar",
-		"uiMainSettingsScrollHandle"
+		"uiMainSettingsScrollHandle",
+		"uiMainCheckbox"
 	]
 }

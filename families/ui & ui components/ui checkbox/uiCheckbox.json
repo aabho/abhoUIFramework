@@ -1,0 +1,19 @@
+{
+	"name": "uiCheckbox",
+	"plugin-id": "NinePatch",
+	"sid": 543955781549018,
+	"instanceVariables": [
+		{
+			"name": "uiChecked",
+			"type": "boolean",
+			"desc": "for checkboxes",
+			"show": true,
+			"sid": 432105361291472
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"uiMainCheckbox"
+	]
+}
