@@ -1,68 +1,75 @@
 {
-	"name": "uiCanvas",
-	"plugin-id": "DrawingCanvas",
-	"sid": 753913782897115,
+	"name": "uiScrollView",
+	"plugin-id": "Sprite",
+	"sid": 685692106798767,
 	"instanceVariables": [
 		{
-			"name": "canvasID",
+			"name": "scrollViewID",
 			"type": "string",
-			"desc": "an id for this uiCanvas - put this into ui components' canvas variable to mask them",
+			"desc": "an ID to attach to this scroll view, since this shouldn't be part of the UI family",
 			"show": true,
-			"sid": 579006995712469
+			"sid": 701165280463921
 		},
 		{
 			"name": "scrollXHandleID",
 			"type": "string",
 			"desc": "the ID of the slider handle to use",
 			"show": true,
-			"sid": 372596239533842
+			"sid": 202774540063745
 		},
 		{
 			"name": "scrollYHandleID",
 			"type": "string",
 			"desc": "the ID of the slider handle to use",
 			"show": true,
-			"sid": 750841821371470
+			"sid": 154460006414410
 		},
 		{
-			"name": "scrollerMargins",
+			"name": "scrollMargins",
 			"type": "number",
 			"desc": "margins to pad around scroll view bounds",
 			"show": true,
-			"sid": 533425007374732
+			"sid": 416993236198341
 		},
 		{
-			"name": "scrollerX1",
+			"name": "scrollX1",
 			"type": "number",
 			"desc": "scroll content bounds",
 			"show": false,
-			"sid": 474093362916251
+			"sid": 423980236696777
 		},
 		{
-			"name": "scrollerY1",
+			"name": "scrollY1",
 			"type": "number",
 			"desc": "scroll content bounds",
 			"show": false,
-			"sid": 263101821325244
+			"sid": 233748847238377
 		},
 		{
-			"name": "scrollerX2",
+			"name": "scrollX2",
 			"type": "number",
 			"desc": "scroll content bounds",
 			"show": false,
-			"sid": 884759025487271
+			"sid": 298935074879176
 		},
 		{
-			"name": "scrollerY2",
+			"name": "scrollY2",
 			"type": "number",
 			"desc": "scroll content bounds",
 			"show": false,
-			"sid": 642348239861536
+			"sid": 161755674361350
+		},
+		{
+			"name": "scrollViewOriginalLayer",
+			"type": "string",
+			"desc": "the layer this was created on, to store for dynamic layers",
+			"show": false,
+			"sid": 193556833320618
 		}
 	],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"members": [
-		"uiMainSettingsCanvas"
+		"uiMainScrollMask"
 	]
 }

@@ -15,13 +15,6 @@
 		},
 		{
 			"type": "plugin",
-			"id": "DrawingCanvas",
-			"name": "Drawing canvas",
-			"author": "Scirra",
-			"bundled": false
-		},
-		{
-			"type": "plugin",
 			"id": "Keyboard",
 			"name": "Keyboard",
 			"author": "Scirra",
@@ -102,13 +95,14 @@
 				"name": "essentials"
 			},
 			{
-				"items": [],
+				"items": [
+					"uiMainScrollMask"
+				],
 				"subfolders": [
 					{
 						"items": [
 							"uiMainSettingsBg",
 							"uiMainSettingsButton",
-							"uiMainSettingsCanvas",
 							"uiMainSettingsScrollBar",
 							"uiMainSettingsScrollHandle"
 						],
@@ -171,8 +165,8 @@
 					},
 					{
 						"items": [
-							"uiCanvas",
-							"uiScrollComponent"
+							"uiScrollComponent",
+							"uiScrollView"
 						],
 						"subfolders": [],
 						"name": "ui scroll view"

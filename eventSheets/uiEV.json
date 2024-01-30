@@ -222,7 +222,7 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "recalculate scroll view",
+					"text": "when scroll view is created",
 					"text-color": [
 						0,
 						0,
@@ -241,18 +241,116 @@
 					"conditions": [
 						{
 							"id": "on-created",
-							"objectClass": "uiCanvas",
-							"sid": 872205036232989
+							"objectClass": "uiScrollView",
+							"sid": 988945899873701
 						}
 					],
 					"actions": [
 						{
-							"customAction": "uiSliderScrollRecalculation [INTERNAL]",
-							"objectClass": "uiCanvas",
-							"sid": 170732580685995
+							"id": "set-instvar-value",
+							"objectClass": "uiScrollView",
+							"sid": 816367704087634,
+							"parameters": {
+								"instance-variable": "scrollViewOriginalLayer",
+								"value": "Self.LayerName"
+							}
+						},
+						{
+							"customAction": "uiScrollRecalculation [INTERNAL]",
+							"objectClass": "uiScrollView",
+							"sid": 524524673396265
+						},
+						{
+							"customAction": "uiViewLayerMaskingSetup [INTERNAL]",
+							"objectClass": "uiScrollView",
+							"sid": 444834313243297
 						}
 					],
-					"sid": 733955667496417
+					"sid": 644014725749523
+				},
+				{
+					"eventType": "comment",
+					"text": "when scroll component is created",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "uiScrollComponent",
+							"sid": 464299086798108
+						}
+					],
+					"actions": [],
+					"sid": 330715327072750,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "if part of scroll view, add to relevant layer",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "uiScrollView",
+									"sid": 885616906838244,
+									"parameters": {
+										"instance-variable": "scrollViewID",
+										"comparison": 0,
+										"value": "uiScrollComponent.scrollViewID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "I use js here because it allows me to move this object, as well as any children it may have, regardless of plugin or family",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8470588235294118,
+										0.6431372549019608,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"type": "script",
+									"script": "// get instances\nconst pickedObj = runtime.objects.uiScrollComponent.getFirstPickedInstance();\nconst children = pickedObj.allChildren();\nconst objs = [];\n\n// layer name\nconst layer = runtime.layout.getLayer(runtime.objects.uiScrollView.getFirstPickedInstance().instVars.scrollViewOriginalLayer + \" [uiScrollComponent]\");\n\n\n// get children in the objs array\nobjs.push(pickedObj);\nfor (const child of children) { objs.push(child); }\n\nconsole.log(objs);\n\n// move all objects to new layer\nfor (const obj of objs)\n{\n\tobj.moveToLayer(layer);\n}"
+								}
+							],
+							"sid": 520922479339239
+						}
+					]
 				},
 				{
 					"eventType": "comment",
@@ -3407,7 +3505,7 @@
 												},
 												{
 													"eventType": "variable",
-													"name": "canvasID",
+													"name": "viewID",
 													"type": "string",
 													"initialValue": "",
 													"comment": "slider bar's canvas ID",
@@ -3417,7 +3515,7 @@
 												},
 												{
 													"eventType": "comment",
-													"text": "save canvas id so that the ticks can use them too",
+													"text": "save view id so that the ticks can use them too",
 													"text-color": [
 														0,
 														0,
@@ -3449,8 +3547,8 @@
 															"objectClass": "System",
 															"sid": 870119487951674,
 															"parameters": {
-																"variable": "canvasID",
-																"value": "uiScrollComponent.scrollCanvasID"
+																"variable": "viewID",
+																"value": "uiScrollComponent.scrollViewID"
 															}
 														}
 													],
@@ -3694,8 +3792,8 @@
 																					"objectClass": "uiScrollComponent",
 																					"sid": 232528430693954,
 																					"parameters": {
-																						"instance-variable": "scrollCanvasID",
-																						"value": "canvasID"
+																						"instance-variable": "scrollViewID",
+																						"value": "viewID"
 																					}
 																				}
 																			],
@@ -5021,20 +5119,20 @@
 												{
 													"id": "pick-by-evaluate",
 													"objectClass": "System",
-													"sid": 420919976349070,
+													"sid": 643382793910000,
 													"parameters": {
-														"object": "uiCanvas",
-														"expression": "uiCanvas.scrollXHandleID = ui.ID | uiCanvas.scrollYHandleID = ui.ID"
+														"object": "uiScrollView",
+														"expression": "uiScrollView.scrollXHandleID = ui.ID | uiScrollView.scrollYHandleID = ui.ID"
 													}
 												},
 												{
 													"id": "compare-instance-variable",
 													"objectClass": "uiScrollComponent",
-													"sid": 884750511238762,
+													"sid": 498755219217099,
 													"parameters": {
-														"instance-variable": "scrollCanvasID",
+														"instance-variable": "scrollViewID",
 														"comparison": 0,
-														"value": "uiCanvas.canvasID"
+														"value": "uiScrollView.scrollViewID"
 													}
 												},
 												{
@@ -5104,8 +5202,8 @@
 													"conditions": [
 														{
 															"id": "compare-instance-variable",
-															"objectClass": "uiCanvas",
-															"sid": 739012007428635,
+															"objectClass": "uiScrollView",
+															"sid": 930598953908354,
 															"parameters": {
 																"instance-variable": "scrollYHandleID",
 																"comparison": 0,
@@ -5117,10 +5215,10 @@
 														{
 															"id": "set-eventvar-value",
 															"objectClass": "System",
-															"sid": 320003959283155,
+															"sid": 703939919607067,
 															"parameters": {
 																"variable": "targetPos",
-																"value": "uiCanvas.Y + uiScrollComponent.scrollOffsetY + uiSliderHandle.sliderHandleValue"
+																"value": "uiScrollView.BBoxTop + uiScrollComponent.scrollOffsetY + uiSliderHandle.sliderHandleValue"
 															}
 														},
 														{
@@ -5194,8 +5292,8 @@
 														},
 														{
 															"id": "compare-instance-variable",
-															"objectClass": "uiCanvas",
-															"sid": 296138044694105,
+															"objectClass": "uiScrollView",
+															"sid": 981802387448502,
 															"parameters": {
 																"instance-variable": "scrollXHandleID",
 																"comparison": 0,
@@ -5207,10 +5305,10 @@
 														{
 															"id": "set-eventvar-value",
 															"objectClass": "System",
-															"sid": 760007378214303,
+															"sid": 325134371753077,
 															"parameters": {
 																"variable": "targetPos",
-																"value": "uiCanvas.X + uiScrollComponent.scrollOffsetX + uiSliderHandle.sliderHandleValue"
+																"value": "uiScrollView.BBoxLeft + uiScrollComponent.scrollOffsetX + uiSliderHandle.sliderHandleValue"
 															}
 														},
 														{
@@ -5293,8 +5391,8 @@
 						{
 							"eventType": "group",
 							"disabled": false,
-							"title": "ui / behavior / components / canvas",
-							"description": "the canvas is used for masking content inside a rectangular area. it uses the Drawing Canvas behavior which can be performance heavy in some cases. this is required for a scroll view: see 'ui / behavior / slider / handle'",
+							"title": "ui / behavior / components / scroll view",
+							"description": "the scroll view is used for masking content inside a rectangular area. it uses dynamic layers and blend modes. this is required for a scroll view: see 'ui / behavior / slider / handle'",
 							"isActiveOnStart": true,
 							"children": [
 								{
@@ -5315,8 +5413,8 @@
 								},
 								{
 									"aceType": "action",
-									"aceName": "uiSliderScrollRecalculation [INTERNAL]",
-									"objectClass": "uiCanvas",
+									"aceName": "uiScrollRecalculation [INTERNAL]",
+									"objectClass": "uiScrollView",
 									"functionDescription": "recalculate scroll handle and bar based on scroll components",
 									"functionCategory": "ui",
 									"functionReturnType": "none",
@@ -5343,7 +5441,7 @@
 											]
 										}
 									],
-									"sid": 489827995596547,
+									"sid": 396666162688699,
 									"children": [
 										{
 											"eventType": "comment",
@@ -5363,13 +5461,13 @@
 										},
 										{
 											"eventType": "script",
-											"script": "// function to get instances (instances must be an array)\nfunction getInstances(instances, condition)\n{\n\treturn instances.filter(condition);\n}\n\n\n//-------------------------------------------------------------------------------\n\n\n// get instances\nconst canvas = runtime.objects.uiCanvas.getFirstPickedInstance();\nconst cVars = canvas.instVars;\nconst allArr = [];\nlet objArr = Array.from(runtime.objects.uiScrollComponent.getAllInstances());\n\n// filter objArr to all uiScrollComponents that are linked to this canvas\nobjArr = objArr.filter(\ninstance => { \n\t// test instance variable has this canvas ID\n\treturn instance.instVars.scrollCanvasID === cVars.canvasID; \n});\n\n\n//-------------------------------------------------------------------------------\n\n\n// default bounds to infinity\ncVars.scrollerX1 = Infinity;\ncVars.scrollerY1 = Infinity;\ncVars.scrollerX2 = -Infinity;\ncVars.scrollerY2 = -Infinity;\n\n\n//-------------------------------------------------------------------------------\n\n\n// go through every component\nfor (const obj of objArr)\n{\n\t// collection of obj + children\n\tconst instArr = Array.from(obj.allChildren());\n\tinstArr.push(obj);\n\t\n\t// if set to be canvas-masked, set entire collection to invisible\n\tconst visibility = !obj.instVars.scrollCanvasMask;\n\t\t\n\t\n\t// now go through children\n\tfor (const child of instArr) \n\t{\t\n\t\n\t\t// get bounding box as DOMRect\n\t\tconst rect = child.getBoundingBox();\n\n\t\t// bounds\n\t\tcVars.scrollerX1 = Math.min(cVars.scrollerX1, rect.left);\n\t\tcVars.scrollerY1 = Math.min(cVars.scrollerY1, rect.top);\n\t\tcVars.scrollerX2 = Math.max(cVars.scrollerX2, rect.right);\n\t\tcVars.scrollerY2 = Math.max(cVars.scrollerY2, rect.bottom);\n\t\t\n\t\t\n\t\t\n\t\t// set visibility\n\t\tchild.isVisible = visibility;\n\t\t\n\t\t\n\t\t// if this instance isn't in the all array already...\n\t\tif (!allArr.some(item => item === child))\n\t\t{\n\t\t\t// add this child to all array\n\t\t\tallArr.concat(instArr);\n\t\t}\n\t}\n\t\n\t// add this parent object to all array\n\tallArr.push(obj);\n}\n\n\n//-------------------------------------------------------------------------------\n\n\n// add margins\ncVars.scrollerX1 -= cVars.scrollerMargins;\ncVars.scrollerY1 -= cVars.scrollerMargins;\ncVars.scrollerX2 += cVars.scrollerMargins;\ncVars.scrollerY2 += cVars.scrollerMargins;\n\n\n// convert bounds to offsets from canvas\ncVars.scrollerX1 -= canvas.x;\ncVars.scrollerY1 -= canvas.y;\ncVars.scrollerX2 -= canvas.x;\ncVars.scrollerY2 -= canvas.y;\n\n\n// get offset of bounds before normalizing them\nconst x1 = cVars.scrollerX1;\nconst y1 = cVars.scrollerY1;\n\n\n// normalize these values\ncVars.scrollerX2 += x1;\ncVars.scrollerY2 += y1;\ncVars.scrollerX1 += x1;\ncVars.scrollerY1 += y1;\n\n\n//-------------------------------------------------------------------------------\n\n\n// go through every instance in the all array\nfor (const obj of allArr)\n{\t\t\n\t// move objects to normalize top left (allign with canvas)\n\tobj.x -= x1;\n\tobj.y -= y1;\n\n\t// test if this uiScrollComponent (cause it has the variable, no other way to know what family afaik) is allowed to move position\n\tif (obj.instVars.scrollAffectPosition === true)\n\t{\t\n\t\t// set offsets\n\t\tobj.instVars.scrollOffsetX = obj.x - canvas.x;\n\t\tobj.instVars.scrollOffsetY = obj.y - canvas.y;\n\t}\n}\n\n\n//-------------------------------------------------------------------------------\n\n\n// lastly we need to update the handles tied to this canvas\nconst handleArr = runtime.objects.uiSliderHandle.getAllInstances();\n\n// filter objArr to all uiScrollComponents that are linked to this canvas\nconst handles = \n[ \n\t['x', getInstances(handleArr, \n\t\tinstance => { return (instance.instVars.ID === cVars.scrollXHandleID); }) [0]],\n\t['y', getInstances(handleArr, \n\t\tinstance => { return (instance.instVars.ID === cVars.scrollYHandleID); }) [0]]\n];\n\n\n//-------------------------------------------------------------------------------\n\n\n// for each slider handle (up to two)\nfor (const handleElement of handles)\n{\n\t// the handle instance\n\tconst handle = handleElement[1];\n\tconst axis = handleElement[0];\n\t\n\tif (!(handle === undefined))\n\t{\n\t\t// get the slider bar instVars that this handle is linked to\n\t\tconst barVars = \n\t\t\tgetInstances(runtime.objects.uiSliderBar.getAllInstances(), \n\t\t\tinstance => { return (instance.instVars.ID === handle.instVars.sliderHandleAttachedBar); })\n\t\t\t[0].instVars;\n\n\t\t// will need handle instance vars\n\t\tconst handleVars = handle.instVars;\n\t\t\n\n\t\t// set properties\n\t\tbarVars.sliderMin = 0;\n\t\t\n\t\t// set sliderMax based on axis\n\t\tif (axis === 'x') { barVars.sliderMax = -(cVars.scrollerX2 - cVars.scrollerX1) + canvas.width; }\n\t\telse if (axis === 'y') { barVars.sliderMax = -(cVars.scrollerY2 - cVars.scrollerY1) + canvas.height; }\n\t\t\n\t\t// set the slider steps based on scrollerSpeed, but adjusted to have no remainder when divided by range\n\t\tbarVars.sliderStep = \n\t\t\thandleVars.scrollerSpeed + (Math.abs(barVars.sliderMax - barVars.sliderMin) % \n\t\t\thandleVars.scrollerSpeed) / Math.floor(Math.abs(barVars.sliderMax - barVars.sliderMin) / \n\t\t\thandleVars.scrollerSpeed);\n\t\t\n\t\t// set slider min\n\t\thandleVars.sliderHandleValue = barVars.sliderMin;\n\n\t\t\n\t\t// call aux function to update, hopefully can find better solution later\n\t\tFunction.call(\"uiSliderScrollRecalculationAux [INTERNAL]\", handle.uid);\n\t}\n}\n\n\n//-------------------------------------------------------------------------------\n\n\n// update UI\nFunction.call(\"uiUpdate [INTERNAL]\");"
+											"script": "// function to get instances (instances must be an array)\nfunction getInstances(instances, condition)\n{\n\treturn instances.filter(condition);\n}\n\n\n//-------------------------------------------------------------------------------\n\n\n// get instances\nconst view = runtime.objects.uiScrollView.getFirstPickedInstance();\nconst vVars = view.instVars;\nconst vBox = view.getBoundingBox();\nconst allArr = [];\nlet objArr = Array.from(runtime.objects.uiScrollComponent.getAllInstances());\n\n// filter objArr to all uiScrollComponents that are linked to this view\nobjArr = objArr.filter(\ninstance => { \n\t// test instance variable has this view ID\n\treturn instance.instVars.scrollViewID === vVars.scrollViewID; \n});\n\n\n//-------------------------------------------------------------------------------\n\n\n// default bounds to infinity\nvVars.scrollX1 = Infinity;\nvVars.scrollY1 = Infinity;\nvVars.scrollX2 = -Infinity;\nvVars.scrollY2 = -Infinity;\n\n\n//-------------------------------------------------------------------------------\n\n\n// go through every component\nfor (const obj of objArr)\n{\n\t// collection of obj + children\n\tconst instArr = Array.from(obj.allChildren());\n\tinstArr.push(obj);\n\t\t\n\t\n\t// now go through children\n\tfor (const child of instArr) \n\t{\t\n\t\n\t\t// get bounding box as DOMRect\n\t\tconst rect = child.getBoundingBox();\n\n\t\t// bounds\n\t\tvVars.scrollX1 = Math.min(vVars.scrollX1, rect.left);\n\t\tvVars.scrollY1 = Math.min(vVars.scrollY1, rect.top);\n\t\tvVars.scrollX2 = Math.max(vVars.scrollX2, rect.right);\n\t\tvVars.scrollY2 = Math.max(vVars.scrollY2, rect.bottom);\n\t\t\n\t\t\n\t\t// if this instance isn't in the all array already...\n\t\tif (!allArr.some(item => item === child))\n\t\t{\n\t\t\t// add this child to all array\n\t\t\tallArr.concat(instArr);\n\t\t}\n\t}\n\t\n\t// add this parent object to all array\n\tallArr.push(obj);\n}\n\n\n//-------------------------------------------------------------------------------\n\n\n// add margins\nvVars.scrollX1 -= vVars.scrollMargins;\nvVars.scrollY1 -= vVars.scrollMargins;\nvVars.scrollX2 += vVars.scrollMargins;\nvVars.scrollY2 += vVars.scrollMargins;\n\n\n// convert bounds to offsets from view\nvVars.scrollX1 -= vBox.left;\nvVars.scrollY1 -= vBox.top;\nvVars.scrollX2 -= vBox.left;\nvVars.scrollY2 -= vBox.top;\n\n\n// get offset of bounds before normalizing them\nconst x1 = vVars.scrollX1;\nconst y1 = vVars.scrollY1;\n\n\n// normalize these values\nvVars.scrollX2 += x1;\nvVars.scrollY2 += y1;\nvVars.scrollX1 += x1;\nvVars.scrollY1 += y1;\n\n\n//-------------------------------------------------------------------------------\n\n\n// go through every instance in the all array\nfor (const obj of allArr)\n{\t\t\n\t// move objects to normalize top left (allign with view)\n\tobj.x -= x1;\n\tobj.y -= y1;\n\n\t// test if this uiScrollComponent (cause it has the variable, no other way to know what family afaik) is allowed to move position\n\tif (obj.instVars.scrollAffectPosition === true)\n\t{\t\n\t\t// set offsets\n\t\tobj.instVars.scrollOffsetX = obj.x - vBox.left;\n\t\tobj.instVars.scrollOffsetY = obj.y - vBox.top;\n\t}\n}\n\n\n//-------------------------------------------------------------------------------\n\n\n// lastly we need to update the handles tied to this view\nconst handleArr = runtime.objects.uiSliderHandle.getAllInstances();\n\n// filter objArr to all uiScrollComponents that are linked to this view\nconst handles = \n[ \n\t['x', getInstances(handleArr, \n\t\tinstance => { return (instance.instVars.ID === vVars.scrollXHandleID); }) [0]],\n\t['y', getInstances(handleArr, \n\t\tinstance => { return (instance.instVars.ID === vVars.scrollYHandleID); }) [0]]\n];\n\n\n//-------------------------------------------------------------------------------\n\n\n// for each slider handle (up to two)\nfor (const handleElement of handles)\n{\n\t// the handle instance\n\tconst handle = handleElement[1];\n\tconst axis = handleElement[0];\n\t\n\tif (!(handle === undefined))\n\t{\n\t\t// get the slider bar instVars that this handle is linked to\n\t\tconst barVars = \n\t\t\tgetInstances(runtime.objects.uiSliderBar.getAllInstances(), \n\t\t\tinstance => { return (instance.instVars.ID === handle.instVars.sliderHandleAttachedBar); })\n\t\t\t[0].instVars;\n\n\t\t// will need handle instance vars\n\t\tconst handleVars = handle.instVars;\n\t\t\n\n\t\t// set properties\n\t\tbarVars.sliderMin = 0;\n\t\t\n\t\t// set sliderMax based on axis\n\t\tif (axis === 'x') { barVars.sliderMax = -(vVars.scrollX2 - vVars.scrollX1) + view.width; }\n\t\telse if (axis === 'y') { barVars.sliderMax = -(vVars.scrollY2 - vVars.scrollY1) + view.height; }\n\t\t\n\t\t// set the slider steps based on scrollSpeed, but adjusted to have no remainder when divided by range\n\t\tbarVars.sliderStep = \n\t\t\thandleVars.scrollSpeed + (Math.abs(barVars.sliderMax - barVars.sliderMin) % \n\t\t\thandleVars.scrollSpeed) / Math.floor(Math.abs(barVars.sliderMax - barVars.sliderMin) / \n\t\t\thandleVars.scrollSpeed);\n\t\t\n\t\t// set slider min\n\t\thandleVars.sliderHandleValue = barVars.sliderMin;\n\n\t\t\n\t\t// call aux function to update, hopefully can find better solution later\n\t\tFunction.call(\"uiScrollRecalculationAux [INTERNAL]\", handle.uid);\n\t}\n}\n\n\n//-------------------------------------------------------------------------------\n\n\n// update UI\nFunction.call(\"uiUpdate [INTERNAL]\");"
 										}
 									]
 								},
 								{
 									"eventType": "comment",
-									"text": "an auxiliary function for uiCanvas custom action",
+									"text": "an auxiliary function for uiScrollView custom action",
 									"text-color": [
 										0,
 										0,
@@ -5384,7 +5482,7 @@
 									]
 								},
 								{
-									"functionName": "uiSliderScrollRecalculationAux [INTERNAL]",
+									"functionName": "uiScrollRecalculationAux [INTERNAL]",
 									"functionDescription": "an auxiliary function for uiCanvas custom action",
 									"functionCategory": "ui",
 									"functionReturnType": "none",
@@ -5421,65 +5519,7 @@
 								},
 								{
 									"eventType": "comment",
-									"text": "paste canvas every tick if on screen",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6431372549019608,
-										0.8470588235294118,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "is-on-screen",
-											"objectClass": "uiCanvas",
-											"sid": 460961340825911
-										},
-										{
-											"id": "for-each",
-											"objectClass": "System",
-											"sid": 925871962212580,
-											"parameters": {
-												"object": "uiCanvas"
-											}
-										}
-									],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "proposed way to optimize canvas pastes is to only run them when a UI component is performing a tween, and I came up with a timer method for this...\n\nproblem was it was too much of a strain on the workflow and awkward. need to think further about this.",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.6431372549019608,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"customAction": "uiPaste [INTERNAL]",
-											"objectClass": "uiCanvas",
-											"sid": 875985996258554
-										}
-									],
-									"sid": 413653813868213
-								},
-								{
-									"eventType": "comment",
-									"text": "canvas masking behavior",
+									"text": "move scroll view and components into new generated layers to create masking effects",
 									"text-color": [
 										0,
 										0,
@@ -5495,9 +5535,9 @@
 								},
 								{
 									"aceType": "action",
-									"aceName": "uiPaste [INTERNAL]",
-									"objectClass": "uiCanvas",
-									"functionDescription": "paste all uiCanvasPaste objects onto this canvas",
+									"aceName": "uiViewLayerMaskingSetup [INTERNAL]",
+									"objectClass": "uiScrollView",
+									"functionDescription": "move scroll view and components into new generated layers to create masking effects",
 									"functionCategory": "ui",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
@@ -5505,10 +5545,12 @@
 									"functionParameters": [],
 									"eventType": "custom-ace-block",
 									"conditions": [],
-									"actions": [
+									"actions": [],
+									"sid": 284171892104663,
+									"children": [
 										{
-											"type": "comment",
-											"text": "clear canvas before pasting instances",
+											"eventType": "comment",
+											"text": "initial",
 											"text-color": [
 												0,
 												0,
@@ -5523,42 +5565,12 @@
 											]
 										},
 										{
-											"id": "clear-canvas",
-											"objectClass": "uiCanvas",
-											"sid": 334442194045965,
-											"parameters": {
-												"color": "rgba(0, 0, 0, 0)"
-											}
-										}
-									],
-									"sid": 999943114606985,
-									"children": [
-										{
 											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "uiScrollComponent",
-													"sid": 920300490478839,
-													"parameters": {
-														"instance-variable": "scrollCanvasID",
-														"comparison": 0,
-														"value": "uiCanvas.canvasID"
-													}
-												},
-												{
-													"id": "is-boolean-instance-variable-set",
-													"objectClass": "uiScrollComponent",
-													"sid": 808463190245515,
-													"parameters": {
-														"instance-variable": "scrollCanvasMask"
-													}
-												}
-											],
+											"conditions": [],
 											"actions": [
 												{
 													"type": "comment",
-													"text": "paste instance and its children",
+													"text": "set this layer to force own texture",
 													"text-color": [
 														0,
 														0,
@@ -5573,8 +5585,17 @@
 													]
 												},
 												{
+													"id": "set-layer-force-own-texture",
+													"objectClass": "System",
+													"sid": 799297395966617,
+													"parameters": {
+														"layer": "uiScrollView.scrollViewOriginalLayer",
+														"mode": "on"
+													}
+												},
+												{
 													"type": "comment",
-													"text": "there is a bug mixing ITextInstances and IWorldInstances, this code uses a workaround submitting individual instances as a single-element array",
+													"text": "create sublayer for the scroll view, and set it to destination-in, which makes it only show pixels within the mask on layers below",
 													"text-color": [
 														0,
 														0,
@@ -5583,17 +5604,66 @@
 													],
 													"background-color": [
 														0.8745098039215686,
-														0.6431372549019608,
+														0.8352941176470589,
 														0.6431372549019608,
 														1
 													]
 												},
 												{
-													"type": "script",
-													"script": "// get instances\nconst canvas = runtime.objects.uiCanvas.getFirstPickedInstance();\nconst pasteArr = Array.from(runtime.objects.uiScrollComponent.getPickedInstances());\n\n// iterate through all objects to be pasted\nfor (const pasteObj of pasteArr)\n{\n\t// now go through children\n\tfor (const child of pasteObj.allChildren()) \n\t{\n\t\t// if this child isn't in the array already...\n\t\tif (!pasteArr.some(item => item === child))\n\t\t{\n\t\t\t// paste this child\n\t\t\tpasteArr.push(child);\n\t\t}\n\t}\n}\n\n// sort array by zIndex\npasteArr.sort((a, b) => a.zIndex - b.zIndex);\n\n// paste all objects\nfor (const pasteObj of pasteArr)\n{\n\t// paste this obj\n\tcanvas.pasteInstances([pasteObj]);\n}"
+													"id": "add-layer",
+													"objectClass": "System",
+													"sid": 149366999936492,
+													"parameters": {
+														"name": "uiScrollView.scrollViewOriginalLayer & \" [uiScrollView]\"",
+														"insert-by": "uiScrollView.scrollViewOriginalLayer",
+														"where": "add-bottom-sublayer"
+													}
+												},
+												{
+													"id": "set-layer-blend-mode",
+													"objectClass": "System",
+													"sid": 566317567053972,
+													"parameters": {
+														"layer": "uiScrollView.scrollViewOriginalLayer & \" [uiScrollView]\"",
+														"blend-mode": "destination-in"
+													}
+												},
+												{
+													"id": "move-to-layer",
+													"objectClass": "uiScrollView",
+													"sid": 163239826308871,
+													"parameters": {
+														"layer": "uiScrollView.scrollViewOriginalLayer & \" [uiScrollView]\""
+													}
+												},
+												{
+													"type": "comment",
+													"text": "create sublayer for the scroll components",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "add-layer",
+													"objectClass": "System",
+													"sid": 366975695606691,
+													"parameters": {
+														"name": "uiScrollView.scrollViewOriginalLayer & \" [uiScrollComponent]\"",
+														"insert-by": "uiScrollView.scrollViewOriginalLayer",
+														"where": "add-bottom-sublayer"
+													}
 												}
 											],
-											"sid": 629947198607342
+											"sid": 998703267904656
 										}
 									]
 								}
@@ -9363,12 +9433,12 @@
 								},
 								{
 									"id": "compare-instance-variable",
-									"objectClass": "uiCanvas",
-									"sid": 508596502679093,
+									"objectClass": "uiScrollView",
+									"sid": 716687973624262,
 									"parameters": {
-										"instance-variable": "canvasID",
+										"instance-variable": "scrollViewID",
 										"comparison": 0,
-										"value": "uiScrollComponent.scrollCanvasID"
+										"value": "uiScrollComponent.scrollViewID"
 									}
 								}
 							],
@@ -9423,9 +9493,9 @@
 										{
 											"id": "pick-by-unique-id",
 											"objectClass": "uiSliderHandle",
-											"sid": 475127664354867,
+											"sid": 783649735052042,
 											"parameters": {
-												"unique-id": "Functions.uiGetUIDFromID(uiCanvas.scrollYHandleID)"
+												"unique-id": "Functions.uiGetUIDFromID(uiScrollView.scrollYHandleID)"
 											}
 										}
 									],
@@ -9438,11 +9508,11 @@
 												{
 													"id": "compare-two-values",
 													"objectClass": "System",
-													"sid": 766873582331824,
+													"sid": 396113136081316,
 													"parameters": {
 														"first-value": "uiScrollComponent.BBoxTop - uiScrollComponent.scrollCenteringMargins",
 														"comparison": 2,
-														"second-value": "uiCanvas.BBoxTop"
+														"second-value": "uiScrollView.BBoxTop"
 													}
 												}
 											],
@@ -9450,10 +9520,10 @@
 												{
 													"id": "set-instvar-value",
 													"objectClass": "uiSliderHandle",
-													"sid": 262401004717996,
+													"sid": 730081762858647,
 													"parameters": {
 														"instance-variable": "sliderHandleValue",
-														"value": "uiSliderHandle.sliderHandleValue + (uiCanvas.BBoxTop - uiScrollComponent.BBoxTop) + uiScrollComponent.scrollCenteringMargins"
+														"value": "uiSliderHandle.sliderHandleValue + (uiScrollView.BBoxTop - uiScrollComponent.BBoxTop) + uiScrollComponent.scrollCenteringMargins"
 													}
 												},
 												{
@@ -9479,11 +9549,11 @@
 												{
 													"id": "compare-two-values",
 													"objectClass": "System",
-													"sid": 947512622612146,
+													"sid": 157655335030360,
 													"parameters": {
 														"first-value": "uiScrollComponent.BBoxBottom + uiScrollComponent.scrollCenteringMargins",
 														"comparison": 4,
-														"second-value": "uiCanvas.BBoxBottom"
+														"second-value": "uiScrollView.BBoxBottom"
 													}
 												}
 											],
@@ -9491,10 +9561,10 @@
 												{
 													"id": "set-instvar-value",
 													"objectClass": "uiSliderHandle",
-													"sid": 319500071983484,
+													"sid": 896976098022184,
 													"parameters": {
 														"instance-variable": "sliderHandleValue",
-														"value": "uiSliderHandle.sliderHandleValue - (uiScrollComponent.BBoxBottom - uiCanvas.BBoxBottom) - uiScrollComponent.scrollCenteringMargins"
+														"value": "uiSliderHandle.sliderHandleValue - (uiScrollComponent.BBoxBottom - uiScrollView.BBoxBottom) - uiScrollComponent.scrollCenteringMargins"
 													}
 												},
 												{
@@ -9554,9 +9624,9 @@
 										{
 											"id": "pick-by-unique-id",
 											"objectClass": "uiSliderHandle",
-											"sid": 218857217743783,
+											"sid": 469412240849338,
 											"parameters": {
-												"unique-id": "Functions.uiGetUIDFromID(uiCanvas.scrollXHandleID)"
+												"unique-id": "Functions.uiGetUIDFromID(uiScrollView.scrollXHandleID)"
 											}
 										}
 									],
@@ -9569,11 +9639,11 @@
 												{
 													"id": "compare-two-values",
 													"objectClass": "System",
-													"sid": 385455582950303,
+													"sid": 767501513837580,
 													"parameters": {
 														"first-value": "uiScrollComponent.BBoxLeft - uiScrollComponent.scrollCenteringMargins",
 														"comparison": 2,
-														"second-value": "uiCanvas.BBoxLeft"
+														"second-value": "uiScrollView.BBoxLeft"
 													}
 												}
 											],
@@ -9581,10 +9651,10 @@
 												{
 													"id": "set-instvar-value",
 													"objectClass": "uiSliderHandle",
-													"sid": 154925202447833,
+													"sid": 875952691538321,
 													"parameters": {
 														"instance-variable": "sliderHandleValue",
-														"value": "uiSliderHandle.sliderHandleValue + (uiCanvas.BBoxLeft - uiScrollComponent.BBoxLeft) + uiScrollComponent.scrollCenteringMargins"
+														"value": "uiSliderHandle.sliderHandleValue + (uiScrollView.BBoxLeft - uiScrollComponent.BBoxLeft) + uiScrollComponent.scrollCenteringMargins"
 													}
 												},
 												{
@@ -9610,11 +9680,11 @@
 												{
 													"id": "compare-two-values",
 													"objectClass": "System",
-													"sid": 118217847983042,
+													"sid": 860988106848160,
 													"parameters": {
 														"first-value": "uiScrollComponent.BBoxRight + uiScrollComponent.scrollCenteringMargins",
 														"comparison": 4,
-														"second-value": "uiCanvas.BBoxRight"
+														"second-value": "uiScrollView.BBoxRight"
 													}
 												}
 											],
@@ -9622,10 +9692,10 @@
 												{
 													"id": "set-instvar-value",
 													"objectClass": "uiSliderHandle",
-													"sid": 268095316781962,
+													"sid": 204372135257980,
 													"parameters": {
 														"instance-variable": "sliderHandleValue",
-														"value": "uiSliderHandle.sliderHandleValue - (uiScrollComponent.BBoxRight - uiCanvas.BBoxRight) - uiScrollComponent.scrollCenteringMargins"
+														"value": "uiSliderHandle.sliderHandleValue - (uiScrollComponent.BBoxRight - uiScrollView.BBoxRight) - uiScrollComponent.scrollCenteringMargins"
 													}
 												},
 												{
@@ -10072,7 +10142,7 @@
 												},
 												{
 													"eventType": "comment",
-													"text": "iterate through all ui components that mouse is currently over, in order of zIndex\n(not all components are eligible in cases like being off their canvas)",
+													"text": "iterate through all ui components that mouse is currently over, in order of zIndex\n(not all components are eligible in cases like being off their scroll view)",
 													"text-color": [
 														0,
 														0,
@@ -10140,20 +10210,20 @@
 																},
 																{
 																	"id": "compare-instance-variable",
-																	"objectClass": "uiCanvas",
-																	"sid": 140342384654848,
+																	"objectClass": "uiScrollView",
+																	"sid": 324881043926830,
 																	"parameters": {
-																		"instance-variable": "canvasID",
+																		"instance-variable": "scrollViewID",
 																		"comparison": 0,
-																		"value": "uiScrollComponent.scrollCanvasID"
+																		"value": "uiScrollComponent.scrollViewID"
 																	}
 																},
 																{
 																	"id": "cursor-is-over-object",
 																	"objectClass": "Mouse",
-																	"sid": 452181257218749,
+																	"sid": 378444155145321,
 																	"parameters": {
-																		"object": "uiCanvas"
+																		"object": "uiScrollView"
 																	},
 																	"isInverted": true
 																}
@@ -10911,9 +10981,9 @@
 										{
 											"id": "cursor-is-over-object",
 											"objectClass": "Mouse",
-											"sid": 392680438377004,
+											"sid": 306745531415163,
 											"parameters": {
-												"object": "uiCanvas"
+												"object": "uiScrollView"
 											}
 										}
 									],
@@ -11030,9 +11100,9 @@
 														{
 															"id": "pick-by-unique-id",
 															"objectClass": "uiSliderHandle",
-															"sid": 204796258685143,
+															"sid": 943983592430024,
 															"parameters": {
-																"unique-id": "Functions.uiGetUIDFromID(uiCanvas.scrollXHandleID)"
+																"unique-id": "Functions.uiGetUIDFromID(uiScrollView.scrollXHandleID)"
 															}
 														}
 													],
@@ -11054,9 +11124,9 @@
 														{
 															"id": "pick-by-unique-id",
 															"objectClass": "uiSliderHandle",
-															"sid": 727429939227285,
+															"sid": 212503753727052,
 															"parameters": {
-																"unique-id": "Functions.uiGetUIDFromID(uiCanvas.scrollYHandleID)"
+																"unique-id": "Functions.uiGetUIDFromID(uiScrollView.scrollYHandleID)"
 															}
 														}
 													],
@@ -11600,12 +11670,12 @@
 										},
 										{
 											"id": "compare-instance-variable",
-											"objectClass": "uiCanvas",
-											"sid": 647341755563432,
+											"objectClass": "uiScrollView",
+											"sid": 149333899599738,
 											"parameters": {
-												"instance-variable": "canvasID",
+												"instance-variable": "scrollViewID",
 												"comparison": 0,
-												"value": "uiScrollComponent.scrollCanvasID"
+												"value": "uiScrollComponent.scrollViewID"
 											}
 										}
 									],
@@ -11654,9 +11724,9 @@
 												{
 													"id": "pick-by-unique-id",
 													"objectClass": "uiSliderHandle",
-													"sid": 894802919050639,
+													"sid": 976166258933588,
 													"parameters": {
-														"unique-id": "Functions.uiGetUIDFromID(uiCanvas.scrollXHandleID)"
+														"unique-id": "Functions.uiGetUIDFromID(uiScrollView.scrollXHandleID)"
 													}
 												}
 											],
@@ -11704,9 +11774,9 @@
 												{
 													"id": "pick-by-unique-id",
 													"objectClass": "uiSliderHandle",
-													"sid": 252945755866645,
+													"sid": 662379035043381,
 													"parameters": {
-														"unique-id": "Functions.uiGetUIDFromID(uiCanvas.scrollYHandleID)"
+														"unique-id": "Functions.uiGetUIDFromID(uiScrollView.scrollYHandleID)"
 													}
 												}
 											],

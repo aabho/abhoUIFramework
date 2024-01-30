@@ -54,8 +54,7 @@
 					},
 					"uid": 4,
 					"instanceVariables": {
-						"scrollCanvasID": "",
-						"scrollCanvasMask": true,
+						"scrollViewID": "",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": false,
 						"scrollCenterOnMouseover": false,
@@ -238,8 +237,7 @@
 					},
 					"uid": 6,
 					"instanceVariables": {
-						"scrollCanvasID": "",
-						"scrollCanvasMask": true,
+						"scrollViewID": "",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": false,
 						"scrollCenterOnMouseover": false,
@@ -422,8 +420,7 @@
 					},
 					"uid": 11,
 					"instanceVariables": {
-						"scrollCanvasID": "",
-						"scrollCanvasMask": true,
+						"scrollViewID": "",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": false,
 						"scrollCenterOnMouseover": false,
@@ -606,8 +603,7 @@
 					},
 					"uid": 13,
 					"instanceVariables": {
-						"scrollCanvasID": "",
-						"scrollCanvasMask": true,
+						"scrollViewID": "",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": false,
 						"scrollCenterOnMouseover": false,
@@ -790,8 +786,7 @@
 					},
 					"uid": 18,
 					"instanceVariables": {
-						"scrollCanvasID": "",
-						"scrollCanvasMask": true,
+						"scrollViewID": "",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": false,
 						"scrollCenterOnMouseover": false,
@@ -974,8 +969,7 @@
 					},
 					"uid": 8,
 					"instanceVariables": {
-						"scrollCanvasID": "",
-						"scrollCanvasMask": true,
+						"scrollViewID": "",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": false,
 						"scrollCenterOnMouseover": false,
@@ -1360,70 +1354,6 @@
 					}
 				},
 				{
-					"type": "uiMainSettingsCanvas",
-					"properties": {
-						"resolution-mode": "auto",
-						"initially-visible": true,
-						"origin": "top-left",
-						"antialiasing": "off"
-					},
-					"uid": 59,
-					"instanceVariables": {
-						"canvasID": "mainCanvas",
-						"scrollXHandleID": "mainScrollHandleX",
-						"scrollYHandleID": "mainScrollHandle",
-						"scrollerMargins": 4,
-						"scrollerX1": 0,
-						"scrollerY1": 0,
-						"scrollerX2": 0,
-						"scrollerY2": 0
-					},
-					"behaviors": {},
-					"sceneGraphData": {
-						"parent-uid": null,
-						"uid": 59,
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"world": {
-						"x": 338,
-						"y": 11,
-						"width": 73,
-						"height": 83,
-						"originX": 0,
-						"originY": 0,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0
-					}
-				},
-				{
 					"type": "uiMainSettingsScrollBar",
 					"properties": {
 						"left-margin": 0,
@@ -1536,8 +1466,8 @@
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
-						"scroller": true,
-						"scrollerSpeed": 10,
+						"scroll": true,
+						"scrollSpeed": 10,
 						"section": "main",
 						"ID": "mainScrollHandle",
 						"navigable": true,
@@ -1690,8 +1620,8 @@
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
-						"scroller": true,
-						"scrollerSpeed": 10,
+						"scroll": true,
+						"scrollSpeed": 10,
 						"section": "main",
 						"ID": "mainScrollHandleX",
 						"navigable": true,
@@ -2877,6 +2807,45 @@
 						"angle": 3.141592653589793,
 						"zElevation": 0
 					}
+				},
+				{
+					"type": "uiMainScrollMask",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 98,
+					"instanceVariables": {
+						"scrollViewID": "mainScrollView",
+						"scrollXHandleID": "mainScrollHandleX",
+						"scrollYHandleID": "mainScrollHandle",
+						"scrollMargins": 4,
+						"scrollX1": 0,
+						"scrollY1": 0,
+						"scrollX2": 0,
+						"scrollY2": 0,
+						"scrollViewOriginalLayer": ""
+					},
+					"behaviors": {},
+					"world": {
+						"x": 378.5,
+						"y": 50.5,
+						"width": 65,
+						"height": 87,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
 				}
 			],
 			"sid": 770644799188388,
@@ -2927,8 +2896,7 @@
 					},
 					"uid": 66,
 					"instanceVariables": {
-						"scrollCanvasID": "mainCanvas",
-						"scrollCanvasMask": true,
+						"scrollViewID": "mainScrollView",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": true,
 						"scrollCenterOnMouseover": true,
@@ -3111,8 +3079,7 @@
 					},
 					"uid": 68,
 					"instanceVariables": {
-						"scrollCanvasID": "mainCanvas",
-						"scrollCanvasMask": true,
+						"scrollViewID": "mainScrollView",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": true,
 						"scrollCenterOnMouseover": true,
@@ -3295,8 +3262,7 @@
 					},
 					"uid": 62,
 					"instanceVariables": {
-						"scrollCanvasID": "mainCanvas",
-						"scrollCanvasMask": true,
+						"scrollViewID": "mainScrollView",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": true,
 						"scrollCenterOnMouseover": true,
@@ -3479,8 +3445,7 @@
 					},
 					"uid": 71,
 					"instanceVariables": {
-						"scrollCanvasID": "mainCanvas",
-						"scrollCanvasMask": true,
+						"scrollViewID": "mainScrollView",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": true,
 						"scrollCenterOnMouseover": true,
@@ -3663,8 +3628,7 @@
 					},
 					"uid": 73,
 					"instanceVariables": {
-						"scrollCanvasID": "mainCanvas",
-						"scrollCanvasMask": true,
+						"scrollViewID": "mainScrollView",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": true,
 						"scrollCenterOnMouseover": true,
@@ -3847,8 +3811,7 @@
 					},
 					"uid": 75,
 					"instanceVariables": {
-						"scrollCanvasID": "mainCanvas",
-						"scrollCanvasMask": true,
+						"scrollViewID": "mainScrollView",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": true,
 						"scrollCenterOnMouseover": true,
@@ -4001,7 +3964,7 @@
 					},
 					"world": {
 						"x": 359,
-						"y": 11.5,
+						"y": 12,
 						"width": 19,
 						"height": 16,
 						"originX": 0.5,
@@ -4031,8 +3994,7 @@
 					},
 					"uid": 77,
 					"instanceVariables": {
-						"scrollCanvasID": "mainCanvas",
-						"scrollCanvasMask": true,
+						"scrollViewID": "mainScrollView",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": true,
 						"scrollCenterOnMouseover": true,
@@ -4215,8 +4177,7 @@
 					},
 					"uid": 79,
 					"instanceVariables": {
-						"scrollCanvasID": "mainCanvas",
-						"scrollCanvasMask": true,
+						"scrollViewID": "mainScrollView",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": true,
 						"scrollCenterOnMouseover": true,
@@ -4399,8 +4360,7 @@
 					},
 					"uid": 81,
 					"instanceVariables": {
-						"scrollCanvasID": "mainCanvas",
-						"scrollCanvasMask": true,
+						"scrollViewID": "mainScrollView",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": true,
 						"scrollCenterOnMouseover": true,
@@ -4583,8 +4543,7 @@
 					},
 					"uid": 83,
 					"instanceVariables": {
-						"scrollCanvasID": "mainCanvas",
-						"scrollCanvasMask": true,
+						"scrollViewID": "mainScrollView",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": true,
 						"scrollCenterOnMouseover": true,
@@ -4872,21 +4831,6 @@
 								}
 							},
 							{
-								"uid": 50,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": true,
-									"h": true,
-									"a": true,
-									"o": false,
-									"v": false,
-									"d": true,
-									"sm": "normal"
-								}
-							},
-							{
 								"uid": 51,
 								"flags": {
 									"x": true,
@@ -4933,6 +4877,21 @@
 							},
 							{
 								"uid": 64,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							},
+							{
+								"uid": 99,
 								"flags": {
 									"x": true,
 									"y": true,
@@ -5606,8 +5565,8 @@
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
-						"scroller": true,
-						"scrollerSpeed": 10,
+						"scroll": true,
+						"scrollSpeed": 10,
 						"section": "mainSettings",
 						"ID": "mainSettingsScrollHandleVert",
 						"navigable": true,
@@ -5760,8 +5719,8 @@
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
-						"scroller": true,
-						"scrollerSpeed": 20,
+						"scroll": true,
+						"scrollSpeed": 20,
 						"section": "mainSettings",
 						"ID": "mainSettingsScrollHandleHoriz",
 						"navigable": true,
@@ -5836,28 +5795,30 @@
 			"subLayers": [],
 			"instances": [
 				{
-					"type": "uiMainSettingsCanvas",
+					"type": "uiMainScrollMask",
 					"properties": {
-						"resolution-mode": "auto",
 						"initially-visible": true,
-						"origin": "top-left",
-						"antialiasing": "off"
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
 					},
-					"uid": 50,
+					"uid": 99,
 					"instanceVariables": {
-						"canvasID": "mainSettings",
+						"scrollViewID": "mainSettings",
 						"scrollXHandleID": "mainSettingsScrollHandleHoriz",
 						"scrollYHandleID": "mainSettingsScrollHandleVert",
-						"scrollerMargins": 4,
-						"scrollerX1": 0,
-						"scrollerY1": 0,
-						"scrollerX2": 0,
-						"scrollerY2": 0
+						"scrollMargins": 4,
+						"scrollX1": 0,
+						"scrollY1": 0,
+						"scrollX2": 0,
+						"scrollY2": 0,
+						"scrollViewOriginalLayer": ""
 					},
 					"behaviors": {},
 					"sceneGraphData": {
 						"parent-uid": 30,
-						"uid": 50,
+						"uid": 99,
 						"flags": {
 							"x": true,
 							"y": true,
@@ -5884,19 +5845,20 @@
 						}
 					},
 					"world": {
-						"x": 147,
-						"y": -167,
+						"x": 214,
+						"y": -107,
 						"width": 135,
 						"height": 121,
-						"originX": 0,
-						"originY": 0,
+						"originX": 0.5,
+						"originY": 0.5,
 						"color": [
 							1,
 							1,
 							1,
 							1
 						],
-						"angle": 0
+						"angle": 0,
+						"zElevation": 0
 					}
 				},
 				{
@@ -5995,8 +5957,7 @@
 						"sliderRightX": 0,
 						"sliderRightY": 0,
 						"sliderTickObjectName": "uiMainSettingsSliderTick",
-						"scrollCanvasID": "mainSettings",
-						"scrollCanvasMask": true,
+						"scrollViewID": "mainSettings",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": false,
 						"scrollCenterOnMouseover": false,
@@ -6444,10 +6405,9 @@
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "mainSettingsMusMid",
 						"sliderHandleRuleAllowEqual": false,
-						"scroller": false,
-						"scrollerSpeed": 10,
-						"scrollCanvasID": "mainSettings",
-						"scrollCanvasMask": true,
+						"scroll": false,
+						"scrollSpeed": 10,
+						"scrollViewID": "mainSettings",
 						"scrollAffectPosition": false,
 						"scrollCenterOnChosen": true,
 						"scrollCenterOnMouseover": true,
@@ -6565,10 +6525,9 @@
 						"sliderHandleRuleLesser": "mainSettingsMusMid",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
-						"scroller": false,
-						"scrollerSpeed": 10,
-						"scrollCanvasID": "mainSettings",
-						"scrollCanvasMask": true,
+						"scroll": false,
+						"scrollSpeed": 10,
+						"scrollViewID": "mainSettings",
 						"scrollAffectPosition": false,
 						"scrollCenterOnChosen": true,
 						"scrollCenterOnMouseover": true,
@@ -6686,10 +6645,9 @@
 						"sliderHandleRuleLesser": "mainSettingsMusHigh",
 						"sliderHandleRuleGreater": "mainSettingsMusLow",
 						"sliderHandleRuleAllowEqual": false,
-						"scroller": false,
-						"scrollerSpeed": 10,
-						"scrollCanvasID": "mainSettings",
-						"scrollCanvasMask": true,
+						"scroll": false,
+						"scrollSpeed": 10,
+						"scrollViewID": "mainSettings",
 						"scrollAffectPosition": false,
 						"scrollCenterOnChosen": true,
 						"scrollCenterOnMouseover": true,
@@ -6881,8 +6839,7 @@
 						"sliderRightX": 0,
 						"sliderRightY": 0,
 						"sliderTickObjectName": "uiMainSettingsSliderTick",
-						"scrollCanvasID": "mainSettings",
-						"scrollCanvasMask": true,
+						"scrollViewID": "mainSettings",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": false,
 						"scrollCenterOnMouseover": false,
@@ -7057,10 +7014,9 @@
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
-						"scroller": false,
-						"scrollerSpeed": 10,
-						"scrollCanvasID": "mainSettings",
-						"scrollCanvasMask": true,
+						"scroll": false,
+						"scrollSpeed": 10,
+						"scrollViewID": "mainSettings",
 						"scrollAffectPosition": false,
 						"scrollCenterOnChosen": true,
 						"scrollCenterOnMouseover": true,
@@ -7235,8 +7191,7 @@
 						"sliderRightX": 0,
 						"sliderRightY": 0,
 						"sliderTickObjectName": "uiMainSettingsSliderTick",
-						"scrollCanvasID": "mainSettings",
-						"scrollCanvasMask": true,
+						"scrollViewID": "mainSettings",
 						"scrollAffectPosition": true,
 						"scrollCenterOnChosen": false,
 						"scrollCenterOnMouseover": false,
@@ -7411,10 +7366,9 @@
 						"sliderHandleRuleLesser": "",
 						"sliderHandleRuleGreater": "",
 						"sliderHandleRuleAllowEqual": false,
-						"scroller": false,
-						"scrollerSpeed": 10,
-						"scrollCanvasID": "mainSettings",
-						"scrollCanvasMask": true,
+						"scroll": false,
+						"scrollSpeed": 10,
+						"scrollViewID": "mainSettings",
 						"scrollAffectPosition": false,
 						"scrollCenterOnChosen": true,
 						"scrollCenterOnMouseover": true,

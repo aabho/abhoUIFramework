@@ -53,14 +53,14 @@
 			"sid": 914364876419004
 		},
 		{
-			"name": "scroller",
+			"name": "scroll",
 			"type": "boolean",
 			"desc": "is this a scroller (used for a scroll view, with a uiCanvas and uiScrollComponents)",
 			"show": true,
 			"sid": 128675221874790
 		},
 		{
-			"name": "scrollerSpeed",
+			"name": "scrollSpeed",
 			"type": "number",
 			"desc": "how many pixels to scroll per step",
 			"show": true,

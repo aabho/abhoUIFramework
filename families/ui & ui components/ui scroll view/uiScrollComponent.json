@@ -4,18 +4,11 @@
 	"sid": 903651693019718,
 	"instanceVariables": [
 		{
-			"name": "scrollCanvasID",
+			"name": "scrollViewID",
 			"type": "string",
-			"desc": "enter canvasID - you need to enter one, but you don't need to enable masking",
+			"desc": "enter scrollViewID - you need to enter one, but you don't need to enable masking",
 			"show": true,
 			"sid": 643333100229853
-		},
-		{
-			"name": "scrollCanvasMask",
-			"type": "boolean",
-			"desc": "mask this object (and children) behind canvas",
-			"show": true,
-			"sid": 586735953288504
 		},
 		{
 			"name": "scrollAffectPosition",
