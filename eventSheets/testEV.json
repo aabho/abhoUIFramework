@@ -155,7 +155,7 @@
 						{
 							"aceType": "action",
 							"aceName": "uiChoose",
-							"objectClass": "uiMainSettingsCarousel",
+							"objectClass": "uiMainCarousel",
 							"functionDescription": "override",
 							"functionCategory": "ui",
 							"functionReturnType": "none",
@@ -166,7 +166,7 @@
 							"conditions": [
 								{
 									"id": "pick-children",
-									"objectClass": "uiMainSettingsCarousel",
+									"objectClass": "uiMainCarousel",
 									"sid": 280169643096870,
 									"parameters": {
 										"child": "uiMainSettingsCarouselArrows",
@@ -177,7 +177,7 @@
 							"actions": [
 								{
 									"customAction": "uiChoose",
-									"objectClass": "uiMainSettingsCarousel",
+									"objectClass": "uiMainCarousel",
 									"customActionObjectClass": "ui",
 									"sid": 258291953250027
 								},
@@ -213,7 +213,7 @@
 						{
 							"aceType": "action",
 							"aceName": "uiUnchoose",
-							"objectClass": "uiMainSettingsCarousel",
+							"objectClass": "uiMainCarousel",
 							"functionDescription": "override",
 							"functionCategory": "ui",
 							"functionReturnType": "none",
@@ -224,7 +224,7 @@
 							"conditions": [
 								{
 									"id": "pick-children",
-									"objectClass": "uiMainSettingsCarousel",
+									"objectClass": "uiMainCarousel",
 									"sid": 704029782332506,
 									"parameters": {
 										"child": "uiMainSettingsCarouselArrows",
@@ -235,7 +235,7 @@
 							"actions": [
 								{
 									"customAction": "uiChoose",
-									"objectClass": "uiMainSettingsCarousel",
+									"objectClass": "uiMainCarousel",
 									"customActionObjectClass": "ui",
 									"sid": 861020099527201
 								},
@@ -271,7 +271,7 @@
 						{
 							"aceType": "action",
 							"aceName": "uiCarouselIncrement",
-							"objectClass": "uiMainSettingsCarousel",
+							"objectClass": "uiMainCarousel",
 							"functionDescription": "override",
 							"functionCategory": "ui",
 							"functionReturnType": "none",
@@ -282,7 +282,7 @@
 							"conditions": [
 								{
 									"id": "pick-children",
-									"objectClass": "uiMainSettingsCarousel",
+									"objectClass": "uiMainCarousel",
 									"sid": 404973896990827,
 									"parameters": {
 										"child": "txt",
@@ -291,7 +291,7 @@
 								},
 								{
 									"id": "pick-children",
-									"objectClass": "uiMainSettingsCarousel",
+									"objectClass": "uiMainCarousel",
 									"sid": 535515597578349,
 									"parameters": {
 										"child": "uiMainSettingsCarouselGradient",
@@ -310,7 +310,7 @@
 							"actions": [
 								{
 									"customAction": "uiCarouselIncrement",
-									"objectClass": "uiMainSettingsCarousel",
+									"objectClass": "uiMainCarousel",
 									"customActionObjectClass": "uiCarousel",
 									"sid": 549892859968342
 								},
@@ -335,7 +335,7 @@
 									"objectClass": "txt",
 									"sid": 483652712993755,
 									"parameters": {
-										"text": "tokenat(uiMainSettingsCarousel.carouselValues, uiMainSettingsCarousel.carouselIndex, uiValueDelimiter)"
+										"text": "tokenat(uiMainCarousel.carouselValues, uiMainCarousel.carouselIndex, uiValueDelimiter)"
 									}
 								},
 								{
@@ -394,7 +394,7 @@
 						{
 							"aceType": "action",
 							"aceName": "uiCarouselDecrement",
-							"objectClass": "uiMainSettingsCarousel",
+							"objectClass": "uiMainCarousel",
 							"functionDescription": "override",
 							"functionCategory": "ui",
 							"functionReturnType": "none",
@@ -405,7 +405,7 @@
 							"conditions": [
 								{
 									"id": "pick-children",
-									"objectClass": "uiMainSettingsCarousel",
+									"objectClass": "uiMainCarousel",
 									"sid": 349105964662499,
 									"parameters": {
 										"child": "txt",
@@ -414,7 +414,7 @@
 								},
 								{
 									"id": "pick-children",
-									"objectClass": "uiMainSettingsCarousel",
+									"objectClass": "uiMainCarousel",
 									"sid": 310997640042734,
 									"parameters": {
 										"child": "uiMainSettingsCarouselGradient",
@@ -434,7 +434,7 @@
 							"actions": [
 								{
 									"customAction": "uiCarouselDecrement",
-									"objectClass": "uiMainSettingsCarousel",
+									"objectClass": "uiMainCarousel",
 									"customActionObjectClass": "uiCarousel",
 									"sid": 848759283965303
 								},
@@ -459,7 +459,7 @@
 									"objectClass": "txt",
 									"sid": 943474004050061,
 									"parameters": {
-										"text": "tokenat(uiMainSettingsCarousel.carouselValues, uiMainSettingsCarousel.carouselIndex, uiValueDelimiter)"
+										"text": "tokenat(uiMainCarousel.carouselValues, uiMainCarousel.carouselIndex, uiValueDelimiter)"
 									}
 								},
 								{
@@ -514,6 +514,187 @@
 								}
 							],
 							"sid": 147771511260530
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiCarouselContentIncrement",
+							"objectClass": "uiMainContentCarousel",
+							"functionDescription": "override",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [
+								{
+									"id": "pick-children",
+									"objectClass": "uiMainContentCarousel",
+									"sid": 566176750000484,
+									"parameters": {
+										"child": "uiMainSettingsCarouselGradient",
+										"which": "own"
+									}
+								},
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 259750593387495,
+									"parameters": {
+										"instance-variable": "isRight"
+									}
+								}
+							],
+							"actions": [
+								{
+									"customAction": "uiCarouselContentIncrement",
+									"objectClass": "uiMainContentCarousel",
+									"customActionObjectClass": "uiCarousel",
+									"sid": 688857344663420
+								},
+								{
+									"type": "comment",
+									"text": "gradient fade",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "set-opacity",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 798831614613073,
+									"parameters": {
+										"opacity": "100"
+									}
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 536166329834342,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fadeout\""
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 936029308349150,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fadeout\"",
+										"property": "offsetOpacity",
+										"end-value": "0",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 998024830127391
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiCarouselContentDecrement",
+							"objectClass": "uiMainContentCarousel",
+							"functionDescription": "override",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [
+								{
+									"id": "pick-children",
+									"objectClass": "uiMainContentCarousel",
+									"sid": 965702476150891,
+									"parameters": {
+										"child": "uiMainSettingsCarouselGradient",
+										"which": "own"
+									}
+								},
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 205761244859898,
+									"parameters": {
+										"instance-variable": "isRight"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"customAction": "uiCarouselContentDecrement",
+									"objectClass": "uiMainContentCarousel",
+									"customActionObjectClass": "uiCarousel",
+									"sid": 582715417959731
+								},
+								{
+									"type": "comment",
+									"text": "gradient fade",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "set-opacity",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 617421745613387,
+									"parameters": {
+										"opacity": "100"
+									}
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 158646157202155,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fadeout\""
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 102881856354015,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fadeout\"",
+										"property": "offsetOpacity",
+										"end-value": "0",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 699712982940253
 						},
 						{
 							"eventType": "comment",

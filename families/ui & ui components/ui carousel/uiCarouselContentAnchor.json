@@ -1,0 +1,25 @@
+{
+	"name": "uiCarouselContentAnchor",
+	"plugin-id": "Sprite",
+	"sid": 786721891778196,
+	"instanceVariables": [
+		{
+			"name": "carouselContentAnchorInitialized",
+			"type": "boolean",
+			"desc": "true if custom actions have been called, used in events",
+			"show": false,
+			"sid": 828583502245313
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 224289590731380
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"uiMainCarouselContentAnchor"
+	]
+}

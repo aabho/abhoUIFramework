@@ -123,6 +123,7 @@
 		"uiMainSettingsScrollBar",
 		"uiMainSettingsScrollHandle",
 		"uiMainCheckbox",
-		"uiMainSettingsCarousel"
+		"uiMainCarousel",
+		"uiMainContentCarousel"
 	]
 }

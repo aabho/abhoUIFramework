@@ -345,7 +345,7 @@
 								},
 								{
 									"type": "script",
-									"script": "// get instances\nconst pickedObj = runtime.objects.uiScrollComponent.getFirstPickedInstance();\nconst children = pickedObj.allChildren();\nconst objs = [];\n\n// layer name\nconst layer = runtime.layout.getLayer(runtime.objects.uiScrollView.getFirstPickedInstance().instVars.scrollViewOriginalLayer + \" [uiScrollComponent]\");\n\n\n// get children in the objs array\nobjs.push(pickedObj);\nfor (const child of children) { objs.push(child); }\n\nconsole.log(objs);\n\n// move all objects to new layer\nfor (const obj of objs)\n{\n\tobj.moveToLayer(layer);\n}"
+									"script": "// get instances\nconst pickedObj = runtime.objects.uiScrollComponent.getFirstPickedInstance();\nconst children = pickedObj.allChildren();\nconst objs = [];\n\n// layer name\nconst layer = runtime.layout.getLayer(runtime.objects.uiScrollView.getFirstPickedInstance().instVars.scrollViewOriginalLayer + \" [uiScrollComponent]\");\n\n\n// get children in the objs array\nobjs.push(pickedObj);\nfor (const child of children) { objs.push(child); }\n\n\n// move all objects to new layer\nfor (const obj of objs)\n{\n\tobj.moveToLayer(layer);\n}"
 								}
 							],
 							"sid": 520922479339239
@@ -1205,13 +1205,13 @@
 		{
 			"eventType": "group",
 			"disabled": false,
-			"title": "ui / behavior",
-			"description": "the hardest to understand group in this entire framework, for sure. there are some things here that you will want to change, like the custom actions for UI components that define the default behavior of every component when certain events happen. there's also stuff to do with updates, selection, and navigation.",
+			"title": "ui / custom actions",
+			"description": "custom actions are a modular way to apply visual behavior like tweening to all objects in the UI families, but also override the behavior for individual objects",
 			"isActiveOnStart": true,
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "some functions here are marked with [INTERNAL], meaning that you shouldn't be using them when making your game unless it's for a specific case where you know what you're doing",
+					"text": "with these custom actions, you can provide a default behavior here, and override the default by creating an override custom action for the button object.\n\nfor example, right now it's set so that when you chose a button it grows, and unchoosing it makes it shrink again.\n\nif you want a special button type on some layout to instead become brighter, you can make an override by creating a new custom action for that object, and calling the action \"uiChoose\" exactly.\nyou'll know you've done it right because it'll say 'Overridden' next to it. if it has any parameters, copy those over too.\n\nlastly, if you wanted to do the default behavior but THEN ALSO do something custom, then you can call the family custom action as part of the overwrite to turn it into an extension.\nif that didn't make sense, it's a little complicated to explain here, so see link below.\n\nto learn more about custom actions and overriding, see here --> https://www.construct.net/en/make-games/manuals/construct-3/project-primitives/events/custom-actions",
 					"text-color": [
 						0,
 						0,
@@ -1228,374 +1228,269 @@
 				{
 					"eventType": "group",
 					"disabled": false,
-					"title": "ui / behavior / custom actions",
-					"description": "custom actions are a modular way to apply visual behavior like tweening to all objects in the UI families, but also override the behavior for individual objects",
+					"title": "ui / custom actions / ui",
+					"description": "",
 					"isActiveOnStart": true,
 					"children": [
 						{
-							"eventType": "comment",
-							"text": "with these custom actions, you can provide a default behavior here, and override the default by creating an override custom action for the button object.\n\nfor example, right now it's set so that when you chose a button it grows, and unchoosing it makes it shrink again.\n\nif you want a special button type on some layout to instead become brighter, you can make an override by creating a new custom action for that object, and calling the action \"uiChoose\" exactly.\nyou'll know you've done it right because it'll say 'Overridden' next to it. if it has any parameters, copy those over too.\n\nlastly, if you wanted to do the default behavior but THEN ALSO do something custom, then you can call the family custom action as part of the overwrite to turn it into an extension.\nif that didn't make sense, it's a little complicated to explain here, so see link below.\n\nto learn more about custom actions and overriding, see here --> https://www.construct.net/en/make-games/manuals/construct-3/project-primitives/events/custom-actions",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8470588235294118,
-								0.6431372549019608,
-								0.8745098039215686,
-								1
-							]
-						},
-						{
-							"eventType": "group",
-							"disabled": false,
-							"title": "ui / behavior / custom actions / ui",
-							"description": "",
-							"isActiveOnStart": true,
-							"children": [
+							"aceType": "action",
+							"aceName": "uiActivate",
+							"objectClass": "ui",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
 								{
-									"aceType": "action",
-									"aceName": "uiActivate",
-									"objectClass": "ui",
-									"functionDescription": "use overrides to create special events",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "fade in when this component's section is activated",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "stop-tweens",
-											"objectClass": "ui",
-											"sid": 239396920223378,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"grayed\""
-											}
-										},
-										{
-											"id": "tween-one-property",
-											"objectClass": "ui",
-											"sid": 619247356069816,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"grayed\"",
-												"property": "offsetColor",
-												"end-value": "rgbEx(100, 100, 100)",
-												"time": "0.1",
-												"ease": "easeoutsine",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										}
+									"type": "comment",
+									"text": "fade in when this component's section is activated",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
 									],
-									"sid": 668519072384567
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
 								},
 								{
-									"aceType": "action",
-									"aceName": "uiDeactivate",
+									"id": "stop-tweens",
 									"objectClass": "ui",
-									"functionDescription": "use overrides to create special events",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "fade out a little when this component's section is deactivated",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "stop-tweens",
-											"objectClass": "ui",
-											"sid": 999968409511288,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"grayed\""
-											}
-										},
-										{
-											"id": "tween-one-property",
-											"objectClass": "ui",
-											"sid": 154318542537755,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"grayed\"",
-												"property": "offsetColor",
-												"end-value": "rgbEx(50, 50, 50)",
-												"time": "0.1",
-												"ease": "easeoutsine",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										}
-									],
-									"sid": 100709272388819
+									"sid": 623479141986722,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"grayed\""
+									}
 								},
 								{
-									"aceType": "action",
-									"aceName": "uiChoose",
+									"id": "tween-one-property",
 									"objectClass": "ui",
-									"functionDescription": "use overrides to create special events",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "make the component grow when chosen (mouseover, highlight, whatever you want to call it)",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "stop-tweens",
-											"objectClass": "ui",
-											"sid": 141890125363945,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSize\""
-											}
-										},
-										{
-											"id": "set-size",
-											"objectClass": "ui",
-											"sid": 123294713829772,
-											"parameters": {
-												"width": "Self.oWidth + Self.mGrowWidth * 2",
-												"height": "Self.oHeight + Self.mGrowHeight * 2"
-											}
-										},
-										{
-											"id": "tween-two-properties",
-											"objectClass": "ui",
-											"sid": 799173273524974,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSize\"",
-												"property": "size",
-												"end-x": "Self.oWidth + Self.mGrowWidth",
-												"end-y": "Self.oHeight + Self.mGrowHeight",
-												"time": "0.1",
-												"ease": "easeoutcubic",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										}
-									],
-									"sid": 196943430684800
-								},
-								{
-									"aceType": "action",
-									"aceName": "uiUnchoose",
-									"objectClass": "ui",
-									"functionDescription": "use overrides to create special events",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "make the component shrink when no longer chosen",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "stop-tweens",
-											"objectClass": "ui",
-											"sid": 916604644158509,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSize\""
-											}
-										},
-										{
-											"id": "tween-two-properties",
-											"objectClass": "ui",
-											"sid": 810796933238111,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSize\"",
-												"property": "size",
-												"end-x": "Self.oWidth",
-												"end-y": "Self.oHeight",
-												"time": "0.1",
-												"ease": "easeoutcubic",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										}
-									],
-									"sid": 568847917610343
-								},
-								{
-									"aceType": "action",
-									"aceName": "uiSelect",
-									"objectClass": "ui",
-									"functionDescription": "use overrides to create special events",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "keep in mind you shouldn't use this custom action when making events for when a button is clicked... this is intended for animations/sounds only.\nfor actually doing something when a specific button gets clicked, see the comment on the function 'uiSelect [INTERNAL]'",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8470588235294118,
-												0.6431372549019608,
-												0.8745098039215686,
-												1
-											]
-										},
-										{
-											"type": "comment",
-											"text": "little tilt effect",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "set-angle",
-											"objectClass": "ui",
-											"sid": 387248684839931,
-											"parameters": {
-												"angle": "choose(-5, 5)"
-											}
-										},
-										{
-											"id": "tween-one-property",
-											"objectClass": "ui",
-											"sid": 643298064233486,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"tilt\"",
-												"property": "offsetAngle",
-												"end-value": "0",
-												"time": "0.1",
-												"ease": "easeoutsine",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										}
-									],
-									"sid": 891127620424290
+									"sid": 211651051213650,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"grayed\"",
+										"property": "offsetColor",
+										"end-value": "rgbEx(100, 100, 100)",
+										"time": "0.1",
+										"ease": "easeoutsine",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
 								}
 							],
-							"sid": 818975434328302,
-							"text-color": [
-								0,
-								0,
-								0,
-								0
-							],
-							"background-color": [
-								0.8392156862745098,
-								0.8392156862745098,
-								0.8392156862745098,
-								1
-							]
+							"sid": 354536829622481
 						},
 						{
-							"eventType": "group",
-							"disabled": false,
-							"title": "ui / behavior / custom actions / sliders",
-							"description": "",
-							"isActiveOnStart": true,
-							"children": [
+							"aceType": "action",
+							"aceName": "uiDeactivate",
+							"objectClass": "ui",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
 								{
-									"eventType": "comment",
-									"text": "when overriding this custom action, the conditions don't carry to your override.\n\nthese custom actions exist on the uiSliderHandle family, but we tie it to the relevant ui family object with a UID check and perform changes there to access the tween behavior and size variables (which are not required)",
+									"type": "comment",
+									"text": "fade out a little when this component's section is deactivated",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 245020051101363,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"grayed\""
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "ui",
+									"sid": 524422317351293,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"grayed\"",
+										"property": "offsetColor",
+										"end-value": "rgbEx(50, 50, 50)",
+										"time": "0.1",
+										"ease": "easeoutsine",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 132831796898287
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiChoose",
+							"objectClass": "ui",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "make the component grow when chosen (mouseover, highlight, whatever you want to call it)",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 692313185193232,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize\""
+									}
+								},
+								{
+									"id": "set-size",
+									"objectClass": "ui",
+									"sid": 259052155568545,
+									"parameters": {
+										"width": "Self.oWidth + Self.mGrowWidth * 2",
+										"height": "Self.oHeight + Self.mGrowHeight * 2"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "ui",
+									"sid": 668473719350938,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize\"",
+										"property": "size",
+										"end-x": "Self.oWidth + Self.mGrowWidth",
+										"end-y": "Self.oHeight + Self.mGrowHeight",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 375672952814083
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiUnchoose",
+							"objectClass": "ui",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "make the component shrink when no longer chosen",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 539926725969151,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize\""
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "ui",
+									"sid": 825914263069322,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize\"",
+										"property": "size",
+										"end-x": "Self.oWidth",
+										"end-y": "Self.oHeight",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 990681806642450
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiSelect",
+							"objectClass": "ui",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "keep in mind you shouldn't use this custom action when making events for when a button is clicked... this is intended for animations/sounds only.\nfor actually doing something when a specific button gets clicked, see the comment on the function 'uiSelect [INTERNAL]'",
 									"text-color": [
 										0,
 										0,
@@ -1610,654 +1505,743 @@
 									]
 								},
 								{
-									"aceType": "action",
-									"aceName": "uiSliderHandleSelect",
-									"objectClass": "uiSliderHandle",
-									"functionDescription": "use overrides to create special events",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [
-										{
-											"id": "pick-by-unique-id",
-											"objectClass": "ui",
-											"sid": 872965721665884,
-											"parameters": {
-												"unique-id": "uiSliderHandle.UID"
-											}
-										}
+									"type": "comment",
+									"text": "little tilt effect",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
 									],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "call the default selected",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"customAction": "uiSelect",
-											"objectClass": "ui",
-											"sid": 973907617433497
-										},
-										{
-											"type": "comment",
-											"text": "grow component even larger",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "stop-tweens",
-											"objectClass": "ui",
-											"sid": 496277043603829,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSliderHandleSize\""
-											}
-										},
-										{
-											"id": "set-size",
-											"objectClass": "ui",
-											"sid": 665676675045396,
-											"parameters": {
-												"width": "Self.oWidth + Self.mGrowWidth * 4",
-												"height": "Self.oHeight + Self.mGrowHeight * 4"
-											}
-										},
-										{
-											"id": "tween-two-properties",
-											"objectClass": "ui",
-											"sid": 251167099608516,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSliderHandleSize\"",
-												"property": "size",
-												"end-x": "Self.oWidth + Self.mGrowWidth * 3",
-												"end-y": "Self.oHeight + Self.mGrowHeight * 3",
-												"time": "0.1",
-												"ease": "easeoutcubic",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										},
-										{
-											"type": "comment",
-											"text": "change color",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "tween-one-property",
-											"objectClass": "ui",
-											"sid": 360882462314260,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSliderHandleColor\"",
-												"property": "offsetColor",
-												"end-value": "rgbEx(100,30,30)",
-												"time": "0.1",
-												"ease": "noease",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										}
-									],
-									"sid": 640042827057347
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
 								},
 								{
-									"aceType": "action",
-									"aceName": "uiSliderHandleDeselect",
-									"objectClass": "uiSliderHandle",
-									"functionDescription": "use overrides to create special events",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [
-										{
-											"id": "pick-by-unique-id",
-											"objectClass": "ui",
-											"sid": 765595504555288,
-											"parameters": {
-												"unique-id": "uiSliderHandle.UID"
-											}
-										}
-									],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "shrink component",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "stop-tweens",
-											"objectClass": "ui",
-											"sid": 784889440822664,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSize\""
-											}
-										},
-										{
-											"id": "set-size",
-											"objectClass": "ui",
-											"sid": 732619200980779,
-											"parameters": {
-												"width": "Self.oWidth + Self.mGrowWidth * 2",
-												"height": "Self.oHeight + Self.mGrowHeight * 2"
-											}
-										},
-										{
-											"id": "tween-two-properties",
-											"objectClass": "ui",
-											"sid": 557297976682270,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSize\"",
-												"property": "size",
-												"end-x": "Self.oWidth + Self.mGrowWidth",
-												"end-y": "Self.oHeight + Self.mGrowHeight",
-												"time": "0.1",
-												"ease": "easeoutcubic",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										},
-										{
-											"type": "comment",
-											"text": "restore color",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "tween-one-property",
-											"objectClass": "ui",
-											"sid": 463065398256553,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSliderHandleColor\"",
-												"property": "offsetColor",
-												"end-value": "rgbEx(100, 100, 100)",
-												"time": "0.1",
-												"ease": "noease",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										}
-									],
-									"sid": 767737634701180
+									"id": "set-angle",
+									"objectClass": "ui",
+									"sid": 221285271733377,
+									"parameters": {
+										"angle": "choose(-5, 5)"
+									}
 								},
 								{
-									"aceType": "action",
-									"aceName": "uiSliderHandleMove",
-									"objectClass": "uiSliderHandle",
-									"functionDescription": "use overrides to create special events",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [
-										{
-											"id": "pick-by-unique-id",
-											"objectClass": "ui",
-											"sid": 922127427868150,
-											"parameters": {
-												"unique-id": "uiSliderHandle.UID"
-											}
-										}
+									"id": "tween-one-property",
+									"objectClass": "ui",
+									"sid": 963581715880624,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"tilt\"",
+										"property": "offsetAngle",
+										"end-value": "0",
+										"time": "0.1",
+										"ease": "easeoutsine",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 368316919465299
+						}
+					],
+					"sid": 126847372958029,
+					"text-color": [
+						0,
+						0,
+						0,
+						0
+					],
+					"background-color": [
+						0.8392156862745098,
+						0.8392156862745098,
+						0.8392156862745098,
+						1
+					]
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "ui / custom actions / sliders",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "when overriding this custom action, the conditions don't carry to your override.\n\nthese custom actions exist on the uiSliderHandle family, but we tie it to the relevant ui family object with a UID check and perform changes there to access the tween behavior and size variables (which are not required)",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8470588235294118,
+								0.6431372549019608,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiSliderHandleSelect",
+							"objectClass": "uiSliderHandle",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "ui",
+									"sid": 907885801242842,
+									"parameters": {
+										"unique-id": "uiSliderHandle.UID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "call the default selected",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
 									],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "size blip animation",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "stop-tweens",
-											"objectClass": "ui",
-											"sid": 432231967675711,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSliderHandleSize\""
-											}
-										},
-										{
-											"id": "set-size",
-											"objectClass": "ui",
-											"sid": 404953641690730,
-											"parameters": {
-												"width": "Self.oWidth + Self.mGrowWidth * 4",
-												"height": "Self.oHeight + Self.mGrowHeight * -1"
-											}
-										},
-										{
-											"id": "tween-two-properties",
-											"objectClass": "ui",
-											"sid": 196404573149133,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSliderHandleSize\"",
-												"property": "size",
-												"end-x": "Self.oWidth + Self.mGrowWidth * 3",
-												"end-y": "Self.oHeight + Self.mGrowHeight * 3",
-												"time": "0.1",
-												"ease": "easeoutcubic",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										},
-										{
-											"type": "comment",
-											"text": "here, I pass off the rest of the move handler to another custom action which simply updates position. \n\nthe reason uiSliderHandleMove and uiSliderHandleUpdatePosition are different is because you may want to update the slider's position without necessarily triggering the animation where you move the handle, such as when manually updating a slider's properties",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8470588235294118,
-												0.6431372549019608,
-												0.8745098039215686,
-												1
-											]
-										},
-										{
-											"customAction": "uiSliderHandleUpdatePosition",
-											"objectClass": "uiSliderHandle",
-											"sid": 892498980208083
-										}
-									],
-									"sid": 874702159121812
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
 								},
 								{
-									"aceType": "action",
-									"aceName": "uiSliderHandleUpdatePosition",
+									"customAction": "uiSelect",
+									"objectClass": "ui",
+									"sid": 423438733913251
+								},
+								{
+									"type": "comment",
+									"text": "grow component even larger",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 322430064808054,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleSize\""
+									}
+								},
+								{
+									"id": "set-size",
+									"objectClass": "ui",
+									"sid": 415350952484714,
+									"parameters": {
+										"width": "Self.oWidth + Self.mGrowWidth * 4",
+										"height": "Self.oHeight + Self.mGrowHeight * 4"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "ui",
+									"sid": 908540892817243,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleSize\"",
+										"property": "size",
+										"end-x": "Self.oWidth + Self.mGrowWidth * 3",
+										"end-y": "Self.oHeight + Self.mGrowHeight * 3",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "change color",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "ui",
+									"sid": 517464941053018,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleColor\"",
+										"property": "offsetColor",
+										"end-value": "rgbEx(100,30,30)",
+										"time": "0.1",
+										"ease": "noease",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 497747784638769
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiSliderHandleDeselect",
+							"objectClass": "uiSliderHandle",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "ui",
+									"sid": 180453945133759,
+									"parameters": {
+										"unique-id": "uiSliderHandle.UID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "shrink component",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 182326469882590,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize\""
+									}
+								},
+								{
+									"id": "set-size",
+									"objectClass": "ui",
+									"sid": 494598353184245,
+									"parameters": {
+										"width": "Self.oWidth + Self.mGrowWidth * 2",
+										"height": "Self.oHeight + Self.mGrowHeight * 2"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "ui",
+									"sid": 435016275906402,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSize\"",
+										"property": "size",
+										"end-x": "Self.oWidth + Self.mGrowWidth",
+										"end-y": "Self.oHeight + Self.mGrowHeight",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "restore color",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "ui",
+									"sid": 565005963258871,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleColor\"",
+										"property": "offsetColor",
+										"end-value": "rgbEx(100, 100, 100)",
+										"time": "0.1",
+										"ease": "noease",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 898095879962966
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiSliderHandleMove",
+							"objectClass": "uiSliderHandle",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "ui",
+									"sid": 763129411439865,
+									"parameters": {
+										"unique-id": "uiSliderHandle.UID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "size blip animation",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 278148343167978,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleSize\""
+									}
+								},
+								{
+									"id": "set-size",
+									"objectClass": "ui",
+									"sid": 564084826173172,
+									"parameters": {
+										"width": "Self.oWidth + Self.mGrowWidth * 4",
+										"height": "Self.oHeight + Self.mGrowHeight * -1"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "ui",
+									"sid": 805723975400483,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleSize\"",
+										"property": "size",
+										"end-x": "Self.oWidth + Self.mGrowWidth * 3",
+										"end-y": "Self.oHeight + Self.mGrowHeight * 3",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "here, I pass off the rest of the move handler to another custom action which simply updates position. \n\nthe reason uiSliderHandleMove and uiSliderHandleUpdatePosition are different is because you may want to update the slider's position without necessarily triggering the animation where you move the handle, such as when manually updating a slider's properties",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8470588235294118,
+										0.6431372549019608,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"customAction": "uiSliderHandleUpdatePosition",
 									"objectClass": "uiSliderHandle",
-									"functionDescription": "use overrides to create special events",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
+									"sid": 260915049175304
+								}
+							],
+							"sid": 531343947131124
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiSliderHandleUpdatePosition",
+							"objectClass": "uiSliderHandle",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "ui",
+									"sid": 145210492406887,
+									"parameters": {
+										"unique-id": "uiSliderHandle.UID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "call this update action which recalculates the progress value of the slider handles",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"customAction": "uiSliderValueUpdate [INTERNAL]",
+									"objectClass": "uiSliderHandle",
+									"sid": 944000661565382
+								},
+								{
+									"customAction": "uiSliderScrollUpdate [INTERNAL]",
+									"objectClass": "uiSliderHandle",
+									"sid": 459007377736199
+								},
+								{
+									"type": "comment",
+									"text": "tween the slider bar towards its new position",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "ui",
+									"sid": 641057380049251,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleMove\""
+									}
+								},
+								{
+									"type": "comment",
+									"text": "the tween here is pretty specific about what it wants to do - it uses lerp to find the right position to go to.\nif you want to override this action without calling this default, then take note of the expression used here so you can get the right slider position.",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8470588235294118,
+										0.6431372549019608,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "ui",
+									"sid": 267743162051659,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"uiSliderHandleMove\"",
+										"property": "position",
+										"end-x": "Functions.uiSliderHandleGetRealX(ui.ID)",
+										"end-y": "Functions.uiSliderHandleGetRealY(ui.ID)",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 277880576489158,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "when a slider handle is performing a tween, use the opportunity to perform a slider fill update",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
 									"conditions": [
 										{
-											"id": "pick-by-unique-id",
-											"objectClass": "ui",
-											"sid": 719574354840323,
+											"id": "pick-by-evaluate",
+											"objectClass": "System",
+											"sid": 117579673041694,
 											"parameters": {
-												"unique-id": "uiSliderHandle.UID"
+												"object": "uiSliderFill",
+												"expression": "(uiSliderFill.sliderFillStartID = ui.id) | (uiSliderFill.sliderFillEndID = ui.id)"
+											}
+										},
+										{
+											"id": "for-each",
+											"objectClass": "System",
+											"sid": 498009785275453,
+											"parameters": {
+												"object": "uiSliderFill"
 											}
 										}
 									],
 									"actions": [
 										{
-											"type": "comment",
-											"text": "call this update action which recalculates the progress value of the slider handles",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"customAction": "uiSliderValueUpdate [INTERNAL]",
-											"objectClass": "uiSliderHandle",
-											"sid": 351335785406886
-										},
-										{
-											"customAction": "uiSliderScrollUpdate [INTERNAL]",
-											"objectClass": "uiSliderHandle",
-											"sid": 260923487545690
-										},
-										{
-											"type": "comment",
-											"text": "tween the slider bar towards its new position",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "stop-tweens",
-											"objectClass": "ui",
-											"sid": 877319503888117,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSliderHandleMove\""
-											}
-										},
-										{
-											"type": "comment",
-											"text": "the tween here is pretty specific about what it wants to do - it uses lerp to find the right position to go to.\nif you want to override this action without calling this default, then take note of the expression used here so you can get the right slider position.",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8470588235294118,
-												0.6431372549019608,
-												0.8745098039215686,
-												1
-											]
-										},
-										{
-											"id": "tween-two-properties",
-											"objectClass": "ui",
-											"sid": 201409689887855,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiSliderHandleMove\"",
-												"property": "position",
-												"end-x": "Functions.uiSliderHandleGetRealX(ui.ID)",
-												"end-y": "Functions.uiSliderHandleGetRealY(ui.ID)",
-												"time": "0.1",
-												"ease": "easeoutcubic",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
+											"customAction": "uiSliderFillUpdate",
+											"objectClass": "uiSliderFill",
+											"sid": 178916689995950
 										}
 									],
-									"sid": 969842379607499,
-									"children": [
-										{
-											"eventType": "comment",
-											"text": "when a slider handle is performing a tween, use the opportunity to perform a slider fill update",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "pick-by-evaluate",
-													"objectClass": "System",
-													"sid": 936981792355588,
-													"parameters": {
-														"object": "uiSliderFill",
-														"expression": "(uiSliderFill.sliderFillStartID = ui.id) | (uiSliderFill.sliderFillEndID = ui.id)"
-													}
-												},
-												{
-													"id": "for-each",
-													"objectClass": "System",
-													"sid": 859813526314662,
-													"parameters": {
-														"object": "uiSliderFill"
-													}
-												}
-											],
-											"actions": [
-												{
-													"customAction": "uiSliderFillUpdate",
-													"objectClass": "uiSliderFill",
-													"sid": 601757442087566
-												}
-											],
-											"sid": 798463561250551
-										}
+									"sid": 136368141771677
+								}
+							]
+						}
+					],
+					"sid": 137134938249827,
+					"text-color": [
+						0,
+						0,
+						0,
+						0
+					],
+					"background-color": [
+						0.8392156862745098,
+						0.8392156862745098,
+						0.8392156862745098,
+						1
+					]
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "ui / custom actions / checkbox",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"aceType": "action",
+							"aceName": "uiCheckboxSelect",
+							"objectClass": "uiCheckbox",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "ui",
+									"sid": 266493231873346,
+									"parameters": {
+										"unique-id": "uiCheckbox.UID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "call the default selected",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"customAction": "uiSelect",
+									"objectClass": "ui",
+									"sid": 528464046527020
+								}
+							],
+							"sid": 776042284866068
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiCheckboxEnabled",
+							"objectClass": "uiCheckbox",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "I added nothing here, but you could add an event where a little bar gets switched or a checkmark appears",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
 									]
 								}
 							],
-							"sid": 813817565168545,
-							"text-color": [
-								0,
-								0,
-								0,
-								0
-							],
-							"background-color": [
-								0.8392156862745098,
-								0.8392156862745098,
-								0.8392156862745098,
-								1
-							]
+							"sid": 452209524824350
 						},
 						{
-							"eventType": "group",
-							"disabled": false,
-							"title": "ui / behavior / custom actions / checkbox",
-							"description": "",
-							"isActiveOnStart": true,
-							"children": [
+							"aceType": "action",
+							"aceName": "uiCheckboxDisabled",
+							"objectClass": "uiCheckbox",
+							"functionDescription": "use overrides to create special events",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
 								{
-									"aceType": "action",
-									"aceName": "uiCheckboxSelect",
-									"objectClass": "uiCheckbox",
-									"functionDescription": "use overrides to create special events",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [
-										{
-											"id": "pick-by-unique-id",
-											"objectClass": "ui",
-											"sid": 687025803789795,
-											"parameters": {
-												"unique-id": "uiCheckbox.UID"
-											}
-										}
+									"type": "comment",
+									"text": "same thing as above, but for getting disabled",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
 									],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "call the default selected",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"customAction": "uiSelect",
-											"objectClass": "ui",
-											"sid": 868446559082118
-										}
-									],
-									"sid": 941174741682295
-								},
-								{
-									"aceType": "action",
-									"aceName": "uiCheckboxEnabled",
-									"objectClass": "uiCheckbox",
-									"functionDescription": "use overrides to create special events",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "I added nothing here, but you could add an event where a little bar gets switched or a checkmark appears",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										}
-									],
-									"sid": 181589176302001
-								},
-								{
-									"aceType": "action",
-									"aceName": "uiCheckboxDisabled",
-									"objectClass": "uiCheckbox",
-									"functionDescription": "use overrides to create special events",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "same thing as above, but for getting disabled",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										}
-									],
-									"sid": 995223597116553
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
 								}
 							],
-							"sid": 428601653706388,
-							"text-color": [
-								0,
-								0,
-								0,
-								0
-							],
-							"background-color": [
-								0.8392156862745098,
-								0.8392156862745098,
-								0.8392156862745098,
-								1
-							]
-						},
+							"sid": 715071830823829
+						}
+					],
+					"sid": 442016853031648,
+					"text-color": [
+						0,
+						0,
+						0,
+						0
+					],
+					"background-color": [
+						0.8392156862745098,
+						0.8392156862745098,
+						0.8392156862745098,
+						1
+					]
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "ui / custom actions / carousel",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
 						{
 							"eventType": "group",
 							"disabled": false,
-							"title": "ui / behavior / custom actions / carousel",
-							"description": "",
+							"title": "ui / custom actions / carousel / all",
+							"description": "these custom actions apply for all carousels, regardless of type",
 							"isActiveOnStart": true,
 							"children": [
 								{
@@ -2275,7 +2259,7 @@
 										{
 											"id": "pick-by-unique-id",
 											"objectClass": "ui",
-											"sid": 793070011601019,
+											"sid": 279687667458305,
 											"parameters": {
 												"unique-id": "uiCarousel.UID"
 											}
@@ -2317,7 +2301,7 @@
 										{
 											"customAction": "uiSelect",
 											"objectClass": "ui",
-											"sid": 259699386484900
+											"sid": 413080309870325
 										},
 										{
 											"type": "comment",
@@ -2338,7 +2322,7 @@
 										{
 											"id": "stop-tweens",
 											"objectClass": "ui",
-											"sid": 557518564176868,
+											"sid": 575521790428960,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"uiSliderHandleSize\""
@@ -2347,7 +2331,7 @@
 										{
 											"id": "set-size",
 											"objectClass": "ui",
-											"sid": 999315395328642,
+											"sid": 119467243778553,
 											"parameters": {
 												"width": "Self.oWidth + Self.mGrowWidth * 4",
 												"height": "Self.oHeight + Self.mGrowHeight * 4"
@@ -2356,7 +2340,7 @@
 										{
 											"id": "tween-two-properties",
 											"objectClass": "ui",
-											"sid": 203609071949492,
+											"sid": 712441087462772,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"uiSliderHandleSize\"",
@@ -2372,7 +2356,7 @@
 											}
 										}
 									],
-									"sid": 398085269886262
+									"sid": 808412319194473
 								},
 								{
 									"aceType": "action",
@@ -2389,7 +2373,7 @@
 										{
 											"id": "pick-by-unique-id",
 											"objectClass": "ui",
-											"sid": 993023977513726,
+											"sid": 880149966339112,
 											"parameters": {
 												"unique-id": "uiCarousel.UID"
 											}
@@ -2431,7 +2415,7 @@
 										{
 											"id": "stop-tweens",
 											"objectClass": "ui",
-											"sid": 349105912028681,
+											"sid": 672333762306983,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"uiSize\""
@@ -2440,7 +2424,7 @@
 										{
 											"id": "set-size",
 											"objectClass": "ui",
-											"sid": 209113824337296,
+											"sid": 517181025280937,
 											"parameters": {
 												"width": "Self.oWidth + Self.mGrowWidth * 2",
 												"height": "Self.oHeight + Self.mGrowHeight * 2"
@@ -2449,7 +2433,7 @@
 										{
 											"id": "tween-two-properties",
 											"objectClass": "ui",
-											"sid": 275576052260834,
+											"sid": 302563839340256,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"uiSize\"",
@@ -2465,157 +2449,7 @@
 											}
 										}
 									],
-									"sid": 339134983211968
-								},
-								{
-									"aceType": "action",
-									"aceName": "uiCarouselIncrement",
-									"objectClass": "uiCarousel",
-									"functionDescription": "use overrides to create special events",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [
-										{
-											"id": "pick-by-unique-id",
-											"objectClass": "ui",
-											"sid": 865199096831805,
-											"parameters": {
-												"unique-id": "uiCarousel.UID"
-											}
-										}
-									],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "position tween",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "set-x",
-											"objectClass": "ui",
-											"sid": 835118022793489,
-											"parameters": {
-												"x": "Self.X + 4"
-											}
-										},
-										{
-											"id": "stop-tweens",
-											"objectClass": "ui",
-											"sid": 790599535615339,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiShiftLeft\""
-											}
-										},
-										{
-											"id": "tween-one-property",
-											"objectClass": "ui",
-											"sid": 365769846464647,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiShiftLeft\"",
-												"property": "offsetX",
-												"end-value": "Self.X - 4",
-												"time": "0.1",
-												"ease": "easeoutcubic",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										}
-									],
-									"sid": 862286754940497
-								},
-								{
-									"aceType": "action",
-									"aceName": "uiCarouselDecrement",
-									"objectClass": "uiCarousel",
-									"functionDescription": "use overrides to create special events",
-									"functionCategory": "ui",
-									"functionReturnType": "none",
-									"functionCopyPicked": false,
-									"functionIsAsync": false,
-									"functionParameters": [],
-									"eventType": "custom-ace-block",
-									"conditions": [
-										{
-											"id": "pick-by-unique-id",
-											"objectClass": "ui",
-											"sid": 720902012779003,
-											"parameters": {
-												"unique-id": "uiCarousel.UID"
-											}
-										}
-									],
-									"actions": [
-										{
-											"type": "comment",
-											"text": "position tween",
-											"text-color": [
-												0,
-												0,
-												0,
-												1
-											],
-											"background-color": [
-												0.8745098039215686,
-												0.8352941176470589,
-												0.6431372549019608,
-												1
-											]
-										},
-										{
-											"id": "set-x",
-											"objectClass": "ui",
-											"sid": 975971743701636,
-											"parameters": {
-												"x": "Self.X - 4"
-											}
-										},
-										{
-											"id": "stop-tweens",
-											"objectClass": "ui",
-											"sid": 405796130268341,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiShiftRight\""
-											}
-										},
-										{
-											"id": "tween-one-property",
-											"objectClass": "ui",
-											"sid": 351304761227457,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"uiShiftRight\"",
-												"property": "offsetX",
-												"end-value": "Self.X + 4",
-												"time": "0.1",
-												"ease": "easeoutcubic",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
-										}
-									],
-									"sid": 826419334271167
+									"sid": 592799525200106
 								},
 								{
 									"aceType": "action",
@@ -2632,7 +2466,7 @@
 										{
 											"id": "pick-by-unique-id",
 											"objectClass": "ui",
-											"sid": 365316210705018,
+											"sid": 242546226095158,
 											"parameters": {
 												"unique-id": "uiCarousel.UID"
 											}
@@ -2658,7 +2492,7 @@
 										{
 											"id": "set-angle",
 											"objectClass": "ui",
-											"sid": 970935775805782,
+											"sid": 918659778292861,
 											"parameters": {
 												"angle": "-10"
 											}
@@ -2666,7 +2500,7 @@
 										{
 											"id": "stop-tweens",
 											"objectClass": "ui",
-											"sid": 402120161833531,
+											"sid": 317422035469588,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"uiTiltMax\""
@@ -2675,7 +2509,7 @@
 										{
 											"id": "tween-one-property",
 											"objectClass": "ui",
-											"sid": 484064519379874,
+											"sid": 979709930833467,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"uiTiltMax\"",
@@ -2708,7 +2542,7 @@
 										{
 											"id": "set-default-color",
 											"objectClass": "ui",
-											"sid": 372254736082488,
+											"sid": 865183046600789,
 											"parameters": {
 												"color": "rgbEx(100, 30, 30)"
 											}
@@ -2716,7 +2550,7 @@
 										{
 											"id": "stop-tweens",
 											"objectClass": "ui",
-											"sid": 268857750674115,
+											"sid": 545674474738465,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"uiColorCapMax\""
@@ -2725,7 +2559,7 @@
 										{
 											"id": "tween-one-property",
 											"objectClass": "ui",
-											"sid": 126462974212187,
+											"sid": 854539527487239,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"uiColorCapMax\"",
@@ -2740,7 +2574,7 @@
 											}
 										}
 									],
-									"sid": 617940779803448
+									"sid": 901710163810073
 								},
 								{
 									"aceType": "action",
@@ -2757,7 +2591,7 @@
 										{
 											"id": "pick-by-unique-id",
 											"objectClass": "ui",
-											"sid": 361145490729280,
+											"sid": 263029545066382,
 											"parameters": {
 												"unique-id": "uiCarousel.UID"
 											}
@@ -2783,7 +2617,7 @@
 										{
 											"id": "set-angle",
 											"objectClass": "ui",
-											"sid": 886573004019910,
+											"sid": 698442778189150,
 											"parameters": {
 												"angle": "10"
 											}
@@ -2791,7 +2625,7 @@
 										{
 											"id": "stop-tweens",
 											"objectClass": "ui",
-											"sid": 479964796862240,
+											"sid": 490326643991576,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"uiTiltMin\""
@@ -2800,7 +2634,7 @@
 										{
 											"id": "tween-one-property",
 											"objectClass": "ui",
-											"sid": 431930041537730,
+											"sid": 236500952100275,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"uiTiltMin\"",
@@ -2833,7 +2667,7 @@
 										{
 											"id": "set-default-color",
 											"objectClass": "ui",
-											"sid": 138580475811812,
+											"sid": 993019339051238,
 											"parameters": {
 												"color": "rgbEx(100, 30, 30)"
 											}
@@ -2841,7 +2675,7 @@
 										{
 											"id": "stop-tweens",
 											"objectClass": "ui",
-											"sid": 703865727161094,
+											"sid": 795539027846979,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"uiColorCapMax\""
@@ -2850,7 +2684,7 @@
 										{
 											"id": "tween-one-property",
 											"objectClass": "ui",
-											"sid": 363706571383511,
+											"sid": 299223236651920,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"uiColorCapMax\"",
@@ -2865,10 +2699,459 @@
 											}
 										}
 									],
-									"sid": 422844249664076
+									"sid": 750091336220192
 								}
 							],
-							"sid": 953532623491872,
+							"sid": 645110078801920,
+							"text-color": [
+								0,
+								0,
+								0,
+								0
+							],
+							"background-color": [
+								0.8392156862745098,
+								0.8392156862745098,
+								0.8392156862745098,
+								1
+							]
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "ui / custom actions / carousel / value",
+							"description": "for value carousels only, which only display text",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"aceType": "action",
+									"aceName": "uiCarouselIncrement",
+									"objectClass": "uiCarousel",
+									"functionDescription": "use overrides to create special events",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "ui",
+											"sid": 581356558676579,
+											"parameters": {
+												"unique-id": "uiCarousel.UID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "position tween",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-x",
+											"objectClass": "ui",
+											"sid": 726579444965794,
+											"parameters": {
+												"x": "Self.X + 4"
+											}
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "ui",
+											"sid": 301308188143258,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiShiftLeft\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "ui",
+											"sid": 405503844827740,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiShiftLeft\"",
+												"property": "offsetX",
+												"end-value": "Self.X - 4",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 550862826042771
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiCarouselDecrement",
+									"objectClass": "uiCarousel",
+									"functionDescription": "use overrides to create special events",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "ui",
+											"sid": 124503656636972,
+											"parameters": {
+												"unique-id": "uiCarousel.UID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "position tween",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-x",
+											"objectClass": "ui",
+											"sid": 592561086011361,
+											"parameters": {
+												"x": "Self.X - 4"
+											}
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "ui",
+											"sid": 463828145017772,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiShiftRight\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "ui",
+											"sid": 447570241166715,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiShiftRight\"",
+												"property": "offsetX",
+												"end-value": "Self.X + 4",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 530443442728821
+								}
+							],
+							"sid": 847854331770867,
+							"text-color": [
+								0,
+								0,
+								0,
+								0
+							],
+							"background-color": [
+								0.8392156862745098,
+								0.8392156862745098,
+								0.8392156862745098,
+								1
+							]
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "ui / custom actions / carousel / content",
+							"description": "for content carousels which can display anything by creating a template - enable the bool on a uiCarousel to use this",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"aceType": "action",
+									"aceName": "uiCarouselContentIncrement",
+									"objectClass": "uiCarousel",
+									"functionDescription": "use overrides to create special events",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "do the normal default for a value carousel",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"customAction": "uiCarouselIncrement",
+											"objectClass": "uiCarousel",
+											"sid": 781298894306953
+										}
+									],
+									"sid": 651027140149007
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiCarouselContentDecrement",
+									"objectClass": "uiCarousel",
+									"functionDescription": "use overrides to create special events",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "do the normal default for a value carousel",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"customAction": "uiCarouselDecrement",
+											"objectClass": "uiCarousel",
+											"sid": 633055677076356
+										}
+									],
+									"sid": 541304665531257
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiCarouselContentCreatedIncrement",
+									"objectClass": "uiCarouselContentAnchor",
+									"functionDescription": "use overrides to create special events",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "fade in",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiCarouselContentAnchor",
+											"sid": 554478374524403,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fade\"",
+												"property": "offsetOpacity",
+												"end-value": "100",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 820346068106638
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiCarouselContentCreatedDecrement",
+									"objectClass": "uiCarouselContentAnchor",
+									"functionDescription": "use overrides to create special events",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "do the same as increment",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"customAction": "uiCarouselContentCreatedIncrement",
+											"objectClass": "uiCarouselContentAnchor",
+											"sid": 277481550013646
+										}
+									],
+									"sid": 469898467373256
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiCarouselContentDestroyedIncrement",
+									"objectClass": "uiCarouselContentAnchor",
+									"functionDescription": "use overrides to create special events",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "fade out",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiCarouselContentAnchor",
+											"sid": 960070679408743,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fade\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiCarouselContentAnchor",
+											"sid": 265892216876684,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fade\"",
+												"property": "offsetOpacity",
+												"end-value": "0",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "yes",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 463749988638470
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiCarouselContentDestroyedDecrement",
+									"objectClass": "uiCarouselContentAnchor",
+									"functionDescription": "use overrides to create special events",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "do the same as increment",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"customAction": "uiCarouselContentDestroyedIncrement",
+											"objectClass": "uiCarouselContentAnchor",
+											"sid": 596298715990542
+										}
+									],
+									"sid": 750218198889031
+								}
+							],
+							"sid": 209042264409386,
 							"text-color": [
 								0,
 								0,
@@ -2883,7 +3166,7 @@
 							]
 						}
 					],
-					"sid": 134548567102579,
+					"sid": 458402553135933,
 					"text-color": [
 						0,
 						0,
@@ -2894,6 +3177,44 @@
 						0.8392156862745098,
 						0.8392156862745098,
 						0.8392156862745098,
+						1
+					]
+				}
+			],
+			"sid": 146436324050968,
+			"text-color": [
+				0,
+				0,
+				0,
+				0
+			],
+			"background-color": [
+				0.8392156862745098,
+				0.8392156862745098,
+				0.8392156862745098,
+				1
+			]
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "ui / behavior",
+			"description": "the hardest to understand group in this entire framework, for sure. there are some things here that you will want to change, like the custom actions for UI components that define the default behavior of every component when certain events happen. there's also stuff to do with updates, selection, and navigation.",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "some functions here are marked with [INTERNAL], meaning that you shouldn't be using them when making your game unless it's for a specific case where you know what you're doing",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.8470588235294118,
+						0.6431372549019608,
+						0.8745098039215686,
 						1
 					]
 				},
@@ -5963,6 +6284,102 @@
 											"children": [
 												{
 													"eventType": "comment",
+													"text": "create the new content, if content view is enabled",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "is-boolean-instance-variable-set",
+															"objectClass": "uiCarousel",
+															"sid": 504460413299486,
+															"parameters": {
+																"instance-variable": "carouselContentView"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "create-object-by-name",
+															"objectClass": "System",
+															"sid": 818625255832662,
+															"parameters": {
+																"object-name": "uiCarousel.carouselContentObjectName",
+																"layer": "uiCarousel.LayerName",
+																"x": "uiCarousel.X",
+																"y": "uiCarousel.Y",
+																"create-hierarchy": true,
+																"template-name": "tokenat(uiCarousel.carouselValues, uiCarousel.carouselIndex, uiValueDelimiter)"
+															}
+														}
+													],
+													"sid": 943705134644052,
+													"children": [
+														{
+															"eventType": "comment",
+															"text": "add new anchor as child to carousel",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "pick-last-created",
+																	"objectClass": "System",
+																	"sid": 145576472443865,
+																	"parameters": {
+																		"object": "uiCarouselContentAnchor"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "add-child",
+																	"objectClass": "uiCarousel",
+																	"sid": 876632608622184,
+																	"parameters": {
+																		"child": "uiCarouselContentAnchor",
+																		"transform-x": true,
+																		"transform-y": true,
+																		"transform-w": false,
+																		"transform-h": false,
+																		"transform-a": true,
+																		"transform-o": true,
+																		"transform-z-elevation": true,
+																		"transform-visibility": false,
+																		"destroy-with-parent": true
+																	}
+																}
+															],
+															"sid": 196381705387372
+														}
+													]
+												},
+												{
+													"eventType": "comment",
 													"text": "if index is greater",
 													"text-color": [
 														0,
@@ -5991,14 +6408,160 @@
 															}
 														}
 													],
-													"actions": [
+													"actions": [],
+													"sid": 894808383862784,
+													"children": [
 														{
-															"customAction": "uiCarouselIncrement",
-															"objectClass": "uiCarousel",
-															"sid": 799039233470026
+															"eventType": "comment",
+															"text": "different custom actions based on if this is a content type",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "is-boolean-instance-variable-set",
+																	"objectClass": "uiCarousel",
+																	"sid": 568882689804694,
+																	"parameters": {
+																		"instance-variable": "carouselContentView"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"customAction": "uiCarouselContentIncrement",
+																	"objectClass": "uiCarousel",
+																	"sid": 302777887875884
+																}
+															],
+															"sid": 356495301488081,
+															"children": [
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "pick-children",
+																			"objectClass": "uiCarousel",
+																			"sid": 599956806937050,
+																			"parameters": {
+																				"child": "uiCarouselContentAnchor",
+																				"which": "own"
+																			}
+																		}
+																	],
+																	"actions": [],
+																	"sid": 466960179424917,
+																	"children": [
+																		{
+																			"eventType": "comment",
+																			"text": "destroy action for existing carousel",
+																			"text-color": [
+																				0,
+																				0,
+																				0,
+																				1
+																			],
+																			"background-color": [
+																				0.8745098039215686,
+																				0.8352941176470589,
+																				0.6431372549019608,
+																				1
+																			]
+																		},
+																		{
+																			"eventType": "block",
+																			"conditions": [
+																				{
+																					"id": "is-boolean-instance-variable-set",
+																					"objectClass": "uiCarouselContentAnchor",
+																					"sid": 169014828402271,
+																					"parameters": {
+																						"instance-variable": "carouselContentAnchorInitialized"
+																					}
+																				}
+																			],
+																			"actions": [
+																				{
+																					"customAction": "uiCarouselContentDestroyedIncrement",
+																					"objectClass": "uiCarouselContentAnchor",
+																					"sid": 750591481322282
+																				}
+																			],
+																			"sid": 961139262234493
+																		},
+																		{
+																			"eventType": "comment",
+																			"text": "call created action for carousel",
+																			"text-color": [
+																				0,
+																				0,
+																				0,
+																				1
+																			],
+																			"background-color": [
+																				0.8745098039215686,
+																				0.8352941176470589,
+																				0.6431372549019608,
+																				1
+																			]
+																		},
+																		{
+																			"eventType": "block",
+																			"conditions": [
+																				{
+																					"id": "is-boolean-instance-variable-set",
+																					"objectClass": "uiCarouselContentAnchor",
+																					"sid": 403457465498475,
+																					"parameters": {
+																						"instance-variable": "carouselContentAnchorInitialized"
+																					},
+																					"isInverted": true
+																				}
+																			],
+																			"actions": [
+																				{
+																					"customAction": "uiCarouselContentCreatedIncrement",
+																					"objectClass": "uiCarouselContentAnchor",
+																					"sid": 498930478970892
+																				}
+																			],
+																			"sid": 926574345457860
+																		}
+																	]
+																}
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "else",
+																	"objectClass": "System",
+																	"sid": 672229804354208
+																}
+															],
+															"actions": [
+																{
+																	"customAction": "uiCarouselIncrement",
+																	"objectClass": "uiCarousel",
+																	"sid": 912398904211864
+																}
+															],
+															"sid": 497896955226442
 														}
-													],
-													"sid": 894808383862784
+													]
 												},
 												{
 													"eventType": "comment",
@@ -6035,14 +6598,211 @@
 															}
 														}
 													],
-													"actions": [
+													"actions": [],
+													"sid": 572293087432117,
+													"children": [
 														{
-															"customAction": "uiCarouselDecrement",
+															"eventType": "comment",
+															"text": "different custom actions based on if this is a content type",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "is-boolean-instance-variable-set",
+																	"objectClass": "uiCarousel",
+																	"sid": 455790150832886,
+																	"parameters": {
+																		"instance-variable": "carouselContentView"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"customAction": "uiCarouselContentDecrement",
+																	"objectClass": "uiCarousel",
+																	"sid": 213635248650219
+																}
+															],
+															"sid": 648064181244356,
+															"children": [
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "pick-children",
+																			"objectClass": "uiCarousel",
+																			"sid": 564738595725011,
+																			"parameters": {
+																				"child": "uiCarouselContentAnchor",
+																				"which": "own"
+																			}
+																		}
+																	],
+																	"actions": [],
+																	"sid": 882286749309686,
+																	"children": [
+																		{
+																			"eventType": "comment",
+																			"text": "destroy action for existing carousel",
+																			"text-color": [
+																				0,
+																				0,
+																				0,
+																				1
+																			],
+																			"background-color": [
+																				0.8745098039215686,
+																				0.8352941176470589,
+																				0.6431372549019608,
+																				1
+																			]
+																		},
+																		{
+																			"eventType": "block",
+																			"conditions": [
+																				{
+																					"id": "is-boolean-instance-variable-set",
+																					"objectClass": "uiCarouselContentAnchor",
+																					"sid": 258875403250022,
+																					"parameters": {
+																						"instance-variable": "carouselContentAnchorInitialized"
+																					}
+																				}
+																			],
+																			"actions": [
+																				{
+																					"customAction": "uiCarouselContentDestroyedDecrement",
+																					"objectClass": "uiCarouselContentAnchor",
+																					"sid": 591044413714696
+																				}
+																			],
+																			"sid": 690551283386407
+																		},
+																		{
+																			"eventType": "comment",
+																			"text": "call created action for carousel",
+																			"text-color": [
+																				0,
+																				0,
+																				0,
+																				1
+																			],
+																			"background-color": [
+																				0.8745098039215686,
+																				0.8352941176470589,
+																				0.6431372549019608,
+																				1
+																			]
+																		},
+																		{
+																			"eventType": "block",
+																			"conditions": [
+																				{
+																					"id": "is-boolean-instance-variable-set",
+																					"objectClass": "uiCarouselContentAnchor",
+																					"sid": 706555472345236,
+																					"parameters": {
+																						"instance-variable": "carouselContentAnchorInitialized"
+																					},
+																					"isInverted": true
+																				}
+																			],
+																			"actions": [
+																				{
+																					"customAction": "uiCarouselContentCreatedDecrement",
+																					"objectClass": "uiCarouselContentAnchor",
+																					"sid": 363340891091010
+																				}
+																			],
+																			"sid": 752502007691131
+																		}
+																	]
+																}
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "else",
+																	"objectClass": "System",
+																	"sid": 619614658038717
+																}
+															],
+															"actions": [
+																{
+																	"customAction": "uiCarouselDecrement",
+																	"objectClass": "uiCarousel",
+																	"sid": 538226787636206
+																}
+															],
+															"sid": 886877321828438
+														}
+													]
+												},
+												{
+													"eventType": "comment",
+													"text": "set initialized to true for new anchor",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "pick-children",
 															"objectClass": "uiCarousel",
-															"sid": 426624972221634
+															"sid": 713760037775347,
+															"parameters": {
+																"child": "uiCarouselContentAnchor",
+																"which": "own"
+															}
+														},
+														{
+															"id": "is-boolean-instance-variable-set",
+															"objectClass": "uiCarouselContentAnchor",
+															"sid": 537786379164437,
+															"parameters": {
+																"instance-variable": "carouselContentAnchorInitialized"
+															},
+															"isInverted": true
 														}
 													],
-													"sid": 572293087432117
+													"actions": [
+														{
+															"id": "set-boolean-instvar",
+															"objectClass": "uiCarouselContentAnchor",
+															"sid": 833115761174982,
+															"parameters": {
+																"instance-variable": "carouselContentAnchorInitialized",
+																"value": "true"
+															}
+														}
+													],
+													"sid": 485912538266325
 												},
 												{
 													"eventType": "comment",

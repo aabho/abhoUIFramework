@@ -40,6 +40,155 @@
 			"subLayers": [],
 			"instances": [
 				{
+					"type": "uiMainContentCarousel",
+					"properties": {
+						"left-margin": 2,
+						"right-margin": 2,
+						"top-margin": 2,
+						"bottom-margin": 2,
+						"edges": "stretch",
+						"fill": "stretch",
+						"initially-visible": true,
+						"origin": "center",
+						"seams": "exact"
+					},
+					"uid": 59,
+					"instanceVariables": {
+						"carouselIndex": 0,
+						"carouselIndexLast": -1,
+						"carouselValues": "boring,mid,interesting",
+						"carouselContentView": true,
+						"carouselContentObjectName": "uiMainCarouselContentAnchor",
+						"section": "main",
+						"ID": "mainDummyCaro2",
+						"navigable": true,
+						"active": false,
+						"activeTrigger": false,
+						"chosenTrigger": false,
+						"overrideUp": "",
+						"overrideDown": "",
+						"overrideLeft": "",
+						"overrideRight": "",
+						"oWidth": 0,
+						"oHeight": 0,
+						"mGrowWidth": 2,
+						"mGrowHeight": 2
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 59,
+						"children": [
+							{
+								"uid": 103,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							},
+							{
+								"uid": 102,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							},
+							{
+								"uid": 104,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							},
+							{
+								"uid": 105,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 56,
+						"y": 58,
+						"width": 84,
+						"height": 32,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
 					"type": "uiMainButton",
 					"properties": {
 						"left-margin": 2,
@@ -2298,7 +2447,7 @@
 					},
 					"world": {
 						"x": 44,
-						"y": 53,
+						"y": 16,
 						"width": 60,
 						"height": 11,
 						"originX": 0.5,
@@ -2314,7 +2463,7 @@
 					}
 				},
 				{
-					"type": "uiMainSettingsCarousel",
+					"type": "uiMainCarousel",
 					"properties": {
 						"left-margin": 2,
 						"right-margin": 2,
@@ -2329,9 +2478,10 @@
 					"uid": 91,
 					"instanceVariables": {
 						"carouselIndex": 0,
-						"carouselIndexLast": 0,
+						"carouselIndexLast": -1,
 						"carouselValues": "LOW,MEDIUM,HIGH,ULTRA,INSANE",
 						"carouselContentView": false,
+						"carouselContentObjectName": "",
 						"section": "main",
 						"ID": "mainDummyCaro1",
 						"navigable": true,
@@ -2461,7 +2611,7 @@
 					},
 					"world": {
 						"x": 47,
-						"y": 67,
+						"y": 30,
 						"width": 66,
 						"height": 12,
 						"originX": 0.5,
@@ -2533,7 +2683,7 @@
 					},
 					"world": {
 						"x": 47,
-						"y": 67,
+						"y": 30,
 						"width": 51,
 						"height": 8,
 						"originX": 0.5,
@@ -2598,7 +2748,7 @@
 					},
 					"world": {
 						"x": 74,
-						"y": 67,
+						"y": 30,
 						"width": 5,
 						"height": 5,
 						"originX": 0.4098360655737705,
@@ -2663,7 +2813,7 @@
 					},
 					"world": {
 						"x": 20,
-						"y": 67,
+						"y": 30,
 						"width": 5,
 						"height": 5,
 						"originX": 0.4098360655737705,
@@ -2728,7 +2878,7 @@
 					},
 					"world": {
 						"x": 15,
-						"y": 62,
+						"y": 25,
 						"width": 26,
 						"height": 10,
 						"originX": 0,
@@ -2793,7 +2943,7 @@
 					},
 					"world": {
 						"x": 79,
-						"y": 72,
+						"y": 35,
 						"width": 26,
 						"height": 10,
 						"originX": 0,
@@ -2842,6 +2992,266 @@
 							1,
 							1,
 							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsCarouselArrows",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 103,
+					"instanceVariables": {
+						"isRight": false
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": 59,
+						"uid": 103,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 19,
+						"y": 58,
+						"width": 5,
+						"height": 5,
+						"originX": 0.4098360655737705,
+						"originY": 0.46153846153846156,
+						"color": [
+							1,
+							1,
+							1,
+							0.1
+						],
+						"angle": 3.141592653589793,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsCarouselGradient",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 104,
+					"instanceVariables": {
+						"isRight": false
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": 59,
+						"uid": 104,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 15,
+						"y": 43,
+						"width": 26,
+						"height": 30,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							0
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsCarouselGradient",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 105,
+					"instanceVariables": {
+						"isRight": true
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": 59,
+						"uid": 105,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 97,
+						"y": 73,
+						"width": 26,
+						"height": 30,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							0
+						],
+						"angle": 3.141592653589793,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "uiMainSettingsCarouselArrows",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 102,
+					"instanceVariables": {
+						"isRight": true
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": 59,
+						"uid": 102,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 93,
+						"y": 58,
+						"width": 5,
+						"height": 5,
+						"originX": 0.4098360655737705,
+						"originY": 0.46153846153846156,
+						"color": [
+							1,
+							1,
+							1,
+							0.1
 						],
 						"angle": 0,
 						"zElevation": 0

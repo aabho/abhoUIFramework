@@ -13,7 +13,7 @@
 		{
 			"name": "carouselIndexLast",
 			"type": "number",
-			"desc": "used to record changes in the index",
+			"desc": "used to record changes in the index, -1 on default so that a update is triggered when created",
 			"show": false,
 			"sid": 281016323706203
 		},
@@ -30,11 +30,19 @@
 			"desc": "turns this into a content carousel, which displays anything you want, not just text",
 			"show": true,
 			"sid": 289044218418289
+		},
+		{
+			"name": "carouselContentObjectName",
+			"type": "string",
+			"desc": "name of the uiCarouselContentObject to create when using carousel",
+			"show": true,
+			"sid": 669632113655516
 		}
 	],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"members": [
-		"uiMainSettingsCarousel"
+		"uiMainCarousel",
+		"uiMainContentCarousel"
 	]
 }

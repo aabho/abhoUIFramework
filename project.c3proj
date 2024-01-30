@@ -95,9 +95,7 @@
 				"name": "essentials"
 			},
 			{
-				"items": [
-					"uiMainScrollMask"
-				],
+				"items": [],
 				"subfolders": [
 					{
 						"items": [
@@ -131,9 +129,13 @@
 							"uiMainDummyCheck2Anchor",
 							"uiMainQuitBg",
 							"uiMainQuitButton",
-							"uiMainSettingsCarousel",
 							"uiMainSettingsCarouselArrows",
-							"uiMainSettingsCarouselGradient"
+							"uiMainSettingsCarouselGradient",
+							"uiMainCarouselContentAnchor",
+							"uiMainCarousel",
+							"uiMainScrollMask",
+							"uiMainContentCarousel",
+							"uiMainCarouselAbho"
 						],
 						"subfolders": [],
 						"name": "main"
@@ -180,7 +182,8 @@
 					},
 					{
 						"items": [
-							"uiCarousel"
+							"uiCarousel",
+							"uiCarouselContentAnchor"
 						],
 						"subfolders": [],
 						"name": "ui carousel"
@@ -192,7 +195,8 @@
 	},
 	"layouts": {
 		"items": [
-			"test"
+			"test",
+			"instances"
 		],
 		"subfolders": []
 	},
