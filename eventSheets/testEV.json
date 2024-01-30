@@ -106,6 +106,37 @@
 							]
 						},
 						{
+							"functionName": "carousel mainDummyCaro1",
+							"functionDescription": "",
+							"functionCategory": "main",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [
+								{
+									"name": "index",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"sid": 156700033252602
+								}
+							],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "log",
+									"objectClass": "Browser",
+									"sid": 224892827549306,
+									"parameters": {
+										"type": "log",
+										"message": "\"dummyCaro1: \" & index"
+									}
+								}
+							],
+							"sid": 907358862008692
+						},
+						{
 							"aceType": "action",
 							"aceName": "uiChoose",
 							"objectClass": "uiMainSettingsCarousel",
@@ -288,7 +319,7 @@
 									"objectClass": "txt",
 									"sid": 483652712993755,
 									"parameters": {
-										"text": "tokenat(uiCarousel.carouselValues, uiCarousel.carouselIndex, uiValueDelimiter)"
+										"text": "tokenat(uiMainSettingsCarousel.carouselValues, uiMainSettingsCarousel.carouselIndex, uiValueDelimiter)"
 									}
 								},
 								{
@@ -412,7 +443,7 @@
 									"objectClass": "txt",
 									"sid": 943474004050061,
 									"parameters": {
-										"text": "tokenat(uiCarousel.carouselValues, uiCarousel.carouselIndex, uiValueDelimiter)"
+										"text": "tokenat(uiMainSettingsCarousel.carouselValues, uiMainSettingsCarousel.carouselIndex, uiValueDelimiter)"
 									}
 								},
 								{
