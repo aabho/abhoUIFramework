@@ -10475,6 +10475,48 @@
 													"sid": 260307186027903,
 													"children": [
 														{
+															"eventType": "variable",
+															"name": "mRotatedX",
+															"type": "number",
+															"initialValue": "0",
+															"comment": "",
+															"isStatic": false,
+															"isConstant": false,
+															"sid": 983309699596888
+														},
+														{
+															"eventType": "comment",
+															"text": "basically takes mouse position and rotates it relative to the carousel angle",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [],
+															"actions": [
+																{
+																	"id": "set-eventvar-value",
+																	"objectClass": "System",
+																	"sid": 780703038310138,
+																	"parameters": {
+																		"variable": "mRotatedX",
+																		"value": "cos(-uiCarousel.Angle) * (Mouse.X - uiCarousel.BBoxMidX) - sin(-uiCarousel.Angle) * (Mouse.Y - uiCarousel.BBoxMidY)"
+																	}
+																}
+															],
+															"sid": 585624552721333
+														},
+														{
 															"eventType": "comment",
 															"text": "increment",
 															"text-color": [
@@ -10496,11 +10538,11 @@
 																{
 																	"id": "compare-two-values",
 																	"objectClass": "System",
-																	"sid": 578109873642578,
+																	"sid": 863901149745778,
 																	"parameters": {
-																		"first-value": "Mouse.X",
+																		"first-value": "mRotatedX",
 																		"comparison": 4,
-																		"second-value": "uiCarousel.BBoxMidX"
+																		"second-value": "0"
 																	}
 																}
 															],
