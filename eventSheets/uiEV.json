@@ -32,10 +32,36 @@
 			"name": "uiInputMode",
 			"type": "string",
 			"initialValue": "default",
-			"comment": "what mode does navigation adhere to - can be \"default\", \"slider\", etc.",
+			"comment": "what mode does navigation adhere to - can be \"default\", \"slider\", \"carousel\"",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 607184615196283
+		},
+		{
+			"eventType": "comment",
+			"text": "delimiter used for carousels\non default ',' but if you need to use a comma in a value you want to display, feel free to change",
+			"text-color": [
+				0,
+				0,
+				0,
+				1
+			],
+			"background-color": [
+				0.6705882352941176,
+				0.8745098039215686,
+				0.6431372549019608,
+				1
+			]
+		},
+		{
+			"eventType": "variable",
+			"name": "uiValueDelimiter",
+			"type": "string",
+			"initialValue": ",",
+			"comment": "comma by default",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 434187032971318
 		},
 		{
 			"eventType": "comment",
@@ -415,7 +441,7 @@
 						},
 						{
 							"eventType": "comment",
-							"text": "pick attached slider ticks",
+							"text": "slider ticks aren't here since they are generated automatically",
 							"text-color": [
 								0,
 								0,
@@ -423,51 +449,11 @@
 								1
 							],
 							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
+								0.8470588235294118,
 								0.6431372549019608,
+								0.8745098039215686,
 								1
 							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [],
-							"actions": [
-								{
-									"type": "comment",
-									"text": "the slider ticks DO inherit size from the slider bar, FYI, unlike the other slider components",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8470588235294118,
-										0.6431372549019608,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"id": "add-child",
-									"objectClass": "uiSliderBar",
-									"sid": 455896624611280,
-									"parameters": {
-										"child": "uiSliderTick",
-										"transform-x": true,
-										"transform-y": true,
-										"transform-w": true,
-										"transform-h": true,
-										"transform-a": true,
-										"transform-o": true,
-										"transform-z-elevation": true,
-										"transform-visibility": true,
-										"destroy-with-parent": true
-									}
-								}
-							],
-							"sid": 476676582913790
 						}
 					]
 				},
@@ -758,6 +744,42 @@
 							"sid": 817828561882461
 						}
 					]
+				},
+				{
+					"eventType": "comment",
+					"text": "when carousel is created",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "uiCarousel",
+							"sid": 698181773338598
+						},
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "ui",
+							"sid": 651769596315189,
+							"parameters": {
+								"unique-id": "uiCarousel.UID"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 412316278439216
 				}
 			],
 			"sid": 433446244111998,
@@ -1178,14 +1200,14 @@
 										{
 											"id": "tween-one-property",
 											"objectClass": "ui",
-											"sid": 492965061846121,
+											"sid": 619247356069816,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"grayed\"",
 												"property": "offsetColor",
 												"end-value": "rgbEx(100, 100, 100)",
 												"time": "0.1",
-												"ease": "easeinoutsine",
+												"ease": "easeoutsine",
 												"destroy-on-complete": "no",
 												"loop": "no",
 												"ping-pong": "no",
@@ -1236,14 +1258,14 @@
 										{
 											"id": "tween-one-property",
 											"objectClass": "ui",
-											"sid": 841125290090299,
+											"sid": 154318542537755,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"grayed\"",
 												"property": "offsetColor",
 												"end-value": "rgbEx(50, 50, 50)",
 												"time": "0.1",
-												"ease": "easeinoutsine",
+												"ease": "easeoutsine",
 												"destroy-on-complete": "no",
 												"loop": "no",
 												"ping-pong": "no",
@@ -1492,22 +1514,6 @@
 									]
 								},
 								{
-									"eventType": "comment",
-									"text": "ui slider handle custom action handlers",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.6431372549019608,
-										0.8470588235294118,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
 									"aceType": "action",
 									"aceName": "uiSliderHandleSelect",
 									"objectClass": "uiSliderHandle",
@@ -1529,6 +1535,27 @@
 										}
 									],
 									"actions": [
+										{
+											"type": "comment",
+											"text": "call the default selected",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"customAction": "uiSelect",
+											"objectClass": "ui",
+											"sid": 973907617433497
+										},
 										{
 											"type": "comment",
 											"text": "grow component even larger",
@@ -2006,20 +2033,50 @@
 							"isActiveOnStart": true,
 							"children": [
 								{
-									"eventType": "comment",
-									"text": "ui checkbox custom action handlers",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
+									"aceType": "action",
+									"aceName": "uiCheckboxSelect",
+									"objectClass": "uiCheckbox",
+									"functionDescription": "use overrides to create special events",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "ui",
+											"sid": 687025803789795,
+											"parameters": {
+												"unique-id": "uiCheckbox.UID"
+											}
+										}
 									],
-									"background-color": [
-										0.6431372549019608,
-										0.8470588235294118,
-										0.8745098039215686,
-										1
-									]
+									"actions": [
+										{
+											"type": "comment",
+											"text": "call the default selected",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"customAction": "uiSelect",
+											"objectClass": "ui",
+											"sid": 868446559082118
+										}
+									],
+									"sid": 941174741682295
 								},
 								{
 									"aceType": "action",
@@ -2087,6 +2144,635 @@
 								}
 							],
 							"sid": 428601653706388,
+							"text-color": [
+								0,
+								0,
+								0,
+								0
+							],
+							"background-color": [
+								0.8392156862745098,
+								0.8392156862745098,
+								0.8392156862745098,
+								1
+							]
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "ui / behavior / custom actions / carousel",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"aceType": "action",
+									"aceName": "uiCarouselSelect",
+									"objectClass": "uiCarousel",
+									"functionDescription": "use overrides to create special events",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "ui",
+											"sid": 793070011601019,
+											"parameters": {
+												"unique-id": "uiCarousel.UID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "this is for directional inputs, doesn't happen with mouse",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8470588235294118,
+												0.6431372549019608,
+												0.8745098039215686,
+												1
+											]
+										},
+										{
+											"type": "comment",
+											"text": "call default select",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"customAction": "uiSelect",
+											"objectClass": "ui",
+											"sid": 259699386484900
+										},
+										{
+											"type": "comment",
+											"text": "grow component even larger",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "ui",
+											"sid": 557518564176868,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiSliderHandleSize\""
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "ui",
+											"sid": 999315395328642,
+											"parameters": {
+												"width": "Self.oWidth + Self.mGrowWidth * 4",
+												"height": "Self.oHeight + Self.mGrowHeight * 4"
+											}
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "ui",
+											"sid": 203609071949492,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiSliderHandleSize\"",
+												"property": "size",
+												"end-x": "Self.oWidth + Self.mGrowWidth * 3",
+												"end-y": "Self.oHeight + Self.mGrowHeight * 3",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 398085269886262
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiCarouselDeselect",
+									"objectClass": "uiCarousel",
+									"functionDescription": "use overrides to create special events",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "ui",
+											"sid": 993023977513726,
+											"parameters": {
+												"unique-id": "uiCarousel.UID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "this is for directional inputs, doesn't happen with mouse",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8470588235294118,
+												0.6431372549019608,
+												0.8745098039215686,
+												1
+											]
+										},
+										{
+											"type": "comment",
+											"text": "shrink component",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "ui",
+											"sid": 349105912028681,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiSize\""
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "ui",
+											"sid": 209113824337296,
+											"parameters": {
+												"width": "Self.oWidth + Self.mGrowWidth * 2",
+												"height": "Self.oHeight + Self.mGrowHeight * 2"
+											}
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "ui",
+											"sid": 275576052260834,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiSize\"",
+												"property": "size",
+												"end-x": "Self.oWidth + Self.mGrowWidth",
+												"end-y": "Self.oHeight + Self.mGrowHeight",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 339134983211968
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiCarouselIncrement",
+									"objectClass": "uiCarousel",
+									"functionDescription": "use overrides to create special events",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "ui",
+											"sid": 865199096831805,
+											"parameters": {
+												"unique-id": "uiCarousel.UID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "position tween",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-x",
+											"objectClass": "ui",
+											"sid": 835118022793489,
+											"parameters": {
+												"x": "Self.X + 4"
+											}
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "ui",
+											"sid": 790599535615339,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiShiftLeft\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "ui",
+											"sid": 365769846464647,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiShiftLeft\"",
+												"property": "offsetX",
+												"end-value": "Self.X - 4",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 862286754940497
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiCarouselDecrement",
+									"objectClass": "uiCarousel",
+									"functionDescription": "use overrides to create special events",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "ui",
+											"sid": 720902012779003,
+											"parameters": {
+												"unique-id": "uiCarousel.UID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "position tween",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-x",
+											"objectClass": "ui",
+											"sid": 975971743701636,
+											"parameters": {
+												"x": "Self.X - 4"
+											}
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "ui",
+											"sid": 405796130268341,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiShiftRight\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "ui",
+											"sid": 351304761227457,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiShiftRight\"",
+												"property": "offsetX",
+												"end-value": "Self.X + 4",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 826419334271167
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiCarouselCappedMax",
+									"objectClass": "uiCarousel",
+									"functionDescription": "use overrides to create special events",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "ui",
+											"sid": 365316210705018,
+											"parameters": {
+												"unique-id": "uiCarousel.UID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "angle",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-angle",
+											"objectClass": "ui",
+											"sid": 970935775805782,
+											"parameters": {
+												"angle": "-10"
+											}
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "ui",
+											"sid": 402120161833531,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiTiltMax\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "ui",
+											"sid": 484064519379874,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiTiltMax\"",
+												"property": "offsetAngle",
+												"end-value": "0",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "change color",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-default-color",
+											"objectClass": "ui",
+											"sid": 372254736082488,
+											"parameters": {
+												"color": "rgbEx(100, 30, 30)"
+											}
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "ui",
+											"sid": 268857750674115,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiColorCapMax\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "ui",
+											"sid": 126462974212187,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiColorCapMax\"",
+												"property": "offsetColor",
+												"end-value": "rgbEx(100, 100, 100)",
+												"time": "0.1",
+												"ease": "noease",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 617940779803448
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiCarouselCappedMin",
+									"objectClass": "uiCarousel",
+									"functionDescription": "use overrides to create special events",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "ui",
+											"sid": 361145490729280,
+											"parameters": {
+												"unique-id": "uiCarousel.UID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "angle",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-angle",
+											"objectClass": "ui",
+											"sid": 886573004019910,
+											"parameters": {
+												"angle": "10"
+											}
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "ui",
+											"sid": 479964796862240,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiTiltMin\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "ui",
+											"sid": 431930041537730,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiTiltMin\"",
+												"property": "offsetAngle",
+												"end-value": "0",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "change color",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-default-color",
+											"objectClass": "ui",
+											"sid": 138580475811812,
+											"parameters": {
+												"color": "rgbEx(100, 30, 30)"
+											}
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "ui",
+											"sid": 703865727161094,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiColorCapMax\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "ui",
+											"sid": 363706571383511,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"uiColorCapMax\"",
+												"property": "offsetColor",
+												"end-value": "rgbEx(100, 100, 100)",
+												"time": "0.1",
+												"ease": "noease",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 422844249664076
+								}
+							],
+							"sid": 953532623491872,
 							"text-color": [
 								0,
 								0,
@@ -4752,22 +5438,6 @@
 									]
 								},
 								{
-									"eventType": "comment",
-									"text": "could lead to bad performance issues... may be best to leave canvas updates up to the developer",
-									"text-color": [
-										0,
-										0,
-										0,
-										0
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.6431372549019608,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
 									"eventType": "block",
 									"conditions": [
 										{
@@ -4786,9 +5456,25 @@
 									],
 									"actions": [
 										{
+											"type": "comment",
+											"text": "proposed way to optimize canvas pastes is to only run them when a UI component is performing a tween, and I came up with a timer method for this...\n\nproblem was it was too much of a strain on the workflow and awkward. need to think further about this.",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.6431372549019608,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
 											"customAction": "uiPaste [INTERNAL]",
 											"objectClass": "uiCanvas",
-											"sid": 712835210074092
+											"sid": 875985996258554
 										}
 									],
 									"sid": 413653813868213
@@ -4927,6 +5613,379 @@
 								0.8392156862745098,
 								1
 							]
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "ui / behavior / components / carousel",
+							"description": "carousels are those little boxes with two arrows, where you can select left or right to change the value shown",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "add to index, use negative for decrements",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiIndexAdd [INTERNAL]",
+									"objectClass": "uiCarousel",
+									"functionDescription": "increment the index by a value, use negative for decrements",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [
+										{
+											"name": "indexAdd",
+											"type": "number",
+											"initialValue": "0",
+											"comment": "what to add to the index",
+											"sid": 475215333182674
+										}
+									],
+									"eventType": "custom-ace-block",
+									"conditions": [],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "add value (don't clamp, it's done later)",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "uiCarousel",
+											"sid": 377081777129634,
+											"parameters": {
+												"instance-variable": "carouselIndex",
+												"value": "Self.carouselIndex + round(indexAdd)"
+											}
+										},
+										{
+											"type": "comment",
+											"text": "update the display",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"customAction": "uiUpdateDisplay [INTERNAL]",
+											"objectClass": "uiCarousel",
+											"sid": 453408440392310
+										}
+									],
+									"sid": 865817082092297
+								},
+								{
+									"eventType": "comment",
+									"text": "update the display based on value change",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiUpdateDisplay [INTERNAL]",
+									"objectClass": "uiCarousel",
+									"functionDescription": "update the display based on value change",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [],
+									"actions": [],
+									"sid": 423193148267396,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "if index is greater than max possible index",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiCarousel",
+													"sid": 361769550391830,
+													"parameters": {
+														"instance-variable": "carouselIndex",
+														"comparison": 4,
+														"value": "tokencount(Self.carouselValues, uiValueDelimiter) - 1"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiCarousel",
+													"sid": 825986012100575,
+													"parameters": {
+														"instance-variable": "carouselIndex",
+														"value": "tokencount(Self.carouselValues, uiValueDelimiter) - 1"
+													}
+												},
+												{
+													"customAction": "uiCarouselCappedMax",
+													"objectClass": "uiCarousel",
+													"sid": 619816964358138
+												}
+											],
+											"sid": 433082814273304
+										},
+										{
+											"eventType": "comment",
+											"text": "if index is less than zero",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 694135061496590
+												},
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiCarousel",
+													"sid": 565636433434567,
+													"parameters": {
+														"instance-variable": "carouselIndex",
+														"comparison": 2,
+														"value": "0"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiCarousel",
+													"sid": 591227046416511,
+													"parameters": {
+														"instance-variable": "carouselIndex",
+														"value": "0"
+													}
+												},
+												{
+													"customAction": "uiCarouselCappedMin",
+													"objectClass": "uiCarousel",
+													"sid": 508049557757107
+												}
+											],
+											"sid": 794521996887771
+										},
+										{
+											"eventType": "comment",
+											"text": "if index is greater",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiCarousel",
+													"sid": 559987231378772,
+													"parameters": {
+														"instance-variable": "carouselIndex",
+														"comparison": 4,
+														"value": "Self.carouselIndexLast"
+													}
+												}
+											],
+											"actions": [
+												{
+													"customAction": "uiCarouselIncrement",
+													"objectClass": "uiCarousel",
+													"sid": 699775957182390
+												}
+											],
+											"sid": 322329077395624
+										},
+										{
+											"eventType": "comment",
+											"text": "if index is less",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 625783317300050
+												},
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiCarousel",
+													"sid": 580668725532462,
+													"parameters": {
+														"instance-variable": "carouselIndex",
+														"comparison": 2,
+														"value": "Self.carouselIndexLast"
+													}
+												}
+											],
+											"actions": [
+												{
+													"customAction": "uiCarouselDecrement",
+													"objectClass": "uiCarousel",
+													"sid": 964292595850299
+												}
+											],
+											"sid": 131433189617079
+										},
+										{
+											"eventType": "comment",
+											"text": "in both cases",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "set the 'indexLast' variable to the index, as to say that the change has been registered",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "uiCarousel",
+													"sid": 453468296830755,
+													"parameters": {
+														"instance-variable": "carouselIndexLast",
+														"value": "Self.carouselIndex"
+													}
+												}
+											],
+											"sid": 141305321785098
+										}
+									]
+								}
+							],
+							"sid": 215160346951520,
+							"text-color": [
+								0,
+								0,
+								0,
+								0
+							],
+							"background-color": [
+								0.8392156862745098,
+								0.8392156862745098,
+								0.8392156862745098,
+								1
+							]
 						}
 					],
 					"sid": 497204756709631,
@@ -4976,6 +6035,14 @@
 							"functionParameters": [],
 							"eventType": "function-block",
 							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 248476619416336,
+									"parameters": {
+										"object": "ui"
+									}
+								},
 								{
 									"id": "is-boolean-instance-variable-set",
 									"objectClass": "ui",
@@ -5649,14 +6716,6 @@
 											"parameters": {
 												"unique-id": "ui.UID"
 											}
-										},
-										{
-											"id": "pick-by-unique-id",
-											"objectClass": "uiSliderBar",
-											"sid": 812786805555018,
-											"parameters": {
-												"unique-id": "Functions.uiGetUIDFromID(uiSliderHandle.sliderHandleAttachedBar)"
-											}
 										}
 									],
 									"actions": [
@@ -5770,6 +6829,131 @@
 								},
 								{
 									"eventType": "comment",
+									"text": "if this is a carousel",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 628832972821815
+										},
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "uiCarousel",
+											"sid": 296679547345748,
+											"parameters": {
+												"unique-id": "ui.UID"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 872647714021505,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 849313363202414,
+													"parameters": {
+														"variable": "uiInputMode",
+														"comparison": 0,
+														"value": "\"default\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "set navigation mode",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"callFunction": "uiSetNavigationMode [INTERNAL]",
+													"sid": 941540803217549,
+													"parameters": [
+														"\"carousel\""
+													]
+												},
+												{
+													"customAction": "uiCarouselSelect",
+													"objectClass": "uiCarousel",
+													"sid": 358775173879764
+												}
+											],
+											"sid": 349633779597655
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 507255764197904
+												}
+											],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "default navigation",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"callFunction": "uiSetNavigationMode [INTERNAL]",
+													"sid": 912436848483820,
+													"parameters": [
+														"\"default\""
+													]
+												},
+												{
+													"customAction": "uiCarouselDeselect",
+													"objectClass": "uiCarousel",
+													"sid": 528716604715675
+												}
+											],
+											"sid": 695279247170366
+										}
+									]
+								},
+								{
+									"eventType": "comment",
 									"text": "else, treat it as a button",
 									"text-color": [
 										0,
@@ -5854,9 +7038,9 @@
 													"script": "const checkboxVars = runtime.objects.uiCheckbox.getFirstPickedInstance().instVars;\n\ntry {\n\truntime.callFunction(\"checkbox \" + checkboxVars.ID, checkboxVars.uiChecked);\n} \ncatch(error) {/* nothing, just ignore it*/}"
 												},
 												{
-													"customAction": "uiSelect",
-													"objectClass": "ui",
-													"sid": 507868045118820
+													"customAction": "uiCheckboxSelect",
+													"objectClass": "uiCheckbox",
+													"sid": 504207658875885
 												}
 											],
 											"sid": 236953372396008,
@@ -6054,6 +7238,15 @@
 										{
 											"id": "set-group-active",
 											"objectClass": "System",
+											"sid": 732680618499160,
+											"parameters": {
+												"group-name": "\"ui / behavior / navigate / carousel\"",
+												"state": "deactivated"
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
 											"sid": 393844485510581,
 											"parameters": {
 												"group-name": "\"ui / interaction / kbm / mouse / default\"",
@@ -6204,6 +7397,58 @@
 										}
 									],
 									"sid": 875590933632534
+								},
+								{
+									"eventType": "comment",
+									"text": "carousel (directional controls change the index)",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 560547638409798,
+											"parameters": {
+												"variable": "mode",
+												"comparison": 0,
+												"value": "\"carousel\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 122796038172513,
+											"parameters": {
+												"variable": "uiInputMode",
+												"value": "\"carousel\""
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 129994617557485,
+											"parameters": {
+												"group-name": "\"ui / behavior / navigate / carousel\"",
+												"state": "activated"
+											}
+										}
+									],
+									"sid": 528637308823545
 								}
 							]
 						},
@@ -7466,6 +8711,175 @@
 										0.8392156862745098,
 										1
 									]
+								},
+								{
+									"eventType": "group",
+									"disabled": false,
+									"title": "ui / behavior / navigate / carousel",
+									"description": "controlled by uiSetNavigationMode, disabled on start on purpose",
+									"isActiveOnStart": false,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "ui",
+													"sid": 539215339283104,
+													"parameters": {
+														"instance-variable": "ID",
+														"comparison": 0,
+														"value": "uiChosenID"
+													}
+												},
+												{
+													"id": "pick-by-unique-id",
+													"objectClass": "uiCarousel",
+													"sid": 719944596712708,
+													"parameters": {
+														"unique-id": "ui.UID"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 301000593570415,
+											"children": [
+												{
+													"eventType": "comment",
+													"text": "see \"ui / behavior / navigate / slider\" for math + reasoning",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-eventvar",
+															"objectClass": "System",
+															"sid": 402279554025246,
+															"parameters": {
+																"variable": "direction",
+																"comparison": 0,
+																"value": "\"up\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"customAction": "uiIndexAdd [INTERNAL]",
+															"objectClass": "uiCarousel",
+															"sid": 951952506514443,
+															"parameters": [
+																"-sign(sin(Self.Angle))"
+															]
+														}
+													],
+													"sid": 107406288542866
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-eventvar",
+															"objectClass": "System",
+															"sid": 718744479936641,
+															"parameters": {
+																"variable": "direction",
+																"comparison": 0,
+																"value": "\"down\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"customAction": "uiIndexAdd [INTERNAL]",
+															"objectClass": "uiCarousel",
+															"sid": 470439745238865,
+															"parameters": [
+																"sign(sin(Self.Angle))"
+															]
+														}
+													],
+													"sid": 544767116826089
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-eventvar",
+															"objectClass": "System",
+															"sid": 597639689209575,
+															"parameters": {
+																"variable": "direction",
+																"comparison": 0,
+																"value": "\"left\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"customAction": "uiIndexAdd [INTERNAL]",
+															"objectClass": "uiCarousel",
+															"sid": 564266801583616,
+															"parameters": [
+																"-sign(cos(Self.Angle))"
+															]
+														}
+													],
+													"sid": 772240929971007
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-eventvar",
+															"objectClass": "System",
+															"sid": 341248907255129,
+															"parameters": {
+																"variable": "direction",
+																"comparison": 0,
+																"value": "\"right\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"customAction": "uiIndexAdd [INTERNAL]",
+															"objectClass": "uiCarousel",
+															"sid": 270998681431529,
+															"parameters": [
+																"sign(cos(Self.Angle))"
+															]
+														}
+													],
+													"sid": 387608202671334
+												}
+											]
+										}
+									],
+									"sid": 340523738573129,
+									"text-color": [
+										0,
+										0,
+										0,
+										0
+									],
+									"background-color": [
+										0.8392156862745098,
+										0.8392156862745098,
+										0.8392156862745098,
+										1
+									]
 								}
 							]
 						},
@@ -8541,6 +9955,22 @@
 							"isActiveOnStart": true,
 							"children": [
 								{
+									"eventType": "comment",
+									"text": "the reason carousel isn't present here is because mouse controls work differently for them. when you click a carousel, you don't enter a new navigation mode, you just increment or decrement it based on which side of the object you clicked. as a result, you can find carousel selection in the default group",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8470588235294118,
+										0.6431372549019608,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
 									"eventType": "group",
 									"disabled": false,
 									"title": "ui / interaction / kbm / mouse / default",
@@ -8940,11 +10370,170 @@
 											],
 											"actions": [
 												{
-													"callFunction": "uiSelect [INTERNAL]",
-													"sid": 157368584660778
+													"type": "comment",
+													"text": "below you can find normal button selection, as well as an exception for carousels",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8470588235294118,
+														0.6431372549019608,
+														0.8745098039215686,
+														1
+													]
 												}
 											],
-											"sid": 985887129287988
+											"sid": 985887129287988,
+											"children": [
+												{
+													"eventType": "comment",
+													"text": "if carousel",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "pick-by-unique-id",
+															"objectClass": "uiCarousel",
+															"sid": 932923823308379,
+															"parameters": {
+																"unique-id": "ui.UID"
+															}
+														}
+													],
+													"actions": [],
+													"sid": 260307186027903,
+													"children": [
+														{
+															"eventType": "comment",
+															"text": "increment",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 578109873642578,
+																	"parameters": {
+																		"first-value": "Mouse.X",
+																		"comparison": 4,
+																		"second-value": "uiCarousel.BBoxMidX"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"customAction": "uiIndexAdd [INTERNAL]",
+																	"objectClass": "uiCarousel",
+																	"sid": 854899725976461,
+																	"parameters": [
+																		"1"
+																	]
+																}
+															],
+															"sid": 787052203469386
+														},
+														{
+															"eventType": "comment",
+															"text": "decrement",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "else",
+																	"objectClass": "System",
+																	"sid": 901959867291961
+																}
+															],
+															"actions": [
+																{
+																	"customAction": "uiIndexAdd [INTERNAL]",
+																	"objectClass": "uiCarousel",
+																	"sid": 800275902481043,
+																	"parameters": [
+																		"-1"
+																	]
+																}
+															],
+															"sid": 825957500317164
+														}
+													]
+												},
+												{
+													"eventType": "comment",
+													"text": "else just normal select",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 411809253467585
+														}
+													],
+													"actions": [
+														{
+															"callFunction": "uiSelect [INTERNAL]",
+															"sid": 261682067689836
+														}
+													],
+													"sid": 831766930966786
+												}
+											]
 										}
 									],
 									"sid": 999065392554826,

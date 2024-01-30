@@ -122,6 +122,7 @@
 		"uiMainSettingsSliderTick",
 		"uiMainSettingsScrollBar",
 		"uiMainSettingsScrollHandle",
-		"uiMainCheckbox"
+		"uiMainCheckbox",
+		"uiMainSettingsCarousel"
 	]
 }

@@ -1,0 +1,40 @@
+{
+	"name": "uiCarousel",
+	"plugin-id": "NinePatch",
+	"sid": 644611895908035,
+	"instanceVariables": [
+		{
+			"name": "carouselIndex",
+			"type": "number",
+			"desc": "the index is the number that gets incremented or decremented when using a carousel",
+			"show": true,
+			"sid": 353351315779359
+		},
+		{
+			"name": "carouselIndexLast",
+			"type": "number",
+			"desc": "used to record changes in the index",
+			"show": false,
+			"sid": 281016323706203
+		},
+		{
+			"name": "carouselValues",
+			"type": "string",
+			"desc": "separate by comma - text to display based on index. if content view is enabled, these should instead be tags that reference template names to create",
+			"show": true,
+			"sid": 115205507510244
+		},
+		{
+			"name": "carouselContentView",
+			"type": "boolean",
+			"desc": "turns this into a content carousel, which displays anything you want, not just text",
+			"show": true,
+			"sid": 289044218418289
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"uiMainSettingsCarousel"
+	]
+}

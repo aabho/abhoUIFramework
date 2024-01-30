@@ -91,6 +91,385 @@
 					"children": [
 						{
 							"eventType": "comment",
+							"text": "carousel",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiChoose",
+							"objectClass": "uiMainSettingsCarousel",
+							"functionDescription": "override",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [
+								{
+									"id": "pick-children",
+									"objectClass": "uiMainSettingsCarousel",
+									"sid": 280169643096870,
+									"parameters": {
+										"child": "uiMainSettingsCarouselArrows",
+										"which": "own"
+									}
+								}
+							],
+							"actions": [
+								{
+									"customAction": "uiChoose",
+									"objectClass": "uiMainSettingsCarousel",
+									"customActionObjectClass": "ui",
+									"sid": 258291953250027
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "uiMainSettingsCarouselArrows",
+									"sid": 879435712094020,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fadein\""
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "uiMainSettingsCarouselArrows",
+									"sid": 457886744214230,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fadein\"",
+										"property": "offsetOpacity",
+										"end-value": "100",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 840982731821408
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiUnchoose",
+							"objectClass": "uiMainSettingsCarousel",
+							"functionDescription": "override",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [
+								{
+									"id": "pick-children",
+									"objectClass": "uiMainSettingsCarousel",
+									"sid": 704029782332506,
+									"parameters": {
+										"child": "uiMainSettingsCarouselArrows",
+										"which": "own"
+									}
+								}
+							],
+							"actions": [
+								{
+									"customAction": "uiChoose",
+									"objectClass": "uiMainSettingsCarousel",
+									"customActionObjectClass": "ui",
+									"sid": 861020099527201
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "uiMainSettingsCarouselArrows",
+									"sid": 282388335166329,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fadeout\""
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "uiMainSettingsCarouselArrows",
+									"sid": 820147772533347,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fadeout\"",
+										"property": "offsetOpacity",
+										"end-value": "10",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 887895429754685
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiCarouselIncrement",
+							"objectClass": "uiMainSettingsCarousel",
+							"functionDescription": "override",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [
+								{
+									"id": "pick-children",
+									"objectClass": "uiMainSettingsCarousel",
+									"sid": 404973896990827,
+									"parameters": {
+										"child": "txt",
+										"which": "own"
+									}
+								},
+								{
+									"id": "pick-children",
+									"objectClass": "uiMainSettingsCarousel",
+									"sid": 535515597578349,
+									"parameters": {
+										"child": "uiMainSettingsCarouselGradient",
+										"which": "own"
+									}
+								},
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 280336332533154,
+									"parameters": {
+										"instance-variable": "isRight"
+									}
+								}
+							],
+							"actions": [
+								{
+									"customAction": "uiCarouselIncrement",
+									"objectClass": "uiMainSettingsCarousel",
+									"customActionObjectClass": "uiCarousel",
+									"sid": 549892859968342
+								},
+								{
+									"type": "comment",
+									"text": "update text with value",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "set-text",
+									"objectClass": "txt",
+									"sid": 483652712993755,
+									"parameters": {
+										"text": "tokenat(uiCarousel.carouselValues, uiCarousel.carouselIndex, uiValueDelimiter)"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "gradient fade",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "set-opacity",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 974975070568149,
+									"parameters": {
+										"opacity": "100"
+									}
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 499318485575848,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fadeout\""
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 564763579486001,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fadeout\"",
+										"property": "offsetOpacity",
+										"end-value": "0",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 808820440600187
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiCarouselDecrement",
+							"objectClass": "uiMainSettingsCarousel",
+							"functionDescription": "override",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [
+								{
+									"id": "pick-children",
+									"objectClass": "uiMainSettingsCarousel",
+									"sid": 349105964662499,
+									"parameters": {
+										"child": "txt",
+										"which": "own"
+									}
+								},
+								{
+									"id": "pick-children",
+									"objectClass": "uiMainSettingsCarousel",
+									"sid": 310997640042734,
+									"parameters": {
+										"child": "uiMainSettingsCarouselGradient",
+										"which": "own"
+									}
+								},
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 924971198889138,
+									"parameters": {
+										"instance-variable": "isRight"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"customAction": "uiCarouselDecrement",
+									"objectClass": "uiMainSettingsCarousel",
+									"customActionObjectClass": "uiCarousel",
+									"sid": 848759283965303
+								},
+								{
+									"type": "comment",
+									"text": "update text with value",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "set-text",
+									"objectClass": "txt",
+									"sid": 943474004050061,
+									"parameters": {
+										"text": "tokenat(uiCarousel.carouselValues, uiCarousel.carouselIndex, uiValueDelimiter)"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "gradient fade",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"id": "set-opacity",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 371350122933931,
+									"parameters": {
+										"opacity": "100"
+									}
+								},
+								{
+									"id": "stop-tweens",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 283790195916518,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fadeout\""
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "uiMainSettingsCarouselGradient",
+									"sid": 530669125340489,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"fadeout\"",
+										"property": "offsetOpacity",
+										"end-value": "0",
+										"time": "0.1",
+										"ease": "easeoutcubic",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 147771511260530
+						},
+						{
+							"eventType": "comment",
 							"text": "checkboxes",
 							"text-color": [
 								0,

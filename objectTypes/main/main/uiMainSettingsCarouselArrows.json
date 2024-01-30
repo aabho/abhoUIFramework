@@ -1,0 +1,64 @@
+{
+	"name": "uiMainSettingsCarouselArrows",
+	"plugin-id": "Sprite",
+	"sid": 665548500184214,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "isRight",
+			"type": "boolean",
+			"desc": "not related to the UI framework",
+			"show": true,
+			"sid": 844180862170388
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 561181847600431
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 61,
+						"height": 91,
+						"originX": 0.4098360655737705,
+						"originY": 0.46153846153846156,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 5736594,
+						"collisionPoly": {
+							"points": [
+								0,
+								0,
+								1,
+								0,
+								1,
+								0.989010989010989,
+								0,
+								0.989010989010989
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 665343558748645,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

@@ -102,19 +102,15 @@
 				"name": "essentials"
 			},
 			{
-				"items": [
-					"uiMainQuitBg",
-					"uiMainButton",
-					"uiMainQuitButton",
-					"uiMainCheckbox",
-					"uiMainCheckboxCheck",
-					"uiMainDummyCheck2Anchor"
-				],
+				"items": [],
 				"subfolders": [
 					{
 						"items": [
 							"uiMainSettingsBg",
-							"uiMainSettingsButton"
+							"uiMainSettingsButton",
+							"uiMainSettingsCanvas",
+							"uiMainSettingsScrollBar",
+							"uiMainSettingsScrollHandle"
 						],
 						"subfolders": [
 							{
@@ -129,18 +125,24 @@
 								],
 								"subfolders": [],
 								"name": "sliders"
-							},
-							{
-								"items": [
-									"uiMainSettingsCanvas",
-									"uiMainSettingsScrollBar",
-									"uiMainSettingsScrollHandle"
-								],
-								"subfolders": [],
-								"name": "scroll view"
 							}
 						],
 						"name": "settings"
+					},
+					{
+						"items": [
+							"uiMainButton",
+							"uiMainCheckbox",
+							"uiMainCheckboxCheck",
+							"uiMainDummyCheck2Anchor",
+							"uiMainQuitBg",
+							"uiMainQuitButton",
+							"uiMainSettingsCarousel",
+							"uiMainSettingsCarouselArrows",
+							"uiMainSettingsCarouselGradient"
+						],
+						"subfolders": [],
+						"name": "main"
 					}
 				],
 				"name": "main"
@@ -181,6 +183,13 @@
 						],
 						"subfolders": [],
 						"name": "ui checkbox"
+					},
+					{
+						"items": [
+							"uiCarousel"
+						],
+						"subfolders": [],
+						"name": "ui carousel"
 					}
 				],
 				"name": "ui & ui components"
