@@ -36,6 +36,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Text",
+			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "gamepad",
 			"name": "Gamepad",
 			"author": "Scirra",
@@ -78,10 +85,11 @@
 					"sliderBar",
 					"sliderFill",
 					"sliderHandle",
-					"sliderTick"
+					"sliderTick",
+					"Text"
 				],
 				"subfolders": [],
-				"name": "ui"
+				"name": "placeholders"
 			}
 		]
 	},
