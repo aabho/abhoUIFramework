@@ -95,7 +95,7 @@
 								{
 									"id": "compare-eventvar",
 									"objectClass": "System",
-									"sid": 481841802635907,
+									"sid": 887021466102908,
 									"parameters": {
 										"variable": "uiInputDevice",
 										"comparison": 0,
@@ -105,26 +105,26 @@
 								{
 									"id": "trigger-once-while-true",
 									"objectClass": "System",
-									"sid": 507669635411654
+									"sid": 664169183954416
 								}
 							],
 							"actions": [
 								{
 									"callFunction": "uiEnableSection",
-									"sid": 966925315808503,
+									"sid": 958851062534329,
 									"parameters": [
 										"\"main\""
 									]
 								},
 								{
 									"callFunction": "uiEnableSection",
-									"sid": 202763239019956,
+									"sid": 729898199889475,
 									"parameters": [
 										"\"mainHuge\""
 									]
 								}
 							],
-							"sid": 255634112229364
+							"sid": 851483393687649
 						},
 						{
 							"eventType": "block",
@@ -132,37 +132,26 @@
 								{
 									"id": "on-key-pressed",
 									"objectClass": "Keyboard",
-									"sid": 633027638868933,
+									"sid": 895303945159515,
 									"parameters": {
 										"key": 27
 									}
-								},
-								{
-									"id": "compare-eventvar",
-									"objectClass": "System",
-									"sid": 187572866447137,
-									"parameters": {
-										"variable": "uiInputDevice",
-										"comparison": 0,
-										"value": "\"mouse\""
-									},
-									"isInverted": true
 								}
 							],
 							"actions": [
 								{
 									"callFunction": "uiDisableAllSections",
-									"sid": 707212704518726
+									"sid": 346984231611791
 								},
 								{
 									"callFunction": "uiEnableSection",
-									"sid": 845393758933198,
+									"sid": 883899842998071,
 									"parameters": [
 										"\"main\""
 									]
 								}
 							],
-							"sid": 286993196713408
+							"sid": 478532710644656
 						},
 						{
 							"aceType": "action",

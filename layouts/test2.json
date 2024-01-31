@@ -56,7 +56,7 @@
 					"instanceVariables": {
 						"carouselIndex": 0,
 						"carouselIndexLast": -1,
-						"carouselValues": "buttons,pickers",
+						"carouselValues": "buttons,pickers,scrollview",
 						"carouselContentView": true,
 						"carouselContentObjectName": "uiMainCarouselContentHugeAnchor",
 						"section": "main",
@@ -291,7 +291,7 @@
 					},
 					"world": {
 						"x": 145,
-						"y": 70,
+						"y": 60,
 						"width": 88,
 						"height": 11,
 						"originX": 0.5,
@@ -662,8 +662,8 @@
 						}
 					},
 					"world": {
-						"x": 129.5,
-						"y": 178,
+						"x": 124,
+						"y": 182,
 						"width": 50,
 						"height": 20,
 						"originX": 0.5,
@@ -734,8 +734,8 @@
 						}
 					},
 					"world": {
-						"x": 129.5,
-						"y": 178,
+						"x": 124,
+						"y": 182,
 						"width": 37,
 						"height": 11,
 						"originX": 0.5,
@@ -859,6 +859,78 @@
 							1,
 							1,
 							0.1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "txt",
+					"properties": {
+						"text": "press ESC to exit the carousel (keyboard/gamepad)",
+						"enable-bbcode": true,
+						"font": "system-ui",
+						"size": 6,
+						"line-height": -2,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0.5607843137254902,
+							0.5607843137254902,
+							0.5607843137254902,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 164,
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 164,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": false,
+							"h": false,
+							"a": true,
+							"o": true,
+							"v": true,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"world": {
+						"x": 265,
+						"y": 62,
+						"width": 117,
+						"height": 26,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
 						],
 						"angle": 0,
 						"zElevation": 0

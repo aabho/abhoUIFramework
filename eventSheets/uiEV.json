@@ -303,64 +303,14 @@
 							"sid": 464299086798108
 						}
 					],
-					"actions": [],
-					"sid": 330715327072750,
-					"children": [
+					"actions": [
 						{
-							"eventType": "comment",
-							"text": "if part of scroll view, add to relevant layer",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
-							],
-							"background-color": [
-								0.8745098039215686,
-								0.8352941176470589,
-								0.6431372549019608,
-								1
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "uiScrollView",
-									"sid": 885616906838244,
-									"parameters": {
-										"instance-variable": "scrollViewID",
-										"comparison": 0,
-										"value": "uiScrollComponent.scrollViewID"
-									}
-								}
-							],
-							"actions": [
-								{
-									"type": "comment",
-									"text": "I use js here because it allows me to move this object, as well as any children it may have, regardless of plugin or family",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8470588235294118,
-										0.6431372549019608,
-										0.8745098039215686,
-										1
-									]
-								},
-								{
-									"type": "script",
-									"script": "// get instances\nconst pickedObj = runtime.objects.uiScrollComponent.getFirstPickedInstance();\nconst children = pickedObj.allChildren();\nconst objs = [];\n\n// layer name\nconst layer = runtime.layout.getLayer(runtime.objects.uiScrollView.getFirstPickedInstance().instVars.scrollViewOriginalLayer + \" [uiScrollComponent]\");\n\n\n// get children in the objs array\nobjs.push(pickedObj);\nfor (const child of children) { objs.push(child); }\n\n\n// move all objects to new layer\nfor (const obj of objs)\n{\n\tobj.moveToLayer(layer);\n}"
-								}
-							],
-							"sid": 520922479339239
+							"customAction": "uiMoveToMaskingLayer",
+							"objectClass": "uiScrollComponent",
+							"sid": 238803318714230
 						}
-					]
+					],
+					"sid": 330715327072750
 				},
 				{
 					"eventType": "comment",
@@ -1024,10 +974,6 @@
 								{
 									"callFunction": "uiSliderUpdate [INTERNAL]",
 									"sid": 744070620117528
-								},
-								{
-									"callFunction": "uiNavigatePickDefault [INTERNAL]",
-									"sid": 921575551337201
 								}
 							],
 							"sid": 629899058959210
@@ -5885,7 +5831,7 @@
 									"children": [
 										{
 											"eventType": "comment",
-											"text": "initial",
+											"text": "layer setup",
 											"text-color": [
 												0,
 												0,
@@ -5901,8 +5847,44 @@
 										},
 										{
 											"eventType": "block",
-											"conditions": [],
+											"conditions": [
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 639149552246232,
+													"parameters": {
+														"layer": "uiScrollView.scrollViewOriginalLayer & \"[ScrollViewParentLayer/\" & uiScrollView.scrollViewID & \"]\""
+													},
+													"isInverted": true
+												}
+											],
 											"actions": [
+												{
+													"type": "comment",
+													"text": "create a new parent layer",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"id": "add-layer",
+													"objectClass": "System",
+													"sid": 505182122753696,
+													"parameters": {
+														"name": "uiScrollView.scrollViewOriginalLayer & \"[ScrollViewParentLayer/\" & uiScrollView.scrollViewID & \"]\"",
+														"insert-by": "uiScrollView.scrollViewOriginalLayer",
+														"where": "above"
+													}
+												},
 												{
 													"type": "comment",
 													"text": "set this layer to force own texture",
@@ -5922,9 +5904,9 @@
 												{
 													"id": "set-layer-force-own-texture",
 													"objectClass": "System",
-													"sid": 799297395966617,
+													"sid": 723254522008810,
 													"parameters": {
-														"layer": "uiScrollView.scrollViewOriginalLayer",
+														"layer": "uiScrollView.scrollViewOriginalLayer & \"[ScrollViewParentLayer/\" & uiScrollView.scrollViewID & \"]\"",
 														"mode": "on"
 													}
 												},
@@ -5947,28 +5929,20 @@
 												{
 													"id": "add-layer",
 													"objectClass": "System",
-													"sid": 149366999936492,
+													"sid": 441170951769486,
 													"parameters": {
-														"name": "uiScrollView.scrollViewOriginalLayer & \" [uiScrollView]\"",
-														"insert-by": "uiScrollView.scrollViewOriginalLayer",
+														"name": "uiScrollView.scrollViewOriginalLayer & \"[ScrollView/\" & uiScrollView.scrollViewID & \"]\"",
+														"insert-by": "uiScrollView.scrollViewOriginalLayer & \"[ScrollViewParentLayer/\" & uiScrollView.scrollViewID & \"]\"",
 														"where": "add-bottom-sublayer"
 													}
 												},
 												{
 													"id": "set-layer-blend-mode",
 													"objectClass": "System",
-													"sid": 566317567053972,
+													"sid": 800874716797045,
 													"parameters": {
-														"layer": "uiScrollView.scrollViewOriginalLayer & \" [uiScrollView]\"",
+														"layer": "uiScrollView.scrollViewOriginalLayer & \"[ScrollView/\" & uiScrollView.scrollViewID & \"]\"",
 														"blend-mode": "destination-in"
-													}
-												},
-												{
-													"id": "move-to-layer",
-													"objectClass": "uiScrollView",
-													"sid": 163239826308871,
-													"parameters": {
-														"layer": "uiScrollView.scrollViewOriginalLayer & \" [uiScrollView]\""
 													}
 												},
 												{
@@ -5990,15 +5964,190 @@
 												{
 													"id": "add-layer",
 													"objectClass": "System",
-													"sid": 366975695606691,
+													"sid": 222052919044567,
 													"parameters": {
-														"name": "uiScrollView.scrollViewOriginalLayer & \" [uiScrollComponent]\"",
-														"insert-by": "uiScrollView.scrollViewOriginalLayer",
-														"where": "add-bottom-sublayer"
+														"name": "uiScrollView.scrollViewOriginalLayer & \"[ScrollComponent/\" & uiScrollView.scrollViewID & \"]\"",
+														"insert-by": "uiScrollView.scrollViewOriginalLayer & \"[ScrollView/\" & uiScrollView.scrollViewID & \"]\"",
+														"where": "below"
 													}
 												}
 											],
 											"sid": 998703267904656
+										},
+										{
+											"eventType": "comment",
+											"text": "move objects to layers",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "wait",
+													"objectClass": "System",
+													"sid": 470011972842366,
+													"parameters": {
+														"seconds": "0"
+													}
+												},
+												{
+													"id": "move-to-layer",
+													"objectClass": "uiScrollView",
+													"sid": 310196673476152,
+													"parameters": {
+														"layer": "uiScrollView.scrollViewOriginalLayer & \"[ScrollView/\" & uiScrollView.scrollViewID & \"]\""
+													}
+												}
+											],
+											"sid": 206710430018764,
+											"children": [
+												{
+													"eventType": "comment",
+													"text": "move components to masking layer",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "uiScrollComponent",
+															"sid": 895707001066628,
+															"parameters": {
+																"instance-variable": "scrollViewID",
+																"comparison": 0,
+																"value": "uiScrollView.scrollViewID"
+															}
+														},
+														{
+															"id": "for-each",
+															"objectClass": "System",
+															"sid": 838082297953566,
+															"parameters": {
+																"object": "uiScrollComponent"
+															}
+														}
+													],
+													"actions": [
+														{
+															"customAction": "uiMoveToMaskingLayer",
+															"objectClass": "uiScrollComponent",
+															"sid": 129180074111546
+														}
+													],
+													"sid": 865055042498144
+												}
+											]
+										}
+									]
+								},
+								{
+									"eventType": "comment",
+									"text": "call this on created, and when masking layer is created",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.6431372549019608,
+										0.8470588235294118,
+										0.8745098039215686,
+										1
+									]
+								},
+								{
+									"aceType": "action",
+									"aceName": "uiMoveToMaskingLayer",
+									"objectClass": "uiScrollComponent",
+									"functionDescription": "call this on created, and when masking layer is created",
+									"functionCategory": "ui",
+									"functionReturnType": "none",
+									"functionCopyPicked": false,
+									"functionIsAsync": false,
+									"functionParameters": [],
+									"eventType": "custom-ace-block",
+									"conditions": [],
+									"actions": [],
+									"sid": 862279742278525,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "if part of scroll view, add to relevant layer",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "uiScrollView",
+													"sid": 424714927001351,
+													"parameters": {
+														"instance-variable": "scrollViewID",
+														"comparison": 0,
+														"value": "uiScrollComponent.scrollViewID"
+													}
+												}
+											],
+											"actions": [
+												{
+													"type": "comment",
+													"text": "I use js here because it allows me to move this object, as well as any children it may have, regardless of plugin or family",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8470588235294118,
+														0.6431372549019608,
+														0.8745098039215686,
+														1
+													]
+												},
+												{
+													"type": "script",
+													"script": "// get instances\nconst pickedObj = runtime.objects.uiScrollComponent.getFirstPickedInstance();\nconst children = pickedObj.allChildren();\nconst objs = [];\n\n// layer name\nconst vVars = runtime.objects.uiScrollView.getFirstPickedInstance().instVars;\nconst layer = runtime.layout.getLayer(vVars.scrollViewOriginalLayer + \"[ScrollComponent/\" + vVars.scrollViewID + \"]\");\n\n// get children in the objs array\nobjs.push(pickedObj);\nfor (const child of children) { objs.push(child); }\n\n\n// move all objects to new layer\nfor (const obj of objs)\n{\n\tobj.moveToLayer(layer);\n}"
+												}
+											],
+											"sid": 686448356579566
 										}
 									]
 								}
