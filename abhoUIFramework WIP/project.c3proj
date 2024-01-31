@@ -86,7 +86,8 @@
 					"sliderFill",
 					"sliderHandle",
 					"sliderTick",
-					"Text"
+					"Text",
+					"mouseHitbox"
 				],
 				"subfolders": [],
 				"name": "placeholders"
@@ -100,7 +101,8 @@
 		"subfolders": [
 			{
 				"items": [
-					"ui"
+					"ui",
+					"uiCustomMouseHitbox"
 				],
 				"subfolders": [
 					{

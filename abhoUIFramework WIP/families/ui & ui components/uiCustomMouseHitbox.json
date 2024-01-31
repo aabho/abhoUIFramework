@@ -1,0 +1,11 @@
+{
+	"name": "uiCustomMouseHitbox",
+	"plugin-id": "Sprite",
+	"sid": 117888956010159,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"mouseHitbox"
+	]
+}

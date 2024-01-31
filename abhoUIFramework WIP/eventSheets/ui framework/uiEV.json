@@ -11781,6 +11781,32 @@
 															"eventType": "block",
 															"conditions": [
 																{
+																	"id": "compare-boolean-eventvar",
+																	"objectClass": "System",
+																	"sid": 465039086997214,
+																	"parameters": {
+																		"variable": "pass"
+																	},
+																	"isInverted": true
+																},
+																{
+																	"id": "cursor-is-over-object",
+																	"objectClass": "Mouse",
+																	"sid": 744857805961451,
+																	"parameters": {
+																		"object": "uiCustomMouseHitbox"
+																	}
+																},
+																{
+																	"id": "pick-children",
+																	"objectClass": "uiCustomMouseHitbox",
+																	"sid": 394825081401216,
+																	"parameters": {
+																		"child": "ui",
+																		"which": "own"
+																	}
+																},
+																{
 																	"id": "for-each",
 																	"objectClass": "System",
 																	"sid": 529255798197338,
