@@ -70,7 +70,6 @@
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"members": [
-		"uiMainSettingsSliderBar",
-		"uiMainSettingsScrollBar"
+		"sliderBar"
 	]
 }

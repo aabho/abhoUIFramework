@@ -1,0 +1,315 @@
+{
+	"name": "formatting",
+	"events": [
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "this is a group!",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "this is a variable description!",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6705882352941176,
+						0.8745098039215686,
+						0.6431372549019608,
+						1
+					]
+				},
+				{
+					"eventType": "variable",
+					"name": "var",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 941702188786004
+				},
+				{
+					"eventType": "comment",
+					"text": "this is a major comment!",
+					"text-color": [
+						0,
+						0,
+						0,
+						1
+					],
+					"background-color": [
+						0.6431372549019608,
+						0.8470588235294118,
+						0.8745098039215686,
+						1
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 918322724446110
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 853002016782602
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 829340321242569
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 863837880588552
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 469587087697181
+						}
+					],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 172854793507126,
+							"parameters": {
+								"seconds": "0"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 260740295351653,
+							"parameters": {
+								"seconds": "0"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 539238584183756,
+							"parameters": {
+								"seconds": "0"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 402338553226118,
+							"parameters": {
+								"seconds": "0"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 930913691727845,
+							"parameters": {
+								"seconds": "0"
+							}
+						}
+					],
+					"sid": 957305225824796,
+					"children": [
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "this is a group that's easier to copy paste",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [],
+							"sid": 671714599697702,
+							"text-color": [
+								0,
+								0,
+								0,
+								0
+							],
+							"background-color": [
+								0.8392156862745098,
+								0.8392156862745098,
+								0.8392156862745098,
+								1
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "this is a minor comment!",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.8352941176470589,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "important sidenote, reference, tl;dr",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.8470588235294118,
+								0.6431372549019608,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "to-do or issue",
+							"text-color": [
+								0,
+								0,
+								0,
+								0
+							],
+							"background-color": [
+								0.8745098039215686,
+								0.6431372549019608,
+								0.6431372549019608,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 860290664661237,
+									"parameters": {
+										"first-value": "Infinity + 1",
+										"comparison": 4,
+										"second-value": "Infinity"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 597654937339946,
+									"parameters": {
+										"first-value": "pi",
+										"comparison": 0,
+										"second-value": "3"
+									}
+								},
+								{
+									"id": "is-number-nan",
+									"objectClass": "System",
+									"sid": 180011320337324,
+									"parameters": {
+										"number": "1/0"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "this is an in-line comment!",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.8352941176470589,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"type": "comment",
+									"text": "in-line to-do or issue",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8745098039215686,
+										0.6431372549019608,
+										0.6431372549019608,
+										1
+									]
+								},
+								{
+									"type": "comment",
+									"text": "in-line important sidenote, reference, tl;dr",
+									"text-color": [
+										0,
+										0,
+										0,
+										1
+									],
+									"background-color": [
+										0.8470588235294118,
+										0.6431372549019608,
+										0.8745098039215686,
+										1
+									]
+								}
+							],
+							"sid": 923480747021074
+						}
+					]
+				}
+			],
+			"sid": 670851306628751,
+			"text-color": [
+				0,
+				0,
+				0,
+				0
+			],
+			"background-color": [
+				0.8392156862745098,
+				0.8392156862745098,
+				0.8392156862745098,
+				1
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "feel free to delete this event sheet, nothing important, just my color code for organization",
+			"text-color": [
+				0,
+				0,
+				0,
+				1
+			],
+			"background-color": [
+				0.8470588235294118,
+				0.6431372549019608,
+				0.8745098039215686,
+				1
+			]
+		}
+	],
+	"sid": 741317359524717
+}

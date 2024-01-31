@@ -70,6 +70,6 @@
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"members": [
-		"uiMainScrollMask"
+		"scrollView"
 	]
 }

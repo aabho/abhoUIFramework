@@ -70,8 +70,6 @@
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"members": [
-		"uiMainSettingsSliderHandleMus",
-		"uiMainSettingsSliderHandleSFX",
-		"uiMainSettingsScrollHandle"
+		"sliderHandle"
 	]
 }

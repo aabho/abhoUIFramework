@@ -51,20 +51,25 @@
 			"desc": "the offset between this object and the canvas",
 			"show": false,
 			"sid": 950266858613113
-		}
-	],
-	"behaviorTypes": [
+		},
 		{
-			"behaviorId": "Tween",
-			"name": "TweenScroll",
-			"sid": 360358289874756
+			"name": "scrollTargetX",
+			"type": "number",
+			"desc": "used to carry target position to custom action",
+			"show": false,
+			"sid": 193859205697403
+		},
+		{
+			"name": "scrollTargetY",
+			"type": "number",
+			"desc": "used to carry target position to custom action",
+			"show": false,
+			"sid": 767163621770676
 		}
 	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"members": [
-		"uiMainSettingsSliderBar",
-		"uiMainButton",
-		"uiMainSettingsSliderHandleMus",
-		"uiMainSettingsSliderHandleSFX"
+		"button"
 	]
 }

@@ -23,12 +23,39 @@
 			"desc": "name of ui handle id (not name), or leave empty to start at right side",
 			"show": true,
 			"sid": 276202695134831
+		},
+		{
+			"name": "sliderFill_startPosX",
+			"type": "number",
+			"desc": "where this fill should be",
+			"show": false,
+			"sid": 858714822802638
+		},
+		{
+			"name": "sliderFill_startPosY",
+			"type": "number",
+			"desc": "where this fill should be",
+			"show": false,
+			"sid": 576745205398699
+		},
+		{
+			"name": "sliderFill_endPosX",
+			"type": "number",
+			"desc": "where this fill should point",
+			"show": false,
+			"sid": 819946693268517
+		},
+		{
+			"name": "sliderFill_endPosY",
+			"type": "number",
+			"desc": "where this fill should point",
+			"show": false,
+			"sid": 266373793176659
 		}
 	],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"members": [
-		"uiMainSettingsSliderFill",
-		"uiMainSettingsSliderFillRed"
+		"sliderFill"
 	]
 }

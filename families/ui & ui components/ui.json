@@ -118,19 +118,12 @@
 	],
 	"effectTypes": [],
 	"members": [
-		"uiMainButton",
-		"uiMainQuitButton",
-		"uiMainSettingsButton",
-		"uiMainSettingsSliderHandleMus",
-		"uiMainSettingsSliderHandleSFX",
-		"uiMainSettingsSliderBar",
-		"uiMainSettingsSliderFill",
-		"uiMainSettingsSliderFillRed",
-		"uiMainSettingsSliderTick",
-		"uiMainSettingsScrollBar",
-		"uiMainSettingsScrollHandle",
-		"uiMainCheckbox",
-		"uiMainCarousel",
-		"uiMainContentCarousel"
+		"button",
+		"sliderHandle",
+		"sliderBar",
+		"sliderFill",
+		"sliderTick",
+		"checkbox",
+		"carousel"
 	]
 }

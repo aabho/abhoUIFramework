@@ -42,7 +42,6 @@
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"members": [
-		"uiMainCarousel",
-		"uiMainContentCarousel"
+		"carousel"
 	]
 }

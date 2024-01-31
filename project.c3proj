@@ -1,18 +1,11 @@
 {
 	"projectFormatVersion": 1,
 	"savedWithRelease": 36802,
-	"name": "abho's ui framework",
+	"name": "abhoUIFramework",
 	"runtime": "c3",
 	"useWorker": "auto",
 	"bundleAddons": false,
 	"usedAddons": [
-		{
-			"type": "plugin",
-			"id": "Browser",
-			"name": "Browser",
-			"author": "Scirra",
-			"bundled": false
-		},
 		{
 			"type": "plugin",
 			"id": "Keyboard",
@@ -43,22 +36,8 @@
 		},
 		{
 			"type": "plugin",
-			"id": "Text",
-			"name": "Text",
-			"author": "Scirra",
-			"bundled": false
-		},
-		{
-			"type": "plugin",
 			"id": "gamepad",
 			"name": "Gamepad",
-			"author": "Scirra",
-			"bundled": false
-		},
-		{
-			"type": "behavior",
-			"id": "Sin",
-			"name": "Sine",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -68,88 +47,41 @@
 			"name": "Tween",
 			"author": "Scirra",
 			"bundled": false
-		},
-		{
-			"type": "behavior",
-			"id": "scrollto",
-			"name": "Scroll To",
-			"author": "Scirra",
-			"bundled": false
 		}
 	],
 	"uniqueId": "20y9z90w252",
 	"objectTypes": {
-		"items": [
-			"Camera",
-			"txt"
-		],
+		"items": [],
 		"subfolders": [
-			{
-				"items": [
-					"Mouse",
-					"Keyboard",
-					"Browser",
-					"Gamepad"
-				],
-				"subfolders": [],
-				"name": "essentials"
-			},
 			{
 				"items": [],
 				"subfolders": [
 					{
 						"items": [
-							"uiMainSettingsBg",
-							"uiMainSettingsButton",
-							"uiMainSettingsScrollBar",
-							"uiMainSettingsScrollHandle"
-						],
-						"subfolders": [
-							{
-								"items": [
-									"uiMainSettingsSliderBar",
-									"uiMainSettingsSliderFill",
-									"uiMainSettingsSliderFillRed",
-									"uiMainSettingsSliderHandleGlyph",
-									"uiMainSettingsSliderHandleMus",
-									"uiMainSettingsSliderHandleSFX",
-									"uiMainSettingsSliderTick"
-								],
-								"subfolders": [],
-								"name": "sliders"
-							}
-						],
-						"name": "settings"
-					},
-					{
-						"items": [
-							"uiMainButton",
-							"uiMainCheckbox",
-							"uiMainCheckboxCheck",
-							"uiMainDummyCheck2Anchor",
-							"uiMainQuitBg",
-							"uiMainQuitButton",
-							"uiMainSettingsCarouselArrows",
-							"uiMainSettingsCarouselGradient",
-							"uiMainCarouselContentAnchor",
-							"uiMainCarousel",
-							"uiMainScrollMask",
-							"uiMainContentCarousel",
-							"uiMainCarouselAbho"
+							"Gamepad",
+							"Keyboard",
+							"Mouse"
 						],
 						"subfolders": [],
-						"name": "main"
-					},
-					{
-						"items": [
-							"uiMainCarouselContentHugeAnchor",
-							"uiMainCarouselContentHugeHitbox"
-						],
-						"subfolders": [],
-						"name": "huge carousel"
+						"name": "input"
 					}
 				],
-				"name": "main"
+				"name": "sys"
+			},
+			{
+				"items": [
+					"button",
+					"carousel",
+					"carouselContentAnchor",
+					"checkbox",
+					"scrollView",
+					"sliderBar",
+					"sliderFill",
+					"sliderHandle",
+					"sliderTick"
+				],
+				"subfolders": [],
+				"name": "ui"
 			}
 		]
 	},
@@ -160,8 +92,7 @@
 		"subfolders": [
 			{
 				"items": [
-					"ui",
-					"uiMouseHitbox"
+					"ui"
 				],
 				"subfolders": [
 					{
@@ -204,20 +135,25 @@
 	},
 	"layouts": {
 		"items": [
-			"test1",
-			"test2",
+			"test",
 			"instances"
 		],
 		"subfolders": []
 	},
 	"eventSheets": {
 		"items": [
-			"testEV",
-			"uiEV",
-			"formatting",
-			"utilsEV"
+			"testEV"
 		],
-		"subfolders": []
+		"subfolders": [
+			{
+				"items": [
+					"uiEV",
+					"formatting"
+				],
+				"subfolders": [],
+				"name": "ui framework"
+			}
+		]
 	},
 	"rootFileFolders": {
 		"script": {
@@ -318,7 +254,7 @@
 	"properties": {
 		"description": "",
 		"version": "1.0.0.0",
-		"author": "abho",
+		"author": "",
 		"authorEmail": "",
 		"authorWebsite": "",
 		"appId": "",
