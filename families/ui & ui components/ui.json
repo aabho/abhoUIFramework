@@ -74,6 +74,13 @@
 			"sid": 737904635594192
 		},
 		{
+			"name": "useCustomMouseHitbox",
+			"type": "boolean",
+			"desc": "if true, mouseover only works on uiMouseHitbox instances as a child of this",
+			"show": true,
+			"sid": 885114648317961
+		},
+		{
 			"name": "oWidth",
 			"type": "number",
 			"desc": "for size animations, can remove this if you'd like",

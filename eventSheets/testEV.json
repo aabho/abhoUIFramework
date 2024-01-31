@@ -85,26 +85,749 @@
 				{
 					"eventType": "group",
 					"disabled": false,
-					"title": "main main",
+					"title": "main huge",
 					"description": "",
 					"isActiveOnStart": true,
 					"children": [
 						{
-							"eventType": "comment",
-							"text": "I know the name of this group is a bit strange, but I always put the name of the layout before putting the name of the UI section, which in this case... yeah.\nit isn't necessary, just a convention I personally adhere to.",
-							"text-color": [
-								0,
-								0,
-								0,
-								1
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 481841802635907,
+									"parameters": {
+										"variable": "uiInputDevice",
+										"comparison": 0,
+										"value": "\"mouse\""
+									}
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 507669635411654
+								}
 							],
-							"background-color": [
-								0.8470588235294118,
-								0.6431372549019608,
-								0.8745098039215686,
-								1
+							"actions": [
+								{
+									"callFunction": "uiEnableSection",
+									"sid": 966925315808503,
+									"parameters": [
+										"\"main\""
+									]
+								},
+								{
+									"callFunction": "uiEnableSection",
+									"sid": 202763239019956,
+									"parameters": [
+										"\"mainHuge\""
+									]
+								}
+							],
+							"sid": 255634112229364
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 633027638868933,
+									"parameters": {
+										"key": 27
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 187572866447137,
+									"parameters": {
+										"variable": "uiInputDevice",
+										"comparison": 0,
+										"value": "\"mouse\""
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "uiDisableAllSections",
+									"sid": 707212704518726
+								},
+								{
+									"callFunction": "uiEnableSection",
+									"sid": 845393758933198,
+									"parameters": [
+										"\"main\""
+									]
+								}
+							],
+							"sid": 286993196713408
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiChoose",
+							"objectClass": "uiMainContentCarousel",
+							"functionDescription": "override",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"customAction": "uiChoose",
+									"objectClass": "uiMainContentCarousel",
+									"customActionObjectClass": "ui",
+									"sid": 211399613991536
+								}
+							],
+							"sid": 139037103041994,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "uiMainContentCarousel",
+											"sid": 262641556792534,
+											"parameters": {
+												"child": "uiMainSettingsCarouselArrows",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiMainSettingsCarouselArrows",
+											"sid": 645839536351514,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fadein\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainSettingsCarouselArrows",
+											"sid": 638359192012625,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fadein\"",
+												"property": "offsetOpacity",
+												"end-value": "10",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 748447357076606
+								}
 							]
 						},
+						{
+							"aceType": "action",
+							"aceName": "uiCarouselSelect",
+							"objectClass": "uiMainContentCarousel",
+							"functionDescription": "override",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"customAction": "uiCarouselSelect",
+									"objectClass": "uiMainContentCarousel",
+									"customActionObjectClass": "uiCarousel",
+									"sid": 469370786583524
+								}
+							],
+							"sid": 683791835516053,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "uiMainContentCarousel",
+											"sid": 819581860794424,
+											"parameters": {
+												"child": "uiMainSettingsCarouselArrows",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiMainSettingsCarouselArrows",
+											"sid": 961409158287273,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fadein\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainSettingsCarouselArrows",
+											"sid": 524946566862567,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fadein\"",
+												"property": "offsetOpacity",
+												"end-value": "100",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 844530249062599
+								}
+							]
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiCarouselDeselect",
+							"objectClass": "uiMainContentCarousel",
+							"functionDescription": "",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"customAction": "uiCarouselDeselect",
+									"objectClass": "uiMainContentCarousel",
+									"customActionObjectClass": "uiCarousel",
+									"sid": 251102926501169
+								},
+								{
+									"callFunction": "uiEnableSection",
+									"sid": 239404570695116,
+									"parameters": [
+										"\"mainHuge\""
+									]
+								}
+							],
+							"sid": 122616508807172,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 971824846690440,
+											"parameters": {
+												"variable": "uiInputDevice",
+												"comparison": 0,
+												"value": "\"mouse\""
+											},
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "uiDisableSection",
+											"sid": 707260979233522,
+											"parameters": [
+												"\"main\""
+											]
+										}
+									],
+									"sid": 297406442743569
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "uiMainContentCarousel",
+											"sid": 326525032599258,
+											"parameters": {
+												"child": "uiMainSettingsCarouselArrows",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiMainSettingsCarouselArrows",
+											"sid": 494708489522303,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fadeout\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainSettingsCarouselArrows",
+											"sid": 800775343700580,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fadeout\"",
+												"property": "offsetOpacity",
+												"end-value": "10",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 251454617465755
+								}
+							]
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiUnchoose",
+							"objectClass": "uiMainContentCarousel",
+							"functionDescription": "override",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"customAction": "uiUnchoose",
+									"objectClass": "uiMainContentCarousel",
+									"customActionObjectClass": "ui",
+									"sid": 820429762592455
+								}
+							],
+							"sid": 191251013330404,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "uiMainContentCarousel",
+											"sid": 354675366467621,
+											"parameters": {
+												"child": "uiMainSettingsCarouselArrows",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiMainSettingsCarouselArrows",
+											"sid": 650733829524886,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fadeout\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainSettingsCarouselArrows",
+											"sid": 377153359859246,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fadeout\"",
+												"property": "offsetOpacity",
+												"end-value": "0",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 184884161372993
+								}
+							]
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiCarouselContentIncrement",
+							"objectClass": "uiMainContentCarousel",
+							"functionDescription": "override",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"customAction": "uiCarouselContentIncrement",
+									"objectClass": "uiMainContentCarousel",
+									"customActionObjectClass": "uiCarousel",
+									"sid": 996897108553350
+								}
+							],
+							"sid": 763341227793215,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 156324756874373,
+											"parameters": {
+												"variable": "uiInputDevice",
+												"comparison": 0,
+												"value": "\"mouse\""
+											}
+										},
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 900750482915846,
+											"parameters": {
+												"first-value": "LayoutName",
+												"comparison": 0,
+												"second-value": "\"test2\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 701851547200529,
+											"parameters": {
+												"seconds": "0"
+											}
+										},
+										{
+											"callFunction": "uiEnableSection",
+											"sid": 459810187719423,
+											"parameters": [
+												"\"mainHuge\""
+											]
+										}
+									],
+									"sid": 192495355343029
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "uiMainContentCarousel",
+											"sid": 246892396054103,
+											"parameters": {
+												"child": "uiMainSettingsCarouselGradient",
+												"which": "own"
+											}
+										},
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "uiMainSettingsCarouselGradient",
+											"sid": 203772868548606,
+											"parameters": {
+												"instance-variable": "isRight"
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "gradient fade",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-opacity",
+											"objectClass": "uiMainSettingsCarouselGradient",
+											"sid": 304657515936957,
+											"parameters": {
+												"opacity": "100"
+											}
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiMainSettingsCarouselGradient",
+											"sid": 419066443083755,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fadeout\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainSettingsCarouselGradient",
+											"sid": 765698802667613,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fadeout\"",
+												"property": "offsetOpacity",
+												"end-value": "0",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 185007746755692
+								}
+							]
+						},
+						{
+							"aceType": "action",
+							"aceName": "uiCarouselContentDecrement",
+							"objectClass": "uiMainContentCarousel",
+							"functionDescription": "override",
+							"functionCategory": "ui",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "custom-ace-block",
+							"conditions": [],
+							"actions": [
+								{
+									"customAction": "uiCarouselContentDecrement",
+									"objectClass": "uiMainContentCarousel",
+									"customActionObjectClass": "uiCarousel",
+									"sid": 608893200565875
+								}
+							],
+							"sid": 702735346254873,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 833542756758410,
+											"parameters": {
+												"variable": "uiInputDevice",
+												"comparison": 0,
+												"value": "\"mouse\""
+											}
+										},
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 899256785559776,
+											"parameters": {
+												"first-value": "LayoutName",
+												"comparison": 0,
+												"second-value": "\"test2\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 925140426748542,
+											"parameters": {
+												"seconds": "0"
+											}
+										},
+										{
+											"callFunction": "uiEnableSection",
+											"sid": 836852916574663,
+											"parameters": [
+												"\"mainHuge\""
+											]
+										}
+									],
+									"sid": 648369680624265
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "uiMainContentCarousel",
+											"sid": 926892525531754,
+											"parameters": {
+												"child": "uiMainSettingsCarouselGradient",
+												"which": "own"
+											}
+										},
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "uiMainSettingsCarouselGradient",
+											"sid": 753692665048728,
+											"parameters": {
+												"instance-variable": "isRight"
+											},
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "gradient fade",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.8745098039215686,
+												0.8352941176470589,
+												0.6431372549019608,
+												1
+											]
+										},
+										{
+											"id": "set-opacity",
+											"objectClass": "uiMainSettingsCarouselGradient",
+											"sid": 267245005022159,
+											"parameters": {
+												"opacity": "100"
+											}
+										},
+										{
+											"id": "stop-tweens",
+											"objectClass": "uiMainSettingsCarouselGradient",
+											"sid": 344838090302620,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fadeout\""
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "uiMainSettingsCarouselGradient",
+											"sid": 547400568387686,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"fadeout\"",
+												"property": "offsetOpacity",
+												"end-value": "0",
+												"time": "0.1",
+												"ease": "easeoutcubic",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 398822533309269
+								}
+							]
+						},
+						{
+							"functionName": "select hugeBtnA",
+							"functionDescription": "",
+							"functionCategory": "huge",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [
+								{
+									"callFunction": "uiDisableSection",
+									"sid": 500545436726307,
+									"parameters": [
+										"\"mainHuge\""
+									]
+								},
+								{
+									"callFunction": "uiEnableSection",
+									"sid": 873778988810076,
+									"parameters": [
+										"\"mainHugeBtnA\""
+									]
+								}
+							],
+							"sid": 796369134814167
+						},
+						{
+							"functionName": "select hugeBtnCancel",
+							"functionDescription": "",
+							"functionCategory": "huge",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [
+								{
+									"callFunction": "uiDisableSection",
+									"sid": 250522282862716,
+									"parameters": [
+										"\"mainHugeBtnA\""
+									]
+								},
+								{
+									"callFunction": "uiEnableSection",
+									"sid": 850346268162373,
+									"parameters": [
+										"\"mainHuge\""
+									]
+								}
+							],
+							"sid": 570237082456470
+						}
+					],
+					"sid": 240004446814848,
+					"text-color": [
+						0,
+						0,
+						0,
+						0
+					],
+					"background-color": [
+						0.8392156862745098,
+						0.8392156862745098,
+						0.8392156862745098,
+						1
+					]
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "main main",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
 						{
 							"eventType": "comment",
 							"text": "carousel",
@@ -514,187 +1237,6 @@
 								}
 							],
 							"sid": 147771511260530
-						},
-						{
-							"aceType": "action",
-							"aceName": "uiCarouselContentIncrement",
-							"objectClass": "uiMainContentCarousel",
-							"functionDescription": "override",
-							"functionCategory": "ui",
-							"functionReturnType": "none",
-							"functionCopyPicked": false,
-							"functionIsAsync": false,
-							"functionParameters": [],
-							"eventType": "custom-ace-block",
-							"conditions": [
-								{
-									"id": "pick-children",
-									"objectClass": "uiMainContentCarousel",
-									"sid": 566176750000484,
-									"parameters": {
-										"child": "uiMainSettingsCarouselGradient",
-										"which": "own"
-									}
-								},
-								{
-									"id": "is-boolean-instance-variable-set",
-									"objectClass": "uiMainSettingsCarouselGradient",
-									"sid": 259750593387495,
-									"parameters": {
-										"instance-variable": "isRight"
-									}
-								}
-							],
-							"actions": [
-								{
-									"customAction": "uiCarouselContentIncrement",
-									"objectClass": "uiMainContentCarousel",
-									"customActionObjectClass": "uiCarousel",
-									"sid": 688857344663420
-								},
-								{
-									"type": "comment",
-									"text": "gradient fade",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"id": "set-opacity",
-									"objectClass": "uiMainSettingsCarouselGradient",
-									"sid": 798831614613073,
-									"parameters": {
-										"opacity": "100"
-									}
-								},
-								{
-									"id": "stop-tweens",
-									"objectClass": "uiMainSettingsCarouselGradient",
-									"sid": 536166329834342,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"fadeout\""
-									}
-								},
-								{
-									"id": "tween-one-property",
-									"objectClass": "uiMainSettingsCarouselGradient",
-									"sid": 936029308349150,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"fadeout\"",
-										"property": "offsetOpacity",
-										"end-value": "0",
-										"time": "0.1",
-										"ease": "easeoutcubic",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
-									}
-								}
-							],
-							"sid": 998024830127391
-						},
-						{
-							"aceType": "action",
-							"aceName": "uiCarouselContentDecrement",
-							"objectClass": "uiMainContentCarousel",
-							"functionDescription": "override",
-							"functionCategory": "ui",
-							"functionReturnType": "none",
-							"functionCopyPicked": false,
-							"functionIsAsync": false,
-							"functionParameters": [],
-							"eventType": "custom-ace-block",
-							"conditions": [
-								{
-									"id": "pick-children",
-									"objectClass": "uiMainContentCarousel",
-									"sid": 965702476150891,
-									"parameters": {
-										"child": "uiMainSettingsCarouselGradient",
-										"which": "own"
-									}
-								},
-								{
-									"id": "is-boolean-instance-variable-set",
-									"objectClass": "uiMainSettingsCarouselGradient",
-									"sid": 205761244859898,
-									"parameters": {
-										"instance-variable": "isRight"
-									},
-									"isInverted": true
-								}
-							],
-							"actions": [
-								{
-									"customAction": "uiCarouselContentDecrement",
-									"objectClass": "uiMainContentCarousel",
-									"customActionObjectClass": "uiCarousel",
-									"sid": 582715417959731
-								},
-								{
-									"type": "comment",
-									"text": "gradient fade",
-									"text-color": [
-										0,
-										0,
-										0,
-										1
-									],
-									"background-color": [
-										0.8745098039215686,
-										0.8352941176470589,
-										0.6431372549019608,
-										1
-									]
-								},
-								{
-									"id": "set-opacity",
-									"objectClass": "uiMainSettingsCarouselGradient",
-									"sid": 617421745613387,
-									"parameters": {
-										"opacity": "100"
-									}
-								},
-								{
-									"id": "stop-tweens",
-									"objectClass": "uiMainSettingsCarouselGradient",
-									"sid": 158646157202155,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"fadeout\""
-									}
-								},
-								{
-									"id": "tween-one-property",
-									"objectClass": "uiMainSettingsCarouselGradient",
-									"sid": 102881856354015,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"fadeout\"",
-										"property": "offsetOpacity",
-										"end-value": "0",
-										"time": "0.1",
-										"ease": "easeoutcubic",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
-									}
-								}
-							],
-							"sid": 699712982940253
 						},
 						{
 							"eventType": "comment",

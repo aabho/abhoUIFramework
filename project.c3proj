@@ -139,6 +139,14 @@
 						],
 						"subfolders": [],
 						"name": "main"
+					},
+					{
+						"items": [
+							"uiMainCarouselContentHugeAnchor",
+							"uiMainCarouselContentHugeHitbox"
+						],
+						"subfolders": [],
+						"name": "huge carousel"
 					}
 				],
 				"name": "main"
@@ -152,7 +160,8 @@
 		"subfolders": [
 			{
 				"items": [
-					"ui"
+					"ui",
+					"uiMouseHitbox"
 				],
 				"subfolders": [
 					{
@@ -195,7 +204,8 @@
 	},
 	"layouts": {
 		"items": [
-			"test",
+			"test1",
+			"test2",
 			"instances"
 		],
 		"subfolders": []

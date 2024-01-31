@@ -1,0 +1,11 @@
+{
+	"name": "uiMouseHitbox",
+	"plugin-id": "Sprite",
+	"sid": 592115231323836,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"uiMainCarouselContentHugeHitbox"
+	]
+}

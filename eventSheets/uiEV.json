@@ -38,6 +38,16 @@
 			"sid": 607184615196283
 		},
 		{
+			"eventType": "variable",
+			"name": "uiInputDevice",
+			"type": "string",
+			"initialValue": "mouse",
+			"comment": "the last recorded input method - \"mouse\", \"keyboard\", or \"gamepad\"",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 422077516087144
+		},
+		{
 			"eventType": "comment",
 			"text": "delimiter used for carousels\non default ',' but if you need to use a comma in a value you want to display, feel free to change",
 			"text-color": [
@@ -1014,6 +1024,10 @@
 								{
 									"callFunction": "uiSliderUpdate [INTERNAL]",
 									"sid": 744070620117528
+								},
+								{
+									"callFunction": "uiNavigatePickDefault [INTERNAL]",
+									"sid": 921575551337201
 								}
 							],
 							"sid": 629899058959210
@@ -10827,9 +10841,85 @@
 										"group-name": "\"ui / interaction / gamepad\"",
 										"state": "activated"
 									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 571624703493646,
+									"parameters": {
+										"variable": "uiInputDevice",
+										"value": "\"gamepad\""
+									}
 								}
 							],
 							"sid": 589164051561683,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "switch input device",
+							"text-color": [
+								0,
+								0,
+								0,
+								1
+							],
+							"background-color": [
+								0.6431372549019608,
+								0.8470588235294118,
+								0.8745098039215686,
+								1
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-any-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 539269423569061
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 755006253116102,
+									"parameters": {
+										"variable": "uiInputDevice",
+										"value": "\"keyboard\""
+									}
+								}
+							],
+							"sid": 305780020535005,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-movement",
+									"objectClass": "Mouse",
+									"sid": 410797365678591
+								},
+								{
+									"id": "on-any-click",
+									"objectClass": "Mouse",
+									"sid": 969714993907091
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 376995364691877,
+									"parameters": {
+										"variable": "uiInputDevice",
+										"value": "\"mouse\""
+									}
+								}
+							],
+							"sid": 522176629239904,
 							"isOrBlock": true
 						},
 						{
@@ -10891,6 +10981,22 @@
 											"sid": 942097870333824,
 											"children": [
 												{
+													"eventType": "comment",
+													"text": "if the while loop completes and it appears the mouse is not over anything, pass will be false",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.6705882352941176,
+														0.8745098039215686,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
 													"eventType": "variable",
 													"name": "pass",
 													"type": "boolean",
@@ -10902,7 +11008,7 @@
 												},
 												{
 													"eventType": "comment",
-													"text": "iterate through all ui components that mouse is currently over, in order of zIndex\n(not all components are eligible in cases like being off their scroll view)",
+													"text": "normal overlap test",
 													"text-color": [
 														0,
 														0,
@@ -10922,7 +11028,7 @@
 														{
 															"id": "cursor-is-over-object",
 															"objectClass": "Mouse",
-															"sid": 984524195608806,
+															"sid": 664945343758063,
 															"parameters": {
 																"object": "ui"
 															}
@@ -10930,214 +11036,121 @@
 														{
 															"id": "is-boolean-instance-variable-set",
 															"objectClass": "ui",
-															"sid": 910392912536527,
+															"sid": 315554554392956,
 															"parameters": {
-																"instance-variable": "navigable"
-															}
+																"instance-variable": "useCustomMouseHitbox"
+															},
+															"isInverted": true
 														},
 														{
-															"id": "is-boolean-instance-variable-set",
-															"objectClass": "ui",
-															"sid": 931022164326261,
-															"parameters": {
-																"instance-variable": "active"
-															}
-														},
-														{
-															"id": "for-each-ordered",
+															"id": "for-each",
 															"objectClass": "System",
-															"sid": 694623393768930,
+															"sid": 959057416256394,
 															"parameters": {
-																"object": "ui",
-																"expression": "ui.ZIndex",
-																"order": "descending"
+																"object": "ui"
+															}
+														},
+														{
+															"id": "compare-two-values",
+															"objectClass": "System",
+															"sid": 820486617523650,
+															"parameters": {
+																"first-value": "Functions.uiTestIfMouseOverUi(ui.ID)",
+																"comparison": 0,
+																"second-value": "1"
 															}
 														}
 													],
-													"actions": [],
-													"sid": 838192395915096,
-													"children": [
+													"actions": [
 														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "pick-by-unique-id",
-																	"objectClass": "uiScrollComponent",
-																	"sid": 379700900865078,
-																	"parameters": {
-																		"unique-id": "ui.UID"
-																	}
-																},
-																{
-																	"id": "compare-instance-variable",
-																	"objectClass": "uiScrollView",
-																	"sid": 324881043926830,
-																	"parameters": {
-																		"instance-variable": "scrollViewID",
-																		"comparison": 0,
-																		"value": "uiScrollComponent.scrollViewID"
-																	}
-																},
-																{
-																	"id": "cursor-is-over-object",
-																	"objectClass": "Mouse",
-																	"sid": 378444155145321,
-																	"parameters": {
-																		"object": "uiScrollView"
-																	},
-																	"isInverted": true
-																}
-															],
-															"actions": [],
-															"sid": 633894850532709
+															"id": "stop-loop",
+															"objectClass": "System",
+															"sid": 337543533052668
 														},
 														{
-															"eventType": "comment",
-															"text": "choose this component, but only if it's not already chosen",
-															"text-color": [
-																0,
-																0,
-																0,
-																1
-															],
-															"background-color": [
-																0.8745098039215686,
-																0.8352941176470589,
-																0.6431372549019608,
-																1
-															]
-														},
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "else",
-																	"objectClass": "System",
-																	"sid": 976894903912149
-																}
-															],
-															"actions": [
-																{
-																	"id": "stop-loop",
-																	"objectClass": "System",
-																	"sid": 969115501095420
-																},
-																{
-																	"id": "set-boolean-eventvar",
-																	"objectClass": "System",
-																	"sid": 112166548260142,
-																	"parameters": {
-																		"variable": "pass",
-																		"value": "true"
-																	}
-																}
-															],
-															"sid": 684978855532792,
-															"children": [
-																{
-																	"eventType": "block",
-																	"conditions": [
-																		{
-																			"id": "compare-instance-variable",
-																			"objectClass": "ui",
-																			"sid": 247996411725786,
-																			"parameters": {
-																				"instance-variable": "ID",
-																				"comparison": 0,
-																				"value": "uiChosenID"
-																			},
-																			"isInverted": true
-																		}
-																	],
-																	"actions": [
-																		{
-																			"id": "set-eventvar-value",
-																			"objectClass": "System",
-																			"sid": 720017252996761,
-																			"parameters": {
-																				"variable": "uiChosenID",
-																				"value": "ui.id"
-																			}
-																		}
-																	],
-																	"sid": 955045859132325,
-																	"children": [
-																		{
-																			"eventType": "comment",
-																			"text": "if set to center on mouseover, call the centering function",
-																			"text-color": [
-																				0,
-																				0,
-																				0,
-																				1
-																			],
-																			"background-color": [
-																				0.8745098039215686,
-																				0.8352941176470589,
-																				0.6431372549019608,
-																				1
-																			]
-																		},
-																		{
-																			"eventType": "block",
-																			"conditions": [
-																				{
-																					"id": "pick-by-unique-id",
-																					"objectClass": "uiScrollComponent",
-																					"sid": 579407363062464,
-																					"parameters": {
-																						"unique-id": "ui.UID"
-																					}
-																				},
-																				{
-																					"id": "is-boolean-instance-variable-set",
-																					"objectClass": "uiScrollComponent",
-																					"sid": 932634668898033,
-																					"parameters": {
-																						"instance-variable": "scrollCenterOnMouseover"
-																					}
-																				}
-																			],
-																			"actions": [
-																				{
-																					"callFunction": "uiScrollCenterChosen [INTERNAL]",
-																					"sid": 485660289617019
-																				}
-																			],
-																			"sid": 151530040098313
-																		},
-																		{
-																			"eventType": "comment",
-																			"text": "run a generic update",
-																			"text-color": [
-																				0,
-																				0,
-																				0,
-																				1
-																			],
-																			"background-color": [
-																				0.8745098039215686,
-																				0.8352941176470589,
-																				0.6431372549019608,
-																				1
-																			]
-																		},
-																		{
-																			"eventType": "block",
-																			"conditions": [],
-																			"actions": [
-																				{
-																					"callFunction": "uiUpdate [INTERNAL]",
-																					"sid": 274044696317142
-																				}
-																			],
-																			"sid": 725144141637469
-																		}
-																	]
-																}
-															]
+															"id": "set-boolean-eventvar",
+															"objectClass": "System",
+															"sid": 656951062570154,
+															"parameters": {
+																"variable": "pass",
+																"value": "true"
+															}
 														}
+													],
+													"sid": 575054784629633
+												},
+												{
+													"eventType": "comment",
+													"text": "adjust for custom mouse hitbox being used",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
 													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "cursor-is-over-object",
+															"objectClass": "Mouse",
+															"sid": 452365311435868,
+															"parameters": {
+																"object": "uiMouseHitbox"
+															}
+														},
+														{
+															"id": "pick-parent",
+															"objectClass": "uiMouseHitbox",
+															"sid": 190345244317327,
+															"parameters": {
+																"parent": "ui",
+																"which": "own"
+															}
+														},
+														{
+															"id": "for-each",
+															"objectClass": "System",
+															"sid": 529255798197338,
+															"parameters": {
+																"object": "ui"
+															}
+														},
+														{
+															"id": "compare-two-values",
+															"objectClass": "System",
+															"sid": 662508410304402,
+															"parameters": {
+																"first-value": "Functions.uiTestIfMouseOverUi(ui.ID)",
+																"comparison": 0,
+																"second-value": "1"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "stop-loop",
+															"objectClass": "System",
+															"sid": 546775478290556
+														},
+														{
+															"id": "set-boolean-eventvar",
+															"objectClass": "System",
+															"sid": 893524949167530,
+															"parameters": {
+																"variable": "pass",
+																"value": "true"
+															}
+														}
+													],
+													"sid": 843204624972457
 												},
 												{
 													"eventType": "comment",
@@ -11199,6 +11212,271 @@
 										},
 										{
 											"eventType": "comment",
+											"text": "returns 1 if mouse is over UI, and also registers changes",
+											"text-color": [
+												0,
+												0,
+												0,
+												1
+											],
+											"background-color": [
+												0.6431372549019608,
+												0.8470588235294118,
+												0.8745098039215686,
+												1
+											]
+										},
+										{
+											"functionName": "uiTestIfMouseOverUi",
+											"functionDescription": "returns 1 if mouse is over UI, and also registers changes",
+											"functionCategory": "ui",
+											"functionReturnType": "number",
+											"functionCopyPicked": false,
+											"functionIsAsync": false,
+											"functionParameters": [
+												{
+													"name": "ID",
+													"type": "string",
+													"initialValue": "",
+													"comment": "the UI component to test",
+													"sid": 417243732013471
+												}
+											],
+											"eventType": "function-block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "ui",
+													"sid": 632568619854686,
+													"parameters": {
+														"instance-variable": "ID",
+														"comparison": 0,
+														"value": "ID"
+													}
+												},
+												{
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "ui",
+													"sid": 580156941749206,
+													"parameters": {
+														"instance-variable": "navigable"
+													}
+												},
+												{
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "ui",
+													"sid": 101631196621563,
+													"parameters": {
+														"instance-variable": "active"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 406860708004192,
+											"children": [
+												{
+													"eventType": "comment",
+													"text": "make sure this isn't a scrollview component that's off its mask",
+													"text-color": [
+														0,
+														0,
+														0,
+														1
+													],
+													"background-color": [
+														0.8745098039215686,
+														0.8352941176470589,
+														0.6431372549019608,
+														1
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "pick-by-unique-id",
+															"objectClass": "uiScrollComponent",
+															"sid": 508437537701602,
+															"parameters": {
+																"unique-id": "ui.UID"
+															}
+														},
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "uiScrollView",
+															"sid": 174400350926029,
+															"parameters": {
+																"instance-variable": "scrollViewID",
+																"comparison": 0,
+																"value": "uiScrollComponent.scrollViewID"
+															}
+														},
+														{
+															"id": "cursor-is-over-object",
+															"objectClass": "Mouse",
+															"sid": 853262304435636,
+															"parameters": {
+																"object": "uiScrollView"
+															},
+															"isInverted": true
+														}
+													],
+													"actions": [
+														{
+															"id": "set-function-return-value",
+															"objectClass": "Functions",
+															"sid": 604295998207740,
+															"parameters": {
+																"value": "0"
+															}
+														}
+													],
+													"sid": 267443925531524
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 538921496859957
+														}
+													],
+													"actions": [
+														{
+															"id": "set-function-return-value",
+															"objectClass": "Functions",
+															"sid": 725642285595397,
+															"parameters": {
+																"value": "1"
+															}
+														}
+													],
+													"sid": 131631400943348,
+													"children": [
+														{
+															"eventType": "comment",
+															"text": "choose this component, but only if it's not already chosen",
+															"text-color": [
+																0,
+																0,
+																0,
+																1
+															],
+															"background-color": [
+																0.8745098039215686,
+																0.8352941176470589,
+																0.6431372549019608,
+																1
+															]
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-instance-variable",
+																	"objectClass": "ui",
+																	"sid": 853812596310412,
+																	"parameters": {
+																		"instance-variable": "ID",
+																		"comparison": 0,
+																		"value": "uiChosenID"
+																	},
+																	"isInverted": true
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-eventvar-value",
+																	"objectClass": "System",
+																	"sid": 212136176403196,
+																	"parameters": {
+																		"variable": "uiChosenID",
+																		"value": "ui.id"
+																	}
+																}
+															],
+															"sid": 504866433347458,
+															"children": [
+																{
+																	"eventType": "comment",
+																	"text": "if set to center on mouseover, call the centering function",
+																	"text-color": [
+																		0,
+																		0,
+																		0,
+																		1
+																	],
+																	"background-color": [
+																		0.8745098039215686,
+																		0.8352941176470589,
+																		0.6431372549019608,
+																		1
+																	]
+																},
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "pick-by-unique-id",
+																			"objectClass": "uiScrollComponent",
+																			"sid": 461838947760798,
+																			"parameters": {
+																				"unique-id": "ui.UID"
+																			}
+																		},
+																		{
+																			"id": "is-boolean-instance-variable-set",
+																			"objectClass": "uiScrollComponent",
+																			"sid": 114833644289645,
+																			"parameters": {
+																				"instance-variable": "scrollCenterOnMouseover"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"callFunction": "uiScrollCenterChosen [INTERNAL]",
+																			"sid": 727213590845670
+																		}
+																	],
+																	"sid": 779856027450108
+																},
+																{
+																	"eventType": "comment",
+																	"text": "run a generic update",
+																	"text-color": [
+																		0,
+																		0,
+																		0,
+																		1
+																	],
+																	"background-color": [
+																		0.8745098039215686,
+																		0.8352941176470589,
+																		0.6431372549019608,
+																		1
+																	]
+																},
+																{
+																	"eventType": "block",
+																	"conditions": [],
+																	"actions": [
+																		{
+																			"callFunction": "uiUpdate [INTERNAL]",
+																			"sid": 806841936868266
+																		}
+																	],
+																	"sid": 841004868740662
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"eventType": "comment",
 											"text": "left click to select option",
 											"text-color": [
 												0,
@@ -11217,13 +11495,12 @@
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "on-object-clicked",
+													"id": "on-click",
 													"objectClass": "Mouse",
-													"sid": 595052091919200,
+													"sid": 644379188428913,
 													"parameters": {
 														"mouse-button": "left",
-														"click-type": "clicked",
-														"object-clicked": "ui"
+														"click-type": "clicked"
 													}
 												},
 												{
@@ -12114,12 +12391,12 @@
 								{
 									"id": "on-movement",
 									"objectClass": "Mouse",
-									"sid": 605388453262824
+									"sid": 679578022583717
 								},
 								{
 									"id": "on-any-click",
 									"objectClass": "Mouse",
-									"sid": 385697686697497
+									"sid": 617333735554904
 								}
 							],
 							"actions": [

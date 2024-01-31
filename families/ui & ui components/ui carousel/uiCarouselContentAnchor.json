@@ -20,6 +20,7 @@
 	],
 	"effectTypes": [],
 	"members": [
-		"uiMainCarouselContentAnchor"
+		"uiMainCarouselContentAnchor",
+		"uiMainCarouselContentHugeAnchor"
 	]
 }
