@@ -396,7 +396,7 @@
 							],
 							"actions": [
 								{
-									"customAction": "uiMoveToMaskingLayer",
+									"customAction": "uiMoveToMaskingLayer [INTERNAL]",
 									"objectClass": "uiScrollComponent",
 									"sid": 238803318714230
 								}
@@ -3923,7 +3923,7 @@
 										{
 											"functionName": "uiGetUIDFromID",
 											"functionDescription": "given an ID, retrieve a UID",
-											"functionCategory": "ui",
+											"functionCategory": "ui [UTIL]",
 											"functionReturnType": "number",
 											"functionCopyPicked": false,
 											"functionIsAsync": false,
@@ -3996,7 +3996,7 @@
 										{
 											"functionName": "uiGetIDFromUID",
 											"functionDescription": "given a UID, retrieve an ID",
-											"functionCategory": "ui",
+											"functionCategory": "ui [UTIL]",
 											"functionReturnType": "string",
 											"functionCopyPicked": false,
 											"functionIsAsync": false,
@@ -4082,7 +4082,7 @@
 													"aceName": "uiSliderCalculateMargins [INTERNAL]",
 													"objectClass": "uiSliderBar",
 													"functionDescription": "calculate and set values for margins",
-													"functionCategory": "ui",
+													"functionCategory": "ui [INTERNAL]",
 													"functionReturnType": "none",
 													"functionCopyPicked": false,
 													"functionIsAsync": false,
@@ -4209,7 +4209,7 @@
 													"aceName": "uiSliderChangeProperties [INTERNAL]",
 													"objectClass": "uiSliderBar",
 													"functionDescription": "change the properties of this slider",
-													"functionCategory": "ui",
+													"functionCategory": "ui [INTERNAL]",
 													"functionReturnType": "none",
 													"functionCopyPicked": false,
 													"functionIsAsync": false,
@@ -4315,7 +4315,7 @@
 													"aceName": "uiSliderTicksUpdate [INTERNAL]",
 													"objectClass": "uiSliderBar",
 													"functionDescription": "update the ticks on this slider bar",
-													"functionCategory": "ui",
+													"functionCategory": "ui [INTERNAL]",
 													"functionReturnType": "none",
 													"functionCopyPicked": false,
 													"functionIsAsync": false,
@@ -4789,7 +4789,7 @@
 													"aceName": "uiSliderFillUpdate [INTERNAL]",
 													"objectClass": "uiSliderFill",
 													"functionDescription": "update the fill dimensions - make sure to set 9patch origin to 'left'",
-													"functionCategory": "ui",
+													"functionCategory": "ui [INTERNAL]",
 													"functionReturnType": "none",
 													"functionCopyPicked": false,
 													"functionIsAsync": false,
@@ -5111,7 +5111,7 @@
 												{
 													"functionName": "uiSliderHandleGetRealX",
 													"functionDescription": "get the position of this handle, according to its value",
-													"functionCategory": "ui",
+													"functionCategory": "ui [UTIL]",
 													"functionReturnType": "number",
 													"functionCopyPicked": false,
 													"functionIsAsync": false,
@@ -5158,7 +5158,7 @@
 												{
 													"functionName": "uiSliderHandleGetRealY",
 													"functionDescription": "get the position of this handle, according to its value",
-													"functionCategory": "ui",
+													"functionCategory": "ui [UTIL]",
 													"functionReturnType": "number",
 													"functionCopyPicked": false,
 													"functionIsAsync": false,
@@ -5223,7 +5223,7 @@
 													"aceName": "uiSliderIncrement [INTERNAL]",
 													"objectClass": "uiSliderHandle",
 													"functionDescription": "increments slider by a step",
-													"functionCategory": "ui",
+													"functionCategory": "ui [INTERNAL]",
 													"functionReturnType": "none",
 													"functionCopyPicked": false,
 													"functionIsAsync": false,
@@ -5290,7 +5290,7 @@
 													"aceName": "uiSliderValueUpdate [INTERNAL]",
 													"objectClass": "uiSliderHandle",
 													"functionDescription": "call after adjusting slider value/min/max/steps",
-													"functionCategory": "ui",
+													"functionCategory": "ui [INTERNAL]",
 													"functionReturnType": "none",
 													"functionCopyPicked": false,
 													"functionIsAsync": false,
@@ -5857,7 +5857,7 @@
 													"aceName": "uiSliderScrollUpdate [INTERNAL]",
 													"objectClass": "uiSliderHandle",
 													"functionDescription": "update scroll components attached to this",
-													"functionCategory": "ui",
+													"functionCategory": "ui [INTERNAL]",
 													"functionReturnType": "none",
 													"functionCopyPicked": false,
 													"functionIsAsync": false,
@@ -6130,7 +6130,7 @@
 											"aceName": "uiScrollRecalculation [INTERNAL]",
 											"objectClass": "uiScrollView",
 											"functionDescription": "recalculate scroll handle and bar based on scroll components",
-											"functionCategory": "ui",
+											"functionCategory": "ui [INTERNAL]",
 											"functionReturnType": "none",
 											"functionCopyPicked": false,
 											"functionIsAsync": false,
@@ -6198,7 +6198,7 @@
 										{
 											"functionName": "uiScrollRecalculationAux [INTERNAL]",
 											"functionDescription": "an auxiliary function for uiCanvas custom action",
-											"functionCategory": "ui",
+											"functionCategory": "ui [INTERNAL]",
 											"functionReturnType": "none",
 											"functionCopyPicked": false,
 											"functionIsAsync": false,
@@ -6252,7 +6252,7 @@
 											"aceName": "uiViewLayerMaskingSetup [INTERNAL]",
 											"objectClass": "uiScrollView",
 											"functionDescription": "move scroll view and components into new generated layers to create masking effects",
-											"functionCategory": "ui",
+											"functionCategory": "ui [INTERNAL]",
 											"functionReturnType": "none",
 											"functionCopyPicked": false,
 											"functionIsAsync": false,
@@ -6527,7 +6527,7 @@
 															],
 															"actions": [
 																{
-																	"customAction": "uiMoveToMaskingLayer",
+																	"customAction": "uiMoveToMaskingLayer [INTERNAL]",
 																	"objectClass": "uiScrollComponent",
 																	"sid": 129180074111546
 																}
@@ -6556,10 +6556,10 @@
 										},
 										{
 											"aceType": "action",
-											"aceName": "uiMoveToMaskingLayer",
+											"aceName": "uiMoveToMaskingLayer [INTERNAL]",
 											"objectClass": "uiScrollComponent",
 											"functionDescription": "call this on created, and when masking layer is created",
-											"functionCategory": "ui",
+											"functionCategory": "ui [INTERNAL]",
 											"functionReturnType": "none",
 											"functionCopyPicked": false,
 											"functionIsAsync": false,
@@ -6668,7 +6668,7 @@
 											"aceName": "uiIndexAdd [INTERNAL]",
 											"objectClass": "uiCarousel",
 											"functionDescription": "increment the index by a value, use negative for decrements",
-											"functionCategory": "ui",
+											"functionCategory": "ui [INTERNAL]",
 											"functionReturnType": "none",
 											"functionCopyPicked": false,
 											"functionIsAsync": false,
@@ -6754,7 +6754,7 @@
 											"aceName": "uiUpdateDisplay [INTERNAL]",
 											"objectClass": "uiCarousel",
 											"functionDescription": "update the display based on value change",
-											"functionCategory": "ui",
+											"functionCategory": "ui [INTERNAL]",
 											"functionReturnType": "none",
 											"functionCopyPicked": false,
 											"functionIsAsync": false,
@@ -7533,7 +7533,7 @@
 								{
 									"functionName": "uiUpdate [INTERNAL]",
 									"functionDescription": "update UI elements",
-									"functionCategory": "ui",
+									"functionCategory": "ui [INTERNAL]",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
 									"functionIsAsync": false,
@@ -7945,7 +7945,7 @@
 								{
 									"functionName": "uiSliderUpdate [INTERNAL]",
 									"functionDescription": "update UI slider elements",
-									"functionCategory": "ui",
+									"functionCategory": "ui [INTERNAL]",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
 									"functionIsAsync": false,
@@ -8242,7 +8242,7 @@
 								{
 									"functionName": "uiSelect [INTERNAL]",
 									"functionDescription": "selects the currently chosen UI component",
-									"functionCategory": "ui",
+									"functionCategory": "ui [INTERNAL]",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
 									"functionIsAsync": false,
@@ -8769,7 +8769,7 @@
 								{
 									"functionName": "uiSetNavigationMode [INTERNAL]",
 									"functionDescription": "activates various groups in this EV depending on what type of navigation is being used",
-									"functionCategory": "ui",
+									"functionCategory": "ui [INTERNAL]",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
 									"functionIsAsync": false,
@@ -9061,7 +9061,7 @@
 								{
 									"functionName": "uiNavigate [INTERNAL]",
 									"functionDescription": "navigate UI components",
-									"functionCategory": "ui",
+									"functionCategory": "ui [INTERNAL]",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
 									"functionIsAsync": false,
@@ -10492,7 +10492,7 @@
 								{
 									"functionName": "uiNavigatePickNearest [INTERNAL]",
 									"functionDescription": "pick the nearest UI to a point",
-									"functionCategory": "ui",
+									"functionCategory": "ui [INTERNAL]",
 									"functionReturnType": "none",
 									"functionCopyPicked": true,
 									"functionIsAsync": false,
@@ -10571,7 +10571,7 @@
 								{
 									"functionName": "uiRegisterChosen [INTERNAL]",
 									"functionDescription": "use this to register what component is chosen",
-									"functionCategory": "ui",
+									"functionCategory": "ui [INTERNAL]",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
 									"functionIsAsync": false,
@@ -10637,7 +10637,7 @@
 								{
 									"functionName": "uiNavigatePickDefault [INTERNAL]",
 									"functionDescription": "find a default option to choose",
-									"functionCategory": "ui",
+									"functionCategory": "ui [INTERNAL]",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
 									"functionIsAsync": false,
@@ -10863,7 +10863,7 @@
 								{
 									"functionName": "uiScrollCenterChosen [INTERNAL]",
 									"functionDescription": "if component that got chosen is part of a scroll view, adjust the scroll to center this object",
-									"functionCategory": "ui",
+									"functionCategory": "ui [INTERNAL]",
 									"functionReturnType": "none",
 									"functionCopyPicked": false,
 									"functionIsAsync": false,
@@ -13581,7 +13581,7 @@
 						{
 							"functionName": "uiInput [INTERNAL]",
 							"functionDescription": "when player presses a directional input (keyboard or gamepad)",
-							"functionCategory": "ui",
+							"functionCategory": "ui [INTERNAL]",
 							"functionReturnType": "none",
 							"functionCopyPicked": false,
 							"functionIsAsync": false,
