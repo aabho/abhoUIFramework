@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 36802,
+	"savedWithRelease": 37900,
 	"name": "abhoUIFramework",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -260,6 +260,10 @@
 				"subfolders": []
 			}
 		]
+	},
+	"flowcharts": {
+		"items": [],
+		"subfolders": []
 	},
 	"properties": {
 		"description": "",

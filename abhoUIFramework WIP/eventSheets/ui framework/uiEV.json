@@ -8258,6 +8258,14 @@
 												"comparison": 0,
 												"value": "uiChosenID"
 											}
+										},
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "ui",
+											"sid": 829632787281957,
+											"parameters": {
+												"instance-variable": "active"
+											}
 										}
 									],
 									"actions": [],
